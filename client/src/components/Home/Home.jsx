@@ -7,8 +7,8 @@ import getCategories from "../../actions/getCategories";
 import getSubCategories from "../../actions/getSubCategories";
 
 
-import Card from "../Card";
-import Paginate from "../paginate";
+import Card from "../Event/Event";
+import Paginate from "../Paginate/Paginate";
 import SearchBar from "../SearchBar";
 import s from "./home.module.css";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Card from "../Card";
+import Card from "../Event/Event";
 import s from "./fav.module.css";
 
 export function WishList(props) {

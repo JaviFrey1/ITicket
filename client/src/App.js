@@ -4,10 +4,10 @@ import React from "react";
 import { Route, BrowserRouter } from "react-router-dom";
 
 import WishList from "./components/WishList";
-import EventDetail from "./components/EventDetail";
-import Nav from "./components/Nav";
-import Home from "./components/Home";
-import AddEvent from "./components/AddEvent";
+import EventDetail from "./components/EventDetail/EventDetail";
+import Nav from "./components/Nav/Nav";
+import Home from "./components/Home/Home";
+import AddEvent from "./components/AddEvent/AddEvent";
 
 function App() {
   return (

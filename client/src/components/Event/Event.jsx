@@ -14,7 +14,12 @@ export default function Card({event}){
 
   return (
     <div>
-      <div className={`${s.container}`}>
+      
+    </div>
+  );
+}
+
+{/* <div className={`${s.container}`}>
         <img src={event.image} alt="not found" />
         <div className={`${s.details}`}>
           <Link to={`/events/${event.id}`}>
@@ -53,7 +58,4 @@ export default function Card({event}){
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
+      </div> */}
