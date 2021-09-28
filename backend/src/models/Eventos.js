@@ -4,42 +4,42 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define(
-    "evento",
+    "events",
     {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
       },
-      nombre: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      artista: {
+      artist: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      lugar: {
+      place: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      precio: {
+      prize: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      entradas: {
+      tickets: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      imagen: {
+      image: {
         type: DataTypes.BLOB,
         allowNull: false,
       },
-      fecha: {
+      date: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      horario: {
+      time: {
         type: DataTypes.STRING,
         allowNull: false,
       },
