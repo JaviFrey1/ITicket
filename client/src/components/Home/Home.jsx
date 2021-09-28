@@ -9,7 +9,7 @@ import getSubCategories from "../../actions/getSubCategories";
 
 import Card from "../Event/Event";
 import Paginate from "../Paginate/Paginate";
-import SearchBar from "../SearchBar";
+import SearchBar from '../SearchBar/SearchBar'
 import s from "./home.module.css";
 
 export default function Home() {

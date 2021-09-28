@@ -7,7 +7,7 @@ import getSubCategories
   from "../../actions/getSubCategories";
 
 import s from "./add.module.css";
-import addEvent from "../../actions/addEvent";
+// import addEvent from "../../actions/addEvent";
 
 
 //ESTE COMPONENTE ESTA 'MAL', SOLO RENDERICE A MODO CHECKLIST LAS CATEGORIAS Y SUBCATEGORIAS COMO PARA TENERLAS AHI, PERO EN VERDAD HABRIA QUE RENDERIZAR LAS 
@@ -59,22 +59,22 @@ export default function AddRecipe() {
     image: '',
     availableTickets: '',
     subCategories: [],
-    categories: []
+    category: ''
 
   });
-  function show(id) {
-    if (id === 1) {
-      $("#musica").show();
-      $("#teatro").hide();
-    }
+  // function show(id) {
+  //   if (id === 1) {
+  //     $("#musica").show();
+  //     $("#teatro").hide();
+  //   }
 
-    if (id == 2) {
-      $("#musica").hide();
-      $("#teatro").show();
+  //   if (id === 2) {
+  //     $("#musica").hide();
+  //     $("#teatro").show();
 
-    }
+  //   }
 
-  }
+  // }
 
   function handleInputChange(e) {
     console.log('E.TARGET.VALUE', e.target.value)
@@ -89,7 +89,7 @@ export default function AddRecipe() {
   function handleSelect(e) {
     setState({
       ...state,
-      categories: [...state.categories, e.target.value],
+      category: e.target.value,
     });
 
   }
@@ -116,7 +116,7 @@ export default function AddRecipe() {
       image: '',
       availableTickets: '',
       subCategories: [],
-      categories: []
+      category: ''
     });
     history.push("/home");
   }
@@ -221,19 +221,19 @@ export default function AddRecipe() {
               className={`${s.select}`}
               onChange={(e) => {
                  handleSelect(e);
-                 show()
+                //  show(e.target.value)
               }}
             >
               <option>Category</option>
               {categorias?.map((category) => {
                 return (
-                  <option value={`${category.name}`} key={`${category.id}`}>
+                  <option value={`${category.id}`} key={`${category.id}`}>
                     {category.name}
                   </option>
                 );
               })}
             </select>
-            <div id="1" style="display: none;">
+            <div id="musica" style={{display: 'none'}}>
             {subCategorias.filter(subCat=>subCat.fk===1).map((subCat) => {
               return (
                 <span>
@@ -249,7 +249,7 @@ export default function AddRecipe() {
               );
             })}
              </div>
-             <div id="2" style="display: none;">
+             <div id="teatro" style={{display: "none"}}>
             {subCategorias.filter(subCat=>subCat.fk===2).map((subCat) => {
               return (
                 <span>

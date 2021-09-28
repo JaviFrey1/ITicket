@@ -18,7 +18,7 @@
 }
 
 .container {
-  background-image: url("../../images/mesa.jpg");
+  /* background-image: url("../../images/mesa.jpg"); */
   width: 100vw;
   height: 200vh;
   background-size: cover;
