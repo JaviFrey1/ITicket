@@ -1,0 +1,59 @@
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 960px;
+  margin: auto;
+
+  box-shadow: 0px 0px 5px 1px #c1dbe0;
+  background-color: transparent;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.container {
+  background-image: url("../../images/mesa.jpg");
+  width: 100vw;
+  height: 200vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+}
+
+.searchBar {
+  display: block;
+  width: 100%;
+}
+
+.filters {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 20px;
+}
+
+.select {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #c1dbe0;
+  box-shadow: 0px 0px 5px 1px black;
+  outline: transparent;
+}
+
+.clear {
+  outline: transparent;
+  background-color: #c1dbe0;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px 1px black;
+}
