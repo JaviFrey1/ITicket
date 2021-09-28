@@ -1,18 +1,33 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import './App.css';
-import Evento from './components/Evento/Evento' 
+import "./App.css";
+
+import React from "react";
+import { Route, BrowserRouter } from "react-router-dom";
+
+import WishList from "./components/WishList";
+import EventDetail from "./components/EventDetail";
+import Nav from "./components/Nav";
+import Home from "./components/Home";
+import AddEvent from "./components/AddEvent";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App-header">
-        <Switch>
-
-          
-          <Route exact path ='evento' component={Evento}/>
-        
-        </Switch>
-      </div>
+      <React.Fragment>
+        <Route
+          path={[
+            "/home",
+            "/events/:id",
+            "/wishList",
+            "/addEvent",
+            
+          ]}
+          component={Nav}
+        />
+        <Route path="/home" component={Home} />
+        <Route path="/events/:id" component={EventDetail} />
+        <Route path="/wishList" component={WishList} />
+        <Route path="/addEvent" component={AddEvent} />
+      </React.Fragment>
     </BrowserRouter>
   );
 }
