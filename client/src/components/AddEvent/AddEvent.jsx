@@ -43,7 +43,7 @@ export function validate(state) {
   return errors;
 }
 
-export default function AddRecipe() {
+export default function addEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const categorias = useSelector((state) => state.categories);
