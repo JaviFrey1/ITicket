@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      tickets: {
+      ticket: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
