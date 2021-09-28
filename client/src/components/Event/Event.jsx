@@ -5,16 +5,19 @@ import { useDispatch, useSelector } from "react-redux";
 import * as MdIcons from "react-icons/md";
 import * as TiIcons from "react-icons/ti";
 import { Link } from "react-router-dom";
+import {} from '../../../public/cartas'
 
-export default function Card({event}){
-  const dispatch = useDispatch();
-  const wish = useSelector((state) => state.wishEvents);
+export default function Card({ event }) {
 
+  // const dispatch = useDispatch();
+  // const wish = useSelector((state) => state.wishEvents);
   // <Link  to={`/recipes/${props.id}`}>
 
   return (
-    <div>
-      
+    <div className={styles.contenedor}>
+      <div className={styles.hijo}>
+        {Metallica.fecha}
+      </div>
     </div>
   );
 }
