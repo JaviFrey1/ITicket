@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('tickets', {
                                                                                   
-    precio: {
+    prize: {
       type: DataTypes.INTEGER,
       allowNull: false,
      
