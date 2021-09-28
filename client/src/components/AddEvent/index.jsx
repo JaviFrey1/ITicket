@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import addEvent from "../../actions/addEvent";
 import getCategories from "../../actions/getCategories";
 import getSubCategories
- from "../../actions/getSubCategories";
+  from "../../actions/getSubCategories";
 
 import s from "./add.module.css";
 import addEvent from "../../actions/addEvent";
@@ -15,6 +15,13 @@ import addEvent from "../../actions/addEvent";
 //QUÉ DATOS SON OBLIGATORIOS Y CUALES NO
 
 //CUAKKKKKKKKKKKKKKKKKK :=()
+//ACTUALIZACIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNN!!
+// en teoria deberia ser pesplegable el form segun la categoria que eliga el usuario, no estoy segura de si funciona porque aun no probe renderizar, 
+//habria que esperar a que este el back
+//por cierto, a back le llega un array de strings con las categorias y un array de strings con las subcategorias en el body junto con el resto de los datos
+//Además aca la imagen es una url, proximamente podemos hacer que se carguen todo tipo de archivos desde la pc del admin
+ //AUN FALTA controlar cuales datos son obligatorios y cuales no
+
 
 export function validate(state) {
   let errors = {};
@@ -25,7 +32,7 @@ export function validate(state) {
   } else if (!state.dayTime) {
     errors.dayTime = "Confirma el horario";
   } else if (
-    !state.location 
+    !state.location
   ) {
     errors.location = "Dónde será el evento?";
   } else if (!state.image) {
@@ -40,47 +47,51 @@ export default function AddRecipe() {
   const dispatch = useDispatch();
   const history = useHistory();
   const categorias = useSelector((state) => state.categories);
-  const subCategorias = useSelector((state)=> state.subCategories)
+  const subCategorias = useSelector((state) => state.subCategories)
 
   const [errors, setErrors] = useState({});
   const [state, setState] = useState({
-    name:'',
-    date:'',
-    artistName:'',
-    dayTime:'',
-    location:'',
-    image:'',
-    availableTickets:'',
-    subCategories:[],
-    categories:[]
+    name: '',
+    date: '',
+    artistName: '',
+    dayTime: '',
+    location: '',
+    image: '',
+    availableTickets: '',
+    subCategories: [],
+    categories: []
 
   });
+  function show(id) {
+    if (id === 1) {
+      $("#musica").show();
+      $("#teatro").hide();
+    }
+
+    if (id == 2) {
+      $("#musica").hide();
+      $("#teatro").show();
+
+    }
+
+  }
 
   function handleInputChange(e) {
     console.log('E.TARGET.VALUE', e.target.value)
     console.log('NAME', e.target.name)
-  //   setState(prev=>{
-  //     const newState = {
-  //         ...prev,
-  //         [e.target.name] : e.target.value
-  //     }
-  //     setErrors(validate(newState))
-  //     return newState
-  // })
+
     setState({
       ...state,
       [e.target.name]: e.target.value
     })
-      setErrors(validate(state))
+    setErrors(validate(state))
   }
-  function handleCheck(e) {
-    if (e.target.checked) {
-      setState({
-        ...state,
-        categories: [...state.categories, e.target.value],
-      });
-   
-    }
+  function handleSelect(e) {
+    setState({
+      ...state,
+      categories: [...state.categories, e.target.value],
+    });
+
   }
   function handleCheckSub(e) {
     if (e.target.checked) {
@@ -88,7 +99,7 @@ export default function AddRecipe() {
         ...state,
         subCategories: [...state.subCategories, e.target.value],
       });
-   
+
     }
   }
 
@@ -96,16 +107,17 @@ export default function AddRecipe() {
     e.preventDefault();
     dispatch(addEvent(state));
     alert("Has agregado un nuevo evento!");
-    setState({ 
-      name:'',
-      date:'',
-      artistName:'',
-      dayTime:'',
-      location:'',
-      image:'',
-      availableTickets:'',
-      subCategories:[],
-      categories:[] });
+    setState({
+      name: '',
+      date: '',
+      artistName: '',
+      dayTime: '',
+      location: '',
+      image: '',
+      availableTickets: '',
+      subCategories: [],
+      categories: []
+    });
     history.push("/home");
   }
 
@@ -128,7 +140,7 @@ export default function AddRecipe() {
               name='name'
               value={state.name}
               placeholder='Nombre'
-              
+
               onChange={(e) => handleInputChange(e)}
             />
           </div>
@@ -140,7 +152,7 @@ export default function AddRecipe() {
               name='date'
               value={state.date}
               placeholder='Fecha'
-              
+
               onChange={(e) => handleInputChange(e)}
             />
           </div>
@@ -205,34 +217,55 @@ export default function AddRecipe() {
           </div>
           {errors.location && <h5 className="error">{errors.location}</h5>}
           <div className={`${s.caja}`}>
-            {categorias.map((category) => {
+            <select
+              className={`${s.select}`}
+              onChange={(e) => {
+                 handleSelect(e);
+                 show()
+              }}
+            >
+              <option>Category</option>
+              {categorias?.map((category) => {
+                return (
+                  <option value={`${category.name}`} key={`${category.id}`}>
+                    {category.name}
+                  </option>
+                );
+              })}
+            </select>
+            <div id="1" style="display: none;">
+            {subCategorias.filter(subCat=>subCat.fk===1).map((subCat) => {
               return (
                 <span>
                   <input
-                    key={`${category.id}`}
+                    key={`${subCat.id}`}
                     type='checkbox'
-                    value={`${category.name}`}
-                    name={`${category.name}`}
-                    onChange={(e) => handleCheck(e)}
+                    value={`${subCat.name}`}
+                    name={`${subCat.name}`}
+                    onChange={(e) => handleCheckSub(e)}
                   />
-                  {category.name}
+                  {subCat.name}
                 </span>
               );
             })}
-              {subCategorias.map((subCategory) => {
+             </div>
+             <div id="2" style="display: none;">
+            {subCategorias.filter(subCat=>subCat.fk===2).map((subCat) => {
               return (
                 <span>
                   <input
-                    key={`${subCategory.id}`}
+                    key={`${subCat.id}`}
                     type='checkbox'
-                    value={`${subCategory.name}`}
-                    name={`${subCategory.name}`}
-                    onChange={(e) => handleCheck(e)}
+                    value={`${subCat.name}`}
+                    name={`${subCat.name}`}
+                    onChange={(e) => handleCheckSub(e)}
                   />
-                  {subCategory.name}
+                  {subCat.name}
                 </span>
               );
             })}
+             </div>
+
           </div>
           <div className={`${s.btnCont}`}>
             {state.name && state.date ? (
@@ -244,3 +277,4 @@ export default function AddRecipe() {
     </div>
   );
 }
+
