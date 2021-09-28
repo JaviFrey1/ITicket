@@ -28,22 +28,22 @@ export default function EventDetail(props) {
             <div className={`${s.header}`}>
               <h2>{eventDetail.title}</h2>
               <div className={`${s.cajita}`}>
-                <span className={`${s.score}`}>{recipeDetail.score}</span>
+                {/* <span className={`${s.score}`}>{recipeDetail.score}</span> */}
                 <span className={`${s.flag}`}>Score</span>
-                <span className={`${s.score}`}>{recipeDetail.healthiness}</span>
+                {/* <span className={`${s.score}`}>{recipeDetail.healthiness}</span> */}
                 <span className={`${s.flag}`}>Healthiness</span>
               </div>
             </div>
             {eventDetail.Diets?.map((diet) => (
               <span className={`${s.diet}`}> {diet.name}</span>
             ))}
-            <span className={`${s.summary}`}>{recipeDetail.summary}</span>
-            {recipeDetail.steps ? (
+            {/* <span className={`${s.summary}`}>{recipeDetail.summary}</span> */}
+            {/* {recipeDetail.steps ? (
               <div>
                 <span className={`${s.flag}`}>Step by step</span>
                 <span>{recipeDetail.steps}</span>
               </div>
-            ) : null}
+            ) : null} */}
           </div>
         </div>
       ) : (

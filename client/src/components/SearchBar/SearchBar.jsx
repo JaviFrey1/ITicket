@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import getEvents from "../../actions/getEvents";
 import s from "./search.module.css";
-import * as ImIcons from "react-icons/im";
+// import * as ImIcons from "react-icons/im";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ export default function SearchBar() {
           value={title}
         />
 
-        <ImIcons.ImSearch className={`${s.search_submit}`} type="submit" />
+        {/* <ImIcons.ImSearch className={`${s.search_submit}`} type="submit" /> */}
       </form>
     </div>
   );

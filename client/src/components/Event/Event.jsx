@@ -1,20 +1,28 @@
 import React from "react";
-import { addEventWish, removeEventWish, removeEvent } from "../../actions";
-import s from "./card.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import * as MdIcons from "react-icons/md";
-import * as TiIcons from "react-icons/ti";
-import { Link } from "react-router-dom";
+// import { addEventWish, removeEventWish, removeEvent } from "../../actions";
+import styles from "./Event.module.css";
+// import { useDispatch, useSelector } from "react-redux";
+// import * as MdIcons from "react-icons/md";
+// import * as TiIcons from "react-icons/ti";
+// import { Link } from "react-router-dom";
+import {Metallica} from '../../cartas'
 
-export default function Card({event}){
-  const dispatch = useDispatch();
-  const wish = useSelector((state) => state.wishEvents);
+export default function Card({ event }) {
 
+  // const dispatch = useDispatch();
+  // const wish = useSelector((state) => state.wishEvents);
   // <Link  to={`/recipes/${props.id}`}>
 
   return (
-    <div>
-      <div className={`${s.container}`}>
+    <div className={styles.contenedor}>
+      <div className={styles.hijo}>
+        {Metallica.fecha}
+      </div>
+    </div>
+  );
+}
+
+/* <div className={`${s.container}`}>
         <img src={event.image} alt="not found" />
         <div className={`${s.details}`}>
           <Link to={`/events/${event.id}`}>
@@ -53,7 +61,4 @@ export default function Card({event}){
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
+      </div> */

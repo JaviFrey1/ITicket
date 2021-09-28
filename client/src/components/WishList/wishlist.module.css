@@ -19,7 +19,7 @@
   display: flex;
 
   box-shadow: 0px 0px 5px 1px black;
-  background-image: url("../../images/mesa.jpg");
+  /* background-image: url("../../images/mesa.jpg"); */
 
   background-size: cover;
   background-position: center;
@@ -47,7 +47,7 @@
   display: flex;
   justify-content: center;
   align-content: flex-start;
-  background-image: url("../../images/TEXTURA\ MARMOL.jfif");
+  /* background-image: url("../../images/TEXTURA\ MARMOL.jfif"); */
   padding: 20px;
   background-size: cover;
   background-position: center;
