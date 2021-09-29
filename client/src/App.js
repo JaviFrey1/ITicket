@@ -9,6 +9,7 @@ import Nav from "./components/Nav/Nav";
 import Home from "./components/Home/Home";
 import AddEvent from "./components/AddEvent/AddEvent";
 import Events from "./components/Events/Events";
+import Frequent from "./components/Frequent/Frequent";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/events/:id" component={EventDetail} />
         <Route path="/wishList" component={WishList} />
         <Route path="/addEvent" component={AddEvent} />
+        <Route path="/respuestas" component={Frequent}/>
       </React.Fragment>
     </BrowserRouter>
   );
