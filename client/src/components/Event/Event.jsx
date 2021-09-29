@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Event.module.css";
+import { NavLink } from "react-router-dom";
 
 export default function Event({ name, img, fecha, cat }) {
   // const dispatch = useDispatch();
@@ -17,7 +18,9 @@ export default function Event({ name, img, fecha, cat }) {
         <div className={styles.fecha}>{fecha}</div>
       </div>
       <div className={styles.contBtn}>
-        <div className={styles.boton}>Mas info</div>
+        <NavLink className={styles.link} to={`/event/:id`}>
+          <div className={styles.boton}>Mas info</div>
+        </NavLink>
       </div>
     </div>
   );
