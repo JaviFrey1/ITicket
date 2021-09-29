@@ -12,24 +12,61 @@
   box-shadow: 0px 0px 5px 1px black;
   font-family: "Indie Flower", cursive;
 } */
-
+.clas{
+  display:flex;
+  align-content: center;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  /* background-color: grey; */
+}
 .contenedor{
   display: flex;
+  justify-content: center;
+  align-items:flex-end;
   background-color: white;
-  width: 60%;
-  height: 10em;
-  justify-self: center;
-  align-items: flex-end; 
-  border-radius: 3px;
+  width: 80%;
+  height: 16em;
+  border-radius: 5px;
+  /* background-image: url('https://images.all-free-download.com/images/graphicthumb/metallica_3_138862.jpg'); */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hijo{
-  /* background-color:  #000000 ; */
-  background: rgb(0,0,0);
+  background: rgb(0,0,1);
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(240,240,240,1) 100%);
   width: 100%;
   height: 35%;
-  opacity: .6;
+  opacity: .7;
+  display: table-column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+
+}
+.hijo > * {
+  margin-left: 1.5rem; 
+  font-size: 1em;
+  color: black;
+  opacity: 100%;
+}
+
+.nombre{
+  margin-top: .2em;
+  font-weight: bold;
+  font-size: 1.5em;
+  min-width: 90%;
+}
+.nombre:hover{
+  color: white;
+}
+.cat{
+  min-width: 100%;
+}
+.fecha{
+  font-weight: bolder;
+  color: red;
 }
 /*
 .container img {
