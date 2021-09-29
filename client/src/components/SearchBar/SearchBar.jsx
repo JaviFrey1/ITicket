@@ -1,41 +1,28 @@
 import React from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import getEvents from "../../actions/getEvents";
-import s from "./search.module.css";
+import style from "./search.module.css";
 // import * as ImIcons from "react-icons/im";
 
-export default function SearchBar() {
-  const dispatch = useDispatch();
-  const [title, setTitle] = useState("");
-
-  function handleInputChange(e) {
-    e.preventDefault();
-    setTitle(e.target.value);
-    // dispatch(getRecipes(title))
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(getEvents(title));
-    setTitle("");
-  }
-
+function SearchBar({ input, setInput }) {
   return (
-    <div className={`${s.wrap}`}>
-      <form className={`${s.form}`} onSubmit={(e) => handleSubmit(e)}>
-        <input
-          className={`${s.search}`}
-          type="text"
-          id="title"
-          autoComplete="off"
-          placeholder="search"
-          onChange={(e) => handleInputChange(e)}
-          value={title}
-        />
-
-        {/* <ImIcons.ImSearch className={`${s.search_submit}`} type="submit" /> */}
+    <div>
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className={style.formContainer}
+      >
+        <div className={style.search}>
+        </div>
+        <div className={style.searchBarContainer}>
+          <input
+            type="text"
+            value={input}
+            placeholder="Busca un evento"
+            //onChange={(e) => setInput(e.target.value)}
+            className={style.input}
+          ></input>
+        </div>
       </form>
     </div>
-  );
+  )
 }
+
+export default SearchBar
