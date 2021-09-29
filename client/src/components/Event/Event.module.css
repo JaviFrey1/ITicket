@@ -34,6 +34,10 @@
   background-size: cover;
 }
 
+.contenedor:hover {
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.726);
+}
+
 .hijo {
   background: rgb(0, 0, 1);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 50%, transparent);
@@ -43,7 +47,7 @@
   display: table-column;
   align-items: center;
   justify-content: center;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 0 5px;
 
 }
 
@@ -79,8 +83,9 @@
   opacity: .8;
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 50%, transparent);
   height: 35%;
-  border-radius: 0 0 5px 5px;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 0;
+
+  cursor: pointer;
 }
 
 .boton {
