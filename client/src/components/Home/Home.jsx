@@ -12,6 +12,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import s from "./home.module.css";
 import Events from "../Events/Events";
 import Footer from "../Footer/Footer";
+import CarouselComp from "../Carousel/Carousel";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ export default function Home() {
     <div className={`${s.container}`}>
       <div className={`${s.searchBar}`}>
         <SearchBar />
+      </div>
+      <div className={s.contCarousel}>
+        <CarouselComp />
       </div>
       <div class={s.card}>
         <Events />

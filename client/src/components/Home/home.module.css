@@ -3,15 +3,16 @@
   background-color: rgb(230, 236, 234);
 }
 
-.fot{
-  position:inherit;
+.fot {
+  position: inherit;
   width: 100%;
   height: 15%;
   margin-top: 36px;
   border-top: #6A6A6F solid 1px;
   /* margin-bottom: 50px; */
 }
-.card{
+
+.card {
   margin-bottom: 5rem;
 }
 
@@ -46,6 +47,10 @@
 .searchBar {
   display: block;
   width: 100%;
+}
+
+.contCarousel {
+  margin: 10px 0 20px 0;
 }
 
 .filters {
