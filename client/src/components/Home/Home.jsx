@@ -6,10 +6,9 @@ import getEvents from "../../actions/getEvents";
 import getCategories from "../../actions/getCategories";
 import getSubCategories from "../../actions/getSubCategories";
 
-
 import Card from "../Event/Event";
-import Paginate from "../Paginate/Paginate";
-import SearchBar from '../SearchBar/SearchBar'
+import Paginate from "../paginate/Paginate.jsx";
+import SearchBar from "../SearchBar/SearchBar";
 import s from "./home.module.css";
 
 export default function Home() {
@@ -29,12 +28,8 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getEvents(""));
-    
   }, [dispatch]);
 
- 
-
-  
   return (
     <div className={`${s.container}`}>
       <div className={`${s.searchBar}`}>
@@ -45,9 +40,7 @@ export default function Home() {
           currentEvents.map((event) => {
             return (
               <div key={event.id}>
-                <Card
-                  event={event}
-                />
+                <Card event={event} />
               </div>
             );
           })
