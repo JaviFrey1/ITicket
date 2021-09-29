@@ -11,6 +11,7 @@ import Paginate from "../paginate/Paginate.jsx";
 import SearchBar from "../SearchBar/SearchBar";
 import s from "./home.module.css";
 import Events from "../Events/Events";
+import Footer from "../Footer/Footer";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -36,14 +37,18 @@ export default function Home() {
       <div className={`${s.searchBar}`}>
         <SearchBar />
       </div>
+      <div class={s.card}>
+        <Events />
 
-      <Events />
-
-      <Paginate
-        eventsPerPage={eventsPerPage}
-        allEvents={allEvents.length}
-        paginate={paginate}
-      />
+        <Paginate
+          eventsPerPage={eventsPerPage}
+          allEvents={allEvents.length}
+          paginate={paginate}
+        />
+      </div>
+      <div className={s.fot}>
+        <Footer />
+      </div>
     </div>
   );
 }
