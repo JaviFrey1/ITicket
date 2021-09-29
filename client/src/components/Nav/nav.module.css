@@ -25,3 +25,23 @@
   filter: drop-shadow(0 0 0.75rem crimson);
   color: crimson;
 }
+
+.logo{
+  display: flex;
+  max-width: 10%;
+  /* max-height: max-content; */ 
+  height: fit-content;
+  background-color: black;
+  margin: 0%;
+  padding: 0;
+}
+.hola{
+  background-color: violet;
+  width: 50%;
+}
+
+.right{
+  display: flex;
+  flex-direction:row;
+  background-color: black;
+}

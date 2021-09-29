@@ -1,25 +1,31 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./nav.module.css";
-// import * as MdIcons from "react-icons/md";
-// import * as ImIcons from "react-icons/im";
+import logo from '../../images/pngLetraBlanca.png'
 
 export default function Nav() {
   return (
-    <div className={`${s.nav}`}>
-      <div className={`${s.container}`}>
-        <NavLink to="/home">
-          {/* <ImIcons.ImHome className={`${s.icon}`} /> */}HOME
+    <div className={s.nav}>
+      <div className={s.container}>
+        <NavLink to="/home" className={s.hola}>
+          <img className={s.logo} src={logo} alt='tukiteckLogo'/>
         </NavLink>
-        <div className={`${s.right}`}>
-          <NavLink to="/wishList">
-            {/* <MdIcons.MdFavorite className={`${s.icon}`} /> */}FAVS
-          </NavLink>
-          <NavLink to="/addEvent">
-            {/* <MdIcons.MdAddCircleOutline className={`${s.icon}`} /> */} +
-          </NavLink>
-         
-        </div>
+
+          <div className={s.right}>
+            <NavLink to="/wishList">
+              FAVS
+            </NavLink>
+            <NavLink to="/addEvent">
+              <div>Vende con nosotros!</div>
+            </NavLink>
+            <NavLink to="/login">
+              <div>Iniciar Sesion</div>
+            </NavLink>
+            <NavLink to="/register">
+              <div>Registrate</div>
+            </NavLink>
+          </div>
+
       </div>
     </div>
   );
