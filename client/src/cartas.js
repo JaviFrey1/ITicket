@@ -104,10 +104,3 @@ export const Jesus4 = {
   id: 3,
   img: "https://p4.wallpaperbetter.com/wallpaper/660/285/302/seven-thunders-roar-stoned-jesus-stoner-metal-indian-skull-and-bones-forest-album-covers-cover-art-wallpaper-preview.jpg",
 };
-export const Sosa4 = {
-  nombre: "Don Julio Sosa",
-  categoria: "Tango",
-  fecha: "1/15/2022",
-  id: 4,
-  img: "https://mediosyestrategias.com/wp-content/uploads/2019/11/juliososa.jpg",
-};

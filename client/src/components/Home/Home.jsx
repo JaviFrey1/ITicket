@@ -35,6 +35,7 @@ export default function Home() {
     <div className={`${s.container}`}>
       <div className={`${s.searchBar}`}>
         <SearchBar />
+        hola
       </div>
 
       <Events />
