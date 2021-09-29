@@ -7,19 +7,17 @@ export default function Event({ name, img, fecha, cat }) {
   // <Link  to={`/recipes/${props.id}`}>
   // !img? img ='Not Found': img;
   return (
-    <div className={styles.clas}>
-      <div
-        className={styles.contenedor}
-        style={{ backgroundImage: `url('${img}')` }}
-      >
-        <div className={styles.hijo}>
-          <div className={styles.nombre}>{name}</div>
-          <div className={styles.cat}>{cat}</div>
-          <div className={styles.fecha}>{fecha}</div>
-        </div>
-        <div className={styles.contBtn}>
-          <div className={styles.boton}>Mas info</div>
-        </div>
+    <div
+      className={styles.contenedor}
+      style={{ backgroundImage: `url('${img}')` }}
+    >
+      <div className={styles.hijo}>
+        <div className={styles.nombre}>{name}</div>
+        <div className={styles.cat}>{cat}</div>
+        <div className={styles.fecha}>{fecha}</div>
+      </div>
+      <div className={styles.contBtn}>
+        <div className={styles.boton}>Mas info</div>
       </div>
     </div>
   );
