@@ -1,20 +1,51 @@
 import Event from "../Event/Event";
-// import styles from './Events.module.css'
-import {Duki,Metallica,Jesus,Sosa} from '../../cartas'
+import s from "./Events.module.css";
+import {
+  Duki,
+  Metallica,
+  Jesus,
+  Sosa,
+  Duki2,
+  Metallica2,
+  Jesus2,
+  Sosa2,
+  Duki3,
+  Metallica3,
+  Jesus3,
+  Sosa3,
+} from "../../cartas";
 
 const obj = [
-    Duki,
-    Metallica,
-    Jesus,
-    Sosa
-]
+  Duki,
+  Metallica,
+  Jesus,
+  Sosa,
+  Duki2,
+  Metallica2,
+  Jesus2,
+  Sosa2,
+  Duki3,
+  Metallica3,
+  Jesus3,
+  Sosa3,
+];
 
-export default function Events(){
-    
-    return (
-        <div>
-            {obj.length === 0?
-            <div>Not many events humg?</div>:obj.map((el,i) => <Event key={i} name={el.nombre} img={el.img} cat={el.categoria} fecha={el.fecha} />)}
-        </div>
-    )
+export default function Events() {
+  return (
+    <div className={s.divRey}>
+      {obj.length === 0 ? (
+        <div>Not many events humg?</div>
+      ) : (
+        obj.map((el, i) => (
+          <Event
+            key={i}
+            name={el.nombre}
+            img={el.img}
+            cat={el.categoria}
+            fecha={el.fecha}
+          />
+        ))
+      )}
+    </div>
+  );
 }

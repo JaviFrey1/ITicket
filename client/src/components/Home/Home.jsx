@@ -10,6 +10,7 @@ import Card from "../Event/Event";
 import Paginate from "../paginate/Paginate.jsx";
 import SearchBar from "../SearchBar/SearchBar";
 import s from "./home.module.css";
+import Events from "../Events/Events";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -35,19 +36,9 @@ export default function Home() {
       <div className={`${s.searchBar}`}>
         <SearchBar />
       </div>
-      <div className={`${s.cards}`}>
-        {currentEvents ? (
-          currentEvents.map((event) => {
-            return (
-              <div key={event.id}>
-                <Card event={event} />
-              </div>
-            );
-          })
-        ) : (
-          <h2>Loading...</h2>
-        )}
-      </div>
+
+      <Events />
+
       <Paginate
         eventsPerPage={eventsPerPage}
         allEvents={allEvents.length}

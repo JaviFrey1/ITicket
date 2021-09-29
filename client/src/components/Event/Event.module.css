@@ -12,26 +12,29 @@
   box-shadow: 0px 0px 5px 1px black;
   font-family: "Indie Flower", cursive;
 } */
-.clas {
+/* .clas {
   display: flex;
   align-content: center;
   justify-content: center;
   margin-top: 2em;
   margin-bottom: 2em;
   /* background-color: grey; */
-}
+/* } */
 
 .contenedor {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   background-color: white;
-  width: 80%;
+  /* width: 90%; */
+  min-width: 400px;
+  max-width: 500px;
   height: 16em;
   border-radius: 5px;
   /* background-image: url('https://images.all-free-download.com/images/graphicthumb/metallica_3_138862.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
+  /* margin: 20px; */
 }
 
 .contenedor:hover {

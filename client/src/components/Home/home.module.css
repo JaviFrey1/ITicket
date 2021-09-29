@@ -1,5 +1,5 @@
 .container {
-  width: 70vw;
+  width: 100vw;
 }
 
 .cards {
@@ -27,7 +27,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 30px;
+  /* padding: 30px; */
 }
 
 .searchBar {
