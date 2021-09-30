@@ -39,10 +39,11 @@ export default function Events() {
         obj.map((el, i) => (
           <Event
             key={i}
-            name={el.nombre}
-            img={el.img}
-            cat={el.categoria}
-            fecha={el.fecha}
+            name={el.name}
+            artist={"artist"}
+            image={el.image}
+            subCategories={el.subCategories}
+            date={el.date}
           />
         ))
       )}

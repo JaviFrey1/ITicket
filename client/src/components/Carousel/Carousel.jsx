@@ -15,19 +15,19 @@ export default function CarouselComp() {
         itemsToShow={1}
       >
         <div className={s.itemCarousel}>
-          <img alt="" src={Metallica.img} />
+          <img alt="" src={Metallica.image} />
         </div>
         <div className={s.itemCarousel}>
-          <img alt="" src={Duki.img} />
+          <img alt="" src={Duki.image} />
         </div>
         <div className={s.itemCarousel}>
-          <img alt="" src={Sosa.img} />
+          <img alt="" src={Sosa.image} />
         </div>
         <div className={s.itemCarousel}>
-          <img alt="" src={Metallica.img} />
+          <img alt="" src={Metallica.image} />
         </div>
         <div className={s.itemCarousel}>
-          <img alt="" src={Jesus.img} />
+          <img alt="" src={Jesus.image} />
         </div>
       </Carousel>
     </div>
