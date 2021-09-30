@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+ .container{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+ }
+ .container > :nth-child(2){
+     align-items: center;
+ }
+ .data{
+     margin-top: 1em;
+     background-color: #eeedec;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     margin-bottom: 1em;
+     width: 40vw;
+     border-radius: 3px;
+     text-align:center;
+     opacity: .8;
+ }
+ .data > *{
+     margin-bottom: 1em;
+ }
+ .data > :nth-child(1){
+     margin-top: 1.5em;
+     font-weight:bold;
+     font-size: 1.5em;
+     background-color: rgb(255,204,0);
+     width: 100%;
+     padding-top: .5vw;
+     padding-bottom: .5vw;
+     font-family: 'Lato', sans-serif;
+ }
+
+ .date{
+
+    width: 60%;
+    text-align: center;
+    border-radius: 8px;
+ }
+ .buy{
+    background-color: rgb(255,204,0);
+    border: none;
+    width: 23em;
+    height: 2.3em;
+    border-radius: 8px;
+}
+.buy:active{
+    /* background-color: black; */
+    opacity: .3;
+}
+
+.mapa{
+    border-radius: 0;
+    width: 60vw;
+    justify-self: center;
+} 
+
+.btn{
+    width: 2em;
+    height: 2em;
+    margin-right: 2em;
+    margin-left: 2em;
+    background-color: #e4e4e4;
+    border-radius: 4px;
+}
