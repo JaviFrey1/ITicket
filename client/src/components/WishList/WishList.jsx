@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Card from "../Event/Event";
+import Event from "../Event/Event";
 import s from "./wishlist.module.css";
 
-export function WishList(props) {
+export function WishList() {
   const wishEvents = useSelector((state) => state.wishEvents);
   return (
     <div className={`${s.wishEvents}`}>
@@ -14,7 +14,7 @@ export function WishList(props) {
             {wishEvents.map((we) => {
               return (
                 <div key={we.id}>
-                  <Card
+                  <Event
                     event={we}
                     
                   />
