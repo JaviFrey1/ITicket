@@ -24,6 +24,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      address: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       price: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -44,6 +48,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      
     },
     { timestamps: false },
     { updatedAt: false },
