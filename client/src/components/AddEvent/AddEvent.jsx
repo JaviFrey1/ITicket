@@ -19,7 +19,9 @@ export function validate(state) {
     errors.time = "Confirma el horario";
   } else if (!state.place) {
     errors.place = "Dónde será el evento?";
-  } else if (!state.image) {
+  }else if (!state.adress ) {
+    errors.adress = "Por favor dinos la direccion con el siguiente formato: Calle Numeración, Localidad, Provincia, Pais";
+  }else if (!state.image) {
     errors.image =
       "Estaría bueno que subas una imagen para promocionar el evento";
   } else if (!state.artist) {
@@ -49,6 +51,7 @@ export default function AddEvent() {
     artist: "",
     time: "",
     place: "",
+    adress:"",
     image: "",
     price:'',
     availableTickets: "",
@@ -120,6 +123,7 @@ export default function AddEvent() {
       artist: "",
       time: "",
       place: "",
+      adress: "",
       image: "",
       price:'',
       availableTickets: "",
@@ -210,16 +214,27 @@ export default function AddEvent() {
           </div>
           {errors.price && <h5 className="error">{errors.price}</h5>}
           <div className={`${s.caja}`}>
-            <label>Ubicacion:</label>
+            <label>Lugar:</label>
             <input
               type="text"
               name="place"
               value={state.place}
-              placeholder="Ubicacion"
+              placeholder="Nombre del lugar"
               onChange={(e) => handleInputChange(e)}
             />
           </div>
-          {errors.image && <h5 className="error">{errors.place}</h5>}
+          {errors.place && <h5 className="error">{errors.place}</h5>}
+          <div className={`${s.caja}`}>
+            <label>Dirección:</label>
+            <input
+              type="text"
+              name="adress"
+              value={state.adress}
+              placeholder="Calle Numeración, Localidad, Provincia, Pais"
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+          {errors.adress && <h5 className="error">{errors.adress}</h5>}
           <div className={`${s.caja}`}>
             <label>Imagen:</label>
             <input type="file" onChange={(e) => cargarImg(e.target.files[0])} />
