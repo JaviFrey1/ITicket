@@ -19,7 +19,20 @@ async function AddEvent(req, res, next){
 
 
         })
-        await createdEvent.setCategories(data.categories);
+        await createdEvent.setCategories(data.category);
+        
+        data.subcategories.map(async ( el)=>{
+
+            const subCat = await Subcategories.findOne({
+                where:{
+                    genre: el
+                },
+               
+            })
+            
+            await createdEvent.addSubcategories(subCat);
+
+        })
         return res.send("Evento Creado Satisfactoriamente");
 
     }catch(error){

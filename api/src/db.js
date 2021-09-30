@@ -35,8 +35,12 @@ const { Categories, Events, Subcategories, Tickets, Users } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-Categories.belongsToMany(Events, {through: 'Categoria_Evento'});
-Events.belongsToMany(Categories, {through: 'Categoria_Evento'});
+Categories.belongsToMany(Events, {through: 'event_categories'});
+Events.belongsToMany(Categories, {through: 'event_categories'});
+
+
+Events.belongsToMany(Subcategories, {through:'event_subcategories'});
+Subcategories.belongsToMany(Events, {through:'event_subcategories'});
 
 Events.hasMany(Tickets);
 Tickets.belongsTo(Events);
