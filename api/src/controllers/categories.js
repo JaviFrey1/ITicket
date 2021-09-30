@@ -1,19 +1,25 @@
-const { Categories } = require('../db.js')
+const { Categories } = require('../db.js');
 
-//CARGA DE CATEGORIES MUSICA Y TEATRO A LA BASE DE DATOS
+//CARGA EN LA BASE DE DATOS LAS SUBACATEGORIAS
 
-async function addCategories(req, res , next) {
-    let { name } = req.body;
+const categories = [{ name: 'Musica', id: 1 }, { name: 'Teatro', id: 2 }]
+
+async function getCategories(req, res, next) {
+
     try {
-        const created = await Categories.create({
-            name
-        })
-        res.send('creado re piola')
+        const catBD = await Categories.findAll()
+        if (catBD.length > 0) return res.send(catBD)
+        else {
+            const catCreated = await Categories.bulkCreate(categories)
+            res.send(catCreated)
+        }
+
     } catch (error) {
         next(error)
     }
+
 }
 
 module.exports = {
-    addCategories
+    getCategories
 }
