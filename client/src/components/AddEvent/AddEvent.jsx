@@ -8,17 +8,6 @@ import getSubCategories from "../../actions/getSubCategories";
 import s from "./add.module.css";
 // import addEvent from "../../actions/addEvent";
 
-//ESTE COMPONENTE ESTA 'MAL', SOLO RENDERICE A MODO CHECKLIST LAS CATEGORIAS Y SUBCATEGORIAS COMO PARA TENERLAS AHI, PERO EN VERDAD HABRIA QUE RENDERIZAR LAS
-//SUBCATEGORIAS EN FUNCION DE LA CATEGORIA SELECCIONADA. ADEMAS NO ESTOY TENIENDO EN CUENTA EN EL FORMULARIO Y EN LAS VALIDACIONES
-//QUÉ DATOS SON OBLIGATORIOS Y CUALES NO
-
-//CUAKKKKKKKKKKKKKKKKKK :=()
-//ACTUALIZACIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNN!!
-// en teoria deberia ser pesplegable el form segun la categoria que eliga el usuario, no estoy segura de si funciona porque aun no probe renderizar,
-//habria que esperar a que este el back
-//por cierto, a back le llega un array de strings con las categorias y un array de strings con las subcategorias en el body junto con el resto de los datos
-//Además aca la imagen es una url, proximamente podemos hacer que se carguen todo tipo de archivos desde la pc del admin
-//AUN FALTA controlar cuales datos son obligatorios y cuales no
 
 export function validate(state) {
   let errors = {};
@@ -26,51 +15,45 @@ export function validate(state) {
     errors.name = "Dinos el nombre del evento por favor";
   } else if (!state.date) {
     errors.date = "Necesitamos saber la fecha";
-  } else if (!state.dayTime) {
-    errors.dayTime = "Confirma el horario";
-  } else if (!state.location) {
-    errors.location = "Dónde será el evento?";
+  } else if (!state.time) {
+    errors.time = "Confirma el horario";
+  } else if (!state.place) {
+    errors.place = "Dónde será el evento?";
   } else if (!state.image) {
     errors.image =
       "Estaría bueno que subas una imagen para promocionar el evento";
-  } else if (!state.artistName) {
-    errors.artistName = "quien es la estrella del evento?";
+  } else if (!state.artist) {
+    errors.artist = "quien es la estrella del evento?";
+  }else if (!state.price || typeof(state.price)!= Number ) {
+    errors.price = "Por favor dinos el precio de la entrada, debe ser un número entero";
+  }else if (!state.availableTickets || typeof(state.availableTickets)!= Number ) {
+    errors.availableTickets = "Por favor dinos cuantas entradas disponibles hay ";
   }
+  
   return errors;
 }
 
 export default function AddEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const categorias = useSelector((state) => state.categories);
-  const categorias = [
-    { id: 1, name: "Musica" },
-    { id: 2, name: "Teatro" },
-  ];
-  // const subCategorias = useSelector((state) => state.subCategories);
-  const subCategorias = [
-    { fk: 1, name: "Pop" },
-    { fk: 1, name: "Cumbia" },
-    { fk: 1, name: "Rock" },
-    { fk: 1, name: "Trap" },
-    { fk: 2, name: "Comedia" },
-    { fk: 2, name: "Alternativo" },
-    { fk: 2, name: "Drama" },
-    { fk: 2, name: "Terror" },
-  ];
+  const categorias = useSelector((state) => state.categories);
+  
+  const subCategorias = useSelector((state) => state.subCategories);
+ 
 
   const [errors, setErrors] = useState({});
   const [div, setDiv] = useState("-");
   const [state, setState] = useState({
     name: "",
     date: "",
-    artistName: "",
-    dayTime: "",
-    location: "",
+    artist: "",
+    time: "",
+    place: "",
     image: "",
+    price:'',
     availableTickets: "",
-    subCategories: [],
-    category: "",
+    subCategories: [], //LLEGA ARRAY DE STRINGS(GENRE DE SUBCAT)
+    category: "",   //LLEGA UN INTEGER (ID DE CATEGORY)
   });
 
   function cargarImg(e) {
@@ -134,10 +117,11 @@ export default function AddEvent() {
     setState({
       name: "",
       date: "",
-      artistName: "",
-      dayTime: "",
-      location: "",
+      artist: "",
+      time: "",
+      place: "",
       image: "",
+      price:'',
       availableTickets: "",
       subCategories: [],
       category: "",
@@ -183,24 +167,24 @@ export default function AddEvent() {
             <label>Horario:</label>
             <input
               type="text"
-              name="dayTime"
-              value={state.dayTime}
+              name="time"
+              value={state.time}
               placeholder="Horario"
               onChange={(e) => handleInputChange(e)}
             />
           </div>
-          {errors.dayTime && <h5 className="error">{errors.dayTime}</h5>}
+          {errors.time && <h5 className="error">{errors.time}</h5>}
           <div className={`${s.caja}`}>
             <label>Artista:</label>
             <input
               type="text"
-              name="artistName"
+              name="artist"
               value={state.healthiness}
               placeholder="Artista"
               onChange={(e) => handleInputChange(e)}
             />
           </div>
-          {errors.artistName && <h5 className="error">{errors.artistName}</h5>}
+          {errors.artist && <h5 className="error">{errors.artist}</h5>}
           <div className={`${s.caja}`}>
             <label>Entradas disponibles:</label>
             <input
@@ -215,28 +199,32 @@ export default function AddEvent() {
             <h5 className="error">{errors.availableTickets}</h5>
           )}
           <div className={`${s.caja}`}>
+            <label>Precio:</label>
+            <input
+              type="text"
+              name="price"
+              value={state.name}
+              placeholder="Precio"
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+          {errors.price && <h5 className="error">{errors.price}</h5>}
+          <div className={`${s.caja}`}>
             <label>Ubicacion:</label>
             <input
               type="text"
-              name="location"
-              value={state.location}
+              name="place"
+              value={state.place}
               placeholder="Ubicacion"
               onChange={(e) => handleInputChange(e)}
             />
           </div>
-          {errors.image && <h5 className="error">{errors.location}</h5>}
+          {errors.image && <h5 className="error">{errors.place}</h5>}
           <div className={`${s.caja}`}>
             <label>Imagen:</label>
             <input type="file" onChange={(e) => cargarImg(e.target.files[0])} />
-            {/*<input
-              type="url"
-              name="name"
-              value={state.image}
-              placeholder="Url"
-              onChange={(e) => handleInputChange(e)}
-            />*/}
           </div>
-          {errors.location && <h5 className="error">{errors.image}</h5>}
+          {errors.place && <h5 className="error">{errors.image}</h5>}
           <div className={s.cajaImg}>
             <img
               id="cajaImg"
@@ -269,18 +257,18 @@ export default function AddEvent() {
               className={div === "musica" ? s.mostrarDiv : s.noMostrarDiv}
             >
               {subCategorias
-                .filter((subCat) => subCat.fk === 1)
+                .filter((subCat) => subCat.categoryId === 1)
                 .map((subCat) => {
                   return (
                     <span className={s.checks}>
                       <input
                         key={`${subCat.id}`}
                         type="checkbox"
-                        value={`${subCat.name}`}
-                        name={`${subCat.name}`}
+                        value={`${subCat.genre}`}
+                        name={`${subCat.genre}`}
                         onChange={(e) => handleCheckSub(e)}
                       />
-                      {subCat.name}
+                      {subCat.genre}
                     </span>
                   );
                 })}
@@ -290,18 +278,18 @@ export default function AddEvent() {
               className={div === "teatro" ? s.mostrarDiv : s.noMostrarDiv}
             >
               {subCategorias
-                .filter((subCat) => subCat.fk === 2)
+                .filter((subCat) => subCat.categoryId === 2)
                 .map((subCat) => {
                   return (
                     <span className={s.checks}>
                       <input
                         key={`${subCat.id}`}
                         type="checkbox"
-                        value={`${subCat.name}`}
-                        name={`${subCat.name}`}
+                        value={`${subCat.genre}`}
+                        name={`${subCat.genre}`}
                         onChange={(e) => handleCheckSub(e)}
                       />
-                      {subCat.name}
+                      {subCat.genre}
                     </span>
                   );
                 })}

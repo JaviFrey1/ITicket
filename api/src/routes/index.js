@@ -14,10 +14,10 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-// router.use('/events', events );
-// router.use('/event', event);
+ router.use('/events', events );
 router.use('/categories', categories);
 router.use('/subcategories', subcategories);
+router.use('/event',event );
 
 
 
