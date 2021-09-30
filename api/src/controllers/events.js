@@ -48,7 +48,7 @@ async function getAllEvents(req, res) {
                     availableTickets: result.availableTickets,
                     date: result.date,
                     time: result.time
-                }
+                } 
 
 
             })
