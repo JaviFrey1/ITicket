@@ -20,6 +20,9 @@
      border-radius: 3px;
      text-align:center;
      opacity: .8;
+     box-shadow: -1px 1px 19px -5px rgba(0,0,0,0.81);
+    -webkit-box-shadow: -1px 1px 19px -5px rgba(0,0,0,0.81);
+    -moz-box-shadow: -1px 1px 19px -5px rgba(0,0,0,0.81);
  }
  .data > *{
      margin-bottom: 1em;
