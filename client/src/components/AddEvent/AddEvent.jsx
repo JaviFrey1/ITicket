@@ -6,7 +6,6 @@ import getCategories from "../../actions/getCategories";
 import getSubCategories from "../../actions/getSubCategories";
 
 import s from "./add.module.css";
-// import addEvent from "../../actions/addEvent";
 
 
 export function validate(state) {
@@ -19,8 +18,8 @@ export function validate(state) {
     errors.time = "Confirma el horario";
   } else if (!state.place) {
     errors.place = "Dónde será el evento?";
-  }else if (!state.adress ) {
-    errors.adress = "Por favor dinos la direccion con el siguiente formato: Calle Numeración, Localidad, Provincia, Pais";
+  }else if (!state.address ) {
+    errors.address = "Por favor dinos la direccion con el siguiente formato: Calle Numeración, Localidad, Provincia, Pais";
   }else if (!state.image) {
     errors.image =
       "Estaría bueno que subas una imagen para promocionar el evento";
@@ -51,7 +50,7 @@ export default function AddEvent() {
     artist: "",
     time: "",
     place: "",
-    adress:"",
+    address:"",
     image: "",
     price:'',
     availableTickets: "",
@@ -60,7 +59,7 @@ export default function AddEvent() {
   });
 
   function cargarImg(e) {
-    console.log(e);
+    console.log('EEEEEEEEEEEEEEEEEEEEEEE', e);
     const reader = new FileReader();
 
     reader.onload = function () {
@@ -68,6 +67,7 @@ export default function AddEvent() {
       imgDiv.src = reader.result;
     };
     reader.readAsDataURL(e);
+    console.log('SERA ESTO?', reader.result)
   }
 
   function show(cat) {
@@ -89,8 +89,7 @@ export default function AddEvent() {
   }
 
   function handleInputChange(e) {
-    console.log("E.TARGET.VALUE", e.target.value);
-    console.log("NAME", e.target.name);
+    
 
     setState({
       ...state,
@@ -123,7 +122,7 @@ export default function AddEvent() {
       artist: "",
       time: "",
       place: "",
-      adress: "",
+      address: "",
       image: "",
       price:'',
       availableTickets: "",
@@ -183,7 +182,7 @@ export default function AddEvent() {
             <input
               type="text"
               name="artist"
-              value={state.healthiness}
+              value={state.artist}
               placeholder="Artista"
               onChange={(e) => handleInputChange(e)}
             />
@@ -207,7 +206,7 @@ export default function AddEvent() {
             <input
               type="text"
               name="price"
-              value={state.name}
+              value={state.price}
               placeholder="Precio"
               onChange={(e) => handleInputChange(e)}
             />
@@ -228,18 +227,18 @@ export default function AddEvent() {
             <label>Dirección:</label>
             <input
               type="text"
-              name="adress"
-              value={state.adress}
+              name="address"
+              value={state.address}
               placeholder="Calle Numeración, Localidad, Provincia, Pais"
               onChange={(e) => handleInputChange(e)}
             />
           </div>
-          {errors.adress && <h5 className="error">{errors.adress}</h5>}
+          {errors.address && <h5 className="error">{errors.address}</h5>}
           <div className={`${s.caja}`}>
             <label>Imagen:</label>
-            <input type="file" onChange={(e) => cargarImg(e.target.files[0])} />
+            <input type="file"  value={state.image} onChange={(e) => cargarImg(e.target.files[0])} />
           </div>
-          {errors.place && <h5 className="error">{errors.image}</h5>}
+          {errors.image && <h5 className="error">{errors.image}</h5>}
           <div className={s.cajaImg}>
             <img
               id="cajaImg"
@@ -272,10 +271,10 @@ export default function AddEvent() {
               className={div === "musica" ? s.mostrarDiv : s.noMostrarDiv}
             >
               {subCategorias
-                .filter((subCat) => subCat.categoryId === 1)
+                .filter((subCat) => subCat.catId === 1)
                 .map((subCat) => {
                   return (
-                    <span className={s.checks}>
+                    <span className={s.checks} key={subCat.id}>
                       <input
                         key={`${subCat.id}`}
                         type="checkbox"
@@ -293,10 +292,10 @@ export default function AddEvent() {
               className={div === "teatro" ? s.mostrarDiv : s.noMostrarDiv}
             >
               {subCategorias
-                .filter((subCat) => subCat.categoryId === 2)
+                .filter((subCat) => subCat.catId === 2)
                 .map((subCat) => {
                   return (
-                    <span className={s.checks}>
+                    <span className={s.checks} key={subCat.id}>
                       <input
                         key={`${subCat.id}`}
                         type="checkbox"
@@ -311,7 +310,7 @@ export default function AddEvent() {
             </div>
           </div>
           <div className={`${s.btnCont}`}>
-            {state.name && state.date ? (
+            {state.name && state.date && state.category && state.subCategories.lenght != 0 && state.artist && state.place && state.address && state.price && state.availableTickets && state.date && state.time ?  (
               <button className={s.btnSubmit} type="submit">
                 CREAR EVENTO
               </button>

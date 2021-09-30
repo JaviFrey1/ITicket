@@ -1,12 +1,12 @@
 const { Router } = require('express');
-const { getAllEvents, getEventsId } = require('../controllers/events.js')
+const { getAllEvents, getEventById } = require('../controllers/events.js')
 
 
 const router = Router();
 
 router.get('/', getAllEvents);
 
-router.get('/:id', getEventsId);
+router.get('/:id', getEventById);
 
 
 module.exports = router;

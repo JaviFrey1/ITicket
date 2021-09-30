@@ -13,7 +13,7 @@ export function Nav({ setInput, input }) {
       
         <div className={style.linkContainer}>
         <Link to="/home" className={style.Link}>
-        <img  height="50" width="100" classname={style.logo} src={logo} alt="" />
+        <img  height="50" width="100" className={style.logo} src={logo} alt="" />
         </Link>
         <Link to="/wishList" className={style.hover}>
               Favoritos

@@ -3,22 +3,23 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('subcategories', {
+  sequelize.define('subCategories', {
                                                                                   
     genre: {
       type: DataTypes.STRING,
       allowNull: false,
       validate:{
         notNull:{
-          msg: 'Genero is required',
+          msg: 'Genre is required',
         }
       }
     },
+    
 
-    // subId:{ 
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // },
+    catId:{ 
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
 
   },
    {timestamps: false},
