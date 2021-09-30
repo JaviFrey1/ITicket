@@ -23,11 +23,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      prize: {
+      price: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      ticket: {
+      availableTickets: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
