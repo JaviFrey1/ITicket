@@ -1,11 +1,11 @@
-// const { Router } = require('express');
-// const { AddEvent } = require('../controllers/event.js')
+const { Router } = require('express');
+const { AddEvent } = require('../controllers/event.js')
 
 
-// const router = Router();
+const router = Router();
 
-// router.post('/', AddEvent);
+router.post('/', AddEvent);
 
 
 
-// module.exports = router;
+module.exports = router;
