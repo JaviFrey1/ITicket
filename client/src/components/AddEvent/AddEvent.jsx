@@ -8,7 +8,6 @@ import getSubCategories from "../../actions/getSubCategories";
 import s from "./add.module.css";
 // import addEvent from "../../actions/addEvent";
 
-
 export function validate(state) {
   let errors = {};
   if (!state.name) {
@@ -24,12 +23,17 @@ export function validate(state) {
       "Estaría bueno que subas una imagen para promocionar el evento";
   } else if (!state.artist) {
     errors.artist = "quien es la estrella del evento?";
-  }else if (!state.price || typeof(state.price)!= Number ) {
-    errors.price = "Por favor dinos el precio de la entrada, debe ser un número entero";
-  }else if (!state.availableTickets || typeof(state.availableTickets)!= Number ) {
-    errors.availableTickets = "Por favor dinos cuantas entradas disponibles hay ";
+  } else if (!state.price || typeof state.price != Number) {
+    errors.price =
+      "Por favor dinos el precio de la entrada, debe ser un número entero";
+  } else if (
+    !state.availableTickets ||
+    typeof state.availableTickets != Number
+  ) {
+    errors.availableTickets =
+      "Por favor dinos cuantas entradas disponibles hay ";
   }
-  
+
   return errors;
 }
 
@@ -37,9 +41,8 @@ export default function AddEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const categorias = useSelector((state) => state.categories);
-  
+
   const subCategorias = useSelector((state) => state.subCategories);
- 
 
   const [errors, setErrors] = useState({});
   const [div, setDiv] = useState("-");
@@ -50,10 +53,10 @@ export default function AddEvent() {
     time: "",
     place: "",
     image: "",
-    price:'',
+    price: "",
     availableTickets: "",
     subCategories: [], //LLEGA ARRAY DE STRINGS(GENRE DE SUBCAT)
-    category: "",   //LLEGA UN INTEGER (ID DE CATEGORY)
+    category: "", //LLEGA UN INTEGER (ID DE CATEGORY)
   });
 
   function cargarImg(e) {
@@ -63,8 +66,9 @@ export default function AddEvent() {
     reader.onload = function () {
       let imgDiv = document.querySelector("#cajaImg");
       imgDiv.src = reader.result;
+      console.log("11 ", reader.result);
     };
-    reader.readAsDataURL(e);
+    console.log(reader);
   }
 
   function show(cat) {
@@ -121,7 +125,7 @@ export default function AddEvent() {
       time: "",
       place: "",
       image: "",
-      price:'',
+      price: "",
       availableTickets: "",
       subCategories: [],
       category: "",
