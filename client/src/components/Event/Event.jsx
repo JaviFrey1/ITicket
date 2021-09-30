@@ -18,7 +18,7 @@ export default function Event({ name, img, fecha, cat }) {
         <div className={styles.fecha}>{fecha}</div>
       </div>
       <div className={styles.contBtn}>
-        <NavLink className={styles.link} to={`/event/:id`}>
+        <NavLink className={styles.link} to={`/events/:id`}>
           <div className={styles.boton}>Mas info</div>
         </NavLink>
       </div>

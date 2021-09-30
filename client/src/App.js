@@ -16,16 +16,22 @@ function App() {
     <BrowserRouter>
       <React.Fragment>
         <Route
-          path={["/home", "/events/:id", "/wishList", "/addEvent"]}
+          path={[
+            "/home",
+            "/event",
+            "/events/:id",
+            "/wishList",
+            "/addEvent",
+            "/respuestas",
+          ]}
           component={Nav}
         />
         <Route path="/home" component={Home} />
         <Route path="/event" component={Event} />
-        <Route path="/events" component={Events} />
         <Route path="/events/:id" component={EventDetail} />
         <Route path="/wishList" component={WishList} />
         <Route path="/addEvent" component={AddEvent} />
-        <Route path="/respuestas" component={Frequent}/>
+        <Route path="/respuestas" component={Frequent} />
       </React.Fragment>
     </BrowserRouter>
   );

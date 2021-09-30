@@ -1,20 +1,7 @@
 import React from "react";
 import s from "./Carousel.module.css";
 import Carousel from "react-elastic-carousel";
-import {
-  Duki,
-  Metallica,
-  Jesus,
-  Sosa,
-  Duki2,
-  Metallica2,
-  Jesus2,
-  Sosa2,
-  Duki3,
-  Metallica3,
-  Jesus3,
-  Sosa3,
-} from "../../cartas";
+import { Duki, Metallica, Jesus, Sosa } from "../../cartas";
 
 export default function CarouselComp() {
   console.log(document.querySelectorAll("Carousel , button"));
