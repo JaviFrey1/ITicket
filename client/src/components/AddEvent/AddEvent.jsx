@@ -68,9 +68,9 @@ export default function AddEvent() {
     reader.onload = function () {
       let imgDiv = document.querySelector("#cajaImg");
       imgDiv.src = reader.result;
+      console.log("11 ", reader.result);
     };
-    reader.readAsDataURL(e);
-    console.log('SERA ESTO?', reader.result)
+
   }
 
   function show(cat) {
