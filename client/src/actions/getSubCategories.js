@@ -4,7 +4,7 @@ import axios from 'axios'
 export default function getSubCategories(){
     return async function(dispatch){
         try{
-        const response= await axios(`http://localhost:3001/subCategories`) 
+        const response= await axios(`http://localhost:3001/subcategories`) 
         return dispatch({ type: GET_SUBCATEGORIES, payload: response.data });
         }catch(err){console.log(err)}
     }
