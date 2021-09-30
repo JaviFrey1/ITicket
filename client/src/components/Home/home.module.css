@@ -1,7 +1,9 @@
 .container {
+  
   width: 100vw;
-  background-color: rgb(235, 235, 235);
+  background-color: rgba(29, 29, 29, 0.014);
 }
+
 
 .fot {
   position: inherit;
@@ -41,7 +43,6 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* padding: 30px; */
 }
 
 .searchBar {

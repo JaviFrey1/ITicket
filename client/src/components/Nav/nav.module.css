@@ -1,72 +1,81 @@
-.navContainer{
+.navContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 100%;
+
   border-bottom: 2px solid rgb(255, 204, 0);
   margin-bottom: 10px;
-  background-color:rgb(230, 236, 234);
+  background-color: rgb(230, 236, 234);
   padding: 0;
   margin-top: 8px;
 }
-.space{
-  margin-left: 660px;
+
+.space {
+  /* margin-left: 660px; */
 }
 
-.link{
+.link {
   margin: 0;
   padding: 0;
 
 }
-.mainContainer{
+
+.mainContainer {
   display: flex;
   justify-content: center;
-  background-color:rgb(230, 236, 234);
+  background-color: rgb(230, 236, 234);
 }
 
-.linkContainer{
+.linkContainer {
   display: flex;
+  width: 100%;
   align-items: center;
+  justify-content: space-between;
 }
 
 .linkContainer a {
-    margin: 0 20px;
-    color: black;
-    font-size: 20px;
-    font-family: inherit;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all .3s;    
-  }
+  margin: 0 20px;
+  color: black;
+  font-size: 20px;
+  font-family: inherit;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all .3s;
+}
 
-  .hover {
-    
-    display: inline-block;
-    position: relative;
-    color: #FCA311;
-  }
-  
-  .hover:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 3px;
-    bottom: -5px;
-    left: 0;
-    background-color: rgb(255, 204, 0);
-    transform-origin: bottom right;
-    transition: transform 0.5s ease-out;
-  }
+.hover {
 
-  .hover:hover:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
+  display: inline-block;
+  position: relative;
+  color: #FCA311;
+}
 
-  .navContainer a:hover {
+.hover:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background-color: rgb(255, 204, 0);
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+}
 
-    color: gray;
-    transform: translateZ(5px);
-  }
-  
+.hover:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.navContainer a:hover {
+
+  color: gray;
+  transform: translateZ(5px);
+}
+
+.contBtn2 {
+
+  /* background-color: red; */
+}

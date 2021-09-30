@@ -7,7 +7,6 @@ import getSubCategories from "../../actions/getSubCategories";
 
 import s from "./add.module.css";
 
-
 export function validate(state) {
   let errors = {};
   if (!state.name) {
@@ -18,19 +17,24 @@ export function validate(state) {
     errors.time = "Confirma el horario";
   } else if (!state.place) {
     errors.place = "Dónde será el evento?";
-  }else if (!state.address ) {
+    }else if (!state.address ) {
     errors.address = "Por favor dinos la direccion con el siguiente formato: Calle Numeración, Localidad, Provincia, Pais";
   }else if (!state.image) {
     errors.image =
       "Estaría bueno que subas una imagen para promocionar el evento";
   } else if (!state.artist) {
     errors.artist = "quien es la estrella del evento?";
-  }else if (!state.price || typeof(state.price)!= Number ) {
-    errors.price = "Por favor dinos el precio de la entrada, debe ser un número entero";
-  }else if (!state.availableTickets || typeof(state.availableTickets)!= Number ) {
-    errors.availableTickets = "Por favor dinos cuantas entradas disponibles hay ";
+  } else if (!state.price || typeof state.price != Number) {
+    errors.price =
+      "Por favor dinos el precio de la entrada, debe ser un número entero";
+  } else if (
+    !state.availableTickets ||
+    typeof state.availableTickets != Number
+  ) {
+    errors.availableTickets =
+      "Por favor dinos cuantas entradas disponibles hay ";
   }
-  
+
   return errors;
 }
 
@@ -38,9 +42,8 @@ export default function AddEvent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const categorias = useSelector((state) => state.categories);
-  
+
   const subCategorias = useSelector((state) => state.subCategories);
- 
 
   const [errors, setErrors] = useState({});
   const [div, setDiv] = useState("-");
@@ -52,10 +55,10 @@ export default function AddEvent() {
     place: "",
     address:"",
     image: "",
-    price:'',
+    price: "",
     availableTickets: "",
     subCategories: [], //LLEGA ARRAY DE STRINGS(GENRE DE SUBCAT)
-    category: "",   //LLEGA UN INTEGER (ID DE CATEGORY)
+    category: "", //LLEGA UN INTEGER (ID DE CATEGORY)
   });
 
   function cargarImg(e) {
@@ -124,7 +127,7 @@ export default function AddEvent() {
       place: "",
       address: "",
       image: "",
-      price:'',
+      price: "",
       availableTickets: "",
       subCategories: [],
       category: "",
