@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import addEvent from "../../actions/addEvent";
 import getCategories from "../../actions/getCategories";
 import getSubCategories from "../../actions/getSubCategories";
+import Axios from "axios";
 
 import s from "./add.module.css";
 
@@ -17,11 +19,9 @@ export function validate(state) {
     errors.time = "Confirma el horario";
   } else if (!state.place) {
     errors.place = "Dónde será el evento?";
-    }else if (!state.address ) {
-    errors.address = "Por favor dinos la direccion con el siguiente formato: Calle Numeración, Localidad, Provincia, Pais";
-  }else if (!state.image) {
-    errors.image =
-      "Estaría bueno que subas una imagen para promocionar el evento";
+  } else if (!state.address) {
+    errors.address =
+      "Por favor dinos la direccion con el siguiente formato: Calle Numeración, Localidad, Provincia, Pais";
   } else if (!state.artist) {
     errors.artist = "quien es la estrella del evento?";
   } else if (!state.price || typeof state.price != Number) {
@@ -47,32 +47,66 @@ export default function AddEvent() {
 
   const [errors, setErrors] = useState({});
   const [div, setDiv] = useState("-");
+  const [imgState, setImgState] = useState();
   const [state, setState] = useState({
     name: "",
     date: "",
     artist: "",
     time: "",
     place: "",
-    address:"",
+    address: "",
     image: "",
     price: "",
     availableTickets: "",
     subCategories: [], //LLEGA ARRAY DE STRINGS(GENRE DE SUBCAT)
     category: "", //LLEGA UN INTEGER (ID DE CATEGORY)
   });
+  // function cargarImg(files) {
+  //   console.log(files);
+  //   const reader = new FileReader();
+  //   reader.onload = function () {
+  //     let imgDiv = document.querySelector("#cajaImg");
+  //     imgDiv.src = reader.result;
+  //   };
+  //   reader.readAsDataURL(files);
 
-  function cargarImg(e) {
-    console.log('EEEEEEEEEEEEEEEEEEEEEEE', e);
+  //   const formData = new FormData();
+  //   formData.append("api_key", "-IjOCwb2ujsZQYdufVW5nseHX1I");
+  //   formData.append("file", files[0]);
+  //   formData.append("public_id", "sample_image");
+  //   formData.append("timestamp", Date.now() / 1000);
+  //   formData.append("upload_preset", "di4u9mje");
+
+  //   Axios.post(
+  //     "http://api.cloudinary.com/v1_1/tukiteck/image/upload",
+  //     formData
+  //   ).then((response) => {
+  //     console.log(response);
+  //   });
+  // }
+
+  const cargarImg = function (files) {
+    console.log(files);
     const reader = new FileReader();
-
     reader.onload = function () {
       let imgDiv = document.querySelector("#cajaImg");
       imgDiv.src = reader.result;
       console.log("11 ", reader.result);
     };
+  reader.readAsDataURL(files);
 
-  }
+    const formData = new FormData();
+    formData.append("file", files);
+    formData.append("upload_preset", "di4u9mje");
+    Axios.post(
+      "https://api.cloudinary.com/v1_1/tukiteck/image/upload",
+      formData
+    ).then((response) =>
+      setState({ ...state, image: response.data.secure_url })
+    );
+  };
 
+  // CLOUDINARY_URL=
   function show(cat) {
     // console.log(div);
     console.log(cat);
@@ -92,8 +126,6 @@ export default function AddEvent() {
   }
 
   function handleInputChange(e) {
-    
-
     setState({
       ...state,
       [e.target.name]: e.target.value,
@@ -239,9 +271,9 @@ export default function AddEvent() {
           {errors.address && <h5 className="error">{errors.address}</h5>}
           <div className={`${s.caja}`}>
             <label>Imagen:</label>
-            <input type="file"  value={state.image} onChange={(e) => cargarImg(e.target.files[0])} />
+            <input type="file" onChange={(e) => cargarImg(e.target.files[0])} />
           </div>
-          {errors.image && <h5 className="error">{errors.image}</h5>}
+
           <div className={s.cajaImg}>
             <img
               id="cajaImg"
@@ -313,7 +345,17 @@ export default function AddEvent() {
             </div>
           </div>
           <div className={`${s.btnCont}`}>
-            {state.name && state.date && state.category && state.subCategories.lenght != 0 && state.artist && state.place && state.address && state.price && state.availableTickets && state.date && state.time ?  (
+            {state.name &&
+            state.date &&
+            state.category &&
+            state.subCategories.lenght !== 0 &&
+            state.artist &&
+            state.place &&
+            state.address &&
+            state.price &&
+            state.availableTickets &&
+            state.date &&
+            state.time ? (
               <button className={s.btnSubmit} type="submit">
                 CREAR EVENTO
               </button>
