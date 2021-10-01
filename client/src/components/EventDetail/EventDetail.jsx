@@ -81,7 +81,6 @@ export default function EventDetail(props) {
           ) : null}
         </div>
         <div>
-          {/* {eventDetail? buscar():null} */}
           {!loading ? (
             <MapContainer className={s.mapa} center={[lat, long]} zoom={23}>
               <TileLayer
