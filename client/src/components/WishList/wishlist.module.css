@@ -3,8 +3,7 @@
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-
-  gap: 20px;
+  gap: 40px;
   overflow: scroll;
   overflow: overlay;
 }
@@ -12,24 +11,25 @@
 .container {
   padding: 20px;
   border-radius: 10px;
-  max-width: 800px;
-  max-height: 520px;
+  max-width: 1200;
+  max-height: 700;
   margin: auto;
   margin-bottom: 30px;
   display: flex;
-
-  box-shadow: 0px 0px 5px 1px black;
+  box-shadow: 0px 0px 10px 1px black;
   /* background-image: url("../../images/mesa.jpg"); */
-
+  min-width: 500px;
+  min-height: 600px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: 20px;
+  margin-top: 0;
 }
-.container h2 {
-  padding: 20px;
-  color: #fff;
+.h2 {
+  color: rgb(0, 0, 0);
   font-family: "Indie Flower", cursive;
+  display: flex;
+  justify-content: center;
 }
 
 /*Webkit(Chrome, Android browser, Safari, Edge...)*/
@@ -40,7 +40,7 @@
   display: initial;
 }
 .cards::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.295);
+  background-color: rgba(0, 0, 0, 0.295);
 }
 
 .wishEvents {
@@ -54,7 +54,9 @@
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
+  
 }
+
 
 /* .container{
     display: flex;

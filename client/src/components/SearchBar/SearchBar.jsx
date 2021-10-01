@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-
 import style from "./search.module.css";
 // import * as ImIcons from "react-icons/im";
-
 function SearchBar({ input, setInput }) {
   const subCt_1 = ["Rock", "Pop", "Heavy Metal", "Tango"];
   const subCt_2 = ["Alternativo", "Drama", "Stand up"];
