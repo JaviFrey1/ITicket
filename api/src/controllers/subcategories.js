@@ -25,12 +25,12 @@ async function getSubCategories(req, res, next) {
             res.send(subCatCreated)
         }
 
-
     } catch (error) {
         next(error)
     }
-
 }
+
+
 
 module.exports = {
     getSubCategories
