@@ -6,7 +6,7 @@ import { BsBookmarkFill } from "react-icons/bs";
 
 export function Nav({ setInput, input }) {
   return (
-    <nav className={style.navContainer}>
+ <nav className={style.navContainer}>
       <div className={style.linkContainer}>
         <div className={style.contLogo}>
           <Link to="/home" className={style.Link}>

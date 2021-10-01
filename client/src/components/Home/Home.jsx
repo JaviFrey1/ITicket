@@ -3,12 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getEvents from "../../actions/getEvents";
-import getCategories from "../../actions/getCategories";
-import getSubCategories from "../../actions/getSubCategories";
-import { filterEvent } from "../../actions/filterEvent";
-import { setOrder } from "../../actions";
 
-import Card from "../Event/Event";
 import Paginate from "../paginate/Paginate.jsx";
 import SearchBar from "../SearchBar/SearchBar";
 import s from "./home.module.css";
@@ -19,7 +14,6 @@ import CarouselComp from "../Carousel/Carousel";
 export default function Home() {
   const dispatch = useDispatch();
   const allEvents = useSelector((state) => state.eventsLoaded);
-  const categorias = useSelector((state) => state.categories);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [eventsPerPage] = useState(9);
@@ -49,12 +43,9 @@ export default function Home() {
       <div className={s.contCarousel}>
         <CarouselComp />
       </div>
-      <div class={s.card}>
-        <select onChange={handleSelect}> {/*ESTO LO HIZO JAVI*/}
-          <option value=''>Categories</option>
-          <option value='Blues'>Blues</option>
-        </select>
-        <Events />
+
+      <div className={s.card}>
+        <Events events={currentEvents}/>
 
         <Paginate
           eventsPerPage={eventsPerPage}
