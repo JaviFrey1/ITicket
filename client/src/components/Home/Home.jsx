@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import getEvents from "../../actions/getEvents";
 import getCategories from "../../actions/getCategories";
 import getSubCategories from "../../actions/getSubCategories";
+import { filterEvent } from "../../actions/filterEvent";
+import { setOrder } from "../../actions";
 
 import Card from "../Event/Event";
 import Paginate from "../paginate/Paginate.jsx";
@@ -33,6 +35,12 @@ export default function Home() {
     dispatch(getEvents(""));
   }, [dispatch]);
 
+  const handleSelect = (e)=> { //Javi
+    console.log('change',e.target.value)
+    dispatch(setOrder(e.target.value));
+    dispatch(filterEvent({order: e.target.value}))
+  }
+
   return (
     <div className={`${s.container}`}>
       <div className={`${s.searchBar}`}>
@@ -42,6 +50,10 @@ export default function Home() {
         <CarouselComp />
       </div>
       <div class={s.card}>
+        <select onChange={handleSelect}> {/*ESTO LO HIZO JAVI*/}
+          <option value=''>Categories</option>
+          <option value='Blues'>Blues</option>
+        </select>
         <Events />
 
         <Paginate
