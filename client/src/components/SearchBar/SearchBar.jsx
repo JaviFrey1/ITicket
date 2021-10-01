@@ -5,10 +5,11 @@ import style from "./search.module.css";
 
 function SearchBar({ input, setInput }) {
   const subCt_1 = ["Rock", "Pop", "Heavy Metal", "Tango"];
-  const subCt_2 = ["alternativo", "drama", "stand up"];
+  const subCt_2 = ["Alternativo", "Drama", "Stand up"];
   const subCt_3 = ["Deportes", "Festival", "TED"];
+  const subCt_4 = [""];
 
-  const [subCatOpt, setSubCatOpt] = useState(subCt_1);
+  const [subCatOpt, setSubCatOpt] = useState(subCt_4);
 
   return (
     <div className={style.contRey}>

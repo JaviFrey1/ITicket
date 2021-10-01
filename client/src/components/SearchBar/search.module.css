@@ -24,10 +24,21 @@
 
 .contSearch .categoriesOptions h3 {
   cursor: pointer;
-  border-right: 1.5px solid rgba(0, 0, 0, 0.473);
+  border-right: 1.5px solid rgba(0, 0, 0, 0.185);
   margin: 3px;
   font-weight: 400;
   padding-right: 10px;
+}
+
+.contSearch .categoriesOptions> :nth-child(3) {
+  border-right: none;
+  /* color: red; */
+}
+
+
+.contSearch .categoriesOptions h3:hover {
+  /* color: red; */
+  border-bottom: 2px solid rgb(255, 204, 0);
 }
 
 .formContainer {
@@ -98,11 +109,12 @@
 }
 
 .contSubcategies h4 {
-  margin: 5px 5px;
+  margin: 5px 10px;
   cursor: pointer;
   font-weight: 400;
 }
 
-.contSubcategies h4 :hover {
+.contSubcategies h4:hover {
+  /* color: red; */
   border-bottom: 2px solid rgb(255, 204, 0);
 }
