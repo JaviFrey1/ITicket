@@ -40,7 +40,6 @@ export default function Home() {
       </div>
       <div className={s.card}>
         <Events events={currentEvents}/>
-
         <Paginate
           eventsPerPage={eventsPerPage}
           allEvents={allEvents.length}
@@ -51,5 +50,6 @@ export default function Home() {
         <Footer />
       </div>
     </div>
+    
   );
 }

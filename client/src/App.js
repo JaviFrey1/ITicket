@@ -9,6 +9,7 @@ import Nav from "./components/Nav/Nav";
 import Home from "./components/Home/Home";
 import AddEvent from "./components/AddEvent/AddEvent";
 import Frequent from "./components/Frequent/Frequent";
+import Privacy from "./components/Privacy/Privacy";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             "/wishList",
             "/addEvent",
             "/respuestas",
+            "/privacidad"
           ]}
           component={Nav}
         />
@@ -31,6 +33,7 @@ function App() {
         <Route path="/wishList" component={WishList} />
         <Route path="/addEvent" component={AddEvent} />
         <Route path="/respuestas" component={Frequent} />
+        <Route path="/privacidad" component={Privacy} />
       </React.Fragment>
     </BrowserRouter>
   );
