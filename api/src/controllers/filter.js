@@ -1,49 +1,88 @@
-import e, { application } from 'express';
+const { Events, Categories, SubCategories } = require('../db');
 
-const { getAllEvents } = require('../controllers/events.js');
-const { Events, Categories } = require('../db')
 
-export const Filter = async (req,res,next) => { //Esto lo hizo Javi
+async function dataParseada(){
+    const dataBase = await Events.findAll({
+        include: [
+          {
+            model: Categories,
+            through: {
+              attributes: [],
+            },
+          },
 
-    try {
-        const eventos = await getAllEvents();
-        let subCats = [];
-        let { cat, subCat } = req.query;
-        if (cat === 'Music') {
-            if (subCat === 'Blues') { 
-                subCats = subCats.filter(el => console.log(e)) 
-            }
-            if (subCat === 'Cumbia') { 
-
-            }
-            if (subCat === 'Electronica') { }
-            if (subCat === 'Folklore') { }
-            if (subCat === 'Hip hop') { }
-            if (subCat === 'Jazz') { }
-            if (subCat === 'Rock') { }
-            if (subCat === 'Pop') { }
-            if (subCat === 'Trap') { }
-            if (subCat === 'Reggaeton') { }
-            if (subCat === 'Reggae') { }
-            if (subCat === 'Tango') { }
-        }
-        else if (cat === 'Teatro') {
-            if (subCat === 'Drama') { }
-            if (subCat === 'Comedia') { }
-            if (subCat === 'Absurdo') { }
-            if (subCat === 'Circo') { }
-            if (subCat === 'Stand Up') { }
-            if (subCat === 'Unipersonal') { }
-            if (subCat === 'Opera') { }
-        }
-
-        return res.send({
-            count: subCats.length
-        })
-    } catch (error) {
-        console.log(error);
-        next(error);
+          {
+            model: SubCategories,
+            through: {
+              attributes: [],
+            },
+          },
+        ],
+      });
+      if (dataBase.length > 0) {
+        const eventDb = dataBase.map((result) => {
+          return {
+            name: result.name,
+            id: result.id,
+            category: result.categories.map((cat) => cat.id),
+            subCategories: result.subCategories,
+            artist: result.artist,
+            place: result.place,
+            address: result.address,
+            image: result.image,
+            price: result.price,
+            availableTickets: result.availableTickets,
+            date: result.date,
+            time: result.time,
+          };
+        });
+    return eventDb;
     }
 }
 
-(Filter());
+
+async function filtroCategories (req, res, next){
+
+    let idBody = req.body.idBody;
+      
+    try {
+       
+        const eventDb = await dataParseada();
+
+        
+       
+        const filtrados = [];
+
+        eventDb.map(e => e.category[0] === idBody ? filtrados.push(e) : null );
+
+        filtrados.length > 0 ? res.send(filtrados) : res.send('No hay filtrados de esa categoria')
+
+        }catch(error){
+            next(error)
+        }
+
+    }
+
+
+async function filtroSubCategories(req, res, next){
+
+    let genre = req.body.genre;
+
+    try {
+        
+        const eventDb = await dataParseada();
+        const filtrados = [];
+
+        eventDb.map(e => e.subCategories.map( s => s.genre.toLowerCase() === genre.toLowerCase() ? filtrados.push(e) : null ) )
+
+        filtrados.length > 0 ? res.send(filtrados) : res.send('No hay eventos de ese genero') 
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = {
+    filtroCategories,
+    filtroSubCategories
+}
