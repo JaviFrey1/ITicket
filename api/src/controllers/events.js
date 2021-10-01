@@ -16,9 +16,6 @@ async function Paginate (req, res) {
   }
 }
      
-function CategoryFilter (){
-  if ()
-}
 
 
 async function getAllEvents(req, res) {

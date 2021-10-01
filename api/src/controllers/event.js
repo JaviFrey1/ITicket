@@ -16,7 +16,7 @@ async function AddEvent(req, res, next) {
     !data.date ||
     !data.time
   ) {
-    return res.send("rellenalo gil XD");
+    return res.send("Por favor completa todos los datos");
   }
   try {
     console.log(data);
