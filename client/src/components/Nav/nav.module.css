@@ -36,7 +36,7 @@
 
 .linkContainer a {
   margin: 0 20px;
-  color: black;
+  color: rgb(97, 95, 95);
   font-size: 20px;
   font-family: inherit;
   text-decoration: none;
@@ -71,7 +71,7 @@
 
 .navContainer a:hover {
 
-  color: gray;
+  color: black;
   transform: translateZ(5px);
 }
 
