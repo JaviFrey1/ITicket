@@ -13,7 +13,7 @@ export function Nav({ setInput, input }) {
             <img
               height="50"
               width="100"
-              classname={style.logo}
+              className={style.logo}
               src={logo}
               alt=""
             />

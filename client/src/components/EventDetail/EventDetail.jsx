@@ -1,85 +1,110 @@
-import { React } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { React, useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./detail.module.css";
-// import getEventDetail from "../../actions/getEventDetail";
+import getEventDetail from "../../actions/getEventDetail";
+import { OpenStreetMapProvider } from "leaflet-geosearch";
 import { MapContainer, TileLayer, Popup, Circle } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-// import { iconLocation } from "./iconLocation";
-// import icon from "./icon.png";
+
 
 export default function EventDetail(props) {
+  const [lat, setLat] = useState("");
+  const [long, setLong] = useState("");
+  const [loading, setLoading] = useState(true);
+
+
+  const provider = new OpenStreetMapProvider();
+
+
   const dispatch = useDispatch();
 
-  // const eventDetail = useSelector((state) => state.eventDetail);
-  const eventDetail = {
-    name: "Stoned Jesus",
-    categoria: "Rock",
-    date: "1/15/2021",
-    place: "Av. Eduardo Madero 470, C1106 CABA",
-    price: 400,
-    id: 15,
-    lat: "-34.60209446287753",
-    long: "-58.368416301881304",
-    img: "https://p4.wallpaperbetter.com/wallpaper/660/285/302/seven-thunders-roar-stoned-jesus-stoner-metal-indian-skull-and-bones-forest-album-covers-cover-art-wallpaper-preview.jpg",
-  };
+  const eventDetail = useSelector((state) => state.eventDetail);
 
   useEffect(() => {
-    // dispatch(getEventDetail(props.match.params.id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+    dispatch(getEventDetail(props.match.params.id))
 
+    setTimeout(() => {
+      setLoading(false)
+
+    }, 5000);
+
+  }, []);
+
+  // useEffect(()=>{
+  //   buscar()
+  // },[eventDetail.address])
+
+
+
+  async function buscar() {
+    console.log('ADDRESS buscar', eventDetail.address)
+    const results = await provider
+      .search({
+        query: eventDetail.address,
+      })
+      .then((results) => {
+        setLat(results[0].y.toString());
+        setLong(results[0].x.toString());
+      });
+
+    return results;
+  }
   const colorCirculoMarcador = {
     color: "rgb(255, 204, 0)",
     fillColor: "rgb(255, 204, 0)",
   };
+  {
+    console.log('ADDRESS', eventDetail.address)
+  }
   return (
     <div className={s.container}>
       <div className={s.data}>
-        <div className={s.name}>
-          {eventDetail.name}
+        <div className={s.image}>
+          <img alt="Banner" src={eventDetail.image} width="200px" />
         </div>
-        <div className={s.cat}>
-          {eventDetail.categoria}
-        </div>
-        <div className={s.date}>
-          {eventDetail.date}
-        </div>
-        <div className={s.place}>
-          {eventDetail.place}
+        <div className={s.name}>{eventDetail.name}</div>
+        <div className={s.artist}>{eventDetail.artist}</div>
+
+        <div className={s.date}>{eventDetail.date}</div>
+        <div className={s.time}>{eventDetail.time}</div>
+        <div className={s.place}>{eventDetail.place}</div>
+        <div className={s.address}>{eventDetail.address}</div>
+        <div>$ {eventDetail.price}</div>
+        <div className={s.availableTickets}>
+          {eventDetail.availableTickets <= 10 ? (
+            <h5>
+              Quedan solo {eventDetail.availableTickets} entradas disponibles,
+              no te quedes sin la tuya!!
+            </h5>
+          ) : null}
         </div>
         <div>
-          <button className={s.btn}>
-            -
-          </button>
-          $ {eventDetail.price}
-          <button className={s.btn} onClick={() => eventDetail.price = eventDetail.price + 400}>
-            +
-          </button>
+          {/* {eventDetail? buscar():null} */}
+          {!loading ? (
+            <MapContainer className={s.mapa} center={[lat, long]} zoom={23}>
+              <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Circle
+                center={[lat, long]}
+                pathOptions={colorCirculoMarcador}
+                radius={20}
+              >
+                <Popup>
+                  {eventDetail.nombre} <br /> {eventDetail.lugar}
+                </Popup>
+              </Circle>
+            </MapContainer>
+          ) : (
+            <p>cargando bro</p>
+          )}
         </div>
-        <button className={s.buy}>
-          COMPRAR AHORA
-        </button>
+
+        <button className={s.buy}>COMPRAR AHORA</button>
       </div>
-      <MapContainer className={s.mapa}
-        center={[eventDetail.lat, eventDetail.long]}
-        zoom={23}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Circle
-          center={[eventDetail.lat, eventDetail.long]}
-          pathOptions={colorCirculoMarcador}
-          radius={20}
-        >
-          <Popup>
-            {eventDetail.nombre} <br /> {eventDetail.lugar}
-          </Popup>
-        </Circle>
-      </MapContainer>
     </div>
   );
 }
