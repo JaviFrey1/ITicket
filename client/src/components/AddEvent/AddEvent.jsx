@@ -91,8 +91,9 @@ export default function AddEvent() {
     reader.onload = function () {
       let imgDiv = document.querySelector("#cajaImg");
       imgDiv.src = reader.result;
+      console.log("11 ", reader.result);
     };
-    reader.readAsDataURL(files);
+  reader.readAsDataURL(files);
 
     const formData = new FormData();
     formData.append("file", files);
