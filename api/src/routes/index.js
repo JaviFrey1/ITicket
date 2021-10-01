@@ -4,7 +4,7 @@ const { Router } = require('express');
 const events = require('./events.js');
 const event = require('./event.js');
 const categories = require('./categories.js');
-const subcategories = require('./subcategories.js');
+const subcategories = require('./subCategories.js');
 
 
 

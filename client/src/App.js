@@ -8,7 +8,6 @@ import EventDetail from "./components/EventDetail/EventDetail";
 import Nav from "./components/Nav/Nav";
 import Home from "./components/Home/Home";
 import AddEvent from "./components/AddEvent/AddEvent";
-import Events from "./components/Events/Events";
 import Frequent from "./components/Frequent/Frequent";
 
 function App() {
