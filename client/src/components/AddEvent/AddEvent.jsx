@@ -47,7 +47,6 @@ export default function AddEvent() {
 
   const [errors, setErrors] = useState({});
   const [div, setDiv] = useState("-");
-  const [imgState, setImgState] = useState();
   const [state, setState] = useState({
     name: "",
     date: "",
@@ -61,29 +60,7 @@ export default function AddEvent() {
     subCategories: [], //LLEGA ARRAY DE STRINGS(GENRE DE SUBCAT)
     category: "", //LLEGA UN INTEGER (ID DE CATEGORY)
   });
-  // function cargarImg(files) {
-  //   console.log(files);
-  //   const reader = new FileReader();
-  //   reader.onload = function () {
-  //     let imgDiv = document.querySelector("#cajaImg");
-  //     imgDiv.src = reader.result;
-  //   };
-  //   reader.readAsDataURL(files);
 
-  //   const formData = new FormData();
-  //   formData.append("api_key", "-IjOCwb2ujsZQYdufVW5nseHX1I");
-  //   formData.append("file", files[0]);
-  //   formData.append("public_id", "sample_image");
-  //   formData.append("timestamp", Date.now() / 1000);
-  //   formData.append("upload_preset", "di4u9mje");
-
-  //   Axios.post(
-  //     "http://api.cloudinary.com/v1_1/tukiteck/image/upload",
-  //     formData
-  //   ).then((response) => {
-  //     console.log(response);
-  //   });
-  // }
 
   const cargarImg = function (files) {
     console.log(files);

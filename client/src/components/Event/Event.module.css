@@ -5,7 +5,7 @@
   background-color: white;
   /* width: 90%; */
   min-width: 500px;
-  max-width: 600px;
+  max-width: 700px;
   height: 16em;
   border-radius: 5px;
   /* background-image: url('https://images.all-free-download.com/images/graphicthumb/metallica_3_138862.jpg'); */
@@ -21,7 +21,7 @@
 .hijo {
   background: rgb(0, 0, 1);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 50%, transparent);
-  width: 70%;
+  width: 100%;
   height: 35%;
   opacity: .8;
   display: table-column;
