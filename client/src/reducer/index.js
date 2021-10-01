@@ -7,6 +7,8 @@ import {
   GET_SUBCATEGORIES,
   ADD_EVENT,
   REMOVE_EVENT,
+  FILTER_CAT,//Javi
+  SET_ORDER//Javi
 } from "../actions";
 
 const initialState = {
@@ -14,7 +16,7 @@ const initialState = {
   allEvents: [],
   wishEvents: [],
   eventDetail: "",
-  subCategories:[],
+  subCategories: [],
   categories: []
 };
 
@@ -38,11 +40,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         categories: action.payload,
       };
-      case GET_SUBCATEGORIES:
-        return {
-          ...state,
-          subCategories: action.payload,
-        };
+    case GET_SUBCATEGORIES:
+      return {
+        ...state,
+        subCategories: action.payload,
+      };
     case ADD_EVENT:
       return {
         ...state,
@@ -52,8 +54,8 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         eventDetail: action.payload,
       };
-    
-      case ADD_EVENT_WISHLIST:
+
+    case ADD_EVENT_WISHLIST:
       return {
         ...state,
         wishEvents: [action.payload, ...state.wishEvents],
@@ -65,7 +67,16 @@ export default function rootReducer(state = initialState, action) {
           (we) => we.id !== action.payload
         ),
       };
-
+    case FILTER_CAT: //Javi
+      return {
+        ...state,
+        eventsLoaded: action.payload
+      }
+    case SET_ORDER: //Javi
+      return {
+        ...state,
+        order: action.payload
+      }
 
     default:
       return state;

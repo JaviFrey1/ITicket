@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getEvents from "../../actions/getEvents";
 
-
 import Paginate from "../paginate/Paginate.jsx";
 import SearchBar from "../SearchBar/SearchBar";
 import s from "./home.module.css";
@@ -30,6 +29,12 @@ export default function Home() {
     dispatch(getEvents(""));
   }, [dispatch]);
 
+  const handleSelect = (e)=> { //Javi
+    console.log('change',e.target.value)
+    dispatch(setOrder(e.target.value));
+    dispatch(filterEvent({order: e.target.value}))
+  }
+
   return (
     <div className={`${s.container}`}>
       <div className={`${s.searchBar}`}>
@@ -38,6 +43,7 @@ export default function Home() {
       <div className={s.contCarousel}>
         <CarouselComp />
       </div>
+
       <div className={s.card}>
         <Events events={currentEvents}/>
 
