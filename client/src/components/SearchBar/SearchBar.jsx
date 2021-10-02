@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import getEvents from "../../actions/getEvents";
 import style from "./search.module.css";
 
+
+
 export default function SearchBar() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
@@ -13,15 +15,16 @@ export default function SearchBar() {
   function handleInputChange(e) {
     e.preventDefault();
     setTitle(e.target.value);
-    dispatch(getEvents(title))
+    // dispatch(getEvents({title}))
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getEvents(title));
+    dispatch(getEvents({title}));
     setTitle("");
   }
-
+  
+ 
   return (
     <div className={style.contRey} >
 

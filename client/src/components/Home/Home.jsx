@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getEvents from "../../actions/getEvents";
 
-import Paginate from "../paginate/Paginate.jsx";
 import SearchBar from "../SearchBar/SearchBar";
 import s from "./home.module.css";
 import Events from "../Events/Events";
@@ -15,14 +14,14 @@ import { setPage } from "../../actions";
 export default function Home() {
   const dispatch = useDispatch();
   const allEvents = useSelector((state) => state.eventsLoaded);
-  const { title, page } = useSelector((state) => state);
-
+  const { page } = useSelector((state) => state);
+  const title = ''
   useEffect(() => {
-    dispatch(getEvents({}));
+    dispatch(getEvents({title, page}));
   }, [dispatch]);
-
+ 
   const changePage = (page) => {
-    dispatch(getEvents({ page, title }));
+    dispatch(getEvents({ title, page }));
     dispatch(setPage(page));
   };
 

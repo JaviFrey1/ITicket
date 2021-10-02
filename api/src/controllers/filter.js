@@ -43,7 +43,7 @@ async function dataParseada(){
 
 async function filtroCategories (req, res, next){
 
-    let idBody = req.body.idBody;
+    let {id} =req.query
       
     try {
        
@@ -53,7 +53,7 @@ async function filtroCategories (req, res, next){
        
         const filtrados = [];
 
-        eventDb.map(e => e.category[0] === idBody ? filtrados.push(e) : null );
+        eventDb.map(e => e.category[0] === id ? filtrados.push(e) : null );
 
         filtrados.length > 0 ? res.send(filtrados) : res.send('No hay filtrados de esa categoria')
 
@@ -66,7 +66,7 @@ async function filtroCategories (req, res, next){
 
 async function filtroSubCategories(req, res, next){
 
-    let genre = req.body.genre;
+    let {genre} = req.query
 
     try {
         
