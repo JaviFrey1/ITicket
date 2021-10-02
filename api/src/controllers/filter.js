@@ -82,7 +82,50 @@ async function filtroSubCategories(req, res, next){
     }
 }
 
+
+async function filtroLocalidad(req, res, next){
+
+  let {localidad, provincia} = req.query;
+
+  try {
+    
+    const eventDb = await dataParseada();
+    const filtrados = [];
+
+    eventDb.map(e => e.address.split(", ")[1].toLowerCase() === localidad ? filtrados.push(e) :  e.address.split(", ")[2].toLowerCase() === provincia ? filtrados.push(e) :  null)
+
+    filtrados.length > 0 ? res.send(filtrados) : res.send('No hay eventos en esa localidad o provincia')
+
+  } catch (error) {
+      next(error)
+  }
+
+}
+
+async function filtroFecha(req, res, next){
+
+  let {date} = req.query;
+  let splited = date.split("/")[2];
+
+  try {
+    
+    const eventDb = await dataParseada();
+    const filtrados = [];
+
+    eventDb.map(e => e.date.split("/")[2] === splited ? filtrados.push(e) : null)
+
+    filtrados.length > 0 ? res.send(filtrados) : res.send('No hay eventos en esa fecha')
+
+  } catch (error) {
+      next(error)
+  }
+
+}
+
+
 module.exports = {
     filtroCategories,
-    filtroSubCategories
+    filtroSubCategories,
+    filtroLocalidad,
+    filtroFecha
 }
