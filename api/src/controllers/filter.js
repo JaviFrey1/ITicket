@@ -105,17 +105,27 @@ async function filtroLocalidad(req, res, next){
 async function filtroFecha(req, res, next){
 
   let {date} = req.query;
-  let splited = date.split("/")[2];
+  let splited = date.split("/");
 
   try {
     
     const eventDb = await dataParseada();
     const filtrados = [];
 
-    eventDb.map(e => e.date.split("/")[2] === splited ? filtrados.push(e) : null)
+    eventDb.map(e => e.date.split("/")[2] === splited[2] && e.date.split("/")[1] === splited[1] && e.date.split("/")[0] === splited[0] ? filtrados.push(e) : null)
 
-    filtrados.length > 0 ? res.send(filtrados) : res.send('No hay eventos en esa fecha')
+    if (filtrados.length > 0) return res.send(filtrados) 
 
+    else{ 
+      eventDb.map(m => m.date.split('/')[1] === splited[1] && m.date.split('/')[0] === splited[0] ? filtrados.push(m) : null)
+
+      if(filtrados.length > 0) return res.send(filtrados) 
+
+      else{
+         res.send('No hay eventos en el mes')
+      }
+    }
+ 
   } catch (error) {
       next(error)
   }
