@@ -10,30 +10,24 @@ import s from "./home.module.css";
 import Events from "../Events/Events";
 import Footer from "../Footer/Footer";
 import CarouselComp from "../Carousel/Carousel";
+import { setPage } from "../../actions";
 
 export default function Home() {
   const dispatch = useDispatch();
   const allEvents = useSelector((state) => state.eventsLoaded);
+  const {title, page} = useSelector(state => state) 
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [eventsPerPage] = useState(9);
+  useEffect(()=> {
+    dispatch(getEvents({}))
+  }, [dispatch])
 
-  const lastEvent = currentPage * eventsPerPage;
-  const firstEvent = lastEvent - eventsPerPage;
-  const currentEvents = allEvents.slice(firstEvent, lastEvent);
-  function paginate(pageNumber) {
-    setCurrentPage(pageNumber);
+  const changePage = (page) => {
+    console.log('SOY PAGE',page)
+    dispatch(getEvents({page,title}))
+    dispatch(setPage(page))
+
   }
 
-  useEffect(() => {
-    dispatch(getEvents(""));
-  }, [dispatch]);
-
-  const handleSelect = (e)=> { //Javi
-    console.log('change',e.target.value)
-    dispatch(setOrder(e.target.value));
-    dispatch(filterEvent({order: e.target.value}))
-  }
 
   return (
     <div className={`${s.container}`}>
@@ -45,13 +39,13 @@ export default function Home() {
       </div>
 
       <div className={s.card}>
-        <Events events={currentEvents}/>
+        <Events events={allEvents}/>
 
-        <Paginate
-          eventsPerPage={eventsPerPage}
-          allEvents={allEvents.length}
-          paginate={paginate}
-        />
+        <button disabled={page - 1 === 0} onClick={() => changePage(page)}>Prev</button>
+        <label style={{color:"black", width:"50px"}}>{page}</label>
+        <button onClick={() => changePage(page +1)}>Next</button>  
+
+
       </div>
       <div className={s.fot}>
         <Footer />
