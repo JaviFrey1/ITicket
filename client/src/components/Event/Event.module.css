@@ -12,6 +12,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   /* margin: 20px; */
+  z-index: 10;
 }
 
 .contenedor:hover {
@@ -29,6 +30,8 @@
   justify-content: center;
   border-radius: 0 0 0 5px;
   max-width: 95%;
+  /* position: absolute; */
+  /* z-index: auto; */
 }
 
 .hijo>* {
@@ -64,7 +67,7 @@
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 50%, transparent);
   height: 35%;
   border-radius: 0 0 5px 0;
-
+  /* z-index: -1; */
   cursor: pointer;
 }
 
