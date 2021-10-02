@@ -39,7 +39,7 @@ export default function Home() {
         <Events events={allEvents} />
 
         <div className={s.btnPaginate}>
-          <button disabled={page - 1 === 0} onClick={() => changePage(page)}>
+          <button disabled={page - 1 === 0} onClick={() => changePage(page -1)}>
             Prev
           </button>
           <div className={s.numPAge}>{page}</div>
