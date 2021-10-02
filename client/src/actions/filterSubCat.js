@@ -2,7 +2,7 @@ import { FILTER_SUBCAT } from ".";
 import axios from "axios";
 
 
-export default function filterCat(genre){
+export default function filterSubCat(genre){
     return( async function(dispatch){
         try{
         const response = await axios.get(`http://localhost:3001/filter/sub?genre=${genre}`)        
