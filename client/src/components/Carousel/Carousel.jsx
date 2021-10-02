@@ -4,7 +4,15 @@ import Carousel from "react-elastic-carousel";
 import { Duki, Metallica, Jesus, Sosa } from "../../cartas";
 
 export default function CarouselComp() {
-  console.log(document.querySelectorAll("Carousel , button"));
+  // console.log(document.querySelectorAll("Carousel , button"));
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 1200, itemsToShow: 2 },
+    // { width: 850, itemsToShow: 3 },
+    // { width: 1150, itemsToShow: 4, itemsToScroll: 2 },
+    // { width: 1450, itemsToShow: 5 },
+    // { width: 1750, itemsToShow: 6 },
+  ];
 
   return (
     <div className={s.divRey}>
@@ -12,7 +20,7 @@ export default function CarouselComp() {
         enableAutoPlay
         autoPlaySpeed={3500}
         className={s.carousel}
-        itemsToShow={1}
+        breakPoints={breakPoints}
       >
         <div className={s.itemCarousel}>
           <img alt="" src={Metallica.image} />
