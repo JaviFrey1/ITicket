@@ -82,7 +82,60 @@ async function filtroSubCategories(req, res, next){
     }
 }
 
+
+async function filtroLocalidad(req, res, next){
+
+  let {localidad, provincia} = req.query;
+
+  try {
+    
+    const eventDb = await dataParseada();
+    const filtrados = [];
+
+    eventDb.map(e => e.address.split(", ")[1].toLowerCase() === localidad ? filtrados.push(e) :  e.address.split(", ")[2].toLowerCase() === provincia ? filtrados.push(e) :  null)
+
+    filtrados.length > 0 ? res.send(filtrados) : res.send('No hay eventos en esa localidad o provincia')
+
+  } catch (error) {
+      next(error)
+  }
+
+}
+
+async function filtroFecha(req, res, next){
+
+  let {date} = req.query;
+  let splited = date.split("/");
+
+  try {
+    
+    const eventDb = await dataParseada();
+    const filtrados = [];
+
+    eventDb.map(e => e.date.split("/")[2] === splited[2] && e.date.split("/")[1] === splited[1] && e.date.split("/")[0] === splited[0] ? filtrados.push(e) : null)
+
+    if (filtrados.length > 0) return res.send(filtrados) 
+
+    else{ 
+      eventDb.map(m => m.date.split('/')[1] === splited[1] && m.date.split('/')[0] === splited[0] ? filtrados.push(m) : null)
+
+      if(filtrados.length > 0) return res.send(filtrados) 
+
+      else{
+         res.send('No hay eventos en el mes')
+      }
+    }
+ 
+  } catch (error) {
+      next(error)
+  }
+
+}
+
+
 module.exports = {
     filtroCategories,
-    filtroSubCategories
+    filtroSubCategories,
+    filtroLocalidad,
+    filtroFecha
 }
