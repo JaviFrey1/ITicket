@@ -83,7 +83,7 @@
 .btnPaginate {
   display: flex;
   justify-content: center;
-  width: 10%;
+  width: 100px;
   margin: 30px auto;
   height: 30px;
   /* background-color: blue; */
@@ -92,9 +92,9 @@
 }
 
 .btnPaginate .numPAge {
-  width: 10px;
+  width: 20px;
   /* align-items: center; */
-  margin: 0 auto;
+  margin: 0 10px;
   font-weight: 800;
 }
 

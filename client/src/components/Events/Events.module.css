@@ -6,11 +6,16 @@
     gap: 20px;
     padding: 20px;
     border-radius: 10px;
-    
+
     margin: auto;
     justify-content: space-around;
-    
-  
+
+
     box-shadow: 0px 0px 5px 1px #c1dbe0;
-    background-color: transparent;
+    /* background-color: red; */
+}
+
+.contEvents {
+    /* background-color: blue; */
+    margin: auto;
 }
