@@ -8,7 +8,7 @@ import {
   ADD_EVENT,
   REMOVE_EVENT,
   FILTER_CAT,//Javi
-  SET_ORDER//Javi
+  SET_PAGE//jaVI
 } from "../actions";
 
 const initialState = {
@@ -17,7 +17,8 @@ const initialState = {
   wishEvents: [],
   eventDetail: "",
   subCategories: [],
-  categories: []
+  categories: [],
+  page:1
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -72,10 +73,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         eventsLoaded: action.payload
       }
-    case SET_ORDER: //Javi
+    case SET_PAGE: //Javi
       return {
         ...state,
-        order: action.payload
+        page: action.payload
       }
 
     default:
