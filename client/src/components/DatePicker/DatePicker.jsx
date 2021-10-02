@@ -28,11 +28,11 @@ export default function DatePicker(){
     const [date, setDate] = useState(fecha)
 
 
-function handleChange(e){
+function handleChange(){
  setDate({date});
 }
 
-function selectDate() {
+function selectDate(date) {
   dispatch(filterDate(date));
 }
 
