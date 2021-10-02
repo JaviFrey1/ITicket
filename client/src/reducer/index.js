@@ -10,7 +10,8 @@ import {
   FILTER_CAT,//Javi
   SET_PAGE,//jaVI
   FILTER_DATE,
-  FILTER_SUBCAT
+  FILTER_SUBCAT,
+  FILTER_ADDRESS
 } from "../actions";
 
 const initialState = {
@@ -83,6 +84,11 @@ export default function rootReducer(state = initialState, action) {
     case FILTER_DATE:
       return{
         ...state,
+        eventsLoaded:action.payload
+      }
+    case FILTER_ADDRESS:
+      return{
+        ...state, 
         eventsLoaded:action.payload
       }
     case SET_PAGE: //Javi
