@@ -15,18 +15,16 @@ import { setPage } from "../../actions";
 export default function Home() {
   const dispatch = useDispatch();
   const allEvents = useSelector((state) => state.eventsLoaded);
-  const {title, page} = useSelector(state => state) 
+  const { title, page } = useSelector((state) => state);
 
-  useEffect(()=> {
-    dispatch(getEvents({}))
-  }, [dispatch])
+  useEffect(() => {
+    dispatch(getEvents({}));
+  }, [dispatch]);
 
   const changePage = (page) => {
-    dispatch(getEvents({page,title}))
-    dispatch(setPage(page))
-
-  }
-
+    dispatch(getEvents({ page, title }));
+    dispatch(setPage(page));
+  };
 
   return (
     <div className={`${s.container}`}>
@@ -38,15 +36,20 @@ export default function Home() {
       </div>
 
       <div className={s.card}>
-        <Events events={allEvents}/>
+        <Events events={allEvents} />
 
-        <button disabled={page - 1 === 0} onClick={() => changePage(page)}>Prev</button>
-        <label style={{color:"black", width:"50px"}}>{page}</label>
-        <button 
-        disabled={allEvents.length < 2}
-        onClick={() => changePage(page +1)}>Next</button>  
-
-
+        <div className={s.btnPaginate}>
+          <button disabled={page - 1 === 0} onClick={() => changePage(page)}>
+            Prev
+          </button>
+          <div className={s.numPAge}>{page}</div>
+          <button
+            disabled={allEvents.length < 2}
+            onClick={() => changePage(page + 1)}
+          >
+            Next
+          </button>
+        </div>
       </div>
       <div className={s.fot}>
         <Footer />
