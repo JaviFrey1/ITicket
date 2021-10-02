@@ -4,7 +4,6 @@ import s from "./Events.module.css";
 
 
 export default function Events({events}) {
-  console.log('EVENTS', events)
   return (
     <div className={s.divRey}>
 

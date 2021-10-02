@@ -22,7 +22,6 @@ export default function Home() {
   }, [dispatch])
 
   const changePage = (page) => {
-    console.log('SOY PAGE',page)
     dispatch(getEvents({page,title}))
     dispatch(setPage(page))
 
@@ -43,7 +42,9 @@ export default function Home() {
 
         <button disabled={page - 1 === 0} onClick={() => changePage(page)}>Prev</button>
         <label style={{color:"black", width:"50px"}}>{page}</label>
-        <button onClick={() => changePage(page +1)}>Next</button>  
+        <button 
+        disabled={allEvents.length < 2}
+        onClick={() => changePage(page +1)}>Next</button>  
 
 
       </div>
