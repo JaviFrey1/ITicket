@@ -9,35 +9,38 @@ export default function Event({ event }) {
   const dispatch = useDispatch();
   const wish = useSelector((state) => state.wishEvents);
 
-
   return (
     <div
       className={styles.contenedor}
       style={{ backgroundImage: `url('${event.image}')` }}
     >
-      <div className={styles.hijo}>
-        <div className={styles.nombre}>
-          {event.name} - {event.artist}
-        </div>
-        <div className={styles.fecha}>{event.date}</div>
-        <div className={styles.fecha}>{event.place}</div>
+      <div className={styles.contData}>
+        <div className={styles.hijo}>
+          <div className={styles.nombre}>
+            <p>
+              {event.name} - {event.artist}
+            </p>
+          </div>
+          <div className={styles.fecha}>{event.date}</div>
+          <div className={styles.fecha}>{event.place}</div>
 
-        <div className={`${styles.icons}`}>
-          {wish.includes(event) ? (
-            <BsIcons.BsBookmarkFill
-              onClick={() => dispatch(removeEventWish(event.id))}
-            ></BsIcons.BsBookmarkFill>
-          ) : (
-            <BsIcons.BsBookmark
-              onClick={() => dispatch(addEventWish(event))}
-            ></BsIcons.BsBookmark>
-          )}
+          <div className={`${styles.icons}`}>
+            {wish.includes(event) ? (
+              <BsIcons.BsBookmarkFill
+                onClick={() => dispatch(removeEventWish(event.id))}
+              ></BsIcons.BsBookmarkFill>
+            ) : (
+              <BsIcons.BsBookmark
+                onClick={() => dispatch(addEventWish(event))}
+              ></BsIcons.BsBookmark>
+            )}
+          </div>
         </div>
-      </div>
-      <div className={styles.contBtn}>
-        <NavLink className={styles.link} to={`/events/${event.id}`}>
-          <div className={styles.boton}>Mas info</div>
-        </NavLink>
+        <div className={styles.contBtn}>
+          <NavLink className={styles.link} to={`/events/${event.id}`}>
+            <div className={styles.boton}>Mas info</div>
+          </NavLink>
+        </div>
       </div>
     </div>
   );
