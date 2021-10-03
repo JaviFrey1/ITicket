@@ -9,21 +9,21 @@ import s from "./home.module.css";
 import Events from "../Events/Events";
 import Footer from "../Footer/Footer";
 import CarouselComp from "../Carousel/Carousel";
-import { setPage } from "../../actions";
+// import { setPage } from "../../actions";
 
 export default function Home() {
   const dispatch = useDispatch();
   const allEvents = useSelector((state) => state.eventsLoaded);
-  const { page } = useSelector((state) => state);
-  const title = ''
+  // const { page } = useSelector((state) => state);
+  
   useEffect(() => {
-    dispatch(getEvents({title, page}));
+    dispatch(getEvents(''));
   }, [dispatch]);
  
-  const changePage = (page) => {
-    dispatch(getEvents({ title, page }));
-    dispatch(setPage(page));
-  };
+  // const changePage = (page) => {
+  //   dispatch(getEvents({ title, page }));
+  //   dispatch(setPage(page));
+  // };
 
   return (
     <div className={`${s.container}`}>
@@ -37,18 +37,18 @@ export default function Home() {
       <div className={s.card}>
         <Events events={allEvents} />
 
-        <div className={s.btnPaginate}>
+        {/* <div className={s.btnPaginate}>
           <button disabled={page - 1 === 0} onClick={() => changePage(page -1)}>
             Prev
           </button>
           <div className={s.numPAge}>{page}</div>
           <button
             disabled={allEvents.length < 2}
-            onClick={() => changePage(page + 1)}
+            // onClick={() => changePage(page + 1)}
           >
             Next
           </button>
-        </div>
+        </div> */}
       </div>
       <div className={s.fot}>
         <Footer />
