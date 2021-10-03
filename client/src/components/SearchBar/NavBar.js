@@ -47,7 +47,7 @@ function Navbar() {
             <FilterDate />
             <FilterAddress />
 
-            {SidebarData.map((item, index) => {
+            {/* {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
@@ -56,7 +56,7 @@ function Navbar() {
                   </Link>
                 </li>
               );
-            })}
+            })} */}
           </ul>
         </nav>
       </IconContext.Provider>
