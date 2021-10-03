@@ -49,6 +49,7 @@ async function getAllEvents(req, res) {
             availableTickets: result.availableTickets,
             date: result.date,
             time: result.time,
+            isImportant: result.isImportant
           };
         });
       
@@ -107,6 +108,7 @@ async function getAllEvents(req, res) {
             availableTickets: result.availableTickets,
             date: result.date,
             time: result.time,
+            isImportant: result.isImportant
           };
         });
         // let result = eventDb.slice((eventsPerPage * (page - 1)), (eventsPerPage * (page - 1)) + eventsPerPage);// Nuevo
@@ -162,6 +164,7 @@ async function getEventById(req, res) {
         availableTickets: dataBase.availableTickets,
         date: dataBase.date,
         time: dataBase.time,
+        isImportant: dataBase.isImportant
       };
       res.json(finalEvent);
     } else return res.json("No encontramos ese evento");
