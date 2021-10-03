@@ -8,7 +8,6 @@ import Axios from "axios";
 
 import s from "./add.module.css";
 
-
 export function validate(state) {
   let errors = {};
   if (!state.name) {
@@ -33,6 +32,7 @@ export function validate(state) {
     errors.state = "Campo obligatorio";
   } else if (!state.isImportant || typeof isImportant !== "boolean") {
     errors.state = "Campo obligatorio, completar con true o false.";
+
   }
   return errors;
 }
