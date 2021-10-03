@@ -88,7 +88,6 @@ async function filtroLocalidad(req, res, next){
   let {localidad, provincia} = req.query;
 
   try {
-    
     const eventDb = await dataParseada();
     const filtrados = [];
 

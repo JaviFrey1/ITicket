@@ -12,10 +12,7 @@ export default function Events( {events} ) {
           </div>
         );
       })
-        : (<div>No hay eventos disponibles</div> )
-
-        
-      }
+        : (<div>No hay eventos disponibles</div> )}
     </div>
   );
 }

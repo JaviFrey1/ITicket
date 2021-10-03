@@ -18,6 +18,7 @@ export default function FilterAddress() {
       [e.target.name]: e.target.value,
 
     })
+    console.log(address)
   }
 
   function handleSubmit(e) {
@@ -30,11 +31,11 @@ export default function FilterAddress() {
 
   return (
     <div className={style.contRey}>
-      <div className={style.contSearch}>
         <form className={style.center} onSubmit={(e) => handleSubmit(e)}>
-          <div >
+          <div className={style.contInput}>
             <input
               className={`${style.input}`}
+              name="location"
               type="text"
               id="location"
               autoComplete="off"
@@ -42,9 +43,12 @@ export default function FilterAddress() {
               onChange={(e) => handleInputChange(e)}
               value={address.location}
             />
+            </div>
+            <div className={style.contInput}>
                 <input
               className={`${style.input}`}
               type="text"
+              name="province"
               id="province"
               autoComplete="off"
               placeholder="Provincia"
@@ -52,9 +56,11 @@ export default function FilterAddress() {
               value={address.province}
             />
           </div>
+          <div className={style.contBtn}>
           <button type="submit" className={style.btn}>Filtrar por ubicación</button>
+          </div>
         </form>
-      </div>
+      
     </div>
   );
 }

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./Carousel.module.css";
 import Carousel from "react-elastic-carousel";
-import { Duki, Metallica, Jesus, Sosa } from "../../cartas";
+import { useDispatch, useSelector } from 'react-redux';
+import getEvents from '../../actions/getEvents';
 
 export default function CarouselComp() {
   // console.log(document.querySelectorAll("Carousel , button"));
@@ -13,31 +14,37 @@ export default function CarouselComp() {
     // { width: 1450, itemsToShow: 5 },
     // { width: 1750, itemsToShow: 6 },
   ];
+  const dispatch = useDispatch();
+  const events = useSelector(state => state.eventsLoaded)
+  const importantEvents = events.filter(el => el.isImportant === true);
+
+  useEffect(() => {
+    dispatch(getEvents(''))
+    console.log(importantEvents)  
+  }, [dispatch])
 
   return (
     <div className={s.divRey}>
-      <Carousel
-        enableAutoPlay
-        autoPlaySpeed={3500}
-        className={s.carousel}
-        breakPoints={breakPoints}
-      >
-        <div className={s.itemCarousel}>
-          <img alt="" src={Metallica.image} />
-        </div>
-        <div className={s.itemCarousel}>
-          <img alt="" src={Duki.image} />
-        </div>
-        <div className={s.itemCarousel}>
-          <img alt="" src={Sosa.image} />
-        </div>
-        <div className={s.itemCarousel}>
-          <img alt="" src={Metallica.image} />
-        </div>
-        <div className={s.itemCarousel}>
-          <img alt="" src={Jesus.image} />
-        </div>
-      </Carousel>
+      {importantEvents.length > 0 ?
+        (<div>
+          <div className={s.destacados}>Destacados</div>
+          <Carousel
+            enableAutoPlay
+            autoPlaySpeed={3500}
+            className={s.carousel}
+            breakPoints={breakPoints}>
+
+            {importantEvents?.map(el => (
+              <div key={el.id} className={s.itemCarousel} >
+                <div className={s.todo}>
+                  <div className={s.nombres}>{el.name} - {el.subCategories?.map(subcat => subcat.genre)} - {el.date}</div>
+                  <img alt="" src={el.image} />
+                </div>
+              </div>
+            ))}
+          </Carousel>
+        </div>)
+        : null}
     </div>
   );
 }
