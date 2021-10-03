@@ -8,34 +8,6 @@ import Axios from "axios";
 
 import s from "./add.module.css";
 
-// export function validate(state) {
-//   let errors = {};
-//   if (!state.name) {
-//     errors.name = "El nombre es obligatorio";
-//   } else if (!state.date) {
-//     errors.date = "La fecha es obligatoria";
-//   } else if (!state.time) {
-//     errors.time = "Confirma el horario";
-//   } else if (!state.place) {
-//     errors.place = "Dónde será el evento?";
-//   } else if (!state.address) {
-//     errors.address =
-//       "Por favor dinos la direccion con el siguiente formato: Calle Numeración, Localidad, Provincia, Pais";
-//   } else if (!state.artist) {
-//     errors.artist = "quien es la estrella del evento?";
-//   } else if (!state.price || typeof state.price != Number) {
-//     errors.price =
-//       "Por favor dinos el precio de la entrada, debe ser un número entero";
-//   } else if (
-//     !state.availableTickets ||
-//     typeof state.availableTickets != Number
-//   ) {
-//     errors.availableTickets =
-//       "Por favor dinos cuantas entradas disponibles hay ";
-//   }
-
-//   return errors;
-// }
 
 export function validate(state) {
   let errors = {};
@@ -59,6 +31,8 @@ export function validate(state) {
     errors.city = "Campo obligatorio";
   } else if (!state.province) {
     errors.state = "Campo obligatorio";
+  } else if (!state.isImportant || typeof isImportant !== "boolean") {
+    errors.state = "Campo obligatorio, completar con true o false.";
   }
   return errors;
 }
@@ -85,7 +59,8 @@ export default function AddEvent() {
     province: "",
     image: "",
     category: "", //LLEGA UN INTEGER (ID DE CATEGORY)
-    subCategories: [], //LLEGA ARRAY DE STRINGS(GENRE DE SUBCAT)
+    subCategories: [],
+    isImportant: false, //LLEGA ARRAY DE STRINGS(GENRE DE SUBCAT)
   });
 
   const cargarImg = function (files) {
@@ -304,7 +279,20 @@ export default function AddEvent() {
               onChange={(e) => handleInputChange(e)}
             />
           </div>
+          
           {errors.province && <h5 className="error">{errors.province}</h5>}
+          <div className={`${s.caja}`}>
+            <label>Destacado:</label>
+            <input
+              autoComplete="off"
+              type="text"
+              name="isImportant"
+              value={state.isImportant}
+              placeholder="Ej: True"
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+          {errors.isImportant && <h5 className="error">{errors.isImportant}</h5>}
           <div className={`${s.caja}`}>
             <label>Imagen:</label>
             <input type="file" onChange={(e) => cargarImg(e.target.files[0])} />

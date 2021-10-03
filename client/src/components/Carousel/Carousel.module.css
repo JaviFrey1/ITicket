@@ -1,3 +1,4 @@
+@import url('http://fonts.cdnfonts.com/css/netflix-sans');
 .divRey {
     /* background-color: red; */
     display: flex;
@@ -9,17 +10,12 @@
     /* margin: 0 10px; */
     z-index: -10;
 }
-
-/* button .rec.rec-arrow.rec-arrow-left {
-    background-color: rgb(235, 16, 16);
-    box-shadow: 0 0 1px 3px rgba(235, 16, 16, 0.5);
+.cont{
+    display: flex;
 }
-
-.carousel button.rec-dot:hover,
-button.rec-dot:active,
-button.rec-dot:focus {
-    box-shadow: 0 0 1px 3px rgba(235, 16, 16, 0.5);
-} */
+.ev{
+    flex-direction: row;
+}
 .divRey .carousel button {
     color: black;
     /* background-color: rgba(204, 178, 74, 0.801); */
@@ -72,3 +68,29 @@ button.rec-dot:focus {
         object-fit: cover;
     }
 }
+
+.nombres{
+    height: 2vw;
+    width: 100%;
+    background-color: #eeedec;
+    font-family: 'Netflix Sans';
+    color: rgb(97, 95, 95);
+    font-weight: bold;
+}
+
+
+.todo{
+    background-color: transparent;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.todo:hover{
+    font-weight: bold;
+    color: black;
+}
+
