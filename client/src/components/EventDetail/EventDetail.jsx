@@ -34,8 +34,9 @@ export default function EventDetail(props) {
 
   useEffect(() => {
     dispatch(getEventDetail(props.match.params.id)).then((results) => {
+      const fullAdress = results.payload.address + ',' + results.payload.location + ',' + results.payload.province
       // console.log(results.payload.address);
-      buscar(results.payload.address);
+      buscar(fullAdress);
     });
 
     setTimeout(() => {
@@ -73,6 +74,8 @@ export default function EventDetail(props) {
         <div className={s.place_address}>
           <div className={s.place}>{eventDetail.place}</div>
           <div className={s.address}>{eventDetail.address}</div>
+          <div className={s.location}>{eventDetail.location}</div>
+          <div className={s.province}>{eventDetail.province}</div>
         </div>
 
         <div className={s.time}>{eventDetail.time}'min(aprox)</div>

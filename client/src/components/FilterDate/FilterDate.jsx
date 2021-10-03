@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch } from "react-redux";
 import es from "date-fns/locale/es";
 import filterDate from "../../actions/filterDate";
-import s from "./FilterDate.module.css";
+import s from "./filterDate.module.css";
 
 registerLocale("es", es);
 export default function FilterDate() {

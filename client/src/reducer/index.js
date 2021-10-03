@@ -8,7 +8,7 @@ import {
   ADD_EVENT,
   REMOVE_EVENT,
   FILTER_CAT,//Javi
-  SET_PAGE,//jaVI
+  // SET_PAGE,//jaVI
   FILTER_DATE,
   FILTER_SUBCAT,
   FILTER_ADDRESS
@@ -21,7 +21,7 @@ const initialState = {
   eventDetail: "",
   subCategories: [],
   categories: [],
-  page:1
+  // page:1
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -91,11 +91,11 @@ export default function rootReducer(state = initialState, action) {
         ...state, 
         eventsLoaded:action.payload
       }
-    case SET_PAGE: //Javi
-      return {
-        ...state,
-        page: action.payload
-      }
+    // case SET_PAGE: //Javi
+    //   return {
+    //     ...state,
+    //     page: action.payload
+    //   }
 
     default:
       return state;

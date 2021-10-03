@@ -20,6 +20,8 @@ export default function Event({ event }) {
           {event.name} - {event.artist}
         </div>
         <div className={styles.fecha}>{event.date}</div>
+        <div className={styles.fecha}>{event.place}</div>
+
         <div className={`${styles.icons}`}>
           {wish.includes(event) ? (
             <BsIcons.BsBookmarkFill

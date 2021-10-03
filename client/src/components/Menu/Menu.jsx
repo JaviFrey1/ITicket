@@ -24,7 +24,7 @@ export default function Menu() {
       (subCat) => subCat.categoryId === id
     );
     setSubCatOpt(subCatOpt);
-    // dispatch(filterCat(id));
+    dispatch(filterCat(id));
   }
 
   function handleClickSubCat(genre) {
@@ -45,7 +45,7 @@ export default function Menu() {
         <div className={style.contSubcategories}>
           {subCatOpt.map((subCat) => {
             return (
-              <h4 onClick={() => handleClickSubCat(subCat.genre)}>
+              <h4 key={subCat.genre} onClick={() => handleClickSubCat(subCat.genre)}>
                 {subCat.genre}
               </h4>
             );

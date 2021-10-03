@@ -5,10 +5,10 @@ const { Op } = require("sequelize");
 async function getAllEvents(req, res) {
   let name = req.query.name;
 
-  let page = req.query.page; //Nuevo
-  let allEvents = []; //Nuevo          
-  const eventsPerPage = 2;//Nuevo
-  page = page? page : 1; //Nuevo
+  // let page = req.query.page; //Nuevo
+  // let allEvents = []; //Nuevo          
+  // const eventsPerPage = 4;//Nuevo
+  // page = page? page : 1; //Nuevo
 
 
 
@@ -42,6 +42,8 @@ async function getAllEvents(req, res) {
             artist: result.artist,
             place: result.place,
             address: result.address,
+            location: result.location,
+            province: result.province,
             image: result.image,
             price: result.price,
             availableTickets: result.availableTickets,
@@ -98,6 +100,8 @@ async function getAllEvents(req, res) {
             artist: result.artist,
             place: result.place,
             address: result.address,
+            location: result.location,
+            province: result.province,
             image: result.image,
             price: result.price,
             availableTickets: result.availableTickets,
@@ -105,9 +109,9 @@ async function getAllEvents(req, res) {
             time: result.time,
           };
         });
-        let result = eventDb.slice((eventsPerPage * (page - 1)), (eventsPerPage * (page - 1)) + eventsPerPage);// Nuevo
+        // let result = eventDb.slice((eventsPerPage * (page - 1)), (eventsPerPage * (page - 1)) + eventsPerPage);// Nuevo
 
-        res.json(result); // lo cambie por eventDB
+        res.json(eventDb); // lo cambie por eventDB
       } else return res.send([]);
     } catch (error) {
       return res
@@ -151,6 +155,8 @@ async function getEventById(req, res) {
         artist: dataBase.artist,
         place: dataBase.place,
         address: dataBase.address,
+        location: dataBase.location,
+        province: dataBase.province,
         image: dataBase.image,
         price: dataBase.price,
         availableTickets: dataBase.availableTickets,

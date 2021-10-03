@@ -3,27 +3,26 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import getEvents from "../../actions/getEvents";
 import style from "./search.module.css";
-import { GiHamburgerMenu } from "react-icons/gi";
-import Menu from "../Menu/Menu";
+
 import NavBar from "./NavBar";
-import { setPage } from "../../actions";
+// import { setPage } from "../../actions";
 // => esto en el handleSubmit
 
 export default function SearchBar() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
-  const [menuActivo, setMenuActivo] = useState(false);
 
   function handleInputChange(e) {
     e.preventDefault();
     setTitle(e.target.value);
-    // dispatch(getEvents({title}))
+
+    // dispatch(getEvents(title))
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getEvents({ title }));
-    dispatch(setPage(1));
+    dispatch(getEvents( title ));
+    // dispatch(setPage(1));
     setTitle("");
   }
 
@@ -47,7 +46,7 @@ export default function SearchBar() {
             />
           </div>
           <button className={`${style.btn}`} onClick={(e) => getEvents("")}>
-            Buscar
+           VER TODOS
           </button>
         </form>
       </div>
