@@ -44,7 +44,10 @@ async function finder() {
 
 async function getAllEvents(req, res) {
   let name = req.query.name;
-
+  // try{
+  //   const eventsLoaded = await finder()
+  //   eventsLoaded? null : Events.bulkCreate(array)
+  //    }catch(err){console.log('error en bulkCreate', err)}
   if (name) {
     const searcheado = name.toLowerCase();
     try {
@@ -55,9 +58,7 @@ async function getAllEvents(req, res) {
             event.artist.toLowerCase().includes(searcheado) ||
             event.name.toLowerCase().includes(searcheado)
         );
-
         return res.json(filtered);
-
       } else return res.send([]);
     } catch (error) {
       return res
@@ -127,7 +128,31 @@ async function getEventById(req, res) {
   }
 }
 
-
+var array = [
+   {
+    name: "Festival del Amor",
+    subCategories: "Rock",
+    date: "31/12/2021",
+   
+  }, {
+    name: "Daniel Drexler",
+    subCategories: "Rock",
+    date: "1/03/2022",
+  
+  }, {
+    name: "El Gusto es Nuestro",
+    subCategories: "Comedia",
+    date: "16/10/2022",
+  }, {
+    name: "Electro Music Festival",
+    subCategories: "Electronica",
+    date: "09/07/2022",
+  }, {
+    name: "Chole Rock",
+    subCategories: "Rock",
+    date: "03/08/2022",
+    }
+]
 
 
 
