@@ -18,13 +18,16 @@ export default function FilterAddress() {
       [e.target.name]: e.target.value,
 
     })
-    console.log(address)
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(filterAddress( address.location, address.province ));
-    setAddress("");
+
+    dispatch(filterAddress( address));
+    setAddress({
+      location:'',
+      province:''
+    });
   }
 
 

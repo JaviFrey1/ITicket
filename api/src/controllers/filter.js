@@ -34,8 +34,10 @@ async function dataParseada(){
             availableTickets: result.availableTickets,
             date: result.date,
             time: result.time,
+            isImportant:result.isImportant
           };
         });
+        console.log(eventDb)
     return eventDb;
     }
 }
@@ -91,7 +93,10 @@ async function filtroLocalidad(req, res, next){
     const eventDb = await dataParseada();
     const filtrados = [];
 
-    eventDb.map(e => e.location === localidad ? filtrados.push(e) :  e.province === provincia ? filtrados.push(e) :  null)
+    eventDb?.map(e => {    console.log(e);
+      e.location === localidad ? filtrados.push(e) :  e.province === provincia ? filtrados.push(e) :  null})
+    console.log(filtrados)
+
 
     filtrados.length > 0 ? res.send(filtrados) : res.send('No hay eventos en esa localidad o provincia')
 
