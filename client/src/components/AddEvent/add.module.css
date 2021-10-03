@@ -8,7 +8,7 @@
   background-position: center;
   background-repeat: no-repeat;
   width: 100vw;
-  height: 100vh;
+  height: 150vh;
 }
 
 .container {
@@ -16,11 +16,11 @@
 }
 
 h1 {
-  color: #4c2b0d;
+  color: #080808;
 }
 
 span {
-  color: #4c2b0d;
+  color: #0a0a0a;
 }
 
 .caja {
@@ -86,7 +86,7 @@ span {
   text-align: center;
   border-radius: 20px;
   padding: 10px;
-  background-color: #c1dbe0;
+  background-color: #fafafa;
   border: none;
   box-shadow: 0px 0px 5px 1px #4c2b0d;
 }
@@ -101,11 +101,25 @@ select {
 
 .mostrarDiv {
   /* background-color: rgb(238, 151, 151); */
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  width: max-content;
+  width: 500px;
   height: max-content;
-  margin-top: 15px;
+  margin-top: 15px; */
+
+
+  /* display: flex; */
+  /* flex-direction: row; */
+  margin: 20px 0px 0 0;
+  width: 400px;
+  display: grid;
+  /* background-color: pink; */
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 90px));
+  /* background-color: red; */
+  /* margin-left: 10px; */
+  gap: 5px;
+  align-items: center;
+  height: fit-content;
 }
 
 .checks {
@@ -114,7 +128,7 @@ select {
   justify-content: space-between;
   /* background-color: rgb(167, 167, 240); */
   margin: 5px 10px;
-  width: max-content;
+  width: min-content;
 }
 
 .noMostrarDiv {
