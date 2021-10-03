@@ -1,6 +1,6 @@
 .contRey {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   /* background-color: pink; */
   padding: 5px;
@@ -15,6 +15,7 @@
   justify-content: space-between;
   /* background-color: aqua; */
   height: fit-content;
+  margin-top: 20px;
 }
 
 .contMenu .categoriesOptions {
@@ -32,14 +33,14 @@
 .contMenu .categoriesOptions h3 {
   cursor: pointer;
   border-right: 1.5px solid rgba(0, 0, 0, 0.377);
-  margin: 3px;
+  margin: 0 10px;
   font-weight: 500;
   padding-right: 10px;
   font-size: 20px;
 
 }
 
-.contMenu .categoriesOptions> :nth-child(3) {
+.contMenu .categoriesOptions> :nth-child(2) {
   border-right: none;
   /* color: red; */
 }
@@ -56,10 +57,14 @@
 .contSubcategories {
   /* display: flex; */
   /* flex-direction: row; */
-  /* margin: 10px 5px; */
-  width: 300px;
+  margin: 30px 5px;
+  width: 400px;
+  display: grid;
+  /* background-color: pink; */
+  grid-template-columns: repeat(auto-fill, minmax(40px, 90px));
   /* background-color: red; */
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  gap: 5px;
   align-items: center;
   height: fit-content;
 }
@@ -67,7 +72,10 @@
 .contSubcategories h4 {
   /* align-items: center; */
   /* background-color: pink; */
-  margin: 0px 10px;
+  /* background-color: blue; */
+  /* display: inline-block; */
+  /* flex-direction: row; */
+  /* margin:  10px; */
   cursor: pointer;
   /* padding: 0px; */
   font-weight: 500;

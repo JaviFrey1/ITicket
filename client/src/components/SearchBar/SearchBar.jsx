@@ -14,11 +14,6 @@ export default function SearchBar() {
   const [title, setTitle] = useState("");
   const [menuActivo, setMenuActivo] = useState(false);
 
-  function mostrarMenu() {
-    setMenuActivo(!menuActivo);
-    console.log(menuActivo);
-  }
-
   function handleInputChange(e) {
     e.preventDefault();
     setTitle(e.target.value);

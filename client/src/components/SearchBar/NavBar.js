@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
@@ -8,6 +9,7 @@ import { IconContext } from "react-icons";
 import Menu from "../Menu/Menu";
 import style from "../Nav/nav.module.css";
 import logo from "../../images/imgCortada.png";
+import DatePicker_ from "../DatePicker/DatePicker";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -41,6 +43,7 @@ function Navbar() {
               </Link>
             </li>
             <Menu />
+            <DatePicker_ />
 
             {SidebarData.map((item, index) => {
               return (
