@@ -1,9 +1,40 @@
+@import url('http://fonts.cdnfonts.com/css/netflix-sans');
 .container {
 
   width: 100vw;
   background-color: rgba(29, 29, 29, 0.014);
 }
 
+.destacados {
+
+  display: inline-block;
+  position: relative;
+  color: rgb(97, 95, 95);
+  font-family: 'Netflix Sans', sans-serif;
+  text-align:start;
+  margin-left: 2.5em;
+  font-size: 2em;
+  width: 90vw;
+  cursor:pointer
+}
+.destacados:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background-color: rgb(255, 204, 0);
+  transform-origin: bottom right;
+  transition: transform 1s ease-in;
+  
+}
+.destacados:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+  cursor:pointer
+}
 
 .fot {
   position: inherit;
@@ -11,7 +42,6 @@
   height: 15%;
   margin-top: 36px;
   border-top: #6A6A6F solid 1px;
-  /* margin-bottom: 50px; */
 }
 
 .card {

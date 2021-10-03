@@ -3,15 +3,15 @@
   justify-content: center;
   align-items: flex-end;
   background-color: white;
-  /* width: 90%; */
+
   min-width: 500px;
   max-width: 700px;
   height: 16em;
   border-radius: 5px;
-  /* background-image: url('https://images.all-free-download.com/images/graphicthumb/metallica_3_138862.jpg'); */
+  
   background-repeat: no-repeat;
   background-size: cover;
-  /* margin: 20px; */
+
   z-index: 10;
 }
 
@@ -30,8 +30,6 @@
   justify-content: center;
   border-radius: 0 0 0 5px;
   max-width: 95%;
-  /* position: absolute; */
-  /* z-index: auto; */
 }
 
 .hijo>* {
