@@ -8,13 +8,12 @@
   }
   
   .number {
-    border-radius: 50%;
     width: 30px;
     height: 30px;
-    background-color: #c1dbe0;
+    background-color: rgb(255, 204, 0);
     display: flex;
-    border: solid 2px #4c2b0d;
-    color: #4c2b0d;
+    border: solid 2px #000;
+    color: #000;
     font-weight: bolder;
     font-size: 20px;
     justify-content: center;
@@ -27,6 +26,6 @@
   .number:hover {
     cursor: pointer;
     background-color: transparent;
-    color: #c1dbe0;
-    border: solid 2px #c1dbe0;
+    color: #000;
+    border: solid 2px rgb(255, 204, 0);
   }
