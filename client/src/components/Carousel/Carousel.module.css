@@ -104,7 +104,8 @@
     margin-left: 2.5em;
     font-size: 2em;
     width: 90vw;
-    cursor:pointer
+    cursor:pointer;
+    margin-bottom: 1em;
   }
   .destacados:after {
     content: '';

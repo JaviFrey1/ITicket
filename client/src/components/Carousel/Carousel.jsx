@@ -16,11 +16,10 @@ export default function CarouselComp() {
   ];
   const dispatch = useDispatch();
   const events = useSelector(state => state.eventsLoaded)
-  const importantEvents = events.filter(el => el.isImportant === true);
+  const importantEvents = events?.filter(el => el.isImportant === true);
 
   useEffect(() => {
     dispatch(getEvents(''))
-    console.log(importantEvents)  
   }, [dispatch])
 
   return (
@@ -37,7 +36,7 @@ export default function CarouselComp() {
             {importantEvents?.map(el => (
               <div key={el.id} className={s.itemCarousel} >
                 <div className={s.todo}>
-                  <div className={s.nombres}>{el.name} - {el.subCategories?.map(subcat => subcat.genre)} - {el.date}</div>
+                  <div className={s.nombres}>{el.name} - {el.subCategories?.map(subcat=> <span key={subcat}>{subcat}</span>)} - {el.date}</div>
                   <img alt="" src={el.image} />
                 </div>
               </div>
