@@ -1,21 +1,31 @@
 .center {
-    margin: 20px 0 20px 0;
-    /* background-color: red; */
+    width: fit-content;
+    margin: 0 0 20px 0;
     display: flex;
-    flex-direction: row;
-    /* align-content: center; */
-    align-items: center;
-    height: 30px;
+    flex-direction: column;
+    justify-items: flex-start;
+    
 }
 
 .btn {
-    margin-left: 5%;
-    height: 30px;
     border-radius: 6px;
     border: 2px solid black;
     margin-top: 12px;
+    padding: 5px;
     background-color: transparent;
     color: black
+    
+}
+.contBtn{
+        padding: 5px;
+
+    
+}
+.contInput{
+    padding: 5px;
+    justify-self: flex-start;
+    margin-top: 2px;
+    margin-left: 0;
 }
 
 .btn:hover {
@@ -27,6 +37,7 @@
     padding: 5px;
     border-radius: 6px;
     border: none;
+    color:black;
 
 
 }

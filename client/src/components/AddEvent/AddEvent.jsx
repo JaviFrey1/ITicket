@@ -292,7 +292,7 @@ export default function AddEvent() {
               onChange={(e) => handleInputChange(e)}
             />
           </div>
-          {errors.address && <h5 className="error">{errors.address}</h5>}
+          {errors.location && <h5 className="error">{errors.location}</h5>}
           <div className={`${s.caja}`}>
             <label>Provincia:</label>
             <input
@@ -304,7 +304,7 @@ export default function AddEvent() {
               onChange={(e) => handleInputChange(e)}
             />
           </div>
-          {errors.address && <h5 className="error">{errors.address}</h5>}
+          {errors.province && <h5 className="error">{errors.province}</h5>}
           <div className={`${s.caja}`}>
             <label>Imagen:</label>
             <input type="file" onChange={(e) => cargarImg(e.target.files[0])} />
@@ -381,7 +381,7 @@ export default function AddEvent() {
             </div>
           </div>
           <div className={`${s.btnCont}`}>
-            {state.name &&
+            {/* {state.name &&
             state.date &&
             state.time &&
             state.artist &&
@@ -392,11 +392,11 @@ export default function AddEvent() {
             state.location &&
             state.province &&
             state.category &&
-            state.subCategories.length === 0 ? (
+            state.subCategories.length > 0 ? ( */}
               <button className={s.btnSubmit} type="submit">
                 CREAR EVENTO
               </button>
-            ) : null}
+            {/* ) : null} */}
           </div>
         </form>
       </div>

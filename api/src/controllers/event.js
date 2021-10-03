@@ -49,6 +49,7 @@ async function AddEvent(req, res, next) {
 
       await createdEvent.addSubCategories(subCat);
     });
+    console.log(createdEvent)
     return res.send("Evento Creado Satisfactoriamente");
   } catch (error) {
     console.log(error);

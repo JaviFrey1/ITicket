@@ -23,6 +23,8 @@ export default function FilterDate() {
     <>
       <div className={`${s.contenedor}`}>
         <div className={`${s.center}`}>
+
+        <div className={s.contInput}>
           <DatePicker
             className={`${s.datePicker}`}
             dateFormat="dd/MM/yyyy"
@@ -37,6 +39,7 @@ export default function FilterDate() {
             value="Filtrar por fecha"
             onClick={() => selectDate(date)}
           />
+        </div>
         </div>
       </div>
     </>
