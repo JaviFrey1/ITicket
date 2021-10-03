@@ -28,8 +28,8 @@ export default function FilterAddress() {
   return (
     <div className={style.contRey}>
       <div className={style.contSearch}>
-        <form className={style.formContainer} onSubmit={(e) => handleSubmit(e)}>
-          <div className={style.searchBarContainer}>
+        <form className={style.center} onSubmit={(e) => handleSubmit(e)}>
+          <div >
             <input
               className={`${style.input}`}
               type="text"
@@ -40,7 +40,7 @@ export default function FilterAddress() {
               value={address}
             />
           </div>
-          <button type="submit">FILTRAR</button>
+          <button type="submit" className={style.btn}>Filtrar por ciudad</button>
         </form>
       </div>
     </div>

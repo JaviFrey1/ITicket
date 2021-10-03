@@ -15,7 +15,8 @@ export default function SearchBar() {
   function handleInputChange(e) {
     e.preventDefault();
     setTitle(e.target.value);
-    // dispatch(getEvents({title}))
+
+    // dispatch(getEvents(title))
   }
 
   function handleSubmit(e) {
@@ -45,7 +46,7 @@ export default function SearchBar() {
             />
           </div>
           <button className={`${style.btn}`} onClick={(e) => getEvents("")}>
-            Buscar
+           VER TODOS
           </button>
         </form>
       </div>
