@@ -29,6 +29,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getEvents(''));
+  
   }, [dispatch]);
  
   // const changePage = (page) => {

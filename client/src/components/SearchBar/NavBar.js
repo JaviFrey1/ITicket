@@ -44,6 +44,7 @@ function Navbar() {
               </Link>
             </li>
             <Menu />
+ 
             <FilterDate />
             <FilterAddress />
 

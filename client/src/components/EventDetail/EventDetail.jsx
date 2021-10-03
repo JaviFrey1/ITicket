@@ -78,7 +78,7 @@ export default function EventDetail(props) {
           <div className={s.province}>{eventDetail.province}</div>
         </div>
 
-        <div className={s.time}>{eventDetail.time}'min(aprox)</div>
+        <div className={s.time}>{eventDetail.time}hs</div>
 
         <div className={s.availableTickets}>
           {eventDetail.availableTickets <= 10 ? (
