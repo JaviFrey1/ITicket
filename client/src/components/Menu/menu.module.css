@@ -42,6 +42,8 @@
 
 .contMenu .categoriesOptions> :nth-child(2) {
   border-right: none;
+  margin: 0;
+
   /* color: red; */
 }
 
@@ -57,11 +59,11 @@
 .contSubcategories {
   /* display: flex; */
   /* flex-direction: row; */
-  margin: 30px 5px;
+  margin: 20px 0px 0 0;
   width: 400px;
   display: grid;
   /* background-color: pink; */
-  grid-template-columns: repeat(auto-fill, minmax(40px, 90px));
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 90px));
   /* background-color: red; */
   /* margin-left: 10px; */
   gap: 5px;
@@ -70,12 +72,13 @@
 }
 
 .contSubcategories h4 {
+  line-height: 0.3px;
   /* align-items: center; */
   /* background-color: pink; */
   /* background-color: blue; */
   /* display: inline-block; */
   /* flex-direction: row; */
-  /* margin:  10px; */
+  margin: 15px 0px;
   cursor: pointer;
   /* padding: 0px; */
   font-weight: 500;

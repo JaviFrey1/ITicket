@@ -1,0 +1,33 @@
+.center {
+    margin: 20px 0 20px 0;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    /* align-content: center; */
+    align-items: center;
+    height: 30px;
+}
+
+.btn {
+    margin-left: 0;
+    margin-right: 25%;
+    height: 30px;
+    border-radius: 6px;
+    border: 2px solid black;
+    margin-top: 12px;
+    background-color: transparent;
+    color: black
+}
+
+.btn:hover {
+    box-shadow: 2px 2px 3px black;
+}
+
+.datePicker {
+    /* background-color: green; */
+    padding: 5px;
+    border-radius: 6px;
+    border: none;
+
+
+}

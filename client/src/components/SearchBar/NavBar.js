@@ -9,7 +9,8 @@ import { IconContext } from "react-icons";
 import Menu from "../Menu/Menu";
 import style from "../Nav/nav.module.css";
 import logo from "../../images/imgCortada.png";
-import DatePicker_ from "../DatePicker/DatePicker";
+import FilterDate from "../FilterDate/FilterDate";
+import FilterAddress from "../FilterLocal/FilterAddress";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -43,7 +44,8 @@ function Navbar() {
               </Link>
             </li>
             <Menu />
-            <DatePicker_ />
+            <FilterDate />
+            <FilterAddress />
 
             {SidebarData.map((item, index) => {
               return (
