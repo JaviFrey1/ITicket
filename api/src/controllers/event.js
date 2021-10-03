@@ -11,6 +11,8 @@ async function AddEvent(req, res, next) {
     !data.artist ||
     !data.place ||
     !data.address ||
+    !data.location ||
+    !data.province ||
     !data.price ||
     !data.availableTickets ||
     !data.date ||
@@ -25,6 +27,8 @@ async function AddEvent(req, res, next) {
       artist: data.artist,
       place: data.place,
       address: data.address,
+      location: data.location,
+      province: data.province,
       price: data.price,
       image: data.image,
       availableTickets: data.availableTickets,

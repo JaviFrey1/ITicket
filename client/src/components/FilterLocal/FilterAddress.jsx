@@ -6,20 +6,23 @@ import style from "./filterAddress.module.css";
 
 export default function FilterAddress() {
   const dispatch = useDispatch();
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState({
+    location:'',
+    province:''
+  })
 
   function handleInputChange(e) {
     e.preventDefault();
-    setAddress(e.target.value);
-    // dispatch(getEvents({title}))
+    setAddress({
+      ...address,
+      [e.target.name]: e.target.value,
+
+    })
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    const array = address.split(",");
-    const localidad = array[0];
-    const provincia = array[1];
-    dispatch(filterAddress({ localidad, provincia }));
+    dispatch(filterAddress( address.location, address.province ));
     setAddress("");
   }
 
@@ -33,14 +36,23 @@ export default function FilterAddress() {
             <input
               className={`${style.input}`}
               type="text"
-              id="address"
+              id="location"
               autoComplete="off"
-              placeholder="localidad, Provincia"
+              placeholder="Localidad"
               onChange={(e) => handleInputChange(e)}
-              value={address}
+              value={address.location}
+            />
+                <input
+              className={`${style.input}`}
+              type="text"
+              id="province"
+              autoComplete="off"
+              placeholder="Provincia"
+              onChange={(e) => handleInputChange(e)}
+              value={address.province}
             />
           </div>
-          <button type="submit" className={style.btn}>Filtrar por ciudad</button>
+          <button type="submit" className={style.btn}>Filtrar por ubicación</button>
         </form>
       </div>
     </div>

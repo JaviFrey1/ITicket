@@ -92,7 +92,7 @@ async function filtroLocalidad(req, res, next){
     const eventDb = await dataParseada();
     const filtrados = [];
 
-    eventDb.map(e => e.address.split(", ")[1].toLowerCase() === localidad ? filtrados.push(e) :  e.address.split(", ")[2].toLowerCase() === provincia ? filtrados.push(e) :  null)
+    eventDb.map(e => e.location === localidad ? filtrados.push(e) :  e.province === provincia ? filtrados.push(e) :  null)
 
     filtrados.length > 0 ? res.send(filtrados) : res.send('No hay eventos en esa localidad o provincia')
 
