@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import filterAddress from "../../actions/filterAddress";
-import style from "./FilterAddress.module.css";
+import style from "./filterAddress.module.css";
 
 export default function FilterAddress() {
   const dispatch = useDispatch();
@@ -22,6 +22,8 @@ export default function FilterAddress() {
     dispatch(filterAddress({ localidad, provincia }));
     setAddress("");
   }
+
+
 
   return (
     <div className={style.contRey}>
