@@ -37,7 +37,7 @@ async function dataParseada(){
             isImportant:result.isImportant
           };
         });
-        console.log(eventDb)
+        console.log('EVENT DB EN FINDER',eventDb)
     return eventDb;
     }
 }
@@ -69,10 +69,13 @@ async function filtroCategories (req, res, next){
 async function filtroSubCategories(req, res, next){
 
     let {genre} = req.query
+    console.log('genre', genre)
 
     try {
-        
+      
         const eventDb = await dataParseada();
+        console.log('EVENTDB EN FILTROLOCALIDAD', eventDb)
+        
         const filtrados = [];
 
         eventDb.map(e => e.subCategories.map( s => s.genre.toLowerCase() === genre.toLowerCase() ? filtrados.push(e) : null ) )
@@ -88,9 +91,11 @@ async function filtroSubCategories(req, res, next){
 async function filtroLocalidad(req, res, next){
 
   let {localidad, provincia} = req.query;
+  console.log('localidad, provincia', localidad, provincia)
 
   try {
     const eventDb = await dataParseada();
+    console.log('EVENTDB EN FILTROLOCALIDAD', eventDb)
     const filtrados = [];
 
     eventDb?.map(e => {    console.log(e);

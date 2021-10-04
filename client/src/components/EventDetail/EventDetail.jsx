@@ -56,7 +56,7 @@ export default function EventDetail(props) {
   }, []);
 
   // useEffect(()=>{
-  //   buscar()
+  //   buscar()map
   // },[eventDetail.address])
 
   const colorCirculoMarcador = {
@@ -76,17 +76,22 @@ export default function EventDetail(props) {
           />
         </div>
         <div className={s.name}>{eventDetail.name}</div>
+        <div className={s.cont}>
 
         <div className={s.artist_date}>
           <div className={s.artist}>{eventDetail.artist}</div>
           <div className={s.date}>{eventDetail.date}</div>
         </div>
+          <div className={s.sub}>
+
+          {eventDetail.subCategories?.map((subCat, i)=> <span key={i}>{subCat.genre}</span>)}
+          </div>
+        </div>
 
         <div className={s.place_address}>
           <div className={s.place}>{eventDetail.place}</div>
           <div className={s.address}>{eventDetail.address}</div>
-          <div className={s.location}>{eventDetail.location}</div>
-          <div className={s.province}>{eventDetail.province}</div>
+         {(eventDetail.location === eventDetail.province)?  <div className={s.location}>{eventDetail.location }</div>:<div>{eventDetail.location }, {eventDetail.province }</div> }
         </div>
 
         <div className={s.time}>{eventDetail.time}hs</div>
