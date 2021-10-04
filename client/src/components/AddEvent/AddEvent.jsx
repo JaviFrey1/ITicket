@@ -32,7 +32,6 @@ export function validate(state) {
     errors.state = "Campo obligatorio";
   } else if (!state.isImportant || typeof isImportant !== "boolean") {
     errors.state = "Campo obligatorio, completar con true o false.";
-
   }
   return errors;
 }
@@ -60,16 +59,16 @@ export default function AddEvent() {
     image: "",
     category: "", //LLEGA UN INTEGER (ID DE CATEGORY)
     subCategories: [],
-    isImportant: ''
+    isImportant: "",
   });
 
   const cargarImg = function (files) {
-    console.log(files);
+    // console.log(files);
     const reader = new FileReader();
     reader.onload = function () {
       let imgDiv = document.querySelector("#cajaImg");
       imgDiv.src = reader.result;
-      console.log("11 ", reader.result);
+      // console.log("11 ", reader.result);
     };
     reader.readAsDataURL(files);
 
@@ -122,7 +121,16 @@ export default function AddEvent() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    alert(state);
+    // alert(state);
+    // state.time
+    // state.date = state.date.toLocaleDateString();
+    // const newFecha = new Date(state.date);
+    // console.log(newFecha);
+    let newFecha = state.date.split("-");
+    // console.log(newFecha.reverse().join("-"));
+    newFecha = newFecha.reverse().join("-");
+    // console.log("fecha: ", newFecha);
+    state.date = newFecha;
 
     dispatch(addEvent(state));
     alert("Has agregado un nuevo evento!");
@@ -222,7 +230,7 @@ export default function AddEvent() {
             <label>Precio:</label>
             <input
               autoComplete="off"
-              min='1.00'
+              min="1.00"
               step="0.50"
               type="number"
               name="price"
@@ -279,7 +287,7 @@ export default function AddEvent() {
               onChange={(e) => handleInputChange(e)}
             />
           </div>
-          
+
           {errors.province && <h5 className="error">{errors.province}</h5>}
           <div className={`${s.caja}`}>
             <label>Destacado:</label>
@@ -292,7 +300,9 @@ export default function AddEvent() {
               onChange={(e) => handleInputChange(e)}
             />
           </div>
-          {errors.isImportant && <h5 className="error">{errors.isImportant}</h5>}
+          {errors.isImportant && (
+            <h5 className="error">{errors.isImportant}</h5>
+          )}
           <div className={`${s.caja}`}>
             <label>Imagen:</label>
             <input type="file" onChange={(e) => cargarImg(e.target.files[0])} />
@@ -381,9 +391,9 @@ export default function AddEvent() {
             state.province &&
             state.category &&
             state.subCategories.length > 0 ? ( */}
-              <button className={s.btnSubmit} type="submit">
-                CREAR EVENTO
-              </button>
+            <button className={s.btnSubmit} type="submit">
+              CREAR EVENTO
+            </button>
             {/* ) : null} */}
           </div>
         </form>
