@@ -23,10 +23,11 @@ export default function Home() {
   const lastEvent = currentPage * eventsPerPage;
   const firstEvent = lastEvent - eventsPerPage;
   const currentEvents = allEvents.slice(firstEvent, lastEvent);
+  const currentUnimportant = currentEvents.filter(e=>e.isImportant===false)
   function paginate(pageNumber) {
     setCurrentPage(pageNumber);
   }
-
+  
   useEffect(() => {
     dispatch(getEvents(''));
   }, [dispatch]);
@@ -46,7 +47,8 @@ export default function Home() {
       </div>
 
       <div className={s.card}>
-        <Events events={currentEvents} />
+        
+        <Events events={currentUnimportant} />
 
         {/* <div className={s.btnPaginate}>
           <button disabled={page - 1 === 0} onClick={() => changePage(page -1)}>

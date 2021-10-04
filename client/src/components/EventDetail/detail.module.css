@@ -52,7 +52,8 @@
     font-weight: 700;
     width: 95%;
     padding: 0 15px;
-    color: rgba(0, 0, 0, 0.884);
+    color: #000;
+    
 }
 
 .time,
@@ -61,22 +62,42 @@
 .artist_date {
     display: flex;
     justify-content: space-between;
-    /* background-color: aqua; */
     font-size: calc(1em + 0.8vw);
     font-weight: 700;
     width: 95%;
     padding: 0 15px;
-    color: rgba(0, 0, 0, 0.753);
+    color: #000;
 }
+.cont{
+    width: 100%;
+}
+.artist_date{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    justify-self: start;
+    padding-bottom: 10px;
+}
+.sub{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(min-content, 90px));
+}
+
 
 .artist_date> :nth-child(2) {
     color: rgb(233, 187, 5);
+   
 }
 
 .place_address> :nth-child(2) {
-    color: rgba(0, 0, 0, 0.753);
+    color: #000;
+    font-weight: 400;
 }
-
+.location{
+    font-weight: 500;
+}
 
 .price_buy {
     display: flex;
@@ -86,7 +107,7 @@
     font-weight: 700;
     width: 95%;
     padding: 0 15px;
-    color: rgba(0, 0, 0, 0.753);
+    color: #000;
 }
 
 .date {

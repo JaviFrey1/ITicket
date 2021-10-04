@@ -13,6 +13,8 @@ export default function Menu() {
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getSubCategories());
+    console.log(subcategories)
+
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -22,6 +24,7 @@ export default function Menu() {
   function handleClickCat(id) {
     const subCatOpt = subcategories.filter(
       (subCat) => subCat.categoryId === id
+
     );
     setSubCatOpt(subCatOpt);
     // dispatch(filterCat(id));

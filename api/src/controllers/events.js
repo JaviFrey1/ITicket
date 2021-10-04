@@ -116,7 +116,7 @@ async function getEventById(req, res) {
         name: dataBase.name,
         id: dataBase.id,
         category: dataBase.categories.map((cat) => cat.name),
-        subCategories: dataBase.subCategories.map((subCat) => subCat.genre),
+        subCategories: dataBase.subCategories,
         artist: dataBase.artist,
         place: dataBase.place,
         address: dataBase.address,
@@ -136,31 +136,6 @@ async function getEventById(req, res) {
   }
 }
 
-var array = [
-  {
-    name: "Festival del Amor",
-    subCategories: "Rock",
-    date: "31/12/2021",
-
-  }, {
-    name: "Daniel Drexler",
-    subCategories: "Rock",
-    date: "1/03/2022",
-
-  }, {
-    name: "El Gusto es Nuestro",
-    subCategories: "Comedia",
-    date: "16/10/2022",
-  }, {
-    name: "Electro Music Festival",
-    subCategories: "Electronica",
-    date: "09/07/2022",
-  }, {
-    name: "Chole Rock",
-    subCategories: "Rock",
-    date: "03/08/2022",
-  }
-]
 
 
 // function urlGetter(){
