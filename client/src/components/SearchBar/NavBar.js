@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import React, { useState } from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
+import { FaBars } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
@@ -21,7 +21,7 @@ function Navbar() {
       <IconContext.Provider value={{ color: "white" }}>
         <div className="navbar">
           <Link to="#" className="menu-bars">
-            <FaIcons.FaBars onClick={showSidebar} />
+            <FaBars onClick={showSidebar} style={{ color: "black" }} />
           </Link>
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
@@ -39,11 +39,14 @@ function Navbar() {
                 </Link>
               </div>
               <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose onClick={showSidebar} />
+                <AiOutlineClose
+                  onClick={showSidebar}
+                  style={{ color: "black", marginRight: "20px" }}
+                />
               </Link>
             </li>
             <Menu />
- 
+
             <FilterDate />
             <FilterAddress />
 
