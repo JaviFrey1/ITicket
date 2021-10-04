@@ -128,7 +128,7 @@ export default function AddEvent() {
     // console.log(newFecha);
     let newFecha = state.date.split("-");
     // console.log(newFecha.reverse().join("-"));
-    newFecha = newFecha.reverse().join("-");
+    newFecha = newFecha.reverse().join("/");
     // console.log("fecha: ", newFecha);
     state.date = newFecha;
 

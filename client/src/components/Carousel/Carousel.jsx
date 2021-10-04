@@ -38,11 +38,13 @@ export default function CarouselComp() {
               <div key={el.id} className={s.itemCarousel}>
                 <div className={s.todo}>
                   <div className={s.nombres}>
-                    {el.name} -{" "}
-                    {el.subCategories?.map((subcat) => (
-                      <span key={subcat}>{subcat}</span>
-                    ))}{" "}
-                    - {el.date}
+                    <span>{el.name}</span>
+                    <div>
+                      {el.subCategories?.map((subcat, i) => (
+                        <span key={i}>hola</span>
+                      ))}
+                    </div>
+                    <span>{el.date}</span>
                   </div>
                   <img alt="" src={el.image} />
                 </div>
