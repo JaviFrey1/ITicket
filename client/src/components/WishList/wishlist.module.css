@@ -1,64 +1,64 @@
-@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import url('http://fonts.cdnfonts.com/css/netflix-sans');
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-
-  gap: 20px;
-  overflow: scroll;
-  overflow: overlay;
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  margin-top: 4em;
 }
 
 .container {
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 800px;
-  max-height: 520px;
-  margin: auto;
-  margin-bottom: 30px;
   display: flex;
+
+  justify-items: center;
+  border-radius: 5px;
+  width: 60vw;
+  height: auto;
+  min-height: 30vw;
 
   box-shadow: 0px 0px 5px 1px black;
-  /* background-image: url("../../images/mesa.jpg"); */
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin-top: 20px;
-}
-.container h2 {
-  padding: 20px;
-  color: #fff;
-  font-family: "Indie Flower", cursive;
+  background-color: yellow;
 }
 
-/*Webkit(Chrome, Android browser, Safari, Edge...)*/
-.cards::-webkit-scrollbar {
-  display: none;
-}
-.cards:hover::-webkit-scrollbar {
-  display: initial;
-}
-.cards::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.295);
-}
-
-.wishEvents {
+.cards {
   display: flex;
-  justify-content: center;
-  align-content: flex-start;
-  /* background-image: url("../../images/TEXTURA\ MARMOL.jfif"); */
-  padding: 20px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  height: fit-content;
+  width: 70%;
+
+  background-color: red;
 }
 
-/* .container{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    background-color: #fff;
-} */
+.titulo {
+  width: 50%;
+  height: 100%;
+  margin-left: 1em;
+  color: black;
+  font-family: 'Netflix Sans';
+  background-color: greenyellow;
+}
+
+.event{
+  justify-self: center;
+  align-self: center;
+}
+
+.none{
+  width: 50px;
+  /* color: black; */
+}
+
+@media (max-width: 1200px){
+  .container{
+    flex-direction: column;
+  }
+  .cards {
+    height: auto;
+    width: auto;
+  }
+}
