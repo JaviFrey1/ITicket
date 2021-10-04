@@ -1,3 +1,7 @@
+// const fs = require('fs');
+// const path = require('path');
+
+// var FileReader = require('filereader')
 const { Events, Categories, SubCategories } = require("../db");
 
 
@@ -46,7 +50,7 @@ async function getAllEvents(req, res) {
   let name = req.query.name;
   // try{
   //   const eventsLoaded = await finder()
-  //   eventsLoaded? null : Events.bulkCreate(array)
+  //   eventsLoaded? null : await Events.bulkCreate(array)
   //    }catch(err){console.log('error en bulkCreate', err)}
   if (name) {
     const searcheado = name.toLowerCase();
@@ -129,16 +133,16 @@ async function getEventById(req, res) {
 }
 
 var array = [
-   {
+  {
     name: "Festival del Amor",
     subCategories: "Rock",
     date: "31/12/2021",
-   
+
   }, {
     name: "Daniel Drexler",
     subCategories: "Rock",
     date: "1/03/2022",
-  
+
   }, {
     name: "El Gusto es Nuestro",
     subCategories: "Comedia",
@@ -151,8 +155,35 @@ var array = [
     name: "Chole Rock",
     subCategories: "Rock",
     date: "03/08/2022",
-    }
+  }
 ]
+
+
+// function urlGetter(){
+//   const reader = new FileReader();
+//   const urls = fs.readdirSync(path.join(__dirname, '../images'))
+//     .map(async (file) => {
+//       reader.readAsDataURL(file);
+//       const formData = new FormData();
+//       formData.append("file", file);
+//       formData.append("upload_preset", "di4u9mje");
+//       const response = await Axios.post(
+//         "https://api.cloudinary.com/v1_1/tukiteck/image/upload",
+//         formData
+//       )
+//       return response.data.secure_url })
+
+//   return urls
+
+// }
+
+// console.log(urlGetter())
+  
+
+
+
+
+
 
 
 
