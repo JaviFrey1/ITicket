@@ -19,7 +19,7 @@ export function WishList() {
               );
             })}
           </div>
-        ) : null}
+        ) : <div>Aun no tienes eventos en favoritos</div>}
       </div>
     </div>
   );

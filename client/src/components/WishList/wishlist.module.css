@@ -11,16 +11,20 @@
 
 .container {
   display: flex;
-
+  /* background-color: rgb(194, 194, 194); */
+  background-color: rgb(255, 204, 0);
+  
   justify-items: center;
   border-radius: 5px;
   width: 60vw;
   height: auto;
-  min-height: 30vw;
+  min-height: 50%;
+  margin-top: 2em;
+  margin-bottom: 2em;
 
-  box-shadow: 0px 0px 5px 1px black;
-
-  background-color: yellow;
+  box-shadow: 0px -1px 63px -22px rgba(0,0,0,0.82);
+  -webkit-box-shadow: 0px -1px 63px -22px rgba(0,0,0,0.82);
+  -moz-box-shadow: 0px -1px 63px -22px rgba(0,0,0,0.82);
 }
 
 .cards {
@@ -31,7 +35,15 @@
   height: fit-content;
   width: 70%;
 
-  background-color: red;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  margin-right: 2em;
+  margin-bottom: 2em;
+
+  box-shadow: 0px -1px 63px -22px rgba(255,255,255,0.82);
+  -webkit-box-shadow: 0px -1px 63px -22px rgba(255,255,255,0.82);
+  -moz-box-shadow: 0px -1px 63px -22px rgba(255,255,255,0.82);
+  /* background-color: red; */
 }
 
 .titulo {
@@ -40,12 +52,14 @@
   margin-left: 1em;
   color: black;
   font-family: 'Netflix Sans';
-  background-color: greenyellow;
+  /* background-color: greenyellow; */
 }
 
 .event{
   justify-self: center;
   align-self: center;
+  margin-bottom: 2em;
+
 }
 
 .none{

@@ -24,7 +24,8 @@ export default function CarouselComp() {
 
   return (
     <div className={s.divRey}>
-      {importantEvents.length > 0 ?
+      {console.log(importantEvents)}
+      {importantEvents.length !== 0 ?
         (<div>
           <div className={s.destacados}>Destacados</div>
           <Carousel
@@ -43,7 +44,7 @@ export default function CarouselComp() {
             ))}
           </Carousel>
         </div>)
-        : null}
+        : <div>Aun no hay ningun evento tan importante.</div>}
     </div>
   );
 }
