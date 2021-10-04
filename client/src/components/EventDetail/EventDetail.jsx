@@ -20,21 +20,32 @@ export default function EventDetail(props) {
   const eventDetail = useSelector((state) => state.eventDetail);
 
   async function buscar(e) {
-    const results = await provider
-      .search({
-        query: e,
-      })
-      .then((results) => {
-        setLat(results[0].y.toString());
-        setLong(results[0].x.toString());
-      });
+    try {
+      const results = await provider
+        .search({
+          query: e,
+        })
+        .then((results) => {
+          setLat(results[0].y.toString());
+          setLong(results[0].x.toString());
+        });
 
-    return results;
+      return results;
+    } catch (error) {
+      console.log("rompio mapa");
+      setLat("-38.416097");
+      setLong("-63.616672");
+    }
   }
 
   useEffect(() => {
     dispatch(getEventDetail(props.match.params.id)).then((results) => {
-      const fullAdress = results.payload.address + ',' + results.payload.location + ',' + results.payload.province
+      const fullAdress =
+        results.payload.address +
+        "," +
+        results.payload.location +
+        "," +
+        results.payload.province;
       // console.log(results.payload.address);
       buscar(fullAdress);
     });
@@ -96,7 +107,11 @@ export default function EventDetail(props) {
 
       <div className={s.contMapa}>
         {!loading ? (
-          <MapContainer className={s.mapa} center={[lat, long]} zoom={23}>
+          <MapContainer
+            className={s.mapa}
+            center={[lat, long]}
+            zoom={lat === "-38.416097" ? 1 : 23}
+          >
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
