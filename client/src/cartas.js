@@ -1,43 +1,124 @@
-import amorImg from './images/MusicaEvento.png';
-import drexler from './images/Musica.png';
-import viejo from './images/viejo.jpg';
-import electro from './images/dj.jpg'
-import rock from './images/rock.jpg'
+export const cartas= [{
+  "name": "Ariana Grande Tour",
+  "artist":"Ariana Grande",
+  "place":"Gran Rex",
+  "address":"Corrientes 857",
+  "location":"Capital Federal",
+  "province":"Buenos Aires",
+  "price": 800,
+  "availableTickets": 140,
+  "image":"https://cdn.boletius.com/images/1497890220613-test-pos-arian-1920x720-min.jpg",
+  "time":"20:00",
+  "isImportant": false,
+  "category": 1,
+  "subCategories": ["Pop"],
+  "date": "31/12/2021"
 
-export const Amor = {
-  name: "Festival del Amor",
-  subCategories: "Rock",
-  date: "31/12/2021",
-  id: 1,
-  image:amorImg,
-};
-export const Drexler = {
-  name: "Daniel Drexler",
-  subCategories: "Rock",
-  date: "1/03/2022",
-  id: 2,
-  image: drexler,
-};
-export const Viejo = {
-  name: "El Gusto es Nuestro",
-  subCategories: "Comedia",
-  date: "16/10/2022",
-  id: 3,
-  image:viejo,
-};
-export const Electro = {
-  name: "Electro Music Festival",
-  subCategories: "Electronica",
-  date: "09/07/2022",
-  id: 4,
-  image: electro,
-};
-export const Chole = {
-  name: "Chole Rock",
-  subCategories: "Rock",
-  date: "03/08/2022",
-  id: 5,
-  image: rock,
-};
+}, {
+  "name": "Symphony and Destruction",
+  "artist":"Megadeath",
+  "place":"Teatro Vorterix",
+  "address":"Federico Lacroze 3455",
+  "location":"Capital Federal",
+  "province":"Bueano Aires",
+  "price": 1000,
+  "availableTickets": 1440,
+  "image":"https://megadeth.com/wp-content/uploads/2019/05/BuenosAires2019.jpg",
+  "time":"22:00",
+  "isImportant": true,
+  "category": 1,
+  "subCategories": ["Rock"],
+  "date": "1/03/2022"
 
-
+}, {
+  "name": "Meteora",
+  "artist":"Linkin Park",
+  "place":"Teatro Mercedes Sosa",
+  "address":"San Martin 479",
+  "location":"San Miguel De Tucuman",
+  "province":"Tucuman",
+  "price": 900,
+  "availableTickets": 1100,
+  "image":"http://www.georgeamphitheatre.com/wp-content/uploads/2014/09/linkin-banner.png",
+  "time":"18:00",
+  "isImportant": true,
+  "category": 1,
+  "subCategories": ["Rock", "Pop"],
+  "date": "16/10/2022"
+}, {
+  "name": "Con Eso SI Se Jode",
+  "artist":"Matias Bottero",
+  "place":"Teatro Real",
+  "address":"San JerÃ³nimo 66",
+  "location":"Cordoba",
+  "province":"Cordoba",
+  "price": 800,
+  "availableTickets": 140,
+  "image":"https://www.mgdifusion.com.ar/wp-content/uploads/2021/05/Con-eso-si-se-jode.jpg",
+  "time":"19:00",
+  "isImportant": false,
+  "category": 2,
+  "subCategories": ["Comedia","'Unipersonal'","'Stand Up'","'Absurdo'"],
+  "date": "09/07/2022"
+}, {
+  "name": "Hamlet",
+  "artist":"Shakespeare",
+  "place":"Teatro La Kanoa De Papel",
+  "address":"Dr. Juan Olsacher 2680",
+  "location":"La Rioja",
+  "province":"La Rioja",
+  "price": 800,
+  "availableTickets": 140,
+  "image":"https://www.glenville.edu/sites/default/files/RM%20Hamlet%20Page%20Banner.jpg",
+  "time":"14:00",
+  "isImportant": false,
+  "category": 2,
+  "subCategories": ["Drama"],
+  "date": "03/08/2022"
+},
+{
+  "name": "The Pepo Show",
+  "artist":"El Pepo",
+  "place":"Sala 88 Coperativa De Teatro",
+  "address":"French 845",
+  "location":"Resistencia",
+  "province":"Chaco",
+  "price": 600,
+  "availableTickets": 400,
+  "image":"https://scontent.ftuc1-2.fna.fbcdn.net/v/t1.6435-9/37373467_1077054085782815_8150729415244906496_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=730e14&_nc_ohc=uV1cGtYKkuYAX_hzuEM&_nc_ht=scontent.ftuc1-2.fna&oh=551d1c4653190e1c69e31ab1f7e3c2e0&oe=618152D9",
+  "time":"16:00",
+  "isImportant": false,
+  "category": 1,
+  "subCategories": ["Cumbia"],
+  "date": "15/08/2022"
+},{
+  "name": "L-Gante KLoKE Show",
+  "artist":"L-Gante",
+  "place":"El Arrimadero",
+  "address":"Misiones 234",
+  "location":"Neuquen",
+  "province":"Neuquen",
+  "price": 900,
+  "availableTickets": 700,
+  "image":"https://scontent.ftuc1-2.fna.fbcdn.net/v/t1.6435-9/210956194_2490923391051828_3258569032312035991_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=U1f3tEwJRqMAX-SPVC0&_nc_ht=scontent.ftuc1-2.fna&oh=89814411cd3cf2650461125dbe7cbe29&oe=617F8E4C",
+  "time":"23:00",
+  "isImportant": false,
+  "category": 1,
+  "subCategories": ["Cumbia", "Reggaeton"],
+  "date": "17/11/2021"
+},{
+  "name": "The Skrillex Tour",
+  "artist":"Skrillex",
+  "place":"Teatro El Pasillo",
+  "address":"José de la Iglesia 1190",
+  "location":"San Salvador de Jujuy",
+  "province":"Jujuy",
+  "price": 1200,
+  "availableTickets": 500,
+  "image":"https://imgproxy.ra.co/_/quality:100/plain/https://static.ra.co/images/events/flyer/2016/3/us-0302-818324-front.jpg?dateUpdated=1458120621230",
+  "time":"00:00",
+  "isImportant": false,
+  "category": 1,
+  "subCategories": ["Cumbia", "Trap"],
+  "date": "25/12/2021"
+}]

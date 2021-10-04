@@ -28,6 +28,8 @@ async function dataParseada() {
         artist: result.artist,
         place: result.place,
         address: result.address,
+        location:result.location,
+        province:result.province,
         image: result.image,
         price: result.price,
         availableTickets: result.availableTickets,
@@ -89,18 +91,17 @@ async function filtroLocalidad(req, res, next) {
 
   try {
     const eventDb = await dataParseada();
-    console.log("EVENTDB EN FILTROLOCALIDAD", eventDb);
     const filtrados = [];
 
     eventDb?.map((e) => {
-      console.log(e);
-      e.location.toLowerCase() === localidad.toLowerCase()
+     console.log(' LOCATION, PROVINCE',e.location, e.province)
+      e.location.toLowerCase().includes(localidad.toLowerCase())
         ? filtrados.push(e)
-        : e.province.toLowerCase() === provincia.toLowerCase()
+        : e.province.toLowerCase().includes(provincia.toLowerCase())
         ? filtrados.push(e)
         : null;
     });
-    console.log(filtrados);
+    console.log('filtrados',filtrados);
 
     filtrados.length > 0
       ? res.send(filtrados)
