@@ -22,7 +22,8 @@ async function finder() {
         },
       },
     ],
-  });
+  }
+  );
   if (dataBase.length > 0) {
     const eventDb = dataBase.map((result) => {
       return {
@@ -40,7 +41,7 @@ async function finder() {
         availableTickets: result.availableTickets,
         date: result.date,
         time: result.time,
-        isImportant:result.isImportant
+        isImportant: result.isImportant
       };
     });
     return eventDb
@@ -53,36 +54,39 @@ async function getAllEvents(req, res) {
   //   const eventsLoaded = await finder()
   //   eventsLoaded? null : await Events.bulkCreate(array)
   //    }catch(err){console.log('error en bulkCreate', err)}
-  if (name) {
-    const searcheado = name.toLowerCase();
-    try {
+  try {
+    if (name) {
+      const searcheado = name.toLowerCase();
+      try {
 
-      const eventDb = await finder()
-      if (eventDb.length > 0) {
+        const eventDb = await finder()
+        if (eventDb.length > 0) {
 
-        const filtered = eventDb.filter(
-          (event) =>
-            event.artist.toLowerCase().includes(searcheado) ||
-            event.name.toLowerCase().includes(searcheado)
-        );
-        return res.json(filtered);
-      } else return res.send([]);
-    } catch (error) {
-      return res
-        .status(400)
-        .send({ error: "Ocurrió un error durante la busqueda" });
+          const filtered = eventDb.filter(
+            (event) =>
+              event.artist.toLowerCase().includes(searcheado) ||
+              event.name.toLowerCase().includes(searcheado)
+          );
+          return res.json(filtered);
+        } else return res.send([]);
+      } catch (error) {
+        return res
+          .status(400)
+          .send({ error: "Ocurrió un error durante la busqueda a" });
+      }
+    } else {
+      try {
+        const dataBase = await finder();
+        if (dataBase.length > 0) return res.send(dataBase)
+        else return res.send([]);
+      } catch (error) {
+        return res
+          .status(400)
+          .send({ error: "Ocurrió un error durante la busqueda b" });
+      }
     }
-  } else {
-    try {
-
-      const dataBase = await finder()
-      if (dataBase.length > 0) return res.send(dataBase)
-      else return res.send([]);
-    } catch (error) {
-      return res
-        .status(400)
-        .send({ error: "Ocurrió un error durante la busqueda" });
-    }
+  } catch (error) {
+    console.log(error)
   }
 }
 
@@ -157,7 +161,7 @@ async function getEventById(req, res) {
 // }
 
 // console.log(urlGetter())
-  
+
 
 
 

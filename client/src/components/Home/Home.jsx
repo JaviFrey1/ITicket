@@ -23,6 +23,8 @@ export default function Home() {
   const lastEvent = currentPage * eventsPerPage;
   const firstEvent = lastEvent - eventsPerPage;
   const currentEvents = allEvents.slice(firstEvent, lastEvent);
+  const unImportantEvents = Array.isArray(currentEvents)? currentEvents.filter((el) => el.isImportant === false): console.log('Aun no hay eventos en el carrousel', currentEvents);
+  
   // const currentUnimportant = currentEvents?.filter(
   //   (e) => e.isImportant === false
   // );
@@ -44,10 +46,10 @@ export default function Home() {
       <div className={`${s.searchBar}`}>
         <SearchBar />
       </div>
-      <div className={s.contCarousel}>{/*<CarouselComp />*/}</div>
+      <div className={s.contCarousel}><CarouselComp /></div>
 
       <div className={s.card}>
-        <Events events={currentEvents} />
+        <Events events={unImportantEvents} />
 
         {/* <div className={s.btnPaginate}>
           <button disabled={page - 1 === 0} onClick={() => changePage(page -1)}>

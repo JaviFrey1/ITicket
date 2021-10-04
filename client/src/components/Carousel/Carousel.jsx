@@ -17,7 +17,7 @@ export default function CarouselComp() {
   ];
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventsLoaded);
-  const importantEvents = events?.filter((el) => el.isImportant === true);
+  const importantEvents = Array.isArray(events)? events.filter((el) => el.isImportant === true): console.log('Aun no hay eventos en el carrousel', events);
 
   useEffect(() => {
     dispatch(getEvents(""));
@@ -38,13 +38,13 @@ export default function CarouselComp() {
               <div key={el.id} className={s.itemCarousel}>
                 <div className={s.todo}>
                   <div className={s.nombres}>
-                    <span>{el.name}</span>
                     <div>
+                    <span>{el.name}</span> - 
                       {el.subCategories?.map((subcat, i) => (
-                        <span key={i}>hola</span>
+                        <span key={i}>{el.subCategories} - </span>
                       ))}
-                    </div>
                     <span>{el.date}</span>
+                    </div>
                   </div>
                   <img alt="" src={el.image} />
                 </div>
