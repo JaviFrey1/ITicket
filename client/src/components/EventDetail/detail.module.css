@@ -7,9 +7,7 @@
     /* flex-direction: column; */
 }
 
-.container> :nth-child(2) {
-    /* align-items: center; */
-}
+
 
 .data {
     margin-top: 1em;
