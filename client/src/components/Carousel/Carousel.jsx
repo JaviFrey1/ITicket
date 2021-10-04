@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import s from "./Carousel.module.css";
 import Carousel from "react-elastic-carousel";
-import { useDispatch, useSelector } from 'react-redux';
-import getEvents from '../../actions/getEvents';
+import { useDispatch, useSelector } from "react-redux";
+import getEvents from "../../actions/getEvents";
 
 export default function CarouselComp() {
   // console.log(document.querySelectorAll("Carousel , button"));
@@ -15,36 +16,43 @@ export default function CarouselComp() {
     // { width: 1750, itemsToShow: 6 },
   ];
   const dispatch = useDispatch();
-  const events = useSelector(state => state.eventsLoaded)
-  const importantEvents = events?.filter(el => el.isImportant === true);
+  const events = useSelector((state) => state.eventsLoaded);
+  const importantEvents = events?.filter((el) => el.isImportant === true);
 
   useEffect(() => {
-    dispatch(getEvents(''))
-  }, [dispatch])
+    dispatch(getEvents(""));
+  }, [dispatch]);
 
   return (
     <div className={s.divRey}>
-      {console.log(importantEvents)}
-      {importantEvents.length !== 0 ?
-        (<div>
+      {importantEvents.length !== 0 ? (
+        <div>
           <div className={s.destacados}>Destacados</div>
           <Carousel
             enableAutoPlay
             autoPlaySpeed={3500}
             className={s.carousel}
-            breakPoints={breakPoints}>
-
-            {importantEvents?.map(el => (
-              <div key={el.id} className={s.itemCarousel} >
+            breakPoints={breakPoints}
+          >
+            {importantEvents?.map((el) => (
+              <div key={el.id} className={s.itemCarousel}>
                 <div className={s.todo}>
-                  <div className={s.nombres}>{el.name} - {el.subCategories?.map(subcat=> <span key={subcat}>{subcat}</span>)} - {el.date}</div>
+                  <div className={s.nombres}>
+                    {el.name} -{" "}
+                    {el.subCategories?.map((subcat) => (
+                      <span key={subcat}>{subcat}</span>
+                    ))}{" "}
+                    - {el.date}
+                  </div>
                   <img alt="" src={el.image} />
                 </div>
               </div>
             ))}
           </Carousel>
-        </div>)
-        : <div>Aun no hay ningun evento tan importante.</div>}
+        </div>
+      ) : (
+        <div>Aun no hay ningun evento tan importante.</div>
+      )}
     </div>
   );
 }
