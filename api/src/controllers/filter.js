@@ -94,9 +94,9 @@ async function filtroLocalidad(req, res, next) {
 
     eventDb?.map((e) => {
       console.log(e);
-      e.location === localidad
+      e.location.toLowerCase() === localidad.toLowerCase()
         ? filtrados.push(e)
-        : e.province === provincia
+        : e.province.toLowerCase() === provincia.toLowerCase()
         ? filtrados.push(e)
         : null;
     });
