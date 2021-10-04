@@ -3,7 +3,7 @@ import style from "./menu.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import getCategories from "../../actions/getCategories";
 import getSubCategories from "../../actions/getSubCategories";
-import filterCat from "../../actions/filterCat";
+// import filterCat from "../../actions/filterCat";
 import filterSubCat from "../../actions/filterSubCat";
 
 export default function Menu() {
@@ -36,19 +36,19 @@ export default function Menu() {
       <div className={style.contMenu}>
         <div className={style.categoriesOptions}>
           {categories &&
-            categories.map((cat) => (
-              <h3 key={cat.id} onClick={() => handleClickCat(cat.id)}>
+            categories.map((cat, i) => (
+              <h3 key={i} onClick={() => handleClickCat(cat.id)}>
                 {cat.name}
               </h3>
             ))}
         </div>
         <div className={style.contSubcategories}>
-          {subCatOpt.map((subCat) => {
+          {subCatOpt.map((subCat, i) => {
             return (
-              <div className= {style.contTitle}>
-              <h4 key={subCat.genre} onClick={() => handleClickSubCat(subCat.genre)}>
-                {subCat.genre}
-              </h4>
+              <div key={i} className={style.contTitle}>
+                <h4 onClick={() => handleClickSubCat(subCat.genre)}>
+                  {subCat.genre}
+                </h4>
               </div>
             );
           })}
