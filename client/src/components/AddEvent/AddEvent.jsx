@@ -8,7 +8,6 @@ import Axios from "axios";
 
 import s from "./add.module.css";
 
-
 export function validate(state) {
   let errors = {};
   if (!state.name) {
@@ -33,6 +32,7 @@ export function validate(state) {
     errors.state = "Campo obligatorio";
   } else if (!state.isImportant || typeof isImportant !== "boolean") {
     errors.state = "Campo obligatorio, completar con true o false.";
+
   }
   return errors;
 }
@@ -60,7 +60,7 @@ export default function AddEvent() {
     image: "",
     category: "", //LLEGA UN INTEGER (ID DE CATEGORY)
     subCategories: [],
-    isImportant: false, //LLEGA ARRAY DE STRINGS(GENRE DE SUBCAT)
+    isImportant: ''
   });
 
   const cargarImg = function (files) {
@@ -222,7 +222,7 @@ export default function AddEvent() {
             <label>Precio:</label>
             <input
               autoComplete="off"
-              min="1.00"
+              min='1.00'
               step="0.50"
               type="number"
               name="price"
@@ -288,7 +288,7 @@ export default function AddEvent() {
               type="text"
               name="isImportant"
               value={state.isImportant}
-              placeholder="Ej: True"
+              placeholder='Valores permitidos:  "true" o "false"'
               onChange={(e) => handleInputChange(e)}
             />
           </div>

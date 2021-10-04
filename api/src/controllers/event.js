@@ -16,7 +16,8 @@ async function AddEvent(req, res, next) {
     !data.price ||
     !data.availableTickets ||
     !data.date ||
-    !data.time
+    !data.time ||
+    !data.isImportant
   ) {
     return res.send("Por favor completa todos los datos");
   }
@@ -34,6 +35,7 @@ async function AddEvent(req, res, next) {
       availableTickets: data.availableTickets,
       date: data.date,
       time: data.time,
+      isImportant: data.isImportant
     });
     const cat = await Categories.findOne({
       where: { id: data.category },

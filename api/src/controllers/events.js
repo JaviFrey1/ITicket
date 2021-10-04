@@ -40,6 +40,7 @@ async function finder() {
         availableTickets: result.availableTickets,
         date: result.date,
         time: result.time,
+        isImportant:result.isImportant
       };
     });
     return eventDb
@@ -55,8 +56,10 @@ async function getAllEvents(req, res) {
   if (name) {
     const searcheado = name.toLowerCase();
     try {
+
       const eventDb = await finder()
       if (eventDb.length > 0) {
+
         const filtered = eventDb.filter(
           (event) =>
             event.artist.toLowerCase().includes(searcheado) ||
@@ -124,6 +127,7 @@ async function getEventById(req, res) {
         availableTickets: dataBase.availableTickets,
         date: dataBase.date,
         time: dataBase.time,
+        isImportant: dataBase.isImportant
       };
       res.json(finalEvent);
     } else return res.json("No encontramos ese evento");
