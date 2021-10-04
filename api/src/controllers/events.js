@@ -1,67 +1,72 @@
-const { Events, Categories, SubCategories } = require("../db");
-const { Op } = require("sequelize");
+// const fs = require('fs');
+// const path = require('path');
 
+// var FileReader = require('filereader')
+const { Events, Categories, SubCategories } = require("../db");
+
+
+async function finder() {
+  const dataBase = await Events.findAll({
+    include: [
+      {
+        model: Categories,
+        through: {
+          attributes: [],
+        },
+      },
+
+      {
+        model: SubCategories,
+        through: {
+          attributes: [],
+        },
+      },
+    ],
+  });
+  if (dataBase.length > 0) {
+    const eventDb = dataBase.map((result) => {
+      return {
+        name: result.name,
+        id: result.id,
+        category: result.categories.map((cat) => cat.name),
+        subCategories: result.subCategories.map((subCat) => subCat.genre),
+        artist: result.artist,
+        place: result.place,
+        address: result.address,
+        location: result.location,
+        province: result.province,
+        image: result.image,
+        price: result.price,
+        availableTickets: result.availableTickets,
+        date: result.date,
+        time: result.time,
+        isImportant:result.isImportant
+      };
+    });
+    return eventDb
+  }
+}
 
 async function getAllEvents(req, res) {
   let name = req.query.name;
-
-  // let page = req.query.page; //Nuevo
-  // let allEvents = []; //Nuevo          
-  // const eventsPerPage = 4;//Nuevo
-  // page = page? page : 1; //Nuevo
-
-
-
+  // try{
+  //   const eventsLoaded = await finder()
+  //   eventsLoaded? null : await Events.bulkCreate(array)
+  //    }catch(err){console.log('error en bulkCreate', err)}
   if (name) {
     const searcheado = name.toLowerCase();
     try {
-      const dataBase = await Events.findAll({
-        include: [
-          {
-            model: Categories,
-            through: {
-              attributes: [],
-            },
-          },
 
-          {
-            model: SubCategories,
-            through: {
-              attributes: [],
-            },
-          },
-        ],
-      });
-      if (dataBase.length > 0) {
-        const eventDb = dataBase.map((result) => {
-          return {
-            name: result.name,
-            id: result.id,
-            category: result.categories.map((cat) => cat.name),
-            subCategories: result.subCategories.map((subCat) => subCat.genre),
-            artist: result.artist,
-            place: result.place,
-            address: result.address,
-            location: result.location,
-            province: result.province,
-            image: result.image,
-            price: result.price,
-            availableTickets: result.availableTickets,
-            date: result.date,
-            time: result.time,
-            isImportant: result.isImportant
-          };
-        });
-      
+      const eventDb = await finder()
+      if (eventDb.length > 0) {
+
         const filtered = eventDb.filter(
           (event) =>
             event.artist.toLowerCase().includes(searcheado) ||
             event.name.toLowerCase().includes(searcheado)
         );
-        // let result = allEvents.slice((eventsPerPage * (page - 1)), (eventsPerPage * (page - 1)) + eventsPerPage);// Nuevo
-
         return res.json(filtered);
-      } else return res.send("Evento Inexistente");
+      } else return res.send([]);
     } catch (error) {
       return res
         .status(400)
@@ -69,52 +74,10 @@ async function getAllEvents(req, res) {
     }
   } else {
     try {
-      // const {page, size} = req.query; //Nuevo (forma Mati --> QUERY)
 
-      const dataBase = await Events.findAll({
-        // limit:size, //Nuevo (Forma Mati --> QUERY)
-        // offset: page * size, //Nuevo (Forma Mati --> QUERY)
-
-        include: [
-          {
-            model: Categories,
-            through: {
-              attributes: [],
-            },
-          },
-
-          {
-            model: SubCategories,
-            through: {
-              attributes: [],
-            },
-          },
-        ],
-      });
-      if (dataBase.length > 0) {
-        const eventDb = dataBase.map((result) => {
-          return {
-            name: result.name,
-            id: result.id,
-            category: result.categories.map((cat) => cat.name),
-            subCategories: result.subCategories.map((subCat) => subCat.genre),
-            artist: result.artist,
-            place: result.place,
-            address: result.address,
-            location: result.location,
-            province: result.province,
-            image: result.image,
-            price: result.price,
-            availableTickets: result.availableTickets,
-            date: result.date,
-            time: result.time,
-            isImportant: result.isImportant
-          };
-        });
-        // let result = eventDb.slice((eventsPerPage * (page - 1)), (eventsPerPage * (page - 1)) + eventsPerPage);// Nuevo
-
-        res.json(eventDb); // lo cambie por eventDB
-      } else return res.send([]);
+      const dataBase = await finder()
+      if (dataBase.length > 0) return res.send(dataBase)
+      else return res.send([]);
     } catch (error) {
       return res
         .status(400)
@@ -172,6 +135,57 @@ async function getEventById(req, res) {
     return res.status(400).send({ error: "Id no existe" });
   }
 }
+
+var array = [
+  {
+    name: "Festival del Amor",
+    subCategories: "Rock",
+    date: "31/12/2021",
+
+  }, {
+    name: "Daniel Drexler",
+    subCategories: "Rock",
+    date: "1/03/2022",
+
+  }, {
+    name: "El Gusto es Nuestro",
+    subCategories: "Comedia",
+    date: "16/10/2022",
+  }, {
+    name: "Electro Music Festival",
+    subCategories: "Electronica",
+    date: "09/07/2022",
+  }, {
+    name: "Chole Rock",
+    subCategories: "Rock",
+    date: "03/08/2022",
+  }
+]
+
+
+// function urlGetter(){
+//   const reader = new FileReader();
+//   const urls = fs.readdirSync(path.join(__dirname, '../images'))
+//     .map(async (file) => {
+//       reader.readAsDataURL(file);
+//       const formData = new FormData();
+//       formData.append("file", file);
+//       formData.append("upload_preset", "di4u9mje");
+//       const response = await Axios.post(
+//         "https://api.cloudinary.com/v1_1/tukiteck/image/upload",
+//         formData
+//       )
+//       return response.data.secure_url })
+
+//   return urls
+
+// }
+
+// console.log(urlGetter())
+  
+
+
+
 
 
 
