@@ -28,8 +28,8 @@ async function dataParseada() {
         artist: result.artist,
         place: result.place,
         address: result.address,
-        location:result.location,
-        province:result.province,
+        location: result.location,
+        province: result.province,
         image: result.image,
         price: result.price,
         availableTickets: result.availableTickets,
@@ -94,18 +94,31 @@ async function filtroLocalidad(req, res, next) {
     const filtrados = [];
 
     eventDb?.map((e) => {
-     console.log(' LOCATION, PROVINCE',e.location, e.province)
-      e.location.toLowerCase().includes(localidad.toLowerCase())
-        ? filtrados.push(e)
-        : e.province.toLowerCase().includes(provincia.toLowerCase())
-        ? filtrados.push(e)
-        : null;
+      console.log(" LOCATION, PROVINCE", e.location, e.province);
+      if (localidad && provincia) {
+        e.location.toLowerCase().includes(localidad.toLowerCase())
+          ? filtrados.push(e)
+          : e.province.toLowerCase().includes(provincia.toLowerCase())
+          ? filtrados.push(e)
+          : null;
+      }
+      else if(localidad && !provincia){
+        e.location.toLowerCase().includes(localidad.toLowerCase())
+        ? filtrados.push(e): null
+      } 
+      else if(!localidad && provincia){
+        e.province.toLowerCase().includes(provincia.toLowerCase())
+          ? filtrados.push(e)
+          : null;
+      } else{
+        return res.send(eventDb);
+      }
     });
-    console.log('filtrados',filtrados);
+    console.log("filtrados", filtrados);
 
     filtrados.length > 0
       ? res.send(filtrados)
-      : res.send("No hay eventos en esa localidad o provincia");
+      : res.send([]);
   } catch (error) {
     next(error);
   }
@@ -136,7 +149,7 @@ async function filtroFecha(req, res, next) {
 
       if (filtrados.length > 0) return res.send(filtrados);
       else {
-        res.send("No hay eventos en el mes");
+        res.send([]);
       }
     }
   } catch (error) {
