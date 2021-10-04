@@ -95,7 +95,7 @@
 }
 
 .destacados {
-
+    padding-bottom: .5em;
     display: inline-block;
     position: relative;
     color: rgb(97, 95, 95);
@@ -112,17 +112,37 @@
     position: absolute;
     width: 100%;
     transform: scaleX(0);
-    height: 3px;
+    height: 5px;
     bottom: -5px;
     left: 0;
     background-color: rgb(255, 204, 0);
     transform-origin: bottom right;
-    transition: transform 1s ease-in;
+    transition: transform 1.5s ease-in;
+    
+  }
+  .destacados:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 5px;
+    bottom: -5px;
+    left: 0;
+    background-color: rgb(255, 204, 0);
+    transform-origin: bottom right;
+    transition: transform 1.5s ease-in;
     
   }
   .destacados:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
-    cursor:pointer
+    cursor:pointer;
+    
+  }
+  .destacados:hover:before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    cursor:pointer;
+    
   }
   

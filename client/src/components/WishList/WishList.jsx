@@ -6,18 +6,15 @@ import s from "./wishlist.module.css";
 export function WishList() {
   const wishEvents = useSelector((state) => state.wishEvents);
   return (
-    <div className={`${s.wishEvents}`}>
-      <div className={`${s.container}`}>
-        <h2>Estos eventos te han interesado!</h2>
+    <div className={s.page}>
+      <div className={s.container}>
+        <h2 className={s.titulo}> Estos eventos te han interesado!</h2>
         {wishEvents ? (
-          <div className={`${s.cards}`}>
+          <div className={s.cards}>
             {wishEvents.map((we) => {
               return (
-                <div key={we.id}>
-                  <Event
-                    event={we}
-                    
-                  />
+                <div key={we.id} className={s.event}>
+                  <Event event={we}/>
                 </div>
               );
             })}
