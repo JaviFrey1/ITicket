@@ -22,7 +22,7 @@ async function AddEvent(req, res, next) {
     return res.send("Por favor completa todos los datos");
   }
   try {
-    console.log(data);
+    
     const createdEvent = await Events.create({
       name: data.name,
       artist: data.artist,
@@ -51,7 +51,7 @@ async function AddEvent(req, res, next) {
 
       await createdEvent.addSubCategories(subCat);
     });
-    console.log(createdEvent)
+    
     return res.send("Evento Creado Satisfactoriamente");
   } catch (error) {
     console.log(error);
