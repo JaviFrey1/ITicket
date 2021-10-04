@@ -4,23 +4,22 @@ const { v4: uuidv4 } = require("uuid");
 async function AddEvent(req, res, next) {
   const id = uuidv4();
   let data = { ...req.body, id };
-  if (
-    !data.category ||
-    data.subCategories.length === 0 ||
-    !data.name ||
-    !data.artist ||
-    !data.place ||
-    !data.address ||
-    !data.location ||
-    !data.province ||
-    !data.price ||
-    !data.availableTickets ||
-    !data.date ||
-    !data.time ||
-    !data.isImportant
-  ) {
-    return res.send("Por favor completa todos los datos");
-  }
+  // if (
+  //   !data.category ||
+  //   data.subCategories.length === 0 ||
+  //   !data.name ||
+  //   !data.artist ||
+  //   !data.place ||
+  //   !data.address ||
+  //   !data.location ||
+  //   !data.province ||
+  //   !data.price ||
+  //   !data.availableTickets ||
+  //   !data.date ||
+  //   !data.time 
+  // ) {
+  //   return res.send("Por favor completa todos los datos");
+  // }
   try {
     
     const createdEvent = await Events.create({
