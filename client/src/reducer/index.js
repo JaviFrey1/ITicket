@@ -6,12 +6,13 @@ import {
   GET_CATEGORIES,
   GET_SUBCATEGORIES,
   ADD_EVENT,
+  BULK_EVENTS,
   REMOVE_EVENT,
-  FILTER_CAT, //Javi
+  FILTER_CAT,//Javi
   // SET_PAGE,//jaVI
   FILTER_DATE,
   FILTER_SUBCAT,
-  FILTER_ADDRESS,
+  FILTER_ADDRESS
 } from "../actions";
 
 const initialState = {
@@ -32,10 +33,16 @@ export default function rootReducer(state = initialState, action) {
         eventsLoaded: action.payload,
         allEvents: action.payload,
       };
+    case BULK_EVENTS:
+      return{
+        ...state,
+      }
     case REMOVE_EVENT:
       return {
         ...state,
-        eventsLoaded: state.eventsLoaded.filter((e) => e.id !== action.payload),
+        eventsLoaded: state.eventsLoaded.filter(
+          (e) => e.id !== action.payload
+        ),
       };
     case GET_CATEGORIES:
       return {
@@ -65,29 +72,30 @@ export default function rootReducer(state = initialState, action) {
     case REMOVE_EVENT_WISHLIST:
       return {
         ...state,
-        wishEvents: state.wishEvents.filter((we) => we.id !== action.payload),
+        wishEvents: state.wishEvents.filter(
+          (we) => we.id !== action.payload
+        ),
       };
     case FILTER_CAT: //Javi
       return {
         ...state,
-        eventsLoaded: action.payload,
-      };
-    case FILTER_SUBCAT:
+        eventsLoaded: action.payload
+      }
+      case FILTER_SUBCAT: 
       return {
         ...state,
-        eventsLoaded: action.payload,
-      };
+        eventsLoaded: action.payload
+      }
     case FILTER_DATE:
-      console.warn("REDUCER=> ", action.payload);
-      return {
+      return{
         ...state,
-        eventsLoaded: action.payload,
-      };
+        eventsLoaded:action.payload
+      }
     case FILTER_ADDRESS:
-      return {
-        ...state,
-        eventsLoaded: action.payload,
-      };
+      return{
+        ...state, 
+        eventsLoaded:action.payload
+      }
     // case SET_PAGE: //Javi
     //   return {
     //     ...state,
