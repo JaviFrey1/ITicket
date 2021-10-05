@@ -36,3 +36,15 @@ align-self: center;
   width: 28px;
   height: 28px;
 }
+.number:hover >* {
+  color: rgb(255, 204, 0);
+}
+
+.ref{
+  text-decoration: none;
+  color: black;
+}
+
+.ref:hover{
+  color: rgb(255, 204, 0);
+}
