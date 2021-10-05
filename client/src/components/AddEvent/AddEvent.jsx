@@ -135,16 +135,18 @@ export default function AddEvent() {
     })
   }
   function handleNewSubMusica(e){
+    const capGenre = e.target.value[0].toUpperCase() +  e.target.value.slice(1).toLowerCase()
     setState({
       ...state,
-      subCategories: [...state.subCategories, {genre:e.target.value, catId:1}],
+      subCategories: [...state.subCategories, {genre:capGenre, catId:1}],
     })
   }
  
   function handleNewSubTeatro(e){
+    const capGenre = e.target.value[0].toUpperCase() +  e.target.value.slice(1).toLowerCase()
     setState({
       ...state,
-      subCategories: [...state.subCategories, {genre:e.target.value, catId:2}],
+      subCategories: [...state.subCategories, {genre:capGenre, catId:2}],
     })
   }
   
