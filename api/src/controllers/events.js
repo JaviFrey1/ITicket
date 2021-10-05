@@ -1,7 +1,4 @@
-// const fs = require('fs');
-// const path = require('path');
 
-// var FileReader = require('filereader')
 const { Events, Categories, SubCategories } = require("../db");
 
 
@@ -44,16 +41,14 @@ async function finder() {
         isImportant: result.isImportant
       };
     });
+    console.log(eventDb)
     return eventDb
-  }
+  }else return []
 }
 
 async function getAllEvents(req, res) {
   let name = req.query.name;
-  // try{
-  //   const eventsLoaded = await finder()
-  //   eventsLoaded? null : await Events.bulkCreate(array)
-  //    }catch(err){console.log('error en bulkCreate', err)}
+ 
   try {
     if (name) {
       const searcheado = name.toLowerCase();
@@ -142,25 +137,6 @@ async function getEventById(req, res) {
 
 
 
-// function urlGetter(){
-//   const reader = new FileReader();
-//   const urls = fs.readdirSync(path.join(__dirname, '../images'))
-//     .map(async (file) => {
-//       reader.readAsDataURL(file);
-//       const formData = new FormData();
-//       formData.append("file", file);
-//       formData.append("upload_preset", "di4u9mje");
-//       const response = await Axios.post(
-//         "https://api.cloudinary.com/v1_1/tukiteck/image/upload",
-//         formData
-//       )
-//       return response.data.secure_url })
-
-//   return urls
-
-// }
-
-// console.log(urlGetter())
 
 
 
@@ -173,4 +149,5 @@ async function getEventById(req, res) {
 module.exports = {
   getAllEvents,
   getEventById,
+  finder
 };

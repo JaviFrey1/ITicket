@@ -9,13 +9,13 @@ export default function Paginate({ eventsPerPage, allEvents, paginate }) {
   return (
     <nav>
       <div className={`${s.paginate}`}>
-        {pageNumbers?.map((number) => {
+        {pageNumbers.length > 0? pageNumbers.map((number) => {
           return (
-            <div key={number} className={`${s.number}`}>
-              <a onClick={() => paginate(number)}>{number}</a>
+            <div key={number} className={`${s.number}`} onClick={() => paginate(number)}>
+              <a href>{number}</a>
             </div>
           );
-        })}
+        }): null}
       </div>
     </nav>
   );

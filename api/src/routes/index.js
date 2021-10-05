@@ -5,6 +5,7 @@ const events = require('./events.js');
 const event = require('./event.js');
 const categories = require('./categories.js');
 const subcategories = require('./subCategories.js');
+const bulkevents = require ('./bulkevents.js')
 const filter = require('./filter.js')
 
 
@@ -16,6 +17,10 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.use('/events', events );
+router.use('/bulkevents', bulkevents );
+
+
+
 router.use('/categories', categories);
 router.use('/subcategories', subcategories);
 router.use('/event',event );
