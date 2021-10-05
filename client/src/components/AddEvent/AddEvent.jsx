@@ -14,7 +14,7 @@ export function validate(state) {
     errors.name = "El nombre es obligatorio";
   } else if (!state.date) {
     errors.date = "La fecha es obligatoria";
-  } else if (!state.time) {
+  } else if (state.time === '00-00') { 
     errors.time = "El horario es obligatorio";
   } else if (!state.artist) {
     errors.artist = "Campo obligatorio";
@@ -63,12 +63,12 @@ export default function AddEvent() {
   });
 
   const cargarImg = function (files) {
-    // console.log(files);
+    
     const reader = new FileReader();
     reader.onload = function () {
       let imgDiv = document.querySelector("#cajaImg");
       imgDiv.src = reader.result;
-      // console.log("11 ", reader.result);
+      
     };
     reader.readAsDataURL(files);
 
@@ -99,6 +99,7 @@ export default function AddEvent() {
     setState({
       ...state,
       [e.target.name]: e.target.value,
+      
     });
     setErrors(validate(state));
   }
@@ -121,7 +122,6 @@ export default function AddEvent() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // alert(state);
     // state.time
     // state.date = state.date.toLocaleDateString();
     // const newFecha = new Date(state.date);
