@@ -13,7 +13,7 @@ export default function Menu() {
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getSubCategories());
-    console.log(subcategories)
+    console.log('SUBCAT PARA EL MENU', subcategories)
 
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

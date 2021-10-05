@@ -4,26 +4,24 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('subCategories', {
-                                                                                  
+
     genre: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate:{
-        notNull:{
+      validate: {
+        notNull: {
           msg: 'Genre is required',
         }
       }
     },
-    
-
-    catId:{ 
+    catId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
 
   },
-   {timestamps: false},
-   {updatedAt: false},
-   {createdAt: false}
+    { timestamps: false },
+    { updatedAt: false },
+    { createdAt: false }
   );
 };
