@@ -38,7 +38,6 @@ async function dataParseada() {
         isImportant: result.isImportant,
       };
     });
-    console.log("EVENT DB EN FINDER", eventDb);
     return eventDb;
   }
 }
@@ -67,7 +66,6 @@ async function filtroSubCategories(req, res, next) {
 
   try {
     const eventDb = await dataParseada();
-    console.log("EVENTDB EN FILTROLOCALIDAD", eventDb);
 
     const filtrados = [];
 

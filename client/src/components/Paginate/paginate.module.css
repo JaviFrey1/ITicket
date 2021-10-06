@@ -30,7 +30,21 @@ align-self: center;
 
 .number:hover {
   cursor: pointer;
-  background-color: transparent;
-  color: #000;
+  background-color: black;
+  color: rgb(255, 204, 0);
   border: solid 2px rgb(255, 204, 0);
+  width: 28px;
+  height: 28px;
+}
+.number:hover >* {
+  color: rgb(255, 204, 0);
+}
+
+.ref{
+  text-decoration: none;
+  color: black;
+}
+
+.ref:hover{
+  color: rgb(255, 204, 0);
 }
