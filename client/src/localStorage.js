@@ -2,7 +2,7 @@ export const loadState = () => {
     try {
         var favorites = [],
             keys = Object.keys(localStorage),
-            i = keys.length;
+             i = keys.length;
         console.log('Soy keys del storage',keys)
         while (i > 0) {
             console.log('esto seria un id',keys[i])
