@@ -154,33 +154,12 @@ export default function AddEvent() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // state.time
-    // state.date = state.date.toLocaleDateString();
-    // const newFecha = new Date(state.date);
-    // console.log(newFecha);
     let newFecha = state.date.split("-");
-    // console.log(newFecha.reverse().join("-"));
     newFecha = newFecha.reverse().join("/");
-    // console.log("fecha: ", newFecha);
     state.date = newFecha;
 
     dispatch(addEvent(state));
     alert("Has agregado un nuevo evento!");
-    setState({
-      name: "",
-      date: "",
-      time: "",
-      artist: "",
-      availableTickets: "",
-      price: "",
-      place: "",
-      address: "",
-      location: "",
-      province: "",
-      image: "",
-      category: "", //LLEGA UN INTEGER (ID DE CATEGORY)
-      subCategories: [], //LLEGA ARRAY DE STRINGS(GENRE DE SUBCAT)
-    });
     history.push("/home");
   }
 
