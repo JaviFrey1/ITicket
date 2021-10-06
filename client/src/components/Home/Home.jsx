@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getEvents from "../../actions/getEvents";
 import Paginate from "../Paginate/Paginate";
-import {cartas} from "../../cartas"
+import { cartas } from "../../cartas"
 import SearchBar from "../SearchBar/SearchBar";
 import s from "./home.module.css";
 import Events from "../Events/Events";
@@ -18,16 +18,13 @@ export default function Home() {
   const allEvents = useSelector((state) => state.eventsLoaded);
   // const { page } = useSelector((state) => state);
   const [currentPage, setCurrentPage] = useState(1);
-  const [eventsPerPage] = useState(6);
+  const [eventsPerPage] = useState(7);
 
   const lastEvent = currentPage * eventsPerPage;
   const firstEvent = lastEvent - eventsPerPage;
   const currentEvents = allEvents.slice(firstEvent, lastEvent);
-  const unImportantEvents = Array.isArray(currentEvents)? currentEvents.filter((el) => el.isImportant === false): console.log('Aun no hay eventos en el carrousel', currentEvents);
-  
-  // const currentUnimportant = currentEvents?.filter(
-  //   (e) => e.isImportant === false
-  // );
+  const unImportantEvents = Array.isArray(currentEvents) ? currentEvents.filter((el) => el.isImportant === false) : console.log('Aun no hay eventos en el carrousel', currentEvents);
+
   function paginate(pageNumber) {
     setCurrentPage(pageNumber);
   }
@@ -35,7 +32,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(getEvents(""));
     dispatch(bulkEvents(cartas))
-    
+
   }, [dispatch]);
 
   // const changePage = (page) => {
@@ -67,13 +64,14 @@ export default function Home() {
         </div> */}
       </div>
       <div>
-        <Paginate
-          eventsPerPage={eventsPerPage}
-          allEvents={allEvents.length}
-          paginate={paginate}
-        />
+        <div>
+          <Paginate
+            eventsPerPage={eventsPerPage}
+            allEvents={allEvents.length}
+            paginate={paginate}
+          />
+        </div>
       </div>
-
       <div className={s.fot}>
         <Footer />
       </div>

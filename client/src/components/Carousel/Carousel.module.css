@@ -1,4 +1,5 @@
 @import url('http://fonts.cdnfonts.com/css/netflix-sans');
+
 .divRey {
     /* background-color: red; */
     display: flex;
@@ -10,12 +11,15 @@
     /* margin: 0 10px; */
     z-index: -10;
 }
-.cont{
+
+.cont {
     display: flex;
 }
-.ev{
+
+.ev {
     flex-direction: row;
 }
+
 .divRey .carousel button {
     color: black;
     /* background-color: rgba(204, 178, 74, 0.801); */
@@ -69,17 +73,19 @@
     }
 }
 
-.nombres{
-    height: 2vw;
+.nombres {
+    height: 3vw;
     width: 100%;
     background-color: #eeedec;
     font-family: 'Netflix Sans';
     color: rgb(97, 95, 95);
     font-weight: bold;
+    z-index: 0;
+    text-shadow: 2px 2px 4px grey;
 }
 
 
-.todo{
+.todo {
     background-color: transparent;
     text-align: center;
     display: flex;
@@ -89,7 +95,7 @@
     align-content: center;
 }
 
-.todo:hover{
+.todo:hover {
     font-weight: bold;
     color: black;
 }
@@ -100,14 +106,15 @@
     position: relative;
     color: rgb(97, 95, 95);
     font-family: 'Netflix Sans', sans-serif;
-    text-align:start;
+    text-align: start;
     margin-left: 2.5em;
     font-size: 2em;
     width: 90vw;
-    cursor:pointer;
-    margin-bottom: 1em;
-  }
-  .destacados:after {
+    cursor: pointer;
+    margin-bottom: 0.5em;
+}
+
+.destacados:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -118,9 +125,10 @@
     background-color: rgb(255, 204, 0);
     transform-origin: bottom right;
     transition: transform 1.5s ease-in;
-    
-  }
-  .destacados:before {
+
+}
+
+.destacados:before {
     content: '';
     position: absolute;
     width: 100%;
@@ -131,18 +139,19 @@
     background-color: rgb(255, 204, 0);
     transform-origin: bottom right;
     transition: transform 1.5s ease-in;
-    
-  }
-  .destacados:hover:after {
+
+}
+
+.destacados:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
-    cursor:pointer;
-    
-  }
-  .destacados:hover:before {
+    cursor: pointer;
+
+}
+
+.destacados:hover:before {
     transform: scaleX(1);
     transform-origin: bottom left;
-    cursor:pointer;
-    
-  }
-  
+    cursor: pointer;
+
+}

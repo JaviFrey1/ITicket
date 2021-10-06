@@ -1,13 +1,16 @@
 import React from "react";
 import styles from "./Event.module.css";
 import { NavLink } from "react-router-dom";
-import { addEventWish, removeEventWish } from "../../actions";
+// import { addEventWish, removeEventWish } from "../../actions";
 import * as BsIcons from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
+import {  saveState, removeState, loadState } from "../../localStorage";
 
 export default function Event({ event }) {
-  const dispatch = useDispatch();
-  const wish = useSelector((state) => state.wishEvents);
+  // const dispatch = useDispatch();
+  // const wish = useSelector((state) => state.wishEvents);
+  const favorites = loadState();
+  
 
   return (
     <div
@@ -23,16 +26,21 @@ export default function Event({ event }) {
           </div>
           <div className={styles.fecha}>{event.date}</div>
           <div className={styles.fecha}>{event.place}</div>
-
+          <div></div>
           <div className={`${styles.icons}`}>
-            {wish.includes(event) ? (
+            {favorites.includes(JSON.stringify(event)) ? (
               <BsIcons.BsBookmarkFill
-                onClick={() => dispatch(removeEventWish(event.id))}
-              ></BsIcons.BsBookmarkFill>
+                onClick={() => {
+                  // dispatch(removeEventWish(event.id))
+                  removeState(event);
+                }
+                } />
             ) : (
               <BsIcons.BsBookmark
-                onClick={() => dispatch(addEventWish(event))}
-              ></BsIcons.BsBookmark>
+                onClick={() => {
+                  // dispatch(addEventWish(event));
+                  saveState(event);
+                }} />
             )}
           </div>
         </div>

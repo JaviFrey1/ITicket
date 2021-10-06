@@ -14,6 +14,9 @@ import {
   FILTER_SUBCAT,
   FILTER_ADDRESS
 } from "../actions";
+import { loadState } from "../localStorage";
+
+const persistedState = loadState(); //Javi
 
 const initialState = {
   eventsLoaded: [],
@@ -22,7 +25,7 @@ const initialState = {
   eventDetail: "",
   subCategories: [],
   categories: [],
-  // page:1
+  persistedState//Javi
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -65,6 +68,7 @@ export default function rootReducer(state = initialState, action) {
       };
 
     case ADD_EVENT_WISHLIST:
+      console.log('dentro de reducer',persistedState)
       return {
         ...state,
         wishEvents: [action.payload, ...state.wishEvents],
@@ -96,11 +100,6 @@ export default function rootReducer(state = initialState, action) {
         ...state, 
         eventsLoaded:action.payload
       }
-    // case SET_PAGE: //Javi
-    //   return {
-    //     ...state,
-    //     page: action.payload
-    //   }
 
     default:
       return state;
