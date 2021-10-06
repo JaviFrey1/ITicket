@@ -15,7 +15,7 @@ async function getCategories(req, res, next) {
         }
 
     } catch (error) {
-        next(error)
+        console.log(error)
     }
 
 }

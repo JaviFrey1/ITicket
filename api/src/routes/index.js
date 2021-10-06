@@ -7,6 +7,7 @@ const categories = require('./categories.js');
 const subcategories = require('./subCategories.js');
 const bulkevents = require ('./bulkevents.js')
 const filter = require('./filter.js')
+const google = require('./google.js')
 
 
 
@@ -20,11 +21,13 @@ router.use('/events', events );
 router.use('/bulkevents', bulkevents );
 
 
-
 router.use('/categories', categories);
 router.use('/subcategories', subcategories);
 router.use('/event',event );
 router.use('/filter', filter)
+
+
+router.use('/', google)
 
 
 
