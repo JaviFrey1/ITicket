@@ -93,6 +93,10 @@ export default function AddEvent() {
     if (cat === "2") {
       setDiv("teatro");
     }
+    if(cat==="3"){
+      setDiv("otro")
+    }
+  
   }
 
   function handleInputChange(e) {
@@ -118,7 +122,35 @@ export default function AddEvent() {
         subCategories: [...state.subCategories, e.target.value],
       });
     }
+    else if (!e.target.checked){
+      setState({
+        ...state,
+        subCategories:state.subCategories.filter(subCat=>subCat !== e.target.value)
+      })
+    }
   }
+  function handleNew(e){
+    setState({
+      ...state,
+      subCategories: [...state.subCategories,{genre:e.target.value, catId:3}],
+    })
+  }
+  function handleNewSubMusica(e){
+    const capGenre = e.target.value[0].toUpperCase() +  e.target.value.slice(1).toLowerCase()
+    setState({
+      ...state,
+      subCategories: [...state.subCategories, {genre:capGenre, catId:1}],
+    })
+  }
+ 
+  function handleNewSubTeatro(e){
+    const capGenre = e.target.value[0].toUpperCase() +  e.target.value.slice(1).toLowerCase()
+    setState({
+      ...state,
+      subCategories: [...state.subCategories, {genre:capGenre, catId:2}],
+    })
+  }
+  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -291,14 +323,17 @@ export default function AddEvent() {
           {errors.province && <h5 className="error">{errors.province}</h5>}
           <div className={`${s.caja}`}>
             <label>Destacado:</label>
-            <input
-              autoComplete="off"
-              type="text"
-              name="isImportant"
-              value={state.isImportant}
-              placeholder='Valores permitidos:  "true" o "false"'
-              onChange={(e) => handleInputChange(e)}
-            />
+            <select
+          name='isImportant'
+          onChange={(e) => {
+            handleInputChange(e);
+          }}
+        >
+          <option>Destacado</option>
+
+          <option value="true">SI</option>
+          <option value="false">NO</option>
+        </select>
           </div>
           {errors.isImportant && (
             <h5 className="error">{errors.isImportant}</h5>
@@ -347,7 +382,7 @@ export default function AddEvent() {
                       <input
                         key={`${subCat.id}`}
                         type="checkbox"
-                        value={`${subCat.genre}`}
+                        value={JSON.stringify(subCat)}
                         name={`${subCat.genre}`}
                         onChange={(e) => handleCheckSub(e)}
                       />
@@ -355,6 +390,16 @@ export default function AddEvent() {
                     </span>
                   );
                 })}
+                 <span >
+                   <label>Otro:</label>
+                      <input
+                        type="text"
+                        name='otro'
+                        placeholder='Ej: Punk'
+                        onBlur={(e) => handleNewSubMusica(e)}
+                      />
+                     
+                    </span>
             </div>
             <div
               id="teatro"
@@ -368,7 +413,7 @@ export default function AddEvent() {
                       <input
                         key={`${subCat.id}`}
                         type="checkbox"
-                        value={`${subCat.genre}`}
+                        value={JSON.stringify(subCat)}
                         name={`${subCat.genre}`}
                         onChange={(e) => handleCheckSub(e)}
                       />
@@ -376,6 +421,23 @@ export default function AddEvent() {
                     </span>
                   );
                 })}
+                 <span >
+                   <label>Otro:</label>
+                      <input
+                        type="text"
+                        
+                        name='otro'
+                        placeholder='Ej: Tragedia'
+                        onBlur={(e) => handleNewSubTeatro(e)}
+                      />
+                     
+                    </span>
+            </div>
+            <div
+              id="otro"
+              className={div === "otro" ? s.mostrarDiv : s.noMostrarDiv}
+            >
+            <input type='text' value={state.subCategories} name='subCategories'  placeholder='Ej: Fotografia' onBlur={(e) => handleNew(e)}/>
             </div>
           </div>
           <div className={`${s.btnCont}`}>

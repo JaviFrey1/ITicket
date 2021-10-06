@@ -15,7 +15,6 @@ export default function Menu() {
     dispatch(getSubCategories());
 
 
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

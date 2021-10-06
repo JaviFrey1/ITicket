@@ -41,7 +41,6 @@ async function finder() {
         isImportant: result.isImportant
       };
     });
-    console.log(eventDb)
     return eventDb
   }else return []
 }
