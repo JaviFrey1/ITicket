@@ -6,6 +6,9 @@ const router = Router();
 
 require("../passport-stup.js");
 
+const succesLoginUrl = 'http://localhost:3000/home';
+
+
 router.use(
   cookieSession({
     name: "tuto-session",
@@ -38,7 +41,7 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/failed" }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect("/good");
+    res.redirect(succesLoginUrl);
   }
 );
 
