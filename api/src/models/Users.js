@@ -40,62 +40,45 @@
 //   );
 // };
 
-const { DataTypes } = require("sequelize");
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  // defino el modelo
-  sequelize.define(
-    "users",
-    {
-      
-      firstName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      reset: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      rol: {
-        type: DataTypes.ENUM('admin', 'user'),
-        defaultValue: 'user',
-      },
-     googleId: {
-        type: DataTypes.STRING
-      },
-      provider: {
-        type: DataTypes.STRING
-      },
-      displayName: {
-        type: DataTypes.STRING
-      },
-      name: {
-        get() {
-          return `${this.familyName} ${this.givenName}`;
-        },
-      },
-      emails: {
-        
-      }
+  
+  sequelize.define('users', {
+    email: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
-    {
-      timestamps: false,
-      createdAt: false,
-      updatedAt: false,
-    }
-  );
+    fullName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+  
+    password: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      
+    },
+    // rol: {
+    //   type: DataTypes.ENUM({
+    //     values: ["admin","user", "guest"]}),
+    //     allowNull: false,
+    // },
+    // reset:{
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: false
+    // },
+    // ban:{
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: false
+    // },
+    googleId: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    picture: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }   
+  });
 };
-
-
