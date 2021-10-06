@@ -1,0 +1,157 @@
+@import url('http://fonts.cdnfonts.com/css/netflix-sans');
+
+.divRey {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    /* width: 100%; */
+    /* height: 600px; */
+    max-height: 800px;
+    padding: 10px;
+    /* margin: 0 10px; */
+    z-index: -10;
+}
+
+.cont {
+    display: flex;
+}
+
+.ev {
+    flex-direction: row;
+}
+
+.divRey .carousel button {
+    color: black;
+    /* background-color: rgba(204, 178, 74, 0.801); */
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    box-shadow: none;
+    font-size: 20px;
+}
+
+.divRey .carousel button:hover {
+    color: black;
+    background-color: rgba(230, 195, 69, 0.774);
+    border: none;
+}
+
+
+.itemCarousel {
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    /* background-color: blue; */
+    display: flex;
+    margin: 0 10px;
+    justify-content: center;
+    z-index: -10;
+}
+
+.carousel .itemCarousel img {
+    width: 100%;
+    height: 400px;
+    /* padding: 20px; */
+    margin: 0 auto;
+    object-fit: cover;
+    margin: 10px;
+    /* background-color: blue; */
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.76);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.76);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.76);
+
+}
+
+@media (max-width:850px) {
+
+    .carousel .itemCarousel img {
+        width: 100vw;
+        height: 250px;
+        margin: 0 auto;
+        object-fit: cover;
+    }
+}
+
+.nombres {
+    height: 3vw;
+    width: 100%;
+    background-color: #eeedec;
+    font-family: 'Netflix Sans';
+    color: rgb(97, 95, 95);
+    font-weight: bold;
+    z-index: 0;
+    text-shadow: 2px 2px 4px grey;
+}
+
+
+.todo {
+    background-color: transparent;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.todo:hover {
+    font-weight: bold;
+    color: black;
+}
+
+.destacados {
+    padding-bottom: .5em;
+    display: inline-block;
+    position: relative;
+    color: rgb(97, 95, 95);
+    font-family: 'Netflix Sans', sans-serif;
+    text-align: start;
+    margin-left: 2.5em;
+    font-size: 2em;
+    width: 90vw;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+}
+
+.destacados:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 5px;
+    bottom: -5px;
+    left: 0;
+    background-color: rgb(255, 204, 0);
+    transform-origin: bottom right;
+    transition: transform 1.5s ease-in;
+
+}
+
+.destacados:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 5px;
+    bottom: -5px;
+    left: 0;
+    background-color: rgb(255, 204, 0);
+    transform-origin: bottom right;
+    transition: transform 1.5s ease-in;
+
+}
+
+.destacados:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    cursor: pointer;
+
+}
+
+.destacados:hover:before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    cursor: pointer;
+
+}

@@ -1,0 +1,128 @@
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: white;
+
+  min-width: 500px;
+  max-width: 500px;
+  height: 16em;
+  border-radius: 5px;
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  z-index: 10;
+}
+
+.contData {
+  display: flex;
+  width: 100%;
+}
+
+.contenedor:hover {
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.726);
+}
+
+.hijo {
+  background: rgb(0, 0, 1);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 30%, transparent);
+  width: 70%;
+  height: 35%;
+  /* opacity: .8; */
+  display: table-column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 5px 0px;
+  /* max-width: min-content; */
+  /* position: absolute; */
+  /* z-index: auto; */
+  border-radius: 0 0 0 5px;
+
+  word-wrap: break-word;
+  /* background-color: aqua; */
+}
+
+.hijo>* {
+  margin-left: 1.5rem;
+  font-size: 1em;
+  color: white;
+  /* opacity: 100%; */
+}
+
+.nombre {
+  /* margin-top: .2em; */
+  font-weight: bold;
+  font-size: 1.5em;
+  /* min-width: 90%; */
+  /* max-width: 95%; */
+  /* max-lines: 1; */
+}
+
+.nombre p {
+  margin: 0;
+  color: white;
+  width: inherit;
+  /* max-lines: 2; */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-shadow: 2px 2px 4px black;
+}
+
+.nombre:hover {
+  color: white;
+}
+
+.cat {
+  min-width: 100%;
+}
+
+.fecha {
+  font-weight: bolder;
+  color: rgb(255, 204, 0);
+}
+
+/* .contBtn .link {
+  background: rgb(22, 22, 223);
+  opacity: .8;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 50%, transparent);
+  height: fit-content;
+  border-radius: 0 0 5px 0;
+  width: 70px;
+  height: max-content;
+}
+
+.boton {
+  background-color: rgb(255, 204, 0);
+  
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 3px 3px 10px black;
+} */
+.contBtn {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 30%, transparent);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  min-width: 30%;
+  border-radius: 0 0 5px 0px;
+}
+
+.contBtn .link {
+  background-color: rgb(255, 204, 0);
+  ;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+  margin: auto 20px;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.link {
+  text-decoration: none;
+}

@@ -1,0 +1,83 @@
+.contRey {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* background-color: pink; */
+  padding: 5px;
+  height: fit-content;
+  width: 100%;
+}
+
+.contMenu {
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+  justify-content: space-between;
+  height: fit-content;
+  margin-top: 20px;
+}
+
+.contMenu .categoriesOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* background-color: rgb(76, 0, 255); */
+  height: fit-content;
+  width: fit-content;
+  /* max-width: 300px; */
+}
+
+.contMenu .categoriesOptions h3 {
+  cursor: pointer;
+  margin: 0 10px;
+  font-weight: 500;
+  padding-right: 10px;
+  font-size: 20px;
+
+}
+
+
+.contMenu .categoriesOptions> :nth-child(2) {
+  border-right: none;
+  margin-left: 8px;
+
+  /* color: red; */
+}
+.contMenu .categoriesOptions> :nth-child(1) {
+  border-right: 1.5px solid rgba(0, 0, 0, 0.377);
+  margin: 0;
+
+
+  /* color: red; */
+}
+
+
+
+
+
+
+.contSubcategories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 70px));
+  gap: 5px;
+  align-items: center;  
+  width: 250px;
+  
+  height: fit-content;
+}
+.contTitle:hover{
+   background-color: rgba(255, 255, 255, 0.306);
+
+}
+
+.contSubcategories h4 {
+  line-height: 0.3px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+  width: fit-content;
+}
+
+.contSubcategies h4:hover {
+  border-bottom: 2px solid #000;
+}

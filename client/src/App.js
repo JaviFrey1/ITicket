@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import React from "react";
+import { Route, BrowserRouter } from "react-router-dom";
+import Event from "./components/Event/Event";
+import WishList from "./components/WishList/WishList";
+import EventDetail from "./components/EventDetail/EventDetail";
+import Nav from "./components/Nav/Nav";
+import Home from "./components/Home/Home";
+import AddEvent from "./components/AddEvent/AddEvent";
+import Frequent from "./components/Frequent/Frequent";
+import Privacy from "./components/Privacy/Privacy";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <React.Fragment>
+        <Route
+          path={[
+            "/home",
+            "/event",
+            "/events/:id",
+            "/wishList",
+            "/addEvent",
+            "/respuestas",
+            "/privacidad",          
+          ]}
+          component={Nav}
+        />
+        <Route path="/home" component={Home} />
+        <Route path="/event" component={Event} />
+        <Route path="/events/:id" component={EventDetail} />
+        <Route path="/wishList" component={WishList} />
+        <Route path="/addEvent" component={AddEvent} />
+        <Route path="/respuestas" component={Frequent} />
+        <Route path="/privacidad" component={Privacy} />
+      </React.Fragment>
+    </BrowserRouter>
   );
 }
 
