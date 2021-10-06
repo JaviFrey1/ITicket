@@ -14,7 +14,7 @@ export function validate(state) {
     errors.name = "El nombre es obligatorio";
   } else if (!state.date) {
     errors.date = "La fecha es obligatoria";
-  } else if (state.time === '00-00') { 
+  } else if (state.time === '00-00') {
     errors.time = "El horario es obligatorio";
   } else if (!state.artist) {
     errors.artist = "Campo obligatorio";
@@ -63,12 +63,12 @@ export default function AddEvent() {
   });
 
   const cargarImg = function (files) {
-    
+
     const reader = new FileReader();
     reader.onload = function () {
       let imgDiv = document.querySelector("#cajaImg");
       imgDiv.src = reader.result;
-      
+
     };
     reader.readAsDataURL(files);
 
@@ -93,17 +93,17 @@ export default function AddEvent() {
     if (cat === "2") {
       setDiv("teatro");
     }
-    if(cat==="3"){
+    if (cat === "3") {
       setDiv("otro")
     }
-  
+
   }
 
   function handleInputChange(e) {
     setState({
       ...state,
       [e.target.name]: e.target.value,
-      
+
     });
     setErrors(validate(state));
   }
@@ -122,35 +122,35 @@ export default function AddEvent() {
         subCategories: [...state.subCategories, e.target.value],
       });
     }
-    else if (!e.target.checked){
+    else if (!e.target.checked) {
       setState({
         ...state,
-        subCategories:state.subCategories.filter(subCat=>subCat !== e.target.value)
+        subCategories: state.subCategories.filter(subCat => subCat !== e.target.value)
       })
     }
   }
-  function handleNew(e){
+  function handleNew(e) {
     setState({
       ...state,
-      subCategories: [...state.subCategories,{genre:e.target.value, catId:3}],
+      subCategories: [...state.subCategories, { genre: e.target.value, catId: 3 }],
     })
   }
-  function handleNewSubMusica(e){
-    const capGenre = e.target.value[0].toUpperCase() +  e.target.value.slice(1).toLowerCase()
+  function handleNewSubMusica(e) {
+    const capGenre = e.target.value[0].toUpperCase() + e.target.value.slice(1).toLowerCase()
     setState({
       ...state,
-      subCategories: [...state.subCategories, {genre:capGenre, catId:1}],
+      subCategories: [...state.subCategories, { genre: capGenre, catId: 1 }],
     })
   }
- 
-  function handleNewSubTeatro(e){
-    const capGenre = e.target.value[0].toUpperCase() +  e.target.value.slice(1).toLowerCase()
+
+  function handleNewSubTeatro(e) {
+    const capGenre = e.target.value[0].toUpperCase() + e.target.value.slice(1).toLowerCase()
     setState({
       ...state,
-      subCategories: [...state.subCategories, {genre:capGenre, catId:2}],
+      subCategories: [...state.subCategories, { genre: capGenre, catId: 2 }],
     })
   }
-  
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -310,30 +310,54 @@ export default function AddEvent() {
           {errors.location && <h5 className="error">{errors.location}</h5>}
           <div className={`${s.caja}`}>
             <label>Provincia:</label>
-            <input
+            {/* <input
               autoComplete="off"
               type="text"
               name="province"
               value={state.province}
               placeholder="Ej: Buenos Aires"
               onChange={(e) => handleInputChange(e)}
-            />
+            /> */}
+            <select
+              name='province'
+              onChange={e => handleInputChange(e)}
+            >
+              <option >Provincias</option>
+              <option value="Buenos Aires">Buenos Aires</option>
+              <option value="CABA">Capital Federal</option>
+              <option value="Catamarca">Catamarca</option>
+              <option value="Chubut">Chubut</option>
+              <option value="Cordoba">Córdoba</option>
+              <option value="Corrientes">Corrientes</option>
+              <option value="Entre Rios">Entre Ríos</option>
+              <option value="Formosa">Formosa</option>
+              <option value="Jujuy">Jujuy</option>
+              <option value="La Pampa">La Pampa</option>
+              <option value="La Rioja">La Rioja</option>
+              <option value="Mendoza">Mendoza</option>
+              <option value="Misiones">Misiones</option>
+              <option value="Neuquen">Neuquén</option>
+              <option value="Rio Negro">Río Negro</option>
+              <option value="San Luis">San Luis</option>
+              <option value="Tierra del Fuego">Tierra del Fuego</option>
+              <option value="Tucuman">Tucumán</option>
+            </select>
           </div>
 
           {errors.province && <h5 className="error">{errors.province}</h5>}
           <div className={`${s.caja}`}>
             <label>Destacado:</label>
             <select
-          name='isImportant'
-          onChange={(e) => {
-            handleInputChange(e);
-          }}
-        >
-          <option>Destacado</option>
+              name='isImportant'
+              onChange={(e) => {
+                handleInputChange(e);
+              }}
+            >
+              <option>Destacado</option>
 
-          <option value="true">SI</option>
-          <option value="false">NO</option>
-        </select>
+              <option value="true">SI</option>
+              <option value="false">NO</option>
+            </select>
           </div>
           {errors.isImportant && (
             <h5 className="error">{errors.isImportant}</h5>
@@ -390,16 +414,16 @@ export default function AddEvent() {
                     </span>
                   );
                 })}
-                 <span >
-                   <label>Otro:</label>
-                      <input
-                        type="text"
-                        name='otro'
-                        placeholder='Ej: Punk'
-                        onBlur={(e) => handleNewSubMusica(e)}
-                      />
-                     
-                    </span>
+              <span >
+                <label>Otro:</label>
+                <input
+                  type="text"
+                  name='otro'
+                  placeholder='Ej: Punk'
+                  onBlur={(e) => handleNewSubMusica(e)}
+                />
+
+              </span>
             </div>
             <div
               id="teatro"
@@ -421,23 +445,23 @@ export default function AddEvent() {
                     </span>
                   );
                 })}
-                 <span >
-                   <label>Otro:</label>
-                      <input
-                        type="text"
-                        
-                        name='otro'
-                        placeholder='Ej: Tragedia'
-                        onBlur={(e) => handleNewSubTeatro(e)}
-                      />
-                     
-                    </span>
+              <span >
+                <label>Otro:</label>
+                <input
+                  type="text"
+
+                  name='otro'
+                  placeholder='Ej: Tragedia'
+                  onBlur={(e) => handleNewSubTeatro(e)}
+                />
+
+              </span>
             </div>
             <div
               id="otro"
               className={div === "otro" ? s.mostrarDiv : s.noMostrarDiv}
             >
-            <input type='text' value={state.subCategories} name='subCategories'  placeholder='Ej: Fotografia' onBlur={(e) => handleNew(e)}/>
+              <input type='text' value={state.subCategories} name='subCategories' placeholder='Ej: Fotografia' onBlur={(e) => handleNew(e)} />
             </div>
           </div>
           <div className={`${s.btnCont}`}>
