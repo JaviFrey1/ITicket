@@ -104,7 +104,7 @@ export default function rootReducer(state = initialState, action) {
     case UPDATE_EVENTS:
       return {
         ...state,
-        eventsLoaded:action.payload
+        eventLoaded : [...state.eventsLoaded, action.payload]
       }
 
     default:
