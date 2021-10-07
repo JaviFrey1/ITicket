@@ -3,13 +3,13 @@ export const loadState = () => {
         var favorites = [],
             keys = Object.keys(localStorage),
              i = keys.length;
-        console.log('Soy keys del storage',keys)
+        
         while (i > 0) {
-            console.log('esto seria un id',keys[i])
+            
             favorites.push(localStorage.getItem(keys[i]));
             i--;
         }
-        console.log('arreglo de favs?',favorites)
+        
         return favorites;
     } catch (error) {
         console.log(undefined)

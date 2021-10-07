@@ -7,7 +7,7 @@ export default function Frequent() {
             <div className={styles.container}>
                 <div>
                     <h3 className={styles.title}>1. Registrate</h3>
-                    <p className={styles.text}>Para comprar tickets tenés que registrarte. Hacé <a href='http://localhost:3000/register'>clic acá</a>, completá tus datos, activá tu cuenta desde tu correo ¡y listo! </p>
+                    <p className={styles.text}>Para comprar tickets tenés que registrarte. Hacé clic acá, completá tus datos, activá tu cuenta desde tu correo ¡y listo! </p>
                 </div>
                 <div>
                     <h3 className={styles.title}>2. Buscá tu evento</h3>

@@ -36,10 +36,4 @@ export  function removeEventWish(id){
     }
 }
 
-// export const setPage = (page) => {//Javi
-//     return {
-//         type: SET_PAGE,
-//         payload: page
-//     }
-// }
 

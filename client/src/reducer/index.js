@@ -68,7 +68,7 @@ export default function rootReducer(state = initialState, action) {
       };
 
     case ADD_EVENT_WISHLIST:
-      console.log('dentro de reducer',persistedState)
+      
       return {
         ...state,
         wishEvents: [action.payload, ...state.wishEvents],

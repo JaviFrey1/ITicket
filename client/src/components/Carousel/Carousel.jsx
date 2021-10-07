@@ -53,7 +53,7 @@ export default function CarouselComp() {
           </Carousel>
         </div>
       ) : (
-        <div>Aun no hay ningun evento tan importante.</div>
+        <div>Aun no hay ningun evento.</div>
       )}
     </div>
   );

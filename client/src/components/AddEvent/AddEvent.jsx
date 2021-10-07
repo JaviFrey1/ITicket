@@ -160,7 +160,7 @@ export default function AddEvent() {
 
     dispatch(addEvent(state));
     alert("Has agregado un nuevo evento!");
-    history.push("/home");
+    history.push("/");
   }
 
   useEffect(() => {

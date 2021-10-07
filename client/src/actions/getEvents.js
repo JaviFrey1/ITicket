@@ -4,7 +4,7 @@ import axios from 'axios'
 export default function getEvents(title){
     return( async function(dispatch){
         try{
-        const response= await axios(`http://localhost:3001/events?name=${title}`) 
+        const response= await axios(`/events?name=${title}`) 
         
         return dispatch({ type: GET_EVENTS, payload: response.data });
         
