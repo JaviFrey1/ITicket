@@ -7,6 +7,8 @@ import getEventDetail from "../../actions/getEventDetail";
 import { OpenStreetMapProvider } from "leaflet-geosearch";
 import { MapContainer, TileLayer, Popup, Circle } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { NavLink } from "react-router-dom";
+import { GoPencil } from 'react-icons/go';
 
 export default function EventDetail(props) {
   const [lat, setLat] = useState("");
@@ -74,24 +76,30 @@ export default function EventDetail(props) {
             width="100%"
             height="100%"
           />
+
         </div>
-        <div className={s.name}>{eventDetail.name}</div>
+        <div className={s.name}>{eventDetail.name}
+          <div className={s.contBtn}>
+            <NavLink  to={`/update/${eventDetail.id}`}>
+              <GoPencil className={s.link}/>
+            </NavLink>
+          </div></div>
         <div className={s.cont}>
 
-        <div className={s.artist_date}>
-          <div className={s.artist}>{eventDetail.artist}</div>
-          <div className={s.date}>{eventDetail.date}</div>
-        </div>
+          <div className={s.artist_date}>
+            <div className={s.artist}>{eventDetail.artist}</div>
+            <div className={s.date}>{eventDetail.date}</div>
+          </div>
           <div className={s.sub}>
 
-          {eventDetail.subCategories?.map((subCat, i)=> <span key={i}>{subCat.genre}</span>)}
+            {eventDetail.subCategories?.map((subCat, i) => <span key={i}>{subCat.genre}</span>)}
           </div>
         </div>
 
         <div className={s.place_address}>
           <div className={s.place}>{eventDetail.place}</div>
           <div className={s.address}>{eventDetail.address}</div>
-         {(eventDetail.location === eventDetail.province)?  <div className={s.location}>{eventDetail.location }</div>:<div>{eventDetail.location }, {eventDetail.province }</div> }
+          {(eventDetail.location === eventDetail.province) ? <div className={s.location}>{eventDetail.location}</div> : <div>{eventDetail.location}, {eventDetail.province}</div>}
         </div>
 
         <div className={s.time}>{eventDetail.time}hs</div>
