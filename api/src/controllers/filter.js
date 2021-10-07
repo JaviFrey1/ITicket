@@ -24,7 +24,7 @@ async function dataParseada() {
         name: result.name,
         id: result.id,
         category: result.categories.map((cat) => cat.id),
-        subCategories: result.subCategories,
+        subCategories: result.subCategories.map((subCat)=>subCat.genre),
         artist: result.artist,
         place: result.place,
         address: result.address,
@@ -71,7 +71,7 @@ async function filtroSubCategories(req, res, next) {
 
     eventDb.map((e) =>
       e.subCategories.map((s) =>
-        s.genre.toLowerCase() === genre.toLowerCase() ? filtrados.push(e) : null
+        s.toLowerCase() === genre.toLowerCase() ? filtrados.push(e) : null
       )
     );
 

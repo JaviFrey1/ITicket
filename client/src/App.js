@@ -11,6 +11,7 @@ import AddEvent from "./components/AddEvent/AddEvent";
 import Frequent from "./components/Frequent/Frequent";
 import Privacy from "./components/Privacy/Privacy";
 import Ticketspage from "./components/TicketsPage/TicketsPage/TicketsPage";
+import UpdateEvent from "./components/UpdateEvent/UpdateEvent";
 
 function App() {
   return (
@@ -26,9 +27,11 @@ function App() {
             "/addEvent",
             "/respuestas",
             "/privacidad",
+            "/update/:id"
           ]}
           component={Nav}
         />
+
         <Route path="/home" component={Home} />
         <Route path="/misTickets" component={Ticketspage} />
         <Route path="/event" component={Event} />
@@ -37,6 +40,8 @@ function App() {
         <Route path="/addEvent" component={AddEvent} />
         <Route path="/respuestas" component={Frequent} />
         <Route path="/privacidad" component={Privacy} />
+        <Route path="/update/:id" component={UpdateEvent} />
+        
       </React.Fragment>
     </BrowserRouter>
   );

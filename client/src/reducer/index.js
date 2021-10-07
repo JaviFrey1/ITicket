@@ -12,7 +12,8 @@ import {
   // SET_PAGE,//jaVI
   FILTER_DATE,
   FILTER_SUBCAT,
-  FILTER_ADDRESS
+  FILTER_ADDRESS,
+  UPDATE_EVENTS
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -99,6 +100,11 @@ export default function rootReducer(state = initialState, action) {
       return{
         ...state, 
         eventsLoaded:action.payload
+      }
+    case UPDATE_EVENTS:
+      return {
+        ...state,
+        eventLoaded : [...state.eventsLoaded, action.payload]
       }
 
     default:
