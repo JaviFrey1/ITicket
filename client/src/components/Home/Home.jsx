@@ -18,13 +18,12 @@ export default function Home() {
   const allEvents = useSelector((state) => state.eventsLoaded);
   // const { page } = useSelector((state) => state);
   const [currentPage, setCurrentPage] = useState(1);
-  const [eventsPerPage] = useState(7);
+  const [eventsPerPage] = useState(6);
 
   const lastEvent = currentPage * eventsPerPage;
   const firstEvent = lastEvent - eventsPerPage;
-  const currentEvents = allEvents.slice(firstEvent, lastEvent);
-  const unImportantEvents = Array.isArray(currentEvents) ? currentEvents.filter((el) => el.isImportant === false) : console.log('Aun no hay eventos en el carrousel', currentEvents);
-
+  const unImportantEvents = Array.isArray(allEvents) ? allEvents.filter((el) => el.isImportant === false) : console.log('Aun no hay eventos en el carrousel', allEvents);
+  const currentUnimportantEvents = unImportantEvents.slice(firstEvent, lastEvent);
   function paginate(pageNumber) {
     setCurrentPage(pageNumber);
   }
@@ -48,7 +47,7 @@ export default function Home() {
       <div className={s.contCarousel}><CarouselComp /></div>
 
       <div className={s.card}>
-        <Events events={unImportantEvents} />
+        <Events events={currentUnimportantEvents} />
 
         {/* <div className={s.btnPaginate}>
           <button disabled={page - 1 === 0} onClick={() => changePage(page -1)}>
@@ -67,7 +66,7 @@ export default function Home() {
         <div>
           <Paginate
             eventsPerPage={eventsPerPage}
-            allEvents={allEvents.length}
+            allEvents={unImportantEvents.length}
             paginate={paginate}
           />
         </div>
