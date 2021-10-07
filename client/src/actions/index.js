@@ -13,6 +13,7 @@ export const BULK_EVENTS = "BULK_EVENTS"
 export const UPDATE_EVENTS = "UPDATE_EVENTS"
 export const  ADD_EVENT = " ADD_EVENT"
 export const REMOVE_EVENT='REMOVE_EVENT'
+export const DELETE_EVENT = 'DELETE_EVENT'
 
 export function removeEvent(payload){
     return{
