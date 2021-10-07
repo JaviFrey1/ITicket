@@ -289,15 +289,8 @@ export default function AddEvent() {
           {errors.location && <h5 className="error">{errors.location}</h5>}
           <div className={`${s.caja}`}>
             <label>Provincia:</label>
-            {/* <input
-              autoComplete="off"
-              type="text"
-              name="province"
-              value={state.province}
-              placeholder="Ej: Buenos Aires"
-              onChange={(e) => handleInputChange(e)}
-            /> */}
             <select
+            style={{width:'60%'}}
               name='province'
               onChange={e => handleInputChange(e)}
             >
@@ -327,6 +320,7 @@ export default function AddEvent() {
           <div className={`${s.caja}`}>
             <label>Destacado:</label>
             <select
+              style={{width:'60%'}}
               name='isImportant'
               onChange={(e) => {
                 handleInputChange(e);
@@ -360,7 +354,6 @@ export default function AddEvent() {
               onChange={(e) => {
                 handleSelect(e);
                 show(e.target.value);
-                // alert(e.target.value);
               }}
             >
               <option>Category</option>
@@ -445,20 +438,20 @@ export default function AddEvent() {
           </div>
           <div className={`${s.btnCont}`}>
             {/* {state.name &&
-            state.date &&
-            state.time &&
-            state.artist &&
-            state.availableTickets &&
-            state.price &&
-            state.place &&
-            state.address &&
-            state.location &&
-            state.province &&
-            state.category &&
-            state.subCategories.length > 0 ? ( */}
-            <button className={s.btnSubmit} type="submit">
-              CREAR EVENTO
-            </button>
+              state.date &&
+              state.time &&
+              state.artist &&
+              state.availableTickets &&
+              state.price &&
+              state.place &&
+              state.address &&
+              state.location &&
+              state.province &&
+              state.category &&
+              state.subCategories.length > 0 ? ( */}
+              <button className={s.btnSubmit} type="submit">
+                CREAR EVENTO
+              </button>
             {/* ) : null} */}
           </div>
         </form>

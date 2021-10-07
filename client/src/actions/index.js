@@ -10,8 +10,7 @@ export const GET_CATEGORIES = "GET_CATEGORIES"
 export const GET_SUBCATEGORIES = "GET_SUBCATEGORIES"
 export const SET_PAGE ="SET_PAGE"//Javi
 export const BULK_EVENTS = "BULK_EVENTS"
-
-
+export const UPDATE_EVENTS = "UPDATE_EVENTS"
 export const  ADD_EVENT = " ADD_EVENT"
 export const REMOVE_EVENT='REMOVE_EVENT'
 
@@ -35,11 +34,4 @@ export  function removeEventWish(id){
         payload:id
     }
 }
-
-// export const setPage = (page) => {//Javi
-//     return {
-//         type: SET_PAGE,
-//         payload: page
-//     }
-// }
 

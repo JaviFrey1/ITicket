@@ -5,12 +5,7 @@ async function AddEvent(req, res, next) {
   const id = uuidv4();
   let data = { ...req.body, id };
 
-
   try {
-    
-    console.log('DATA EN BAK',data)
-    console.log('SUBCATEGORIES EN BACK', data.subCategories)
-    console.log('CATEGORY iD PARSEADO', parseInt(data.category))
     const createdEvent = await Events.create({
       name: data.name,
       artist: data.artist,
@@ -29,7 +24,6 @@ async function AddEvent(req, res, next) {
       where: { id:  parseInt(data.category) },
     });
     await createdEvent.addCategories(cat);
-    console.log('NUEVO EVENTO CON CATEGORIA ASOCIADA', createdEvent)
     
     data.subCategories.map(async e=>{
      if (typeof e === "string"){ e =  JSON.parse(e)}
@@ -41,17 +35,16 @@ async function AddEvent(req, res, next) {
         }
      
       });
-      console.log('SubCat en database',subCat)
+      
       await createdEvent.addSubCategories(subCat);
       if (created) {
-        console.log('HOLA FUI CREADO, ME VAN A ASIGNAR LA CAT')
+        
         const category = await Categories.findOne({
           where: {
             id: subCat.catId
           }
         })
         await category.addSubCategories(subCat)
-        console.log('hola ya me asiganor la categoria y asi quede;', subCat)
       }
      
     })
@@ -62,8 +55,58 @@ async function AddEvent(req, res, next) {
   }
 }
 
+// async function updateEvent(req, res, next) {
+//   const id = req.params.id;
+
+//   const {
+//     name,
+//     artist,
+//     place,
+//     address,
+//     location,
+//     province,
+//     price,
+//     image,
+//     availableTickets,
+//     date,
+//     time,
+//     category,
+//     subCategories,
+//   } = req.body;
+//   try {
+//     await Events.update(
+//       {
+//         name,
+//         artist,
+//         place,
+//         address,
+//         location,
+//         province,
+//         price,
+//         image,
+//         availableTickets,
+//         date,
+//         time,
+//         category,
+//         subCategories,
+//       },
+//       {
+//         where: {
+//           id: id,
+//         },
+//       }
+//     );
+
+//     let eventUpdated = await Events.findByPk(id);
+//     res.json(eventUpdated)
+//   } catch (error) {
+//     next(error)
+//   }
+
+// }
 async function updateEvent(req, res, next) {
   const id = req.params.id;
+  console.log('BODY EN BAK',req.body)
 
   const {
     name,
@@ -77,8 +120,8 @@ async function updateEvent(req, res, next) {
     availableTickets,
     date,
     time,
-    category,
     subCategories,
+    category
   } = req.body;
   try {
     await Events.update(
@@ -94,8 +137,7 @@ async function updateEvent(req, res, next) {
         availableTickets,
         date,
         time,
-        category,
-        subCategories,
+
       },
       {
         where: {
@@ -103,8 +145,42 @@ async function updateEvent(req, res, next) {
         },
       }
     );
-
+    
     let eventUpdated = await Events.findByPk(id);
+
+    const cat = await Categories.findOne({
+      where: { id:  parseInt(category) },
+    });
+
+    await eventUpdated.setCategories(cat);
+    // console.log('EVENTO CON NUEVA CAT ASOCIADA', eventUpdated)
+    
+    
+    subCategories.map(async obj => {
+      if (typeof obj === "string") { obj = JSON.parse(obj) }
+
+      const [subCat, created] = await SubCategories.findOrCreate({
+        where: {
+          genre: obj.genre,
+          catId: obj.catId
+        }
+
+      });
+      await eventUpdated.setSubCategories(subCat);
+      if (created) {
+        // console.log('HOLA FUI CREADO, ME VAN A ASIGNAR LA CAT')
+        const category = await Categories.findOne({
+          where: {
+            id: subCat.catId
+          }
+        })
+        // console.log('SubCat en database',subCat)
+        await category.addSubCategories(subCat)
+        // console.log('hola ya me asiganor la categoria y asi quede;', subCat)
+      }
+    }
+    )
+
     res.json(eventUpdated)
   } catch (error) {
     next(error)
@@ -117,16 +193,12 @@ async function deleteEvent(req, res, next) {
   let id = req.params.id
 
   try {
-
     let deleted = await Events.destroy({
       where: {
         id: id
       }
     })
-
     return res.send('borrado')
-
-
   } catch (error) {
     next(error)
   }
