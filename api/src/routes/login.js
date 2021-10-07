@@ -28,7 +28,7 @@ router.post('/register', async function  (req, res) {
 
     let data = {...req.body, id};
     let errors = []
-    if(!data.name || !data.email || !data.password){
+    if(!data.fullName || !data.email || !data.password){
         errors.push({message: "Por favor llene todos los campos"});
     }
     try {
@@ -39,7 +39,7 @@ router.post('/register', async function  (req, res) {
         }
         else{
             const createdUser = await Users.create({
-                name: data.name,
+                fullName: data.fullName,
                 email: data.email,
                 password:data.password,
                 isAdmin: data.isAdmin

@@ -62,7 +62,7 @@ passport.serializeUser((user, cb) => {
 });
 
 passport.deserializeUser(async (id, cb) => {
-  const user = await Users.findOne({ where: { id } }).catch((err) => {
+  const user = await Users.findOne({ googleId: id /*where: { id }*/ }).catch((err) => {
     console.log("Error xdnt", err);
     cb(err, null);
   });
