@@ -75,3 +75,8 @@
 span {
     margin-left: 16px;
 }
+
+.contLogo2 {
+    filter: brightness(0);
+    /* background-color: red; */
+}

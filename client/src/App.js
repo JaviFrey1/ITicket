@@ -10,6 +10,7 @@ import Home from "./components/Home/Home";
 import AddEvent from "./components/AddEvent/AddEvent";
 import Frequent from "./components/Frequent/Frequent";
 import Privacy from "./components/Privacy/Privacy";
+import Ticketspage from "./components/TicketsPage/TicketsPage/TicketsPage";
 
 function App() {
   return (
@@ -21,13 +22,15 @@ function App() {
             "/event",
             "/events/:id",
             "/wishList",
+            "/misTickets",
             "/addEvent",
             "/respuestas",
-            "/privacidad",          
+            "/privacidad",
           ]}
           component={Nav}
         />
         <Route path="/home" component={Home} />
+        <Route path="/misTickets" component={Ticketspage} />
         <Route path="/event" component={Event} />
         <Route path="/events/:id" component={EventDetail} />
         <Route path="/wishList" component={WishList} />

@@ -11,8 +11,11 @@
   margin-top: 8px;
 }
 
-.space {
-  /* margin-left: 660px; */
+
+
+a {
+  /* background-color: green; */
+  /* color: #FCA311; */
 }
 
 .link {
@@ -24,7 +27,7 @@
 .mainContainer {
   display: flex;
   justify-content: center;
-  background-color: rgb(230, 236, 234);
+  /* background-color: rgb(230, 236, 234); */
 }
 
 .linkContainer {
@@ -36,7 +39,7 @@
 
 .linkContainer a {
   margin: 0 20px;
-  color: rgb(97, 95, 95);
+  /* color: rgb(97, 95, 95); */
   font-size: 20px;
   font-family: inherit;
   text-decoration: none;
@@ -65,6 +68,33 @@
 }
 
 .hover:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hover_2 {
+
+  display: inline-block;
+  position: relative;
+  color: #FCA311;
+  font-size: 22px;
+  margin-right: 20px;
+}
+
+.hover_2:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background-color: rgb(255, 204, 0);
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+}
+
+.hover_2:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
