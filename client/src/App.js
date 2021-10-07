@@ -10,6 +10,7 @@ import Home from "./components/Home/Home";
 import AddEvent from "./components/AddEvent/AddEvent";
 import Frequent from "./components/Frequent/Frequent";
 import Privacy from "./components/Privacy/Privacy";
+import Contact from "./components/Contact/Contact";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
             "/wishList",
             "/addEvent",
             "/respuestas",
-            "/privacidad",          
+            "/privacidad", 
+            "/contacto" ,      
           ]}
           component={Nav}
         />
@@ -34,6 +36,7 @@ function App() {
         <Route path="/addEvent" component={AddEvent} />
         <Route path="/respuestas" component={Frequent} />
         <Route path="/privacidad" component={Privacy} />
+        <Route path="/contacto" component={Contact} />
       </React.Fragment>
     </BrowserRouter>
   );

@@ -1,7 +1,7 @@
 import React from "react";
-import Container from "@material-ui/core/container";
-import Grid from "@material-ui/core/grid"
-import Box from "@material-ui/core/box"
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid"
+import Box from "@material-ui/core/Box"
 import Link from "@material-ui/core/Link";
 import './footer.css'
 
@@ -34,7 +34,7 @@ export default function Footer() {
                          </Link>  
                          </Box>
                          <Box>
-                         <Link href='/addEvent' color="inherit">
+                         <Link href='/contacto' color="inherit">
                           Vende con nosotros!
                         </Link>
                          </Box>
