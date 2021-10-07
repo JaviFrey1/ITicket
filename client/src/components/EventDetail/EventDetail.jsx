@@ -4,11 +4,19 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./detail.module.css";
 import getEventDetail from "../../actions/getEventDetail";
+import deleteEvent from "../../actions/deleteEvent"
 import { OpenStreetMapProvider } from "leaflet-geosearch";
 import { MapContainer, TileLayer, Popup, Circle } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { NavLink } from "react-router-dom";
 import { GoPencil } from 'react-icons/go';
+import { BsFillTrashFill } from 'react-icons/bs';
+import Swal from 'sweetalert2'
+import { useHistory } from "react-router-dom";
+
+
+
+
 
 export default function EventDetail(props) {
   const [lat, setLat] = useState("");
@@ -16,10 +24,35 @@ export default function EventDetail(props) {
   const [loading, setLoading] = useState(true);
 
   const provider = new OpenStreetMapProvider();
-
+  const history = useHistory()
   const dispatch = useDispatch();
 
   const eventDetail = useSelector((state) => state.eventDetail);
+
+  function handleDelete(eventDetail) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteEvent(eventDetail.id))
+        Swal.fire({
+          title: "Deleted!", text: `${eventDetail.artist}'s event has been deleted.`, imageUrl: "https://i.gifer.com/7efs.gif",
+          imageWidth: 250,
+          imageHeight: 200,
+          imageAlt: "Custom image",
+        });
+        history.push('/home')
+      }
+    })
+
+  }
+
 
   async function buscar(e) {
     try {
@@ -78,31 +111,57 @@ export default function EventDetail(props) {
           />
 
         </div>
-        <div className={s.name}>{eventDetail.name}
-          <div className={s.contBtn}>
-            <NavLink  to={`/update/${eventDetail.id}`}>
-              <GoPencil className={s.link}/>
-            </NavLink>
-          </div></div>
-        <div className={s.cont}>
+        <div className={s.title}>
+          <div className={s.name}>{eventDetail.name}</div>
 
-          <div className={s.artist_date}>
-            <div className={s.artist}>{eventDetail.artist}</div>
-            <div className={s.date}>{eventDetail.date}</div>
+          <div className={s.contBtn}>
+          <div className={s.contlapiz}>
+
+
+            <NavLink to={`/update/${eventDetail.id}`}>
+            <div className={s.lapiz}>
+
+              <GoPencil className={s.link} />
+            </div>
+            </NavLink>
+            </div>
+            <div className={s.contrash}>
+
+            <div className={s.trashbin}>
+
+
+            < BsFillTrashFill className={s.trash} onClick={() => handleDelete(eventDetail)} />
           </div>
+          </div>
+          </div></div>
+        <div className={s.contboth}>
+
+        <div className={s.contmid}>
+
+            <div className={s.artist}>{eventDetail.artist}</div>
+          <div className={s.date_time}>
+            <div className={s.date}>{eventDetail.date}</div>
+          
+          <div className={s.time}>{eventDetail.time}hs</div>
+          </div>
+       </div>
+       <div className={s.subcategories}>
+
           <div className={s.sub}>
 
             {eventDetail.subCategories?.map((subCat, i) => <span key={i}>{subCat.genre}</span>)}
           </div>
         </div>
+        <div className={s.contbot}>
+
+
 
         <div className={s.place_address}>
           <div className={s.place}>{eventDetail.place}</div>
           <div className={s.address}>{eventDetail.address}</div>
           {(eventDetail.location === eventDetail.province) ? <div className={s.location}>{eventDetail.location}</div> : <div>{eventDetail.location}, {eventDetail.province}</div>}
         </div>
-
-        <div className={s.time}>{eventDetail.time}hs</div>
+        <div className={s.foot}>
 
         <div className={s.availableTickets}>
           {eventDetail.availableTickets <= 10 ? (
@@ -113,8 +172,11 @@ export default function EventDetail(props) {
           ) : null}
         </div>
         <div className={s.price_buy}>
-          <div>$ {eventDetail.price}</div>
+          <div className={s.price}><span>${eventDetail.price}</span></div>
           <button className={s.buy}>COMPRAR</button>
+        </div>
+        </div>
+        </div>
         </div>
       </div>
 

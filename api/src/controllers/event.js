@@ -144,7 +144,7 @@ async function deleteEvent(req, res, next) {
   let id = req.params.id
 
   try {
-    let deleted = await Events.destroy({
+   await Events.destroy({
       where: {
         id: id
       }

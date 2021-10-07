@@ -13,7 +13,8 @@ import {
   FILTER_DATE,
   FILTER_SUBCAT,
   FILTER_ADDRESS,
-  UPDATE_EVENTS
+  UPDATE_EVENTS,
+  DELETE_EVENT
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -62,6 +63,10 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+      case DELETE_EVENT:
+        return {
+          ...state,
+        };
     case GET_EVENT_DETAIL:
       return {
         ...state,
