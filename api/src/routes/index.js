@@ -4,7 +4,8 @@ const { Router } = require('express');
 const events = require('./events');
 const event = require('./event');
 const categories = require('./categories');
-const subcategories = require('./subCategories');
+const subcategories =require('./subcategories');
+
 const bulkevents = require ('./bulkevents')
 const filter = require('./filter')
 
