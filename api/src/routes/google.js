@@ -27,7 +27,7 @@ const isLoggedIn = (req, res, next) => {
 router.use(passport.initialize());
 router.use(passport.session());
 
-router.get("/", (req, res) => res.send("te deslogeaste"));
+router.get("/deslog", (req, res) => res.send("te deslogeaste"));
 router.get("/failed", (req, res) => res.send("Fallo el log in con google"));
 router.get("/good", isLoggedIn, (req, res) => res.send(`HOLA ${req.user.displayName}`));
 
@@ -48,7 +48,7 @@ router.get(
 router.get("/logout", (req, res) => {
   req.session = null;
   req.logout();
-  res.redirect("/");
+  res.redirect("/deslog");
 });
 
 
