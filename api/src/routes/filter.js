@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { filtroCategories, filtroSubCategories, filtroLocalidad, filtroFecha } = require('../controllers/filter.js');
+const { filtroCategories, filtroSubCategories, filtroLocalidad, filtroFecha } = require('../controllers/filter');
 
 
 const router = Router();

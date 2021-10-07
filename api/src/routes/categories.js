@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getCategories } = require('../controllers/categories.js')
+const { getCategories } = require('../controllers/categories')
 
 
 const router = Router();
