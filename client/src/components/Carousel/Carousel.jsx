@@ -4,7 +4,7 @@ import s from "./Carousel.module.css";
 import Carousel from "react-elastic-carousel";
 import { useDispatch, useSelector } from "react-redux";
 import getEvents from "../../actions/getEvents";
-
+import { Link } from "react-router-dom";
 export default function CarouselComp() {
   // console.log(document.querySelectorAll("Carousel , button"));
   const breakPoints = [
@@ -34,8 +34,9 @@ export default function CarouselComp() {
             className={s.carousel}
             breakPoints={breakPoints}
           >
-            {importantEvents?.map((el) => (
-              <div key={el.id} className={s.itemCarousel}>
+            {Array.isArray(importantEvents) ? importantEvents.map((el) => (
+            <Link to={`/events/${el.id}`} key={el.id}>
+             <div  className={s.itemCarousel}>
                 <div className={s.todo}>
                   <div className={s.nombres}>
                     <div>
@@ -49,12 +50,12 @@ export default function CarouselComp() {
                   <img alt="" src={el.image} />
                 </div>
               </div>
-            ))}
+              </Link>
+            )) : null}
           </Carousel>
         </div>
-      ) : (
-        <div>Aun no hay ningun evento tan importante.</div>
-      )}
+      ) : null
+      }
     </div>
   );
 }

@@ -55,55 +55,8 @@ async function AddEvent(req, res, next) {
   }
 }
 
-// async function updateEvent(req, res, next) {
-//   const id = req.params.id;
+   
 
-//   const {
-//     name,
-//     artist,
-//     place,
-//     address,
-//     location,
-//     province,
-//     price,
-//     image,
-//     availableTickets,
-//     date,
-//     time,
-//     category,
-//     subCategories,
-//   } = req.body;
-//   try {
-//     await Events.update(
-//       {
-//         name,
-//         artist,
-//         place,
-//         address,
-//         location,
-//         province,
-//         price,
-//         image,
-//         availableTickets,
-//         date,
-//         time,
-//         category,
-//         subCategories,
-//       },
-//       {
-//         where: {
-//           id: id,
-//         },
-//       }
-//     );
-
-//     let eventUpdated = await Events.findByPk(id);
-//     res.json(eventUpdated)
-//   } catch (error) {
-//     next(error)
-//   }
-
-// }
 async function updateEvent(req, res, next) {
   const id = req.params.id;
   console.log('BODY EN BAK',req.body)
@@ -155,9 +108,10 @@ async function updateEvent(req, res, next) {
     await eventUpdated.setCategories(cat);
     // console.log('EVENTO CON NUEVA CAT ASOCIADA', eventUpdated)
     
-    
+    console.log('ESTO LLEGA POR BODY', subCategories)
     subCategories.map(async obj => {
       if (typeof obj === "string") { obj = JSON.parse(obj) }
+      console.log('CADA SUBCAT', obj)
 
       const [subCat, created] = await SubCategories.findOrCreate({
         where: {
@@ -166,17 +120,14 @@ async function updateEvent(req, res, next) {
         }
 
       });
-      await eventUpdated.setSubCategories(subCat);
+       await eventUpdated.setSubCategories(subCat);
       if (created) {
-        // console.log('HOLA FUI CREADO, ME VAN A ASIGNAR LA CAT')
         const category = await Categories.findOne({
           where: {
             id: subCat.catId
           }
         })
-        // console.log('SubCat en database',subCat)
         await category.addSubCategories(subCat)
-        // console.log('hola ya me asiganor la categoria y asi quede;', subCat)
       }
     }
     )
