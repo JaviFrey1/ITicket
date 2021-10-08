@@ -18,14 +18,16 @@
 .partSup {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     /* margin: 20px 20px 0 20px; */
     width: 100px;
     height: 200px;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
-    box-shadow: 5px 5px 10px grey;
+    box-shadow: 5px 5px 15px 8px rgba(130, 130, 130, 0.53);
 }
+
+
 
 .partSup .barraAmarillaSup {
 
@@ -42,6 +44,14 @@
     width: 100%;
     bottom: 0;
     background-color: rgb(255, 204, 0);
+    /* bottom: 0; */
+    margin-top: auto;
+}
+
+.contImg {
+
+    transform: translateY(20px);
+    transform: rotate(90deg);
 }
 
 .partInf {
@@ -54,7 +64,7 @@
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
     border-left: 2px rgb(165, 164, 164) dashed;
-    box-shadow: 5px 5px 10px grey;
+    box-shadow: 5px 5px 15px 8px rgba(130, 130, 130, 0.53);
 }
 
 .partInf .barraAmarillaSup_2 {
@@ -90,8 +100,9 @@
     border-top: solid 2px rgba(0, 0, 0, 0.5);
     border-bottom: solid 2px rgba(0, 0, 0, 0.5);
     font-size: 22px;
-    margin: 0 auto;
+    margin: 0;
     align-items: center;
+    /* font-size: 30px; */
 }
 
 .eventoSpan {
@@ -158,8 +169,17 @@
 }
 
 .contLogo {
-    margin-left: auto;
+    display: flex;
+    /* flex-direction: column; */
+    /* background-color: green; */
+    justify-content: space-between;
+    /* margin-left: auto; */
     /* background-color: yellow; */
-    width: 70px;
-    height: 50px;
+    /* width: 70px; */
+    /* height: 50px; */
+}
+
+.duenioData>* {
+    font-size: 12px;
+    /* color: red; */
 }
