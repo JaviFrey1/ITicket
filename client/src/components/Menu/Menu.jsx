@@ -8,8 +8,9 @@ import filterSubCat from "../../actions/filterSubCat";
 
 export default function Menu() {
   const [subCatOpt, setSubCatOpt] = useState([""]);
+  const eventsLoaded=useSelector(state => state.eventsLoaded)
+   const dispatch = useDispatch();
 
-  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getSubCategories());
@@ -21,10 +22,14 @@ export default function Menu() {
   const categories = useSelector((state) => state.categories);
   const subcategories = useSelector((state) => state.subCategories);
   function handleClickCat(id) {
-    const subCatOpt = subcategories.filter(
+    const subCats = subcategories.filter(
       (subCat) => subCat.categoryId === id
 
     );
+    const subCatOpt=[]
+  subCats.map(subcat=>eventsLoaded.map(e=>e.subCategories.includes(subcat.genre) && !(subCatOpt.includes(subcat))?subCatOpt.push(subcat):null))
+  
+    
     setSubCatOpt(subCatOpt);
     // dispatch(filterCat(id));
   }
