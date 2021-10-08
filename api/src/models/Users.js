@@ -53,6 +53,10 @@ module.exports = (sequelize) => {
         return () => this.getDataValue("password");
       },
     },
+    DNI:{
+      type: DataTypes.STRING,
+      allowNull:false
+    },
     salt: {
       type: DataTypes.STRING,
       get() {
