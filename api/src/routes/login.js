@@ -61,5 +61,10 @@ router.post('/login',(req, res, next) =>{
         failureRedirect: '/fail'
     })(req, res, next)
 })
+router.get("/logout", (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect("/deslog");
+  });
 
 module.exports = router
