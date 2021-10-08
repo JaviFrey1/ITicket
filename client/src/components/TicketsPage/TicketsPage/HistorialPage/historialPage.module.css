@@ -1,0 +1,52 @@
+.divRey {
+    /* background-color: antiquewhite; */
+}
+
+.contenedor {
+
+    width: 80%;
+    margin: 50px auto;
+    /* background-color: aliceblue; */
+    /* box-shadow: -3px 3px 10px 1px rgba(150, 150, 150, 0.62); */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+.titulo {
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.contItem {
+    display: flex;
+    background-color: aliceblue;
+    box-shadow: -3px 3px 10px 1px rgba(150, 150, 150, 0.62);
+    /* background-color: cadetblue; */
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    /* border-bottom: 2px solid grey; */
+    min-width: 500px;
+    border-left: 4px solid rgba(255, 204, 0);
+}
+
+.nameArtist,
+.placeDate,
+.locationAddress {
+    width: 30%;
+}
+
+.timePrice {
+    width: 10%;
+}
+
+
+.placeDate,
+.locationAddress,
+.timePrice {
+    /* background-color: pink; */
+    height: 100%;
+    align-items: center;
+    font-size: 12px;
+}

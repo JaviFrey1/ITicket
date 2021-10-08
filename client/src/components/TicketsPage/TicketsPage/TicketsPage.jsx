@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
+import { Link } from "react-router-dom";
 // import Ticket from "./../Ticket/Ticket";
 import s from "./ticketsPage.module.css";
 // import Swal from "sweetalert2";
 // import BotonPrint from "./Button";
 import DetalleCompra from "./DetalleCompra";
 import { ImPrinter } from "react-icons/im";
+import { BiHistory } from "react-icons/bi";
 
 import { cartas } from "../../../cartas";
 
@@ -89,18 +91,28 @@ const Ticketspage = () => {
           </div>
         </div>
       </div>
-      <div ref={componentRef}>
-        <DetalleCompra event={eventSel} />
-      </div>
-      <div
-        className={s.botonImpr}
-        onClick={() => {
-          console.log("click");
-          handlePrint();
-        }}
-      >
-        <p>Imprimir!</p>
-        <ImPrinter />
+      <div>
+        <div className={s.contBotones}>
+          <div
+            className={s.botonImpr}
+            onClick={() => {
+              console.log("click");
+              handlePrint();
+            }}
+          >
+            <p>Imprimir!</p>
+            <ImPrinter />
+          </div>
+          <Link to="/historial" className={s.linkBoton}>
+            <div className={s.botonImpr2}>
+              <p>Historial!</p>
+              <BiHistory />
+            </div>
+          </Link>
+        </div>
+        <div ref={componentRef}>
+          <DetalleCompra event={eventSel} />
+        </div>
       </div>
     </div>
   );
