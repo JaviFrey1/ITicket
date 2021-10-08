@@ -112,9 +112,7 @@ export default function UpdateEvent() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        let newFecha = event.date.split('-');
-        newFecha = newFecha.reverse().join('/');
-        event.date = newFecha;
+      
 
         dispatch(updateEvent( id , event));
         // setEvent
