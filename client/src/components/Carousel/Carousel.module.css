@@ -36,6 +36,10 @@
     border: none;
 }
 
+.link {
+    /* text-decoration: none; */
+}
+
 
 .itemCarousel {
     width: 100%;
@@ -62,10 +66,11 @@
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.76);
 
 }
-.carousel .itemCarousel img:hover{
+
+.carousel .itemCarousel img:hover {
 
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.726);
-   
+
 }
 
 @media (max-width:850px) {
