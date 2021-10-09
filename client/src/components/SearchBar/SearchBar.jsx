@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import style from "./search.module.css";
-// import * as ImIcons from "react-icons/im";
-function SearchBar({ input, setInput }) {
-  const subCt_1 = ["Rock", "Pop", "Heavy Metal", "Tango"];
-  const subCt_2 = ["Alternativo", "Drama", "Stand up"];
-  const subCt_3 = ["Deportes", "Festival", "TED"];
-  const subCt_4 = [""];
-=======
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -28,7 +18,6 @@ export default function SearchBar() {
 
     // dispatch(getEvents(title))
   }
->>>>>>> 2896fe95e9656eed7e9e908d034814581cfa253e
 
   function handleSubmit(e) {
     e.preventDefault();

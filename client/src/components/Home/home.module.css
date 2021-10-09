@@ -9,15 +9,9 @@
 .fot {
   
   width: 100%;
-<<<<<<< HEAD
-  height: 16%;
-  border-top: #ffffff solid 1px;
-  /* margin-bottom: 50px; */
-=======
   height: 15%;
   margin-top: 36px;
   border-top: #6A6A6F solid 1px;
->>>>>>> 2896fe95e9656eed7e9e908d034814581cfa253e
 }
 
 .card {
@@ -44,11 +38,7 @@
 .container {
   /* background-image: url("../../images/mesa.jpg"); */
   width: 100vw;
-<<<<<<< HEAD
-  height: 100vh;
-=======
   height: 90vh;
->>>>>>> 2896fe95e9656eed7e9e908d034814581cfa253e
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

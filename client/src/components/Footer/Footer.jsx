@@ -6,30 +6,6 @@ import Link from "@material-ui/core/Link";
 import './footer.css'
 
 
-<<<<<<< HEAD
-export default function Footer(){
-    return (
-        <div className={styles.footer}>
-            
-            <Link to='/wishList'>
-                <div>Favoritos</div>
-            </Link>
-            <Link to='/contact'>
-                <div>Soporte</div>
-            </Link>
-            <Link to='/addEvent'>
-                <div>Vende con nosotros!</div>
-            </Link>
-            <Link to='/respuestas'>
-                <div>Preguntas Frecuentes</div>
-            </Link>
-            <Link to='/privacidad'>
-                <div>Politicas de privacidad</div>
-            </Link>
-            </div>
-    )
-}
-=======
 export default function Footer() {
     return  <footer>
         <Box px={{xs: 3, sm:10}}
@@ -79,4 +55,3 @@ export default function Footer() {
         </Box>
     </footer>
     }
->>>>>>> 2896fe95e9656eed7e9e908d034814581cfa253e

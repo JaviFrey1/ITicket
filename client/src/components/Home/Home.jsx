@@ -51,9 +51,6 @@ export default function Home() {
       <div className={s.contCarousel}><CarouselComp /></div>
 
       <div className={s.card}>
-<<<<<<< HEAD
-        <Events events={currentEvents}/>
-=======
         <Events events={unImportantEvents} />
 
         {/* <div className={s.btnPaginate}>
@@ -70,7 +67,6 @@ export default function Home() {
         </div> */}
       </div>
       <div>
->>>>>>> 2896fe95e9656eed7e9e908d034814581cfa253e
         <Paginate
           eventsPerPage={eventsPerPage}
           allEvents={allEvents.length}

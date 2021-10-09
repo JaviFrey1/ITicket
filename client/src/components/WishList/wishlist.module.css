@@ -1,37 +1,5 @@
 @import url('http://fonts.cdnfonts.com/css/netflix-sans');
 
-<<<<<<< HEAD
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 40px;
-  overflow: scroll;
-  overflow: overlay;
-}
-
-.container {
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 1200;
-  max-height: 700;
-  margin: auto;
-  margin-bottom: 30px;
-  display: flex;
-  box-shadow: 0px 0px 10px 1px black;
-  /* background-image: url("../../images/mesa.jpg"); */
-  min-width: 500px;
-  min-height: 600px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin-top: 0;
-}
-.h2 {
-  color: rgb(0, 0, 0);
-  font-family: "Indie Flower", cursive;
-  display: flex;
-  justify-content: center;
-=======
 .page {
   display: flex;
   justify-content: center;
@@ -57,7 +25,6 @@
   box-shadow: 0px -1px 63px -22px rgba(0,0,0,0.82);
   -webkit-box-shadow: 0px -1px 63px -22px rgba(0,0,0,0.82);
   -moz-box-shadow: 0px -1px 63px -22px rgba(0,0,0,0.82);
->>>>>>> 2896fe95e9656eed7e9e908d034814581cfa253e
 }
 
 .cards {
@@ -87,33 +54,6 @@
   font-family: 'Netflix Sans';
   /* background-color: greenyellow; */
 }
-<<<<<<< HEAD
-.cards::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.295);
-}
-
-.wishEvents {
-  display: flex;
-  justify-content: center;
-  align-content: flex-start;
-  /* background-image: url("../../images/TEXTURA\ MARMOL.jfif"); */
-  padding: 20px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  
-}
-
-
-/* .container{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    background-color: #fff;
-} */
-=======
 
 .event{
   justify-self: center;
@@ -136,4 +76,3 @@
     width: auto;
   }
 }
->>>>>>> 2896fe95e9656eed7e9e908d034814581cfa253e
