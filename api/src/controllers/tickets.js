@@ -2,9 +2,24 @@ const { Tickets, Users, Events } = require("../db.js");
 
 
 async function getTickets(req, res, next){
-    try {
 
-        const dataBase = await Tickets.findAll();
+    let { idUser } = req.query
+
+    try {
+        console.log('IDDDDDDDDDDDDDDDDDDDDDDDD',idUser)
+        const dataBase = await Tickets.findAll({
+            where: {
+                userId : idUser
+            },
+            include: [
+                {
+                    model: Events
+                }, 
+                {
+                    model: Users
+                }
+            ]
+        });
         if(dataBase.length > 0) return res.send(dataBase);
         else{
             res.send([])
@@ -42,38 +57,56 @@ async function updateTickets(req, res, next){
 
 async function postTickets(req, res, next){ // User.addTickets(ticket)  Events.addTickets(ticket)
     
-    let { propietario, userId, eventId } = req.body;
+    let {  cantidad, userId, eventId } = req.body;
     
     try {
-        
-        const createdTicket = await Tickets.create({       
-            propietario: propietario
-        });
-       
-        
+
         const user = await Users.findOne({
             where: {
                 id: userId
             }
+            
         });
-        
-        await user.addTickets(createdTicket);
 
         const event = await Events.findOne({
             where: {
                 id: eventId
             }
         });
-        
-        await event.addTickets(createdTicket);
 
-        res.send('ticket creado correctamente');
+        // await Events.update({
+        //     {
+        //         availableTickets: availableTickets - cantidad
+        //     },
+        //     where: {
+        //         id: eventId
+        //     }
+        // })
+        
+        while(cantidad > 0) {
+
+            
+            const createdTicket = await Tickets.create({       
+                propietario: user.fullName
+            });
+            await user.addTickets(createdTicket);
+
+            
+           await event.addTickets(createdTicket);
+            
+            cantidad--;
+    
+        }
+ 
+       res.send('ticket creado correctamente');
 
     } catch (error) {
         next(error)
     }
 
 }
+
+
 
 
 
