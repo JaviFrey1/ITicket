@@ -1,4 +1,12 @@
-.detalle{
+.detalle {
     text-align: center;
     margin-top: 50px;
+}
+
+.social {
+    /* background-color: yellow; */
+    width: 100%;
+    padding-left: 10px;
+    font-size: 25px;
+
 }

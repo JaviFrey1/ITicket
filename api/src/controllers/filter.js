@@ -1,5 +1,5 @@
 const { Events, Categories, SubCategories } = require("../db");
-
+const {Op}=require('sequelize')
 async function dataParseada() {
   const dataBase = await Events.findAll({
     include: [
@@ -24,7 +24,7 @@ async function dataParseada() {
         name: result.name,
         id: result.id,
         category: result.categories.map((cat) => cat.id),
-        subCategories: result.subCategories,
+        subCategories: result.subCategories.map((subCat)=>subCat.genre),
         artist: result.artist,
         place: result.place,
         address: result.address,
@@ -38,7 +38,6 @@ async function dataParseada() {
         isImportant: result.isImportant,
       };
     });
-    console.log("EVENT DB EN FINDER", eventDb);
     return eventDb;
   }
 }
@@ -67,13 +66,12 @@ async function filtroSubCategories(req, res, next) {
 
   try {
     const eventDb = await dataParseada();
-    console.log("EVENTDB EN FILTROLOCALIDAD", eventDb);
 
     const filtrados = [];
 
     eventDb.map((e) =>
       e.subCategories.map((s) =>
-        s.genre.toLowerCase() === genre.toLowerCase() ? filtrados.push(e) : null
+        s.toLowerCase() === genre.toLowerCase() ? filtrados.push(e) : null
       )
     );
 
@@ -125,33 +123,37 @@ async function filtroLocalidad(req, res, next) {
 }
 
 async function filtroFecha(req, res, next) {
-  let { date } = req.query;
-  let splited = date.split("/");
-  // const eventDb = await dataParseada();
-  // res.send(eventDb);
+  let { startdate, enddate } = req.query;
+  // let splitedStartDate = startdate.split("/");
+  // let splitedEndDate = enddate.split("/");
+ console.log(startdate, enddate)
   try {
-    const eventDb = await dataParseada();
-    let filtrados = [];
+    const eventDb= await Events.findAll({
+      where : {
+        date : {[Op.between] : [startdate , enddate ]}}})
+        console.log(eventDb)
+     if (eventDb.length > 0) return  res.status(200).send(eventDb)
+    // let filtrados = [];
 
-    eventDb.map((e) => (e.date === date ? filtrados.push(e) : null));
+    // eventDb.map((e) => (e.date === date ? filtrados.push(e) : null));
 
-    // filtrados = eventDb.filter((e) => e.date === date);
-    console.log("FILTRADDOS :", filtrados);
+    // // filtrados = eventDb.filter((e) => e.date === date);
+    // console.log("FILTRADDOS :", filtrados);
 
-    if (filtrados.length > 0) return res.send(filtrados);
-    else {
-      eventDb.map((m) =>
-        m.date.split("/")[1] === splited[1] &&
-        m.date.split("/")[2] === splited[2]
-          ? filtrados.push(m)
-          : null
-      );
+    // if (filtrados.length > 0) return res.send(filtrados);
+    // else {
+    //   eventDb.map((m) =>
+    //     m.date.split("/")[1] === splited[1] &&
+    //     m.date.split("/")[2] === splited[2]
+    //       ? filtrados.push(m)
+    //       : null
+    //   );
 
-      if (filtrados.length > 0) return res.send(filtrados);
-      else {
-        res.send([]);
-      }
-    }
+    //   if (filtrados.length > 0) return res.send(filtrados);
+    //   else {
+    //     res.send([]);
+    //   }
+    // }
   } catch (error) {
     next(error);
   }

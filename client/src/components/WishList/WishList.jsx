@@ -1,20 +1,22 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Event from "../Event/Event";
 import s from "./wishlist.module.css";
+import { loadState} from "../../localStorage";
 
 export function WishList() {
-  const wishEvents = useSelector((state) => state.wishEvents);
+  const favorites = loadState();
+  favorites.shift()
   return (
     <div className={s.page}>
       <div className={s.container}>
         <h2 className={s.titulo}> Estos eventos te han interesado!</h2>
-        {wishEvents ? (
+        {favorites ? (
           <div className={s.cards}>
-            {wishEvents.map((we) => {
+            {favorites.map(fav => {
+             const parsedFav = JSON.parse(fav)
               return (
-                <div key={we.id} className={s.event}>
-                  <Event event={we}/>
+                <div key={parsedFav.id} className={s.event}>
+                  <Event event={parsedFav}/>
                 </div>
               );
             })}

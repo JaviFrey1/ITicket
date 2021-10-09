@@ -18,6 +18,9 @@
 
 .nav-menu {
     background-color: rgba(255, 204, 0);
+    border-right: 1.5px solid rgba(0, 0, 0, 0.377);
+    padding-right: 2px;
+
     width: 300px;
     height: 100vh;
     display: flex;

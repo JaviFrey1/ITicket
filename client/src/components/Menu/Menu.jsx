@@ -8,12 +8,11 @@ import filterSubCat from "../../actions/filterSubCat";
 
 export default function Menu() {
   const [subCatOpt, setSubCatOpt] = useState([""]);
-
+ const eventsLoaded=useSelector(state => state.eventsLoaded)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getSubCategories());
-    console.log(subcategories)
 
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,10 +21,15 @@ export default function Menu() {
   const categories = useSelector((state) => state.categories);
   const subcategories = useSelector((state) => state.subCategories);
   function handleClickCat(id) {
-    const subCatOpt = subcategories.filter(
+    const subCats = subcategories.filter(
       (subCat) => subCat.categoryId === id
 
     );
+    const subCatOpt=[]
+  subCats.map(subcat=>eventsLoaded.map(e=>e.subCategories.includes(subcat.genre) && !(subCatOpt.includes(subcat))?subCatOpt.push(subcat):null))
+   console.log('TODAS LAS SUBCAT DE LA CATERGORIA'+ id + (subCats))
+   console.log('las q tienen eventos', subCatOpt)
+    
     setSubCatOpt(subCatOpt);
     // dispatch(filterCat(id));
   }

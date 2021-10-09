@@ -38,11 +38,13 @@
 
 
 .contMenu .categoriesOptions> :nth-child(2) {
-  border-right: none;
+  /* border-right: none; */
+  border-right: 1.5px solid rgba(0, 0, 0, 0.377);
   margin-left: 8px;
 
   /* color: red; */
 }
+
 .contMenu .categoriesOptions> :nth-child(1) {
   border-right: 1.5px solid rgba(0, 0, 0, 0.377);
   margin: 0;
@@ -60,13 +62,14 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min-content, 70px));
   gap: 5px;
-  align-items: center;  
+  align-items: center;
   width: 250px;
-  
+
   height: fit-content;
 }
-.contTitle:hover{
-   background-color: rgba(255, 255, 255, 0.306);
+
+.contTitle:hover {
+  background-color: rgba(255, 255, 255, 0.306);
 
 }
 

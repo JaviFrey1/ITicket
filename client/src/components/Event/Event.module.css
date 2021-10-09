@@ -1,6 +1,7 @@
 .contenedor {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: flex-end;
   background-color: white;
 
@@ -8,7 +9,7 @@
   max-width: 500px;
   height: 16em;
   border-radius: 5px;
-  
+
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -28,7 +29,7 @@
   background: rgb(0, 0, 1);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 30%, transparent);
   width: 70%;
-  height: 35%;
+  height: fit-content;
   /* opacity: .8; */
   display: table-column;
   align-items: center;
@@ -38,9 +39,10 @@
   /* position: absolute; */
   /* z-index: auto; */
   border-radius: 0 0 0 5px;
-
+  padding-bottom: 10px;
   word-wrap: break-word;
   /* background-color: aqua; */
+
 }
 
 .hijo>* {
@@ -125,4 +127,16 @@
 
 .link {
   text-decoration: none;
+}
+
+.icons {
+  /* background-color: linear-gradient(0deg, rgba(0, 0, 0, 1) 30%, transparent); */
+  background: radial-gradient(circle, rgba(8, 8, 7, 1) 0%, transparent 60%);
+  margin: 10px 15px;
+  margin-top: -10px;
+  font-size: 40px;
+  /* color: rgb(255, 204, 0); */
+  /* color: gold; */
+  color: #efb810;
+  text-shadow: 4px 4px 3px rgb(202, 201, 201);
 }

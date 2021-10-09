@@ -10,7 +10,16 @@ import Home from "./components/Home/Home";
 import AddEvent from "./components/AddEvent/AddEvent";
 import Frequent from "./components/Frequent/Frequent";
 import Privacy from "./components/Privacy/Privacy";
+<<<<<<< HEAD
 import Contact from "./components/Contact/Contact";
+=======
+import Ticketspage from "./components/TicketsPage/TicketsPage/TicketsPage";
+import UpdateEvent from "./components/UpdateEvent/UpdateEvent";
+
+import UserDetail from "./components/userComponents/UserDetail";
+
+import Historialpage from "./components/TicketsPage/TicketsPage/HistorialPage/HistorialPage";
+>>>>>>> d343cabfcb7e5a68ec0779cdb33a5907c295f868
 
 
 function App() {
@@ -23,23 +32,39 @@ function App() {
             "/event",
             "/events/:id",
             "/wishList",
+            "/misTickets",
             "/addEvent",
             "/respuestas",
             "/privacidad",
+<<<<<<< HEAD
             "/contacto" ,       
 
+=======
+            "/update/:id",
+            "/historial",
+>>>>>>> d343cabfcb7e5a68ec0779cdb33a5907c295f868
           ]}
           component={Nav}
         />
+
         <Route path="/home" component={Home} />
+        <Route path="/misTickets" component={Ticketspage} />
+        <Route path="/historial" component={Historialpage} />
         <Route path="/event" component={Event} />
         <Route path="/events/:id" component={EventDetail} />
         <Route path="/wishList" component={WishList} />
         <Route path="/addEvent" component={AddEvent} />
         <Route path="/respuestas" component={Frequent} />
         <Route path="/privacidad" component={Privacy} />
+<<<<<<< HEAD
         <Route path="/contacto" component={Contact} />
 
+=======
+        <Route path="/update/:id" component={UpdateEvent} />
+        <Route path="/users/:id" component={UserDetail} />
+        <Route path="/checkout" />
+        
+>>>>>>> d343cabfcb7e5a68ec0779cdb33a5907c295f868
       </React.Fragment>
     </BrowserRouter>
   );

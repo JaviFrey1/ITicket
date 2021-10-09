@@ -42,7 +42,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    name: {
+    fullName: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -53,6 +53,7 @@ module.exports = (sequelize) => {
         return () => this.getDataValue("password");
       },
     },
+ 
     salt: {
       type: DataTypes.STRING,
       get() {

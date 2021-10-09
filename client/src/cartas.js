@@ -3,8 +3,8 @@ export const cartas= [{
    artist :"Ariana Grande",
    place :"Gran Rex",
    address:"Corrientes 857",
-   location:"Capital Federal",
-   province:"Buenos Aires",
+   location:"San Nicolas",
+   province:"Capital Federal",
    price: 800,
    availableTickets: 140,
    image:"https://cdn.boletius.com/images/1497890220613-test-pos-arian-1920x720-min.jpg",
@@ -12,15 +12,15 @@ export const cartas= [{
    isImportant: false,
    category: 1,
    subCategories: ["Pop"],
-   date: "31/12/2021"
+   date: "2021-12-31"
 
 }, {
    name: "Symphony and Destruction",
    artist:"Megadeath",
    place:"Teatro Vorterix",
    address:"Federico Lacroze 3455",
-   location:"Capital Federal",
-   province:"Bueano Aires",
+   location:"Colegiales",
+   province:"Capital Federal",
    price: 1000,
    availableTickets: 1440,
    image:"https://megadeth.com/wp-content/uploads/2019/05/BuenosAires2019.jpg",
@@ -28,7 +28,7 @@ export const cartas= [{
    isImportant: true,
    category: 1,
    subCategories: ["Rock"],
-   date: "1/03/2022"
+   date: "2022-03-05"
 
 }, {
    name: "Meteora",
@@ -44,12 +44,12 @@ export const cartas= [{
    isImportant: true,
    category: 1,
    subCategories: ["Rock", "Pop"],
-   date: "16/10/2022"
+   date: "2022-10-16"
 }, {
    name: "Con Eso SI Se Jode",
    artist:"Matias Bottero",
    place:"Teatro Real",
-   address:"San JerÃ³nimo 66",
+   address:"San Jeronimo 66",
    location:"Cordoba",
    province:"Cordoba",
    price: 800,
@@ -59,7 +59,7 @@ export const cartas= [{
    isImportant: false,
    category: 2,
    subCategories: ["Comedia","'Unipersonal'","'Stand Up'","'Absurdo'"],
-   date: "09/07/2022"
+   date: "2022-09-07"
 }, {
    name: "Hamlet",
    artist:"Shakespeare",
@@ -74,7 +74,7 @@ export const cartas= [{
    isImportant: false,
    category: 2,
    subCategories: ["Drama"],
-   date: "03/08/2022"
+   date: "2022-08-03"
 },
 {
    name: "The Pepo Show",
@@ -90,7 +90,7 @@ export const cartas= [{
    isImportant: false,
    category: 1,
    subCategories: ["Cumbia"],
-   date: "15/08/2022"
+   date: "2022-08-16"
 },{
    name: "L-Gante KLoKE Show",
    artist:"L-Gante",
@@ -105,7 +105,7 @@ export const cartas= [{
    isImportant: false,
    category: 1,
    subCategories: ["Cumbia", "Reggaeton"],
-   date: "17/11/2021"
+   date: "2022-11-19"
 },{
    name: "The Skrillex Tour",
    artist:"Skrillex",
@@ -120,5 +120,5 @@ export const cartas= [{
    isImportant: false,
    category: 1,
    subCategories: ["Cumbia", "Trap"],
-   date: "25/12/2021"
+   date: "2021-12-13"
 }]

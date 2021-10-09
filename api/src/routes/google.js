@@ -1,6 +1,8 @@
 const { Router } = require("express");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
+const  transporter  = require('../controllers/emailLogin.js');
+
 
 const router = Router();
 
@@ -39,8 +41,16 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/failed" }),
-  function (req, res) {
+  async function (req, res) {
     // Successful authentication, redirect home.
+    await transporter.sendMail({
+      from: "matiascostilla96@gmail.com",
+      to: req.user.email,
+      subject: "Inicio Sesion",
+      html: `
+      <b> Muchas gracias por loggearte en Tukiteck!!
+      `
+  });
     res.redirect(succesLoginUrl);
   }
 );

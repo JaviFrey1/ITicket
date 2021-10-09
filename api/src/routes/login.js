@@ -8,6 +8,8 @@ const { v4: uuidv4 } = require("uuid");
 
 const passport1 = require("../passportLogin.js");
 
+const  transporter  = require('../controllers/emailLogin.js');
+
 
 
 const succesLoginUrl = 'http://localhost:3000/home';
@@ -28,7 +30,7 @@ router.post('/register', async function  (req, res) {
 
     let data = {...req.body, id};
     let errors = []
-    if(!data.name || !data.email || !data.password){
+    if(!data.fullName || !data.email || !data.password){
         errors.push({message: "Por favor llene todos los campos"});
     }
     try {
@@ -38,11 +40,30 @@ router.post('/register', async function  (req, res) {
             res.json("Ya existe un usuario con ese email")
         }
         else{
-            const createdUser = await Users.create({
-                name: data.name,
-                email: data.email,
-                password:data.password,
-                isAdmin: data.isAdmin
+            if(data.email === "tukiteckpf@gmail.com"){
+                const createdUser = await Users.create({
+                    fullName: data.fullName,
+                    email: data.email,
+                    password:data.password,
+                    isAdmin: true
+                });
+                
+            } else {
+                const createdUser = await Users.create({
+                    fullName: data.fullName,
+                    email: data.email,
+                    password:data.password,
+                    isAdmin: data.isAdmin
+            });
+        }
+
+            await transporter.sendMail({
+                from: "matiascostilla96@gmail.com",
+                to: data.email,
+                subject: "Inicio Sesion",
+                html: `
+                <b> Muchas gracias por loggearte en Tukiteck!!
+                `
             });
             //return res.json({message: 'Usuario CREADO'})
             return res.redirect('/login');
@@ -61,5 +82,20 @@ router.post('/login',(req, res, next) =>{
         failureRedirect: '/fail'
     })(req, res, next)
 })
+router.get("/logout", (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect("/deslog");
+  });
 
-module.exports = router
+router.get("/logout", (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect("/deslog");
+  });
+
+  
+
+
+ 
+module.exports =  router

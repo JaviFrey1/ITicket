@@ -1,19 +1,27 @@
 import {
   GET_EVENTS,
+  GET_CATEGORIES,
+  GET_USER_DETAIL,
+  GET_EVENT_DETAIL,
   ADD_EVENT_WISHLIST,
   REMOVE_EVENT_WISHLIST,
-  GET_EVENT_DETAIL,
-  GET_CATEGORIES,
   GET_SUBCATEGORIES,
   ADD_EVENT,
   BULK_EVENTS,
   REMOVE_EVENT,
   FILTER_CAT,//Javi
-  // SET_PAGE,//jaVI
   FILTER_DATE,
   FILTER_SUBCAT,
-  FILTER_ADDRESS
+  FILTER_ADDRESS,
+  UPDATE_EVENTS,
+  UPDATE_USER_PASS,
+  DELETE_EVENT,
+  POST_TICKETS,
+  UPDATE_AVAILABLE
 } from "../actions";
+import { loadState } from "../localStorage";
+
+const persistedState = loadState(); //Javi
 
 const initialState = {
   eventsLoaded: [],
@@ -22,7 +30,8 @@ const initialState = {
   eventDetail: "",
   subCategories: [],
   categories: [],
-  // page:1
+  userDetail:"",
+  persistedState//Javi
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -58,13 +67,23 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+      case DELETE_EVENT:
+        return {
+          ...state,
+        };
     case GET_EVENT_DETAIL:
       return {
         ...state,
         eventDetail: action.payload,
       };
+    case GET_USER_DETAIL:
+      return{
+        ...state,
+        userDetail:action.payload
+      }
 
     case ADD_EVENT_WISHLIST:
+      
       return {
         ...state,
         wishEvents: [action.payload, ...state.wishEvents],
@@ -96,11 +115,24 @@ export default function rootReducer(state = initialState, action) {
         ...state, 
         eventsLoaded:action.payload
       }
-    // case SET_PAGE: //Javi
-    //   return {
-    //     ...state,
-    //     page: action.payload
-    //   }
+    case UPDATE_EVENTS:
+      return {
+        ...state,
+        
+      }
+    case UPDATE_USER_PASS:
+        return {
+          ...state,
+          userDetail :  action.payload
+        }
+    case POST_TICKETS:
+        return {
+          ...state
+        }
+    case UPDATE_AVAILABLE:
+      return {
+        ...state,
+      }
 
     default:
       return state;
