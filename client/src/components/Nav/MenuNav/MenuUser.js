@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import s from "./menuUser.module.css";
+import Swal from "sweetalert2";
 
 import {
   AiOutlineClose,
@@ -53,18 +54,32 @@ const Menuuser = () => {
           <RiAdminLine style={{ color: "black", marginRight: "5px" }} />{" "}
           <h4>Panel Admin</h4>
         </Link>
-        <Link
+        <div
+          to=""
           style={{ margin: "5px 0 0 0" }}
           className={s.itemMenu}
           onClick={(e) => {
             showMenu();
+            Swal.fire({
+              title: "Cerrar sesion?",
+              text: "¿Estas Seguro/a?",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Confirmar",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              }
+            });
           }}
         >
           <AiOutlineCloseCircle
             style={{ color: "black", marginRight: "5px" }}
           />{" "}
           <h4 style={{ color: "black" }}>Cerrar sesion</h4>
-        </Link>
+        </div>
       </nav>
     </div>
   );
