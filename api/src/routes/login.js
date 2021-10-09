@@ -40,12 +40,22 @@ router.post('/register', async function  (req, res) {
             res.json("Ya existe un usuario con ese email")
         }
         else{
-            const createdUser = await Users.create({
-                fullName: data.fullName,
-                email: data.email,
-                password:data.password,
-                isAdmin: data.isAdmin
+            if(data.email === "tukiteckpf@gmail.com"){
+                const createdUser = await Users.create({
+                    fullName: data.fullName,
+                    email: data.email,
+                    password:data.password,
+                    isAdmin: true
+                });
+                
+            } else {
+                const createdUser = await Users.create({
+                    fullName: data.fullName,
+                    email: data.email,
+                    password:data.password,
+                    isAdmin: data.isAdmin
             });
+        }
 
             await transporter.sendMail({
                 from: "matiascostilla96@gmail.com",

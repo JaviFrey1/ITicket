@@ -5,10 +5,9 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('tickets', {
                                                                                   
-    prize: {
-      type: DataTypes.INTEGER,
+    propietario: {
+      type: DataTypes.STRING,
       allowNull: false,
-     
     },
 
     // id:{ 
@@ -24,3 +23,4 @@ module.exports = (sequelize) => {
    {createdAt: false}
   );
 };
+
