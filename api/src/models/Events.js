@@ -50,7 +50,7 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
       date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
       //   get: function() {
       //     return new Date(this.getDataValue('date')).toLocaleDateString()

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import  React, {useState} from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getUserDetail from "../../actions/getUserDetail";
