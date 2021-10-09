@@ -14,6 +14,7 @@ import { GoPencil } from "react-icons/go";
 import { BsFillTrashFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function EventDetail(props) {
   const [lat, setLat] = useState("");
@@ -168,10 +169,18 @@ export default function EventDetail(props) {
                 ) : null}
               </div>
               <div className={s.price_buy}>
-                <div className={s.price}>
-                  <span>${eventDetail.price}</span>
+                <div className={s.selectCont}>
+                  <select>
+                    <option>1 entrada</option>
+                    <option>2 entrada</option>
+                  </select>
                 </div>
-                <button className={s.buy}>COMPRAR</button>
+                <div className={s.price}>
+                  <span>Total: ar$ {eventDetail.price}.-</span>
+                </div>
+                <Link className={s.buy}>
+                  <p>COMPRAR</p>
+                </Link>
               </div>
             </div>
           </div>

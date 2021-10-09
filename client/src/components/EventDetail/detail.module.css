@@ -12,12 +12,10 @@
     /* flex-direction: column; */
 }
 
+
+
 .forma {
-    /* top: 0;
-    width: 400px;
-    height: 400px;
-    background-color: rgb(255, 204, 0);
-    border-radius: 50%; */
+
     transform: translate(90%, 30%);
     position: absolute;
     width: 80vh;
@@ -33,11 +31,7 @@
 }
 
 .forma2 {
-    /* top: 0;
-    width: 400px;
-    height: 400px;
-    background-color: rgb(255, 204, 0);
-    border-radius: 50%; */
+
     transform: translate(-120%, -30%);
     position: absolute;
     width: 600px;
@@ -90,13 +84,13 @@
 }
 
 img {
-    object-fit: inherit;
+    object-fit: initial;
 
 }
 
 .contboth {
     width: 100%;
-    box-shadow: 0px 0px 10px 0px rgba(56, 55, 55, 0.279) inset;
+    /* box-shadow: 0px 0px 10px 0px rgba(56, 55, 55, 0.279) inset; */
 
 }
 
@@ -200,6 +194,7 @@ img {
     height: 100%;
     padding: 0em 0em 0em 0.5em;
     width: max-content;
+    font-size: calc(1em + 1.8vw);
 }
 
 .date {
@@ -209,6 +204,9 @@ img {
     border-radius: 20%;
     padding: 0 0.3em 0 0.3em;
     font-weight: 500;
+    font-weight: 600;
+    color: rgb(255, 204, 0);
+    text-shadow: black 1px 1px 2px;
 }
 
 .time {
@@ -232,8 +230,10 @@ img {
     justify-self: start;
     padding-bottom: 10px;
     background-color: transparent;
+}
 
-
+.date_time .date {
+    font-size: calc(0.6em + 1vw);
 }
 
 .subcategories {
@@ -255,34 +255,55 @@ img {
 
 .price_buy {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    /* flex-direction: column; */
+    justify-content: space-around;
     /* background-color: aqua; */
     font-size: calc(1em + 0.8vw);
     font-weight: 700;
-    width: 100%;
+    width: 95%;
     padding: 0 15px;
     color: #000;
+    align-items: center;
+}
+
+.selectCont {
+    align-items: center;
+    /* background-color: red; */
 
 }
 
-.price {
+.selectCont select {
+    margin: 0;
+    border: 1px solid rgba(255, 204, 0);
+    font-size: 20px;
+}
+
+/* .price {
     margin-left: 77%;
     font-size: 2em;
-
-
-}
+} */
 
 .buy {
     background-color: rgb(255, 204, 0);
     border: none;
-    width: 50%;
-    height: 50px;
+    width: 30%;
+    height: fit-content;
     border-radius: 8px;
     font-size: calc(0.6em + 0.5vw);
     font-weight: 700;
-    margin-left: 43%;
+    /* margin-left: 43%; */
     box-shadow: 0px 0px 10px 0px #333 inset;
+    text-decoration: none;
+    align-items: center;
+    padding: 5px;
+    ;
+}
+
+.buy p {
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    color: rgba(0, 0, 17, 0.781);
 }
 
 .buy:active {
@@ -391,5 +412,18 @@ h5 {
         height: 250px;
         justify-self: center;
         margin: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .forma2 {
+
+        transform: translate(-50%, -60%);
+        transition: all;
+    }
+
+    .forma {
+
+        transform: translate(30%, 30%);
     }
 }
