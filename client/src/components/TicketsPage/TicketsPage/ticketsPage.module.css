@@ -9,6 +9,9 @@
     width: 200px;
     height: 100vh;
     background-color: rgba(209, 209, 206, 0.274);
+    box-shadow: 13px 0px 17px -3px rgba(0,0,0,0.59);
+    -webkit-box-shadow: 13px 0px 17px -3px rgba(0,0,0,0.59);
+    -moz-box-shadow: 13px 0px 17px -3px rgba(0,0,0,0.59);
 }
 
 .detalleCompra {
