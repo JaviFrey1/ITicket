@@ -49,7 +49,7 @@ function App() {
         <Route path="/privacidad" component={Privacy} />
         <Route path="/update/:id" component={UpdateEvent} />
         <Route path="/users/:id" component={UserDetail} />
-
+        <Route path="/checkout" />
         
       </React.Fragment>
     </BrowserRouter>

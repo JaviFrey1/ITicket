@@ -1,22 +1,23 @@
 import {
   GET_EVENTS,
+  GET_CATEGORIES,
+  GET_USER_DETAIL,
+  GET_EVENT_DETAIL,
   ADD_EVENT_WISHLIST,
   REMOVE_EVENT_WISHLIST,
-  GET_EVENT_DETAIL,
-  GET_CATEGORIES,
   GET_SUBCATEGORIES,
   ADD_EVENT,
   BULK_EVENTS,
   REMOVE_EVENT,
   FILTER_CAT,//Javi
-  // SET_PAGE,//jaVI
   FILTER_DATE,
   FILTER_SUBCAT,
   FILTER_ADDRESS,
   UPDATE_EVENTS,
+  UPDATE_USER_PASS,
   DELETE_EVENT,
-  GET_USER_DETAIL,
-  UPDATE_USER_PASS
+  POST_TICKETS,
+  UPDATE_AVAILABLE
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -82,7 +83,7 @@ export default function rootReducer(state = initialState, action) {
       }
 
     case ADD_EVENT_WISHLIST:
-      console.log('dentro de reducer',persistedState)
+      
       return {
         ...state,
         wishEvents: [action.payload, ...state.wishEvents],
@@ -117,14 +118,21 @@ export default function rootReducer(state = initialState, action) {
     case UPDATE_EVENTS:
       return {
         ...state,
-        eventLoaded : [...state.eventsLoaded, action.payload]
+        
       }
-      case UPDATE_USER_PASS:
+    case UPDATE_USER_PASS:
         return {
           ...state,
           userDetail :  action.payload
         }
-
+    case POST_TICKETS:
+        return {
+          ...state
+        }
+    case UPDATE_AVAILABLE:
+      return {
+        ...state,
+      }
 
     default:
       return state;

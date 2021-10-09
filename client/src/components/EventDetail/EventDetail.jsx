@@ -1,31 +1,34 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import s from "./detail.module.css";
-import getEventDetail from "../../actions/getEventDetail";
-import deleteEvent from "../../actions/deleteEvent";
+import { useHistory, Link, NavLink } from "react-router-dom";
 import { OpenStreetMapProvider } from "leaflet-geosearch";
 import { MapContainer, TileLayer, Popup, Circle } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import { NavLink } from "react-router-dom";
 import { GoPencil } from "react-icons/go";
 import { BsFillTrashFill } from "react-icons/bs";
+import s from "./detail.module.css";
 import Swal from "sweetalert2";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+import deleteEvent from "../../actions/deleteEvent";
+import getEventDetail from "../../actions/getEventDetail";
+import getUserDetail from "../../actions/getUserDetail";
+import "leaflet/dist/leaflet.css";
+import { postTickets } from "../../../../api/src/controllers/tickets";
+import updateAvailable from "../../actions/updateAvailable";
 
 export default function EventDetail(props) {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const [loading, setLoading] = useState(true);
-
+  const [precio, setPrecio] = useState('');
+  const [cantidad, setCantidad] = useState('')
+ 
   const provider = new OpenStreetMapProvider();
   const history = useHistory();
   const dispatch = useDispatch();
 
   const eventDetail = useSelector((state) => state.eventDetail);
+  const userDetail = useSelector((state) => state.userDetail)
 
   function handleDelete(eventDetail) {
     Swal.fire({
@@ -72,7 +75,9 @@ export default function EventDetail(props) {
   }
 
   useEffect(() => {
-    dispatch(getEventDetail(props.match.params.id)).then((results) => {
+    dispatch(getUserDetail(userId))
+    dispatch(getEventDetail(props.match.params.id))
+    .then((results) => {
       const fullAdress =
         results.payload.address +
         "," +
@@ -88,9 +93,22 @@ export default function EventDetail(props) {
     }, 1000);
   }, []);
 
-  // useEffect(()=>{
-  //   buscar()map
-  // },[eventDetail.address])
+  function handleChange(e) {
+    e.preventDefault();
+    if (e.target.value === '1') {
+      setPrecio(eventDetail.price);
+      setCantidad(1)
+    } else {
+      setPrecio((eventDetail.price) * 2);
+      setCantidad(2)
+    }
+  }
+
+  function handleClick(idUser, cantidad, idEvento) {
+    let body = {idUser, cantidad, idEvento};
+    dispatch(postTickets(body));
+    dispatch(updateAvailable(idUser, cantidad))
+  }
 
   const colorCirculoMarcador = {
     color: "rgb(255, 204, 0)",
@@ -170,15 +188,15 @@ export default function EventDetail(props) {
               </div>
               <div className={s.price_buy}>
                 <div className={s.selectCont}>
-                  <select>
-                    <option>1 entrada</option>
-                    <option>2 entrada</option>
+                  <select className={s.select} onChange={(e) => handleChange(e)}>
+                    <option value='1'>1 entrada</option>
+                    <option value='2'>2 entradas</option>
                   </select>
                 </div>
                 <div className={s.price}>
-                  <span>Total: ar$ {eventDetail.price}.-</span>
+                  <span>Total: ar$ {precio ? precio : eventDetail.price}.</span>
                 </div>
-                <Link className={s.buy}>
+                <Link to='/checkout' className={s.buy} onClick={() => handleClick(userDetail.id, cantidad, eventDetail.id)}>
                   <p>COMPRAR</p>
                 </Link>
               </div>
