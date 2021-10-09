@@ -10,7 +10,8 @@ const filter = require('./filter.js');
 const google = require('./google.js');
 const login = require('./login.js');
 const users = require('./users.js');
-
+const mercadopago = require('./mercadopago.js');
+const tickets = require('./tickets.js')
 
 
 const router = Router();
@@ -27,11 +28,15 @@ router.use('/subcategories', subcategories);
 router.use('/event', event);
 router.use('/filter', filter);
 router.use('/users', users);
+router.use('/tickets', tickets);
 
 router.use('/', google);
 
 
 router.use('/', login);
+
+
+router.use('/', mercadopago);
 
 
 

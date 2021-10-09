@@ -53,6 +53,7 @@ module.exports = (sequelize) => {
         return () => this.getDataValue("password");
       },
     },
+ 
     salt: {
       type: DataTypes.STRING,
       get() {

@@ -12,7 +12,11 @@ import Frequent from "./components/Frequent/Frequent";
 import Privacy from "./components/Privacy/Privacy";
 import Ticketspage from "./components/TicketsPage/TicketsPage/TicketsPage";
 import UpdateEvent from "./components/UpdateEvent/UpdateEvent";
+
+import UserDetail from "./components/userComponents/UserDetail";
+
 import Historialpage from "./components/TicketsPage/TicketsPage/HistorialPage/HistorialPage";
+
 
 function App() {
   return (
@@ -44,6 +48,9 @@ function App() {
         <Route path="/respuestas" component={Frequent} />
         <Route path="/privacidad" component={Privacy} />
         <Route path="/update/:id" component={UpdateEvent} />
+        <Route path="/users/:id" component={UserDetail} />
+
+        
       </React.Fragment>
     </BrowserRouter>
   );

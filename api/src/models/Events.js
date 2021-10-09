@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize");
+
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize
 module.exports = (sequelize) => {
@@ -49,8 +50,12 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
       date: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull: false,
+      //   get: function() {
+      //     return new Date(this.getDataValue('date')).toLocaleDateString()
+      //  }
+
       },
       time: {
         type: DataTypes.STRING,
