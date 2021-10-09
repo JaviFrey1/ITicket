@@ -14,7 +14,9 @@ import {
   FILTER_SUBCAT,
   FILTER_ADDRESS,
   UPDATE_EVENTS,
-  DELETE_EVENT
+  DELETE_EVENT,
+  GET_USER_DETAIL,
+  UPDATE_USER_PASS
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -27,6 +29,7 @@ const initialState = {
   eventDetail: "",
   subCategories: [],
   categories: [],
+  userDetail:"",
   persistedState//Javi
 };
 
@@ -72,6 +75,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         eventDetail: action.payload,
       };
+    case GET_USER_DETAIL:
+      return{
+        ...state,
+        userDetail:action.payload
+      }
 
     case ADD_EVENT_WISHLIST:
       console.log('dentro de reducer',persistedState)
@@ -111,6 +119,12 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         eventLoaded : [...state.eventsLoaded, action.payload]
       }
+      case UPDATE_USER_PASS:
+        return {
+          ...state,
+          userDetail :  action.payload
+        }
+
 
     default:
       return state;
