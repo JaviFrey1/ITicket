@@ -156,7 +156,7 @@ async function deleteEvent(req, res, next) {
 
 }
 async function updateAvailable(req, res, next) {
-  let { id } = req.query;
+  let { eventId } = req.query;
 
   const {
       cantidad
@@ -170,7 +170,7 @@ async function updateAvailable(req, res, next) {
           },
           {
               where: {
-                  id: id,
+                  id: eventId,
               },
           }
       );
