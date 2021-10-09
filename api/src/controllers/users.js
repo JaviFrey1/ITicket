@@ -57,19 +57,13 @@ async function updateUser(req, res, next){
     let id = req.params.id;
 
     const{
-        fullName,
-        email,
-        password,
-        isAdmin,
+       newPass
     } = req.body;
 
     try {
         await Users.update(
             {
-              fullName,
-              email,
-              password,
-              isAdmin
+             password:newPass
               
             },
             {

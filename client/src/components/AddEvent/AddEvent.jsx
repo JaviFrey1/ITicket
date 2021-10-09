@@ -105,6 +105,7 @@ export default function AddEvent() {
       [e.target.name]: e.target.value,
 
     });
+
     setErrors(validate(state));
   }
 
@@ -154,9 +155,7 @@ export default function AddEvent() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    let newFecha = state.date.split("-");
-    newFecha = newFecha.reverse().join("/");
-    state.date = newFecha;
+    
 
     dispatch(addEvent(state));
     alert("Has agregado un nuevo evento!");
