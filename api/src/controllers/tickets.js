@@ -106,31 +106,6 @@ async function postTickets(req, res, next) { // User.addTickets(ticket)  Events.
 
 }
 
-async function updateAvailable(req, res, next) {
-    let { id } = req.query;
-
-    const {
-        cantidad
-    } = req.body;
-
-    try {
-        await Events.update(
-            {
-                availableTickets: availableTickets - cantidad
-
-            },
-            {
-                where: {
-                    id: id,
-                },
-            }
-        );
-        res.json('available Tickets updated')
-
-    } catch (error) {
-        next(error)
-    }
-}
 
 
 

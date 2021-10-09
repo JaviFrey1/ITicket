@@ -155,9 +155,36 @@ async function deleteEvent(req, res, next) {
   }
 
 }
+async function updateAvailable(req, res, next) {
+  let { id } = req.query;
+
+  const {
+      cantidad
+  } = req.body;
+
+  try {
+      await Events.update(
+          {
+              availableTickets: availableTickets - cantidad
+
+          },
+          {
+              where: {
+                  id: id,
+              },
+          }
+      );
+      res.json('available Tickets updated')
+
+  } catch (error) {
+      next(error)
+  }
+}
+
 
 module.exports = {
   AddEvent,
   updateEvent,
-  deleteEvent
+  deleteEvent,
+  updateAvailable
 };
