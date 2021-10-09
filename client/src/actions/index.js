@@ -14,6 +14,9 @@ export const UPDATE_EVENTS = "UPDATE_EVENTS"
 export const  ADD_EVENT = " ADD_EVENT"
 export const REMOVE_EVENT='REMOVE_EVENT'
 export const DELETE_EVENT = 'DELETE_EVENT'
+export const POST_USER = 'POST_USER'
+export const GET_USER_DETAIL = 'GET_USER_DETAIL'
+export const UPDATE_USER_PASS = 'UPDATE_USER_PASS'
 
 export function removeEvent(payload){
     return{

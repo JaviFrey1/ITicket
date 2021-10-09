@@ -17,7 +17,9 @@ export default function CarouselComp() {
   ];
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventsLoaded);
-  const importantEvents = Array.isArray(events)? events.filter((el) => el.isImportant === true): console.log('Aun no hay eventos en el carrousel', events);
+  const importantEvents = Array.isArray(events)
+    ? events.filter((el) => el.isImportant === true)
+    : console.log("Aun no hay eventos en el carrousel", events);
 
   useEffect(() => {
     dispatch(getEvents(""));
@@ -34,28 +36,29 @@ export default function CarouselComp() {
             className={s.carousel}
             breakPoints={breakPoints}
           >
-            {Array.isArray(importantEvents) ? importantEvents.map((el) => (
-            <Link to={`/events/${el.id}`} key={el.id}>
-             <div  className={s.itemCarousel}>
-                <div className={s.todo}>
-                  <div className={s.nombres}>
-                    <div>
-                    <span>{el.name}</span> - 
-                      {el.subCategories?.map((subcat, i) => (
-                        <span key={i}>{el.subCategories} - </span>
-                      ))}
-                    <span>{el.date}</span>
+            {Array.isArray(importantEvents)
+              ? importantEvents.map((el) => (
+                  <Link className={s.link} to={`/events/${el.id}`} key={el.id}>
+                    <div className={s.itemCarousel}>
+                      <div className={s.todo}>
+                        <div className={s.nombres}>
+                          <div>
+                            <span>{el.name}</span> -
+                            {el.subCategories?.map((subcat, i) => (
+                              <span key={i}>{el.subCategories} - </span>
+                            ))}
+                            <span>{el.date}</span>
+                          </div>
+                        </div>
+                        <img alt="" src={el.image} />
+                      </div>
                     </div>
-                  </div>
-                  <img alt="" src={el.image} />
-                </div>
-              </div>
-              </Link>
-            )) : null}
+                  </Link>
+                ))
+              : null}
           </Carousel>
         </div>
-      ) : null
-      }
+      ) : null}
     </div>
   );
 }
