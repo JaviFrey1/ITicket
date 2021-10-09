@@ -1,124 +1,87 @@
+
 const { Events, Categories, SubCategories } = require("../db");
-const { Op } = require("sequelize");
 
 
-async function Paginate (req, res) {
-  try {
-    const limit = parseInt(req.query.limit);  
-    const skip = parseInt(req.query.skip); 
+async function finder() {
+  const dataBase = await Events.findAll({
+    include: [
+      {
+        model: Categories,
+        through: {
+          attributes: [],
+        },
+      },
 
-    const event = new userService();
-    const events = await event.getAll(limit, skip);
-
-    return res.send(200).json(events);
-  } catch(error){
-    return res.send(500).json(error)
+      {
+        model: SubCategories,
+        through: {
+          attributes: [],
+        },
+      },
+    ],
   }
+  );
+  if (dataBase.length > 0) {
+    const eventDb = dataBase.map((result) => {
+      return {
+        name: result.name,
+        id: result.id,
+        category: result.categories.map((cat) => cat.name),
+        subCategories: result.subCategories.map((subCat) => subCat.genre),
+        artist: result.artist,
+        place: result.place,
+        address: result.address,
+        location: result.location,
+        province: result.province,
+        image: result.image,
+        price: result.price,
+        availableTickets: result.availableTickets,
+        date: result.date,
+        time: result.time,
+        isImportant: result.isImportant
+      };
+    });
+    console.log(eventDb)
+    return eventDb
+  }else return []
 }
-     
-function CategoryFilter (){
-  if ()
-}
-
 
 async function getAllEvents(req, res) {
   let name = req.query.name;
-  if (name) {
-    const searcheado = name.toLowerCase();
-    try {
-      const dataBase = await Events.findAll({
-        include: [
-          {
-            model: Categories,
-            through: {
-              attributes: [],
-            },
-          },
+ 
+  try {
+    if (name) {
+      const searcheado = name.toLowerCase();
+      try {
 
-          {
-            model: SubCategories,
-            through: {
-              attributes: [],
-            },
-          },
-        ],
-      });
-      if (dataBase.length > 0) {
-        const eventDb = dataBase.map((result) => {
-          return {
-            name: result.name,
-            id: result.id,
-            category: result.categories.map((cat) => cat.name),
-            subCategories: result.subCategories.map((subCat) => subCat.genre),
-            artist: result.artist,
-            place: result.place,
-            address: result.address,
-            image: result.image,
-            price: result.price,
-            availableTickets: result.availableTickets,
-            date: result.date,
-            time: result.time,
-          };
-        });
+        const eventDb = await finder()
+        if (eventDb.length > 0) {
 
-        const filtered = eventDb.filter(
-          (event) =>
-            event.artist.toLowerCase().includes(searcheado) ||
-            event.name.toLowerCase().includes(searcheado)
-        );
-
-        return res.json(filtered);
-      } else return res.send("Evento Inexistente");
-    } catch (error) {
-      return res
-        .status(400)
-        .send({ error: "Ocurrió un error durante la busqueda" });
+          const filtered = eventDb.filter(
+            (event) =>
+              event.artist.toLowerCase().includes(searcheado) ||
+              event.name.toLowerCase().includes(searcheado)
+          );
+          return res.json(filtered);
+        } else return res.send([]);
+      } catch (error) {
+        return res
+          .status(400)
+          .send({ error: "Ocurrió un error durante la busqueda a" });
+      }
+    } else {
+      try {
+        const dataBase = await finder();
+        if (dataBase.length > 0) return res.send(dataBase)
+        else return res.send([]);
+      } catch (error) {
+        return res
+          .status(400)
+          .send({ error: "Ocurrió un error durante la busqueda b" });
+      }
     }
-  } else {
-    try {
-      const dataBase = await Events.findAll({
-        include: [
-          {
-            model: Categories,
-            through: {
-              attributes: [],
-            },
-          },
-
-          {
-            model: SubCategories,
-            through: {
-              attributes: [],
-            },
-          },
-        ],
-      });
-      if (dataBase.length > 0) {
-        const eventDb = dataBase.map((result) => {
-          return {
-            name: result.name,
-            id: result.id,
-            category: result.categories.map((cat) => cat.name),
-            subCategories: result.subCategories.map((subCat) => subCat.genre),
-            artist: result.artist,
-            place: result.place,
-            address: result.address,
-            image: result.image,
-            price: result.price,
-            availableTickets: result.availableTickets,
-            date: result.date,
-            time: result.time,
-          };
-        });
-
-        res.json(eventDb);
-        Paginate()
-      } else return res.send([]);
-    } catch (error) {
-      return res
-        .status(400)
-        .send({ error: "Ocurrió un error durante la busqueda" });
-    }
+  } catch (error) {
+    console.log(error)
   }
 }
 
@@ -152,15 +115,18 @@ async function getEventById(req, res) {
         name: dataBase.name,
         id: dataBase.id,
         category: dataBase.categories.map((cat) => cat.name),
-        subCategories: dataBase.subCategories.map((subCat) => subCat.genre),
+        subCategories: dataBase.subCategories,
         artist: dataBase.artist,
         place: dataBase.place,
         address: dataBase.address,
+        location: dataBase.location,
+        province: dataBase.province,
         image: dataBase.image,
         price: dataBase.price,
         availableTickets: dataBase.availableTickets,
         date: dataBase.date,
         time: dataBase.time,
+        isImportant: dataBase.isImportant
       };
       res.json(finalEvent);
     } else return res.json("No encontramos ese evento");
@@ -169,113 +135,19 @@ async function getEventById(req, res) {
   }
 }
 
-// async function getAllEvents(req, res) {
-//     let name = req.query.name;
-//     if (name) {
-//         const firstLetter = name.charAt(0).toUpperCase();
-//         const restWord = name.slice(1).toLowerCase();
-//         const searcheado = firstLetter + restWord;
-//         try {
 
-//             const dataBase = await Events.findAll({
-//                 where: {
-//                     name: { [Op.like]: `%${searcheado}%` }
-//                 },
 
-//                 include:[
-//                     {
-//                         model: Categories,
-//                         through: {
-//                             attributes: [],
-//                         },
-//                     },
 
-//                      {
-//                         model: SubCategories,
-//                         through: {
-//                             attributes: [],
-//                         },
-//                     },
-//                 ]
-//             });
 
-//             if (dataBase.length > 0) {
-//                 const eventsDb = dataBase.map(result => {
-//                     return {
-//                         name: result.name,
-//                         id: result.id,
-//                         category: result.categories.map(cat => cat.name),
-//                         subCategories: result.subCategories.map(subCat => subCat.genre),
-//                         artist: result.artist,
-//                         place: result.place,
-//                         address: result.address,
-//                         image:result.image,
-//                         price: result.price,
-//                         availableTickets: result.availableTickets,
-//                         date: result.date,
-//                         time: result.time
-//                     }
-//                 })
 
-//                 return res.json(eventsDb);
-//             }
-//             else return res.send("Evento Inexistente")
 
-//         } catch (error) {
-//             return res.status(400).send({ error: "Ocurrió un error durante la busqueda" })
-//         }
-//     }
-//     else {
-//         try {
 
-//             const dataBase = await Events.findAll({
 
-//                 include:[
-//                     {
-//                         model: Categories,
-//                         through: {
-//                             attributes: [],
-//                         },
-//                     },
 
-//                      {
-//                         model: SubCategories,
-//                         through: {
-//                             attributes: [],
-//                         },
-//                     },
-//                 ]
-//             });
-//            if(dataBase.length > 0){
-//                const eventDb = dataBase.map(result => {
-//                    return {
-//                        name: result.name,
-//                        id: result.id,
-//                        category: result.categories.map(cat => cat.name),
-//                        subCategories: result.subCategories.map(subCat => subCat.genre),
-//                        artist: result.artist,
-//                        place: result.place,
-//                        address: result.address,
-//                        image:result.image,
-//                        price: result.price,
-//                        availableTickets: result.availableTickets,
-//                        date: result.date,
-//                        time: result.time
-//                    }
-//                })
 
-//                res.json(eventDb)
-
-//            }else return res.send([])
-
-//         } catch (error) {
-//             return res.status(400).send({ error: "Ocurrió un error durante la busqueda" })
-//         }
-
-//     }
-// }
 
 module.exports = {
   getAllEvents,
   getEventById,
+  finder
 };

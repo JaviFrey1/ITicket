@@ -1,6 +1,21 @@
 .contRey {
   display: flex;
   flex-direction: column;
+  /* justify-content: flex-end; */
+  background-color: rgba(206, 203, 203, 0.082);
+  padding: 3px;
+}
+
+.menu_btn {
+  display: flex;
+  width: fit-content;
+  /* width: 50px; */
+  /* background-color: white; */
+  margin-left: 15px;
+  font-size: 32px;
+  align-items: center;
+  /* background-image: url('') */
+  /* height: 50px; */
 }
 
 .contSearch {
@@ -8,7 +23,7 @@
   flex-direction: row;
   justify-content: space-between;
   /* background-color: aqua; */
-  height: min-content;
+  /* height: min-content; */
 }
 
 .contSearch .categoriesOptions {
@@ -24,9 +39,9 @@
 
 .contSearch .categoriesOptions h3 {
   cursor: pointer;
-  border-right: 1.5px solid rgba(0, 0, 0, 0.185);
+  border-right: 1.5px solid rgba(0, 0, 0, 0.377);
   margin: 3px;
-  font-weight: 400;
+  font-weight: 500;
   padding-right: 10px;
 }
 
@@ -43,8 +58,31 @@
 
 .formContainer {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 8vw;
+  justify-content: space-between;
+  margin-right: 5vw;
+  /* background-color: green; */
+}
+
+.formContainer .btn {
+  border: none;
+  font-family: inherit;
+  background-color: #fca21136;
+  /* border: 2px solid black; */
+  outline: none;
+  left: 30%;
+  background: rgb(255, 204, 0);
+  /* background-color: transparent; */
+  height: 30px;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  /* margin: 5px; */
+  /* margin-right: 32px; */
+  padding-left: 10px;
+  align-items: center;
+  margin: auto;
+  margin-left: 10px;
+
 }
 
 ::placeholder {
@@ -111,10 +149,20 @@
 .contSubcategies h4 {
   margin: 5px 10px;
   cursor: pointer;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .contSubcategies h4:hover {
-  /* color: red; */
   border-bottom: 2px solid rgb(255, 204, 0);
+}
+
+.btn{
+  
+  padding-right: 10px;
+}
+.btn:hover{
+  border: black solid 1px;
+  box-shadow: 0px 0px 10px 6px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 10px 6px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 10px 6px rgba(0,0,0,0.75);
 }

@@ -1,127 +1,124 @@
-export const Metallica = {
-  name: "Metallica",
-  subCategories: "Rock",
-  date: "31/12/2021",
-  id: 1,
-  image:
-    "https://cdn.shortpixel.ai/spai/w_875+q_glossy+ret_img+to_webp/https://entradas.quelapaseslindo.com.ar/wp-content/uploads/metallica-argentina-2020.jpg",
-};
-export const Duki = {
-  name: "Duki",
-  subCategories: "Trap",
-  date: "1/15/2021",
-  id: 2,
-  image: "https://historia-biografia.com/wp-content/uploads/2021/05/duki.jpg",
-};
-export const Jesus = {
-  name: "Stoned Jesus",
-  subCategories: "Rock",
-  date: "1/15/2021",
-  id: 3,
-  image:
-    "https://p4.wallpaperbetter.com/wallpaper/660/285/302/seven-thunders-roar-stoned-jesus-stoner-metal-indian-skull-and-bones-forest-album-covers-cover-art-wallpaper-preview.jpg",
-};
-export const Sosa = {
-  name: "Don Julio Sosa",
-  subCategories: "Tango",
-  date: "1/15/2022",
-  id: 4,
-  image:
-    "https://mediosyestrategias.com/wp-content/uploads/2019/11/juliososa.jpg",
-};
-export const Metallica2 = {
-  name: "Metallica",
-  subCategories: "Rock",
-  date: "31/12/2021",
-  id: 5,
-  image:
-    "https://img.freepik.com/psd-gratis/plantilla-banner-concierto_23-2148403186.jpg?size=626&ext=jpg",
-};
-export const Duki2 = {
-  name: "Duki",
-  subCategories: "Trap",
-  date: "1/15/2021",
-  id: 6,
-  image:
-    "http://4.bp.blogspot.com/-BtJwcfIRciI/T49Sx0SHE7I/AAAAAAAACpE/8usE1bxt2mA/s1600/banner.png",
-};
-export const Jesus2 = {
-  name: "Stoned Jesus",
-  subCategories: "Rock",
-  date: "1/15/2021",
-  id: 7,
-  image:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ3O_Oqdh4zPdJUb0F11do3DUTad8PegRQWg&usqp=CAU",
-};
-export const Sosa2 = {
-  name: "Don Julio Sosa",
-  subCategories: "Tango",
-  date: "1/15/2022",
-  id: 8,
-  image:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr7oUP9VrJACSuPWf0HWiKkh_t0bJSXGC9_g&usqp=CAU",
-};
-export const Metallica3 = {
-  name: "Metallica",
-  subCategories: "Rock",
-  date: "31/12/2021",
-  id: 9,
-  image:
-    "https://eligecultura.gob.cl/uploads/banner_municipal_1900x770_7_Xr4MD7K.jpg.1000x1000_q85.jpg",
-};
-export const Duki3 = {
-  name: "Duki",
-  subCategories: "Trap",
-  date: "1/15/2021",
-  id: 10,
-  image:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu7SpnLG7fGywGKsmuR5H-MWS5YNRC5QRNpQ&usqp=CAU",
-};
-export const Jesus3 = {
-  name: "Stoned Jesus",
-  subCategories: "Rock",
-  date: "1/15/2021",
-  id: 11,
-  image:
-    "https://p4.wallpaperbetter.com/wallpaper/660/285/302/seven-thunders-roar-stoned-jesus-stoner-metal-indian-skull-and-bones-forest-album-covers-cover-art-wallpaper-preview.jpg",
-};
-export const Sosa3 = {
-  name: "Don Julio Sosa",
-  subCategories: "Tango",
-  date: "1/15/2022",
-  id: 12,
-  image:
-    "https://mediosyestrategias.com/wp-content/uploads/2019/11/juliososa.jpg",
-};
+export const cartas= [{
+  name: "Ariana Grande Tour",
+   artist :"Ariana Grande",
+   place :"Gran Rex",
+   address:"Corrientes 857",
+   location:"Capital Federal",
+   province:"Buenos Aires",
+   price: 800,
+   availableTickets: 140,
+   image:"https://cdn.boletius.com/images/1497890220613-test-pos-arian-1920x720-min.jpg",
+   time:"20:00",
+   isImportant: false,
+   category: 1,
+   subCategories: ["Pop"],
+   date: "31/12/2021"
 
-export const Metallica4 = {
-  name: "Metallica",
-  subCategories: "Rock",
-  date: "31/12/2021",
-  id: 13,
-  image:
-    "https://cdn.shortpixel.ai/spai/w_875+q_glossy+ret_img+to_webp/https://entradas.quelapaseslindo.com.ar/wp-content/uploads/metallica-argentina-2020.jpg",
-};
-export const Duki4 = {
-  name: "Duki",
-  subCategories: "Trap",
-  date: "1/15/2021",
-  id: 14,
-  image: "https://historia-biografia.com/wp-content/uploads/2021/05/duki.jpg",
-};
-export const Jesus4 = {
-  name: "Stoned Jesus",
-  subCategories: "Rock",
-  date: "1/15/2021",
-  id: 15,
-  image:
-    "https://tickantel.cdn.antel.net.uy/media/Espectaculo/40008923/MagnolioSala-EVENTO-TicketAntel-BannerWeb.png",
-};
-export const Sosa4 = {
-  name: "Don Julio Sosa",
-  subCategories: "Tango",
-  date: "1/15/2022",
-  id: 16,
-  image:
-    "https://larepublica.pe/resizer/OhPSX41abPQMs4fhMxN6-DKsADs=/538x0/top/larepublica.pe/resizer/SeMOPMzs_X9G05EVJiCTIaREZkU=/538x0/top/smart/cloudfront-us-east-1.images.arcpublishing.com/gruporepublica/LZNZOLZJVRFX7CDA6ZV24Y6MG4.jpeg",
-};
+}, {
+   name: "Symphony and Destruction",
+   artist:"Megadeath",
+   place:"Teatro Vorterix",
+   address:"Federico Lacroze 3455",
+   location:"Capital Federal",
+   province:"Bueano Aires",
+   price: 1000,
+   availableTickets: 1440,
+   image:"https://megadeth.com/wp-content/uploads/2019/05/BuenosAires2019.jpg",
+   time:"22:00",
+   isImportant: true,
+   category: 1,
+   subCategories: ["Rock"],
+   date: "1/03/2022"
+
+}, {
+   name: "Meteora",
+   artist:"Linkin Park",
+   place:"Teatro Mercedes Sosa",
+   address:"San Martin 479",
+   location:"San Miguel De Tucuman",
+   province:"Tucuman",
+   price: 900,
+   availableTickets: 1100,
+   image:"http://www.georgeamphitheatre.com/wp-content/uploads/2014/09/linkin-banner.png",
+   time:"18:00",
+   isImportant: true,
+   category: 1,
+   subCategories: ["Rock", "Pop"],
+   date: "16/10/2022"
+}, {
+   name: "Con Eso SI Se Jode",
+   artist:"Matias Bottero",
+   place:"Teatro Real",
+   address:"San JerÃ³nimo 66",
+   location:"Cordoba",
+   province:"Cordoba",
+   price: 800,
+   availableTickets: 140,
+   image:"https://www.mgdifusion.com.ar/wp-content/uploads/2021/05/Con-eso-si-se-jode.jpg",
+   time:"19:00",
+   isImportant: false,
+   category: 2,
+   subCategories: ["Comedia","'Unipersonal'","'Stand Up'","'Absurdo'"],
+   date: "09/07/2022"
+}, {
+   name: "Hamlet",
+   artist:"Shakespeare",
+   place:"Teatro La Kanoa De Papel",
+   address:"Dr. Juan Olsacher 2680",
+   location:"La Rioja",
+   province:"La Rioja",
+   price: 800,
+   availableTickets: 140,
+   image:"https://www.glenville.edu/sites/default/files/RM%20Hamlet%20Page%20Banner.jpg",
+   time:"14:00",
+   isImportant: false,
+   category: 2,
+   subCategories: ["Drama"],
+   date: "03/08/2022"
+},
+{
+   name: "The Pepo Show",
+   artist:"El Pepo",
+   place:"Sala 88 Coperativa De Teatro",
+   address:"French 845",
+   location:"Resistencia",
+   province:"Chaco",
+   price: 600,
+   availableTickets: 400,
+   image:"https://scontent.ftuc1-2.fna.fbcdn.net/v/t1.6435-9/37373467_1077054085782815_8150729415244906496_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=730e14&_nc_ohc=uV1cGtYKkuYAX_hzuEM&_nc_ht=scontent.ftuc1-2.fna&oh=551d1c4653190e1c69e31ab1f7e3c2e0&oe=618152D9",
+   time:"16:00",
+   isImportant: false,
+   category: 1,
+   subCategories: ["Cumbia"],
+   date: "15/08/2022"
+},{
+   name: "L-Gante KLoKE Show",
+   artist:"L-Gante",
+   place:"El Arrimadero",
+   address:"Misiones 234",
+   location:"Neuquen",
+   province:"Neuquen",
+   price: 900,
+   availableTickets: 700,
+   image:"https://scontent.ftuc1-2.fna.fbcdn.net/v/t1.6435-9/210956194_2490923391051828_3258569032312035991_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=U1f3tEwJRqMAX-SPVC0&_nc_ht=scontent.ftuc1-2.fna&oh=89814411cd3cf2650461125dbe7cbe29&oe=617F8E4C",
+   time:"23:00",
+   isImportant: false,
+   category: 1,
+   subCategories: ["Cumbia", "Reggaeton"],
+   date: "17/11/2021"
+},{
+   name: "The Skrillex Tour",
+   artist:"Skrillex",
+   place:"Teatro El Pasillo",
+   address:"José de la Iglesia 1190",
+   location:"San Salvador de Jujuy",
+   province:"Jujuy",
+   price: 1200,
+   availableTickets: 500,
+   image:"https://imgproxy.ra.co/_/quality:100/plain/https://static.ra.co/images/events/flyer/2016/3/us-0302-818324-front.jpg?dateUpdated=1458120621230",
+   time:"00:00",
+   isImportant: false,
+   category: 1,
+   subCategories: ["Cumbia", "Trap"],
+   date: "25/12/2021"
+}]

@@ -10,6 +10,10 @@ import Home from "./components/Home/Home";
 import AddEvent from "./components/AddEvent/AddEvent";
 import Frequent from "./components/Frequent/Frequent";
 import Privacy from "./components/Privacy/Privacy";
+<<<<<<< HEAD
+=======
+import Contact from "./components/Contact/Contact";
+>>>>>>> 2896fe95e9656eed7e9e908d034814581cfa253e
 
 function App() {
   return (
@@ -23,7 +27,12 @@ function App() {
             "/wishList",
             "/addEvent",
             "/respuestas",
+<<<<<<< HEAD
             "/privacidad"
+=======
+            "/privacidad", 
+            "/contacto" ,      
+>>>>>>> 2896fe95e9656eed7e9e908d034814581cfa253e
           ]}
           component={Nav}
         />
@@ -34,6 +43,10 @@ function App() {
         <Route path="/addEvent" component={AddEvent} />
         <Route path="/respuestas" component={Frequent} />
         <Route path="/privacidad" component={Privacy} />
+<<<<<<< HEAD
+=======
+        <Route path="/contacto" component={Contact} />
+>>>>>>> 2896fe95e9656eed7e9e908d034814581cfa253e
       </React.Fragment>
     </BrowserRouter>
   );

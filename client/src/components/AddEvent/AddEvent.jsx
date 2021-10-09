@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,29 +11,28 @@ import s from "./add.module.css";
 export function validate(state) {
   let errors = {};
   if (!state.name) {
-    errors.name = "Dinos el nombre del evento por favor";
+    errors.name = "El nombre es obligatorio";
   } else if (!state.date) {
-    errors.date = "Necesitamos saber la fecha";
+    errors.date = "La fecha es obligatoria";
   } else if (!state.time) {
-    errors.time = "Confirma el horario";
-  } else if (!state.place) {
-    errors.place = "Dónde será el evento?";
-  } else if (!state.address) {
-    errors.address =
-      "Por favor dinos la direccion con el siguiente formato: Calle Numeración, Localidad, Provincia, Pais";
+    errors.time = "El horario es obligatorio";
   } else if (!state.artist) {
-    errors.artist = "quien es la estrella del evento?";
-  } else if (!state.price || typeof state.price != Number) {
-    errors.price =
-      "Por favor dinos el precio de la entrada, debe ser un número entero";
-  } else if (
-    !state.availableTickets ||
-    typeof state.availableTickets != Number
-  ) {
-    errors.availableTickets =
-      "Por favor dinos cuantas entradas disponibles hay ";
+    errors.artist = "Campo obligatorio";
+  } else if (!state.availableTickets) {
+    errors.availableTickets = "Campo obligatorio";
+  } else if (!state.price) {
+    errors.price = "Campo obligatorio";
+  } else if (!state.place) {
+    errors.place = "Campo obligatorio";
+  } else if (!state.address) {
+    errors.address = "Campo obligatorio";
+  } else if (!state.location) {
+    errors.city = "Campo obligatorio";
+  } else if (!state.province) {
+    errors.state = "Campo obligatorio";
+  } else if (!state.isImportant || typeof isImportant !== "boolean") {
+    errors.state = "Campo obligatorio, completar con true o false.";
   }
-
   return errors;
 }
 
@@ -47,53 +45,32 @@ export default function AddEvent() {
 
   const [errors, setErrors] = useState({});
   const [div, setDiv] = useState("-");
-  const [imgState, setImgState] = useState();
   const [state, setState] = useState({
     name: "",
     date: "",
-    artist: "",
     time: "",
+    artist: "",
+    availableTickets: "",
+    price: "",
     place: "",
     address: "",
+    location: "",
+    province: "",
     image: "",
-    price: "",
-    availableTickets: "",
-    subCategories: [], //LLEGA ARRAY DE STRINGS(GENRE DE SUBCAT)
     category: "", //LLEGA UN INTEGER (ID DE CATEGORY)
+    subCategories: [],
+    isImportant: "",
   });
-  // function cargarImg(files) {
-  //   console.log(files);
-  //   const reader = new FileReader();
-  //   reader.onload = function () {
-  //     let imgDiv = document.querySelector("#cajaImg");
-  //     imgDiv.src = reader.result;
-  //   };
-  //   reader.readAsDataURL(files);
-
-  //   const formData = new FormData();
-  //   formData.append("api_key", "-IjOCwb2ujsZQYdufVW5nseHX1I");
-  //   formData.append("file", files[0]);
-  //   formData.append("public_id", "sample_image");
-  //   formData.append("timestamp", Date.now() / 1000);
-  //   formData.append("upload_preset", "di4u9mje");
-
-  //   Axios.post(
-  //     "http://api.cloudinary.com/v1_1/tukiteck/image/upload",
-  //     formData
-  //   ).then((response) => {
-  //     console.log(response);
-  //   });
-  // }
 
   const cargarImg = function (files) {
-    console.log(files);
+    // console.log(files);
     const reader = new FileReader();
     reader.onload = function () {
       let imgDiv = document.querySelector("#cajaImg");
       imgDiv.src = reader.result;
-      console.log("11 ", reader.result);
+      // console.log("11 ", reader.result);
     };
-  reader.readAsDataURL(files);
+    reader.readAsDataURL(files);
 
     const formData = new FormData();
     formData.append("file", files);
@@ -106,20 +83,13 @@ export default function AddEvent() {
     );
   };
 
-  // CLOUDINARY_URL=
   function show(cat) {
-    // console.log(div);
-    console.log(cat);
     if (cat === "Category") {
       setDiv("-");
-      // console.log(div);
     }
-
     if (cat === "1") {
       setDiv("musica");
-      // console.log(div);
     }
-
     if (cat === "2") {
       setDiv("teatro");
     }
@@ -132,12 +102,14 @@ export default function AddEvent() {
     });
     setErrors(validate(state));
   }
+
   function handleSelect(e) {
     setState({
       ...state,
       category: e.target.value,
     });
   }
+
   function handleCheckSub(e) {
     if (e.target.checked) {
       setState({
@@ -149,20 +121,33 @@ export default function AddEvent() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    // alert(state);
+    // state.time
+    // state.date = state.date.toLocaleDateString();
+    // const newFecha = new Date(state.date);
+    // console.log(newFecha);
+    let newFecha = state.date.split("-");
+    // console.log(newFecha.reverse().join("-"));
+    newFecha = newFecha.reverse().join("/");
+    // console.log("fecha: ", newFecha);
+    state.date = newFecha;
+
     dispatch(addEvent(state));
     alert("Has agregado un nuevo evento!");
     setState({
       name: "",
       date: "",
-      artist: "",
       time: "",
+      artist: "",
+      availableTickets: "",
+      price: "",
       place: "",
       address: "",
+      location: "",
+      province: "",
       image: "",
-      price: "",
-      availableTickets: "",
-      subCategories: [],
-      category: "",
+      category: "", //LLEGA UN INTEGER (ID DE CATEGORY)
+      subCategories: [], //LLEGA ARRAY DE STRINGS(GENRE DE SUBCAT)
     });
     history.push("/home");
   }
@@ -182,6 +167,7 @@ export default function AddEvent() {
           <div className={`${s.caja}`}>
             <label>Nombre:</label>
             <input
+              autoComplete="off"
               type="text"
               name="name"
               value={state.name}
@@ -193,7 +179,8 @@ export default function AddEvent() {
           <div className={`${s.caja}`}>
             <label>Fecha:</label>
             <input
-              type="text"
+              autoComplete="off"
+              type="date"
               name="date"
               value={state.date}
               placeholder="Fecha"
@@ -204,7 +191,8 @@ export default function AddEvent() {
           <div className={`${s.caja}`}>
             <label>Horario:</label>
             <input
-              type="text"
+              autoComplete="off"
+              type="time"
               name="time"
               value={state.time}
               placeholder="Horario"
@@ -215,6 +203,7 @@ export default function AddEvent() {
           <div className={`${s.caja}`}>
             <label>Artista:</label>
             <input
+              autoComplete="off"
               type="text"
               name="artist"
               value={state.artist}
@@ -226,7 +215,8 @@ export default function AddEvent() {
           <div className={`${s.caja}`}>
             <label>Entradas disponibles:</label>
             <input
-              type="text"
+              autoComplete="off"
+              type="number"
               name="availableTickets"
               value={state.availableTickets}
               placeholder="Cantidad de entradas disponibles"
@@ -239,7 +229,10 @@ export default function AddEvent() {
           <div className={`${s.caja}`}>
             <label>Precio:</label>
             <input
-              type="text"
+              autoComplete="off"
+              min="1.00"
+              step="0.50"
+              type="number"
               name="price"
               value={state.price}
               placeholder="Precio"
@@ -250,25 +243,66 @@ export default function AddEvent() {
           <div className={`${s.caja}`}>
             <label>Lugar:</label>
             <input
+              autoComplete="off"
               type="text"
               name="place"
               value={state.place}
-              placeholder="Nombre del lugar"
+              placeholder="Nombre del lugar. Ej: Luna Park"
               onChange={(e) => handleInputChange(e)}
             />
           </div>
           {errors.place && <h5 className="error">{errors.place}</h5>}
           <div className={`${s.caja}`}>
-            <label>Dirección:</label>
+            <label>Calle y Nro:</label>
             <input
+              autoComplete="off"
               type="text"
               name="address"
               value={state.address}
-              placeholder="Calle Numeración, Localidad, Provincia, Pais"
+              placeholder="Ej: Tribulato 800"
               onChange={(e) => handleInputChange(e)}
             />
           </div>
           {errors.address && <h5 className="error">{errors.address}</h5>}
+          <div className={`${s.caja}`}>
+            <label>Localidad:</label>
+            <input
+              autoComplete="off"
+              type="text"
+              name="location"
+              value={state.location}
+              placeholder="Ej: San Miguel"
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+          {errors.location && <h5 className="error">{errors.location}</h5>}
+          <div className={`${s.caja}`}>
+            <label>Provincia:</label>
+            <input
+              autoComplete="off"
+              type="text"
+              name="province"
+              value={state.province}
+              placeholder="Ej: Buenos Aires"
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+
+          {errors.province && <h5 className="error">{errors.province}</h5>}
+          <div className={`${s.caja}`}>
+            <label>Destacado:</label>
+            <input
+              autoComplete="off"
+              type="text"
+              name="isImportant"
+              value={state.isImportant}
+              placeholder='Valores permitidos:  "true" o "false"'
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+          {errors.isImportant && (
+            <h5 className="error">{errors.isImportant}</h5>
+          )}
           <div className={`${s.caja}`}>
             <label>Imagen:</label>
             <input type="file" onChange={(e) => cargarImg(e.target.files[0])} />
@@ -345,21 +379,22 @@ export default function AddEvent() {
             </div>
           </div>
           <div className={`${s.btnCont}`}>
-            {state.name &&
+            {/* {state.name &&
             state.date &&
-            state.category &&
-            state.subCategories.lenght !== 0 &&
+            state.time &&
             state.artist &&
+            state.availableTickets &&
+            state.price &&
             state.place &&
             state.address &&
-            state.price &&
-            state.availableTickets &&
-            state.date &&
-            state.time ? (
-              <button className={s.btnSubmit} type="submit">
-                CREAR EVENTO
-              </button>
-            ) : null}
+            state.location &&
+            state.province &&
+            state.category &&
+            state.subCategories.length > 0 ? ( */}
+            <button className={s.btnSubmit} type="submit">
+              CREAR EVENTO
+            </button>
+            {/* ) : null} */}
           </div>
         </form>
       </div>

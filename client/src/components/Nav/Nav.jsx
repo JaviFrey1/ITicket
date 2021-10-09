@@ -6,19 +6,19 @@ import { BsBookmarkFill } from "react-icons/bs";
 
 export function Nav({ setInput, input }) {
   return (
- <nav className={style.navContainer}>
+    <nav className={style.navContainer}>
       <div className={style.linkContainer}>
-        <div className={style.contLogo}>
-          <Link to="/home" className={style.Link}>
+        <Link to="/home" className={style.Link}>
+          <div className={style.contLogo}>
             <img
               height="50"
               width="100"
-              classname={style.logo}
+              className={style.logo}
               src={logo}
               alt=""
             />
-          </Link>
-        </div>
+          </div>
+        </Link>
 
         {/*<div className={style.space}></div>*/}
         <div className={style.contBtn2}>

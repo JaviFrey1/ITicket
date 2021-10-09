@@ -75,7 +75,7 @@
   transform: translateZ(5px);
 }
 
-.contBtn2 {
-
+.contLogo2 {
+  filter: brightness(0);
   /* background-color: red; */
 }

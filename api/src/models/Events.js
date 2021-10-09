@@ -28,8 +28,16 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      location: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      province: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
       availableTickets: {
@@ -48,6 +56,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      isImportant: {
+        type: DataTypes.BOOLEAN,
+        allowNull:false,
+        defaultValue: false
+      }
       
     },
     { timestamps: false },

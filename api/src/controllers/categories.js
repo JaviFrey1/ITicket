@@ -2,7 +2,7 @@ const { Categories } = require('../db.js');
 
 //CARGA EN LA BASE DE DATOS LAS SUBACATEGORIAS
 
-const categories = [{ name: 'Musica', id: 1 }, { name: 'Teatro', id: 2 }]
+const categories = [{ name: 'Musica', id: 1 }, { name: 'Teatro', id: 2 }, { name: 'Otros', id: 3 }]
 
 async function getCategories(req, res, next) {
 
@@ -15,7 +15,7 @@ async function getCategories(req, res, next) {
         }
 
     } catch (error) {
-        next(error)
+        console.log(error)
     }
 
 }
