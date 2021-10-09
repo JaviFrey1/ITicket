@@ -84,7 +84,7 @@
 }
 
 img {
-    object-fit: inherit;
+    object-fit: initial;
 
 }
 
