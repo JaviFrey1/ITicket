@@ -106,8 +106,8 @@ export default function EventDetail(props) {
   function handleClick(idUser, cantidad, idEvento) {
     let body = { idUser, cantidad, idEvento };
     dispatch(postTickets(body));
-    dispatch(updateAvailable(idUser, cantidad));
-  }
+
+    dispatch(updateAvailable(idEvento, cantidad))
 
   const colorCirculoMarcador = {
     color: "rgb(255, 204, 0)",

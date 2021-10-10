@@ -1,3 +1,5 @@
+
+
 export const GET_EVENTS = "GET_EVENTS";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const GET_USER_DETAIL = "GET_USER_DETAIL";
@@ -21,3 +23,4 @@ export const POST_TICKETS = "POST_TICKETS";
 export const UPDATE_AVAILABLE = "UPDATE_AVAILABLE";
 export const GET_TICKETS = "GET_TICKETS";
 export const UPDATE_TICKET = "UPDATE_TICKET";
+export const  USER_DATA = 'USER_DATA'

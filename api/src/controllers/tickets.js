@@ -30,7 +30,7 @@ async function getTickets(req, res, next) {
     }
 }
 
-async function updateTickets(req, res, next) {
+async function updateTicket(req, res, next) {
     let id = req.params.id;
 
     const { propietario } = req.body;
@@ -112,6 +112,6 @@ async function postTickets(req, res, next) { // User.addTickets(ticket)  Events.
 
 module.exports = {
     getTickets,
-    updateTickets,
+    updateTicket,
     postTickets,
 };
