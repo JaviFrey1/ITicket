@@ -12,7 +12,7 @@ import Menuuser from "./MenuNav/MenuUser";
 
 export function Nav({ setInput, input }) {
   // SI ESTA AUTENFICADO
-  let isAuth = true;
+  let isAuth = false;
 
   return (
     <nav className={style.navContainer}>
@@ -35,10 +35,10 @@ export function Nav({ setInput, input }) {
               <BsBookmarkFill />
             </Link>
             <Link to="/login" className={style.hover}>
-              <div>Iniciar Sesion</div>
+              <div style={{ color: "black" }}>Iniciar Sesion</div>
             </Link>
             <Link to="/register" className={style.hover}>
-              <div> Registrate</div>
+              <div style={{ color: "black" }}> Registrate</div>
             </Link>
           </div>
         ) : (
