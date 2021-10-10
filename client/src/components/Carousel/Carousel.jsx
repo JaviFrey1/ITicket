@@ -10,24 +10,22 @@ export default function CarouselComp() {
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 1200, itemsToShow: 2 },
-    // { width: 850, itemsToShow: 3 },
-    // { width: 1150, itemsToShow: 4, itemsToScroll: 2 },
-    // { width: 1450, itemsToShow: 5 },
-    // { width: 1750, itemsToShow: 6 },
   ];
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventsLoaded);
   const importantEvents = Array.isArray(events)
     ? events.filter((el) => el.isImportant === true)
     : console.log("Aun no hay eventos en el carrousel", events);
-
+  const actualImportantEvents = importantEvents.filter(
+    (el) => el.date >= new Date()
+  );
   useEffect(() => {
     dispatch(getEvents(""));
   }, [dispatch]);
 
   return (
     <div className={s.divRey}>
-      {importantEvents.length !== 0 ? (
+      {actualImportantEvents.length !== 0 ? (
         <div>
           <div className={s.destacados}>Destacados</div>
           <Carousel
@@ -36,8 +34,8 @@ export default function CarouselComp() {
             className={s.carousel}
             breakPoints={breakPoints}
           >
-            {Array.isArray(importantEvents)
-              ? importantEvents.map((el) => (
+            {Array.isArray(actualImportantEvents)
+              ? actualImportantEvents.map((el) => (
                   <Link className={s.link} to={`/events/${el.id}`} key={el.id}>
                     <div className={s.itemCarousel}>
                       <div className={s.todo}>
