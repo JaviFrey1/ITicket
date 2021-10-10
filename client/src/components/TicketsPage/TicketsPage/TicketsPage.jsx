@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 // import Ticket from "./../Ticket/Ticket";
 import s from "./ticketsPage.module.css";
 // import Swal from "sweetalert2";
@@ -8,28 +9,39 @@ import s from "./ticketsPage.module.css";
 import DetalleCompra from "./DetalleCompra";
 import { ImPrinter } from "react-icons/im";
 import { BiHistory } from "react-icons/bi";
+import getTickets from "../../../actions/getTickets";
 
 import { cartas } from "../../../cartas";
 
 const Ticketspage = () => {
+  const dispatch = useDispatch();
+
   const componentRef = useRef();
+
+  const tickets = useSelector((state) => state.tickets);
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
 
-  // let event = ;
-
   const [eventSel, setEventSel] = useState([cartas[1], cartas[1]]);
-  // const [cantidadDeEntradas, setCantidadDeEntradas] = useState(1);
+  const [ticketsBuy, setTicketsBuy] = useState();
+
+  let artistas = [];
+
+  tickets.map((ticket) => {
+    if (!artistas.includes(ticket.event.artist)) {
+      artistas.push(ticket.event.artist);
+    }
+  });
 
   function cambiar(e) {
-    // console.log(e);
-
     setEventSel(e);
   }
 
   useEffect(() => {
-    // console.log("cambio en lista=> ", eventSel.artist);
+    dispatch(getTickets(idUser));
+    // setTicketsBuy(tickets);
   }, [eventSel]);
 
   return (
@@ -40,25 +52,29 @@ const Ticketspage = () => {
             <h4>Eventos Activos</h4>
           </div>
         </div>
+        {artistas.map((artista) => {
+          const artistaTickets = [];
+          tickets.map((ticket) => {
+            if (ticket.event.artist === artista) artistaTickets.push(ticket);
+          });
+          return (
+            <div
+              key={artista}
+              className={s.itemListaCompra}
+              onClick={() => {
+                console.log("==>> hola");
+                cambiar(artistaTickets);
+              }}
+            >
+              <div className={s.artistDate}>
+                <div>{artista}</div>
+              </div>
+            </div>
+          );
+        })}
+        {/*---------------------------------------------------------------------*/}
 
-        <div
-          className={s.itemListaCompra}
-          onClick={() => {
-            console.log("==>> hola");
-            cambiar([cartas[0]]);
-          }}
-        >
-          <div className={s.artistDate}>
-            <div>{cartas[0].artist}</div>
-            <div>{cartas[0].date}</div>
-          </div>
-          <div className={s.placeLocation}>
-            <div>{cartas[0].place}</div>
-            <div>{cartas[0].location}</div>
-          </div>
-        </div>
-
-        <div
+        {/*<div
           className={s.itemListaCompra}
           onClick={() => {
             cambiar([cartas[1], cartas[1]]);
@@ -90,6 +106,8 @@ const Ticketspage = () => {
             <div>{cartas[2].location}</div>
           </div>
         </div>
+        {}*/}
+        {/*---------------------------------------------------------------------*/}
       </div>
       <div>
         <div className={s.contBotones}>

@@ -4,13 +4,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getEvents from "../../actions/getEvents";
 import Paginate from "../Paginate/Paginate";
-import { cartas } from "../../cartas"
+import { cartas } from "../../cartas";
 import SearchBar from "../SearchBar/SearchBar";
 import s from "./home.module.css";
 import Events from "../Events/Events";
 import Footer from "../Footer/Footer";
 import CarouselComp from "../Carousel/Carousel";
-import bulkEvents from "../../actions/bulkEvents"
+import bulkEvents from "../../actions/bulkEvents";
 // import { setPage } from "../../actions";
 
 export default function Home() {
@@ -22,9 +22,17 @@ export default function Home() {
 
   const lastEvent = currentPage * eventsPerPage;
   const firstEvent = lastEvent - eventsPerPage;
-  
-  const unImportantEvents = Array.isArray(allEvents) ? allEvents.filter((el) => el.isImportant === false) : console.log('Aun no hay eventos en el carrousel', allEvents);
-  const currentUnimportantEvents = unImportantEvents.slice(firstEvent, lastEvent);
+
+  const unImportantEvents = Array.isArray(allEvents)
+    ? allEvents.filter((el) => el.isImportant === false)
+    : console.log("Aun no hay eventos en el carrousel", allEvents);
+  const actualUnImportantEvents = unImportantEvents.filter(
+    (el) => el.date >= new Date()
+  );
+  const currentUnimportantEvents = actualUnImportantEvents.slice(
+    firstEvent,
+    lastEvent
+  );
 
   function paginate(pageNumber) {
     setCurrentPage(pageNumber);
@@ -32,8 +40,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getEvents(""));
-    dispatch(bulkEvents(cartas))
-
+    dispatch(bulkEvents(cartas));
   }, [dispatch]);
 
   // const changePage = (page) => {
@@ -46,7 +53,9 @@ export default function Home() {
       <div className={`${s.searchBar}`}>
         <SearchBar />
       </div>
-      <div className={s.contCarousel}><CarouselComp /></div>
+      <div className={s.contCarousel}>
+        <CarouselComp />
+      </div>
 
       <div className={s.card}>
         <Events events={currentUnimportantEvents} />
@@ -68,7 +77,7 @@ export default function Home() {
         <div>
           <Paginate
             eventsPerPage={eventsPerPage}
-            allEvents={unImportantEvents.length}
+            allEvents={actualUnImportantEvents.length}
             paginate={paginate}
           />
         </div>

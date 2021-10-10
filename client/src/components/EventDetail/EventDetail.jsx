@@ -13,22 +13,22 @@ import deleteEvent from "../../actions/deleteEvent";
 import getEventDetail from "../../actions/getEventDetail";
 import getUserDetail from "../../actions/getUserDetail";
 import "leaflet/dist/leaflet.css";
-import { postTickets } from "../../../../api/src/controllers/tickets";
+import postTickets from "../../actions/postTickets";
 import updateAvailable from "../../actions/updateAvailable";
 
 export default function EventDetail(props) {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const [loading, setLoading] = useState(true);
-  const [precio, setPrecio] = useState('');
-  const [cantidad, setCantidad] = useState('')
- 
+  const [precio, setPrecio] = useState("");
+  const [cantidad, setCantidad] = useState("");
+
   const provider = new OpenStreetMapProvider();
   const history = useHistory();
   const dispatch = useDispatch();
 
   const eventDetail = useSelector((state) => state.eventDetail);
-  const userDetail = useSelector((state) => state.userDetail)
+  const userDetail = useSelector((state) => state.userDetail);
 
   function handleDelete(eventDetail) {
     Swal.fire({
@@ -75,9 +75,8 @@ export default function EventDetail(props) {
   }
 
   useEffect(() => {
-    dispatch(getUserDetail(userId))
-    dispatch(getEventDetail(props.match.params.id))
-    .then((results) => {
+    // dispatch(getUserDetail(userId));
+    dispatch(getEventDetail(props.match.params.id)).then((results) => {
       const fullAdress =
         results.payload.address +
         "," +
@@ -95,20 +94,20 @@ export default function EventDetail(props) {
 
   function handleChange(e) {
     e.preventDefault();
-    if (e.target.value === '1') {
+    if (e.target.value === "1") {
       setPrecio(eventDetail.price);
-      setCantidad(1)
+      setCantidad(1);
     } else {
-      setPrecio((eventDetail.price) * 2);
-      setCantidad(2)
+      setPrecio(eventDetail.price * 2);
+      setCantidad(2);
     }
   }
 
   function handleClick(idUser, cantidad, idEvento) {
-    let body = {idUser, cantidad, idEvento};
+    let body = { idUser, cantidad, idEvento };
     dispatch(postTickets(body));
+
     dispatch(updateAvailable(idEvento, cantidad))
-  }
 
   const colorCirculoMarcador = {
     color: "rgb(255, 204, 0)",
@@ -188,15 +187,24 @@ export default function EventDetail(props) {
               </div>
               <div className={s.price_buy}>
                 <div className={s.selectCont}>
-                  <select className={s.select} onChange={(e) => handleChange(e)}>
-                    <option value='1'>1 entrada</option>
-                    <option value='2'>2 entradas</option>
+                  <select
+                    className={s.select}
+                    onChange={(e) => handleChange(e)}
+                  >
+                    <option value="1">1 entrada</option>
+                    <option value="2">2 entradas</option>
                   </select>
                 </div>
                 <div className={s.price}>
                   <span>Total: ar$ {precio ? precio : eventDetail.price}.</span>
                 </div>
-                <Link to='/checkout' className={s.buy} onClick={() => handleClick(userDetail.id, cantidad, eventDetail.id)}>
+                <Link
+                  to="/checkout"
+                  className={s.buy}
+                  onClick={() =>
+                    handleClick(userDetail.id, cantidad, eventDetail.id)
+                  }
+                >
                   <p>COMPRAR</p>
                 </Link>
               </div>

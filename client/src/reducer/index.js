@@ -9,7 +9,7 @@ import {
   ADD_EVENT,
   BULK_EVENTS,
   REMOVE_EVENT,
-  FILTER_CAT,//Javi
+  FILTER_CAT, //Javi
   FILTER_DATE,
   FILTER_SUBCAT,
   FILTER_ADDRESS,
@@ -19,6 +19,9 @@ import {
   POST_TICKETS,
   UPDATE_AVAILABLE,
   USER_DATA,
+  GET_TICKETS,
+  UPDATE_TICKET,
+
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -31,9 +34,11 @@ const initialState = {
   eventDetail: "",
   subCategories: [],
   categories: [],
+
   userDetail:"",
   persistedState,
-  activeUser
+  activeUser,
+  tickets: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -45,15 +50,13 @@ export default function rootReducer(state = initialState, action) {
         allEvents: action.payload,
       };
     case BULK_EVENTS:
-      return{
+      return {
         ...state,
-      }
+      };
     case REMOVE_EVENT:
       return {
         ...state,
-        eventsLoaded: state.eventsLoaded.filter(
-          (e) => e.id !== action.payload
-        ),
+        eventsLoaded: state.eventsLoaded.filter((e) => e.id !== action.payload),
       };
     case GET_CATEGORIES:
       return {
@@ -69,77 +72,74 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-      case DELETE_EVENT:
-        return {
-          ...state,
-        };
+    case DELETE_EVENT:
+      return {
+        ...state,
+      };
     case GET_EVENT_DETAIL:
       return {
         ...state,
         eventDetail: action.payload,
       };
     case GET_USER_DETAIL:
-      return{
+      return {
         ...state,
-        userDetail:action.payload
-      }
+        userDetail: action.payload,
+      };
 
-    case ADD_EVENT_WISHLIST:
-      
-      return {
-        ...state,
-        wishEvents: [action.payload, ...state.wishEvents],
-      };
-    case REMOVE_EVENT_WISHLIST:
-      return {
-        ...state,
-        wishEvents: state.wishEvents.filter(
-          (we) => we.id !== action.payload
-        ),
-      };
     case FILTER_CAT: //Javi
       return {
         ...state,
-        eventsLoaded: action.payload
-      }
-      case FILTER_SUBCAT: 
+        eventsLoaded: action.payload,
+      };
+    case FILTER_SUBCAT:
       return {
         ...state,
-        eventsLoaded: action.payload
-      }
+        eventsLoaded: action.payload,
+      };
     case FILTER_DATE:
-      return{
+      return {
         ...state,
-        eventsLoaded:action.payload
-      }
+        eventsLoaded: action.payload,
+      };
     case FILTER_ADDRESS:
-      return{
-        ...state, 
-        eventsLoaded:action.payload
-      }
+      return {
+        ...state,
+        eventsLoaded: action.payload,
+      };
     case UPDATE_EVENTS:
       return {
         ...state,
-        
-      }
+      };
     case UPDATE_USER_PASS:
-        return {
-          ...state,
-          userDetail :  action.payload
-        }
+      return {
+        ...state,
+        userDetail: action.payload,
+      };
     case POST_TICKETS:
-        return {
-          ...state
-        }
+      return {
+        ...state,
+      };
     case UPDATE_AVAILABLE:
       return {
         ...state,
+
       }
       case  USER_DATA:
         return{
           ...state,
           activeUser: action.payload
         }
+      };
+    case GET_TICKETS:
+      return {
+        ...state,
+        tickets: [...action.payload],
+      };
+    case UPDATE_TICKET:
+      return {
+        ...state,
+      };
 
     default:
       return state;
