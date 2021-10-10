@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 // import "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css";
 import updateUserPass from "../../actions/updateUserPass";
 import s from "./userDetail.module.css"
+import userData from "../../actions/userData";
 
 
 
@@ -13,6 +14,8 @@ export default function UserDetail(props) {
   const dispatch = useDispatch();
   const id = props.match.params.id
   const userDetail = useSelector((state) => state.userDetail);
+  const userId = useSelector((state) => state.activeUser);
+
   const [password, setPassword] = useState('');
   
   function handleClick(id){
@@ -37,11 +40,12 @@ export default function UserDetail(props) {
       }
   });
 
- dispatch(updateUserPass(id, password));
+ dispatch(updateUserPass(userId, password));
   
  }
   useEffect(() => {
-    dispatch(getUserDetail(id));
+    dispatch(getUserDetail(userId));
+    dispatch(userData())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 

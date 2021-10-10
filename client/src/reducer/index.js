@@ -17,7 +17,8 @@ import {
   UPDATE_USER_PASS,
   DELETE_EVENT,
   POST_TICKETS,
-  UPDATE_AVAILABLE
+  UPDATE_AVAILABLE,
+  USER_DATA,
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -31,7 +32,8 @@ const initialState = {
   subCategories: [],
   categories: [],
   userDetail:"",
-  persistedState//Javi
+  persistedState,
+  activeUser
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -133,6 +135,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       }
+      case  USER_DATA:
+        return{
+          ...state,
+          activeUser: action.payload
+        }
 
     default:
       return state;

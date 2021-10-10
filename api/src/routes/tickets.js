@@ -1,11 +1,11 @@
 const { Router } = require('express');
-const { getTickets, updateTickets, postTickets  } = require('../controllers/tickets.js')
+const { getTickets, updateTicket, postTickets  } = require('../controllers/tickets.js')
 
 
 const router = Router();
 
 router.get('/', getTickets);
-router.put('/', updateTickets);
+router.put('/:id', updateTicket);
 router.post('/', postTickets);
 
 

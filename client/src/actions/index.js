@@ -19,7 +19,7 @@ export const DELETE_EVENT = 'DELETE_EVENT'
 export const POST_USER = 'POST_USER'
 export const POST_TICKETS = 'POST_TICKETS' 
 export const UPDATE_AVAILABLE = 'UPDATE_AVAILABLE'
-
+export const  USER_DATA = 'USER_DATA'
 export function removeEvent(payload){
     return{
         type: REMOVE_EVENT,
