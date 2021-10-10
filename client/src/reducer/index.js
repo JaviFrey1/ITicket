@@ -130,9 +130,8 @@ export default function rootReducer(state = initialState, action) {
           ...state,
           activeUser: action.payload
         }
-      };
-    case GET_TICKETS:
-      return {
+        case GET_TICKETS:
+          return {
         ...state,
         tickets: [...action.payload],
       };
@@ -143,5 +142,6 @@ export default function rootReducer(state = initialState, action) {
 
     default:
       return state;
-  }
+    }
 }
+
