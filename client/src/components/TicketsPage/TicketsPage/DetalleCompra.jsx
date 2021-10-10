@@ -3,6 +3,7 @@ import Ticket from "../Ticket/Ticket";
 import s from "./ticketsPage.module.css";
 import Swal from "sweetalert2";
 
+
 // const DetalleCompra = ({ event }) => {
 //   useEffect(() => {
 //     // console.log("cambio en detalles=> ", event.name);
@@ -34,6 +35,7 @@ import Swal from "sweetalert2";
 const DetalleCompra = (artistaTickets) => {
   const [propietario, setPropietario] = useState("");
 
+
   function handleClick(id) {
     Swal.fire({
       title: "Ingresa nombre completo del nuevo propietario",
@@ -52,8 +54,9 @@ const DetalleCompra = (artistaTickets) => {
   }
 
   useEffect(() => {
+
     // console.log("cambio en detalles=> ", event.name);
-  }, [event]);
+  }, []);
 
   return (
     <div>
@@ -66,7 +69,7 @@ const DetalleCompra = (artistaTickets) => {
           {artistaTickets.map((e) => {
             return (
               <div className={s.contTicket} key={e.id}>
-                <Ticket event={e} />
+                <Ticket ticket={e} />
                 <div onClick={() => handleClick(e.id)}>
                   <p>Transferir entrada</p>
                 </div>

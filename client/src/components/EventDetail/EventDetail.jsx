@@ -28,7 +28,7 @@ export default function EventDetail(props) {
   const dispatch = useDispatch();
 
   const eventDetail = useSelector((state) => state.eventDetail);
-  const userDetail = useSelector((state) => state.userDetail);
+  const userId = useSelector((state) => state.activeUser);
 
   function handleDelete(eventDetail) {
     Swal.fire({
@@ -75,10 +75,10 @@ export default function EventDetail(props) {
   }
 
   useEffect(() => {
-    // dispatch(getUserDetail(userId));
+    dispatch(userData())
     dispatch(getEventDetail(props.match.params.id)).then((results) => {
       const fullAdress =
-        results.payload.address +
+        results.payload.address +y
         "," +
         results.payload.location +
         "," +
@@ -103,11 +103,12 @@ export default function EventDetail(props) {
     }
   }
 
-  function handleClick(idUser, cantidad, idEvento) {
-    let body = { idUser, cantidad, idEvento };
+  function handleClick(userId, cantidad, idEvento) {
+    let body = { userId, cantidad, idEvento };
     dispatch(postTickets(body));
 
     dispatch(updateAvailable(idEvento, cantidad))
+  }
 
   const colorCirculoMarcador = {
     color: "rgb(255, 204, 0)",
@@ -202,7 +203,7 @@ export default function EventDetail(props) {
                   to="/checkout"
                   className={s.buy}
                   onClick={() =>
-                    handleClick(userDetail.id, cantidad, eventDetail.id)
+                    handleClick(userId, cantidad, eventDetail.id)
                   }
                 >
                   <p>COMPRAR</p>
@@ -242,4 +243,4 @@ export default function EventDetail(props) {
       </div>
     </div>
   );
-}
+        }
