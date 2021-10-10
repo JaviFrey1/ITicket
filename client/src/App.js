@@ -12,7 +12,7 @@ import Frequent from "./components/Frequent/Frequent";
 import Privacy from "./components/Privacy/Privacy";
 import Ticketspage from "./components/TicketsPage/TicketsPage/TicketsPage";
 import UpdateEvent from "./components/UpdateEvent/UpdateEvent";
-
+import Contact from "./components/Contact/Contact";
 import UserDetail from "./components/userComponents/UserDetail";
 
 import Historialpage from "./components/TicketsPage/TicketsPage/HistorialPage/HistorialPage";
@@ -34,6 +34,7 @@ function App() {
             "/privacidad",
             "/update/:id",
             "/historial",
+            "/contacto",
           ]}
           component={Nav}
         />
@@ -50,6 +51,7 @@ function App() {
         <Route path="/update/:id" component={UpdateEvent} />
         <Route path="/users/:id" component={UserDetail} />
         <Route path="/checkout" />
+        <Route path="/contacto" component={Contact} />
         
       </React.Fragment>
     </BrowserRouter>
