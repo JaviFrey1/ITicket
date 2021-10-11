@@ -18,8 +18,10 @@ import {
   DELETE_EVENT,
   POST_TICKETS,
   UPDATE_AVAILABLE,
+  USER_DATA,
   GET_TICKETS,
   UPDATE_TICKET,
+
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -32,8 +34,10 @@ const initialState = {
   eventDetail: "",
   subCategories: [],
   categories: [],
-  userDetail: "",
-  persistedState, //Javi
+
+  userDetail:"",
+  persistedState,
+  activeUser,
   tickets: [],
 };
 
@@ -119,9 +123,15 @@ export default function rootReducer(state = initialState, action) {
     case UPDATE_AVAILABLE:
       return {
         ...state,
-      };
-    case GET_TICKETS:
-      return {
+
+      }
+      case  USER_DATA:
+        return{
+          ...state,
+          activeUser: action.payload
+        }
+        case GET_TICKETS:
+          return {
         ...state,
         tickets: [...action.payload],
       };
@@ -132,5 +142,6 @@ export default function rootReducer(state = initialState, action) {
 
     default:
       return state;
-  }
+    }
 }
+

@@ -13,6 +13,7 @@ import Privacy from "./components/Privacy/Privacy";
 import Ticketspage from "./components/TicketsPage/TicketsPage/TicketsPage";
 import UpdateEvent from "./components/UpdateEvent/UpdateEvent";
 import GoogleButton from "react-google-button";
+import Contact from "./components/Contact/Contact";
 import UserDetail from "./components/userComponents/UserDetail";
 import LoginSuccess from "./components/Nav/Login/Login";
 import Historialpage from "./components/TicketsPage/TicketsPage/HistorialPage/HistorialPage";
@@ -67,6 +68,8 @@ function App() {
             "/privacidad",
             "/update/:id",
             "/historial",
+            "/contacto"
+
           ]}
           component={Nav}
         />
@@ -85,7 +88,8 @@ function App() {
         <Route path="/update/:id" component={UpdateEvent} />
         <Route path="/users/:id" component={UserDetail} />
         <Route path="/checkout" />
-        
+        <Route path="/contacto" component={Contact} />
+          
       </React.Fragment>
     </BrowserRouter>
   );
