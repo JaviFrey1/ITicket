@@ -23,4 +23,6 @@ export const POST_TICKETS = "POST_TICKETS";
 export const UPDATE_AVAILABLE = "UPDATE_AVAILABLE";
 export const GET_TICKETS = "GET_TICKETS";
 export const UPDATE_TICKET = "UPDATE_TICKET";
-export const  USER_DATA = 'USER_DATA'
+export const  USER_DATA = 'USER_DATA';
+export const  USER_LOGOUT = 'USER_LOGOUT';
+export const  USER_LOGOUT_GOOGLE = 'USER_LOGOUT_GOOGLE';

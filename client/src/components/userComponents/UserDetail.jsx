@@ -14,7 +14,7 @@ export default function UserDetail(props) {
   const dispatch = useDispatch();
   const id = props.match.params.id
   const userDetail = useSelector((state) => state.userDetail);
-  const userId = useSelector((state) => state.activeUser);
+  const activeUser = useSelector((state) => state.activeUser);
 
   const [password, setPassword] = useState('');
   
@@ -40,11 +40,11 @@ export default function UserDetail(props) {
       }
   });
 
- dispatch(updateUserPass(userId, password));
+ dispatch(updateUserPass(activeUser.id, password));
   
  }
   useEffect(() => {
-    dispatch(getUserDetail(userId));
+    dispatch(getUserDetail(activeUser.id));
     dispatch(userData())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
@@ -55,9 +55,9 @@ export default function UserDetail(props) {
         <div className={`${s.user}`}>
             <h2>{userDetail.fullName}</h2>
            
-            <div onClick={handleClick(id)} className={s.update}>
-             Cambiar contraseña
-            </div>
+            {!userDetail.googleId && <div onClick={handleClick(id)} className={s.update}>
+            Cambiar contraseña
+           </div>}
        
          
         

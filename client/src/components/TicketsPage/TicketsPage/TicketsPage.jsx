@@ -19,7 +19,7 @@ const Ticketspage = () => {
 
   const componentRef = useRef();
 
-  const userId = useSelector((state) => state.activeUser);
+  const activeUser = useSelector((state) => state.activeUser);
 
   const tickets = useSelector((state) => state.tickets);
 
@@ -27,7 +27,7 @@ const Ticketspage = () => {
     content: () => componentRef.current,
   });
 
-  const [eventSel, setEventSel] = useState([cartas[1], cartas[1]]);
+  const [eventSel, setEventSel] = useState('');
 
   let artistas = [];
 
@@ -42,7 +42,7 @@ const Ticketspage = () => {
   }
 
   useEffect(() => {
-    dispatch(getTickets(userId));
+    dispatch(getTickets(activeUser.id));
     dispatch(userData())
   }, [eventSel]);
 

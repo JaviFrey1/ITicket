@@ -28,7 +28,7 @@ export default function EventDetail(props) {
   const dispatch = useDispatch();
 
   const eventDetail = useSelector((state) => state.eventDetail);
-  const userId = useSelector((state) => state.activeUser);
+  const activeUser = useSelector((state) => state.activeUser);
 
   function handleDelete(eventDetail) {
     Swal.fire({
@@ -203,7 +203,7 @@ export default function EventDetail(props) {
                   to="/checkout"
                   className={s.buy}
                   onClick={() =>
-                    handleClick(userId, cantidad, eventDetail.id)
+                    handleClick(activeUser.id, cantidad, eventDetail.id)
                   }
                 >
                   <p>COMPRAR</p>
