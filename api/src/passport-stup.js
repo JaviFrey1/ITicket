@@ -13,13 +13,33 @@ passport.use(
       passReqToCallback: true,
     },
     async (req, accessToken, refreshToken, profile, cb) => {
-      const defaultUser = {
-        fullName: `${profile.name.givenName} ${profile.name.familyName}`,
-        email: profile.emails[0].value,
-        picture: profile.photos[0].value,
-        googleId: profile.id,
-      };
+      if(profile.emails[0].value === "tukiteckpf@gmail.com"){
 
+        const defaultUser = {
+          fullName: `${profile.name.givenName} ${profile.name.familyName}`,
+          email: profile.emails[0].value,
+          picture: profile.photos[0].value,
+          googleId: profile.id,
+          isAdmin: true
+        }
+        const user = await Users.findOrCreate({
+          where: { googleId: profile.id },
+          defaults: defaultUser,
+        }).catch((err) => {
+          console.log("Error al logearse xdnt", err);
+          cb(err, null);
+        });
+        if (user && user[0]) {
+          return cb(null, user && user[0]);
+        }
+        
+      } else {
+        const defaultUser = {
+          fullName: `${profile.name.givenName} ${profile.name.familyName}`,
+          email: profile.emails[0].value,
+          picture: profile.photos[0].value,
+          googleId: profile.id,
+      }
       const user = await Users.findOrCreate({
         where: { googleId: profile.id },
         defaults: defaultUser,
@@ -30,6 +50,18 @@ passport.use(
       if (user && user[0]) {
         return cb(null, user && user[0]);
       }
+     }
+
+      // const user = await Users.findOrCreate({
+      //   where: { googleId: profile.id },
+      //   defaults: defaultUser,
+      // }).catch((err) => {
+      //   console.log("Error al logearse xdnt", err);
+      //   cb(err, null);
+      // });
+      // if (user && user[0]) {
+      //   return cb(null, user && user[0]);
+      // }
     }
   )
 );
