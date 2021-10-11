@@ -6,7 +6,8 @@ const { Users } = require('../db.js');
 const router = Router();
 const { v4: uuidv4 } = require("uuid");
 
-const passport1 = require("../passportLogin.js");
+// const passport1 = 
+require("../passportLogin.js");
 
 const  transporter  = require('../controllers/emailLogin.js');
 
@@ -15,8 +16,8 @@ const  transporter  = require('../controllers/emailLogin.js');
 const succesLoginUrl = 'http://localhost:3000/home';
 
 
-router.use(passport.initialize());
-router.use(passport.session());
+// router.use(passport.initialize());
+// router.use(passport.session());
 
 
 router.get('/login', (req, res) => res.send('Usuario Creado Satisfactoriamente'));
@@ -76,23 +77,24 @@ router.post('/register', async function  (req, res) {
     }
 })
 
-router.post('/login',(req, res, next) =>{
-    passport1.authenticate('local',{
+router.post('/login',(req, res, next) =>{   
+    passport.authenticate('local',{
         successRedirect: succesLoginUrl,
         failureRedirect: '/fail'
     })(req, res, next)
 })
+ 
 router.get("/logout", (req, res) => {
     req.session = null;
     req.logout();
     res.redirect("/deslog");
   });
 
-router.get("/logout", (req, res) => {
-    req.session = null;
-    req.logout();
-    res.redirect("/deslog");
-  });
+// router.get("/logout", (req, res) => {
+//     req.session = null;
+//     req.logout();
+//     res.redirect("/deslog");
+//   });
 
   
 
