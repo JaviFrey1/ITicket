@@ -1,7 +1,7 @@
-import React from "react";
-import s from "./ticket.module.css";
-import QRCode from "react-qr-code";
-import img from "../../../images/pngLetraNegraRedimensionado.png";
+// import React from "react";
+// import s from "./ticket.module.css";
+// import QRCode from "react-qr-code";
+// import img from "../../../images/pngLetraNegraRedimensionado.png";
 
 // const Ticket = ({ event }) => {
 //   // let value = "google.com";

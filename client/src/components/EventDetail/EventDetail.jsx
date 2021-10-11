@@ -11,10 +11,10 @@ import s from "./detail.module.css";
 import Swal from "sweetalert2";
 import deleteEvent from "../../actions/deleteEvent";
 import getEventDetail from "../../actions/getEventDetail";
-import getUserDetail from "../../actions/getUserDetail";
 import "leaflet/dist/leaflet.css";
 import postTickets from "../../actions/postTickets";
 import updateAvailable from "../../actions/updateAvailable";
+import userData from "../../actions/userData";
 
 export default function EventDetail(props) {
   const [lat, setLat] = useState("");
@@ -78,7 +78,7 @@ export default function EventDetail(props) {
     dispatch(userData())
     dispatch(getEventDetail(props.match.params.id)).then((results) => {
       const fullAdress =
-        results.payload.address +y
+        results.payload.address +
         "," +
         results.payload.location +
         "," +
