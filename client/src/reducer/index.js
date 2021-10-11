@@ -21,8 +21,8 @@ import {
   USER_DATA,
   GET_TICKETS,
   UPDATE_TICKET,
-  USER_LOGOUT
-
+  USER_LOGOUT,
+  MERCADO_PAGO
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -36,9 +36,9 @@ const initialState = {
   subCategories: [],
   categories: [],
 
-  userDetail:"",
+  userDetail: "",
   persistedState,
-  activeUser:'',
+  activeUser: '',
   tickets: [],
 };
 
@@ -126,13 +126,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
 
       }
-      case  USER_DATA:
-        return{
-          ...state,
-          activeUser: action.payload
-        }
-        case GET_TICKETS:
-          return {
+    case USER_DATA:
+      return {
+        ...state,
+        activeUser: action.payload
+      }
+    case GET_TICKETS:
+      return {
         ...state,
         tickets: [...action.payload],
       };
@@ -140,14 +140,18 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-      case USER_LOGOUT:
+    case USER_LOGOUT:
       return {
         ...state,
         activeUser: ''
       };
-    
+    case MERCADO_PAGO:
+      return {
+        ...state
+      }
+
     default:
       return state;
-    }
+  }
 }
 
