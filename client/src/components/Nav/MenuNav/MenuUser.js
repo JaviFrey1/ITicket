@@ -4,11 +4,6 @@ import Swal from "sweetalert2";
 import { useDispatch,useSelector } from "react-redux";
 import userData from "../../../actions/userData";
 import logout from "../../../actions/logout";
-<<<<<<< HEAD
-
-=======
->>>>>>> 5378b1ae353a8ee97ebd236a29ec0fa3cae33f9e
-
 import {
 
   AiOutlineSetting,
