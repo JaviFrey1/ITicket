@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Ticket from "../Ticket/Ticket";
 import s from "./ticketsPage.module.css";
 import Swal from "sweetalert2";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import updateTicket from "../../../actions/updateTickets";
 
 

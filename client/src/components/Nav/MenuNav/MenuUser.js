@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import { useDispatch,useSelector } from "react-redux";
 import userData from "../../../actions/userData";
 import logout from "../../../actions/logout";
-import logoutGoogle from "../../../actions/logoutGoogle";
 
 import {
 

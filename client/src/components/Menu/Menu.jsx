@@ -5,7 +5,6 @@ import getCategories from "../../actions/getCategories";
 import getSubCategories from "../../actions/getSubCategories";
 // import filterCat from "../../actions/filterCat";
 import filterSubCat from "../../actions/filterSubCat";
-import getCookie from "../../../../../ITicket/client/src/getCookies";
 
 export default function Menu() {
   const [subCatOpt, setSubCatOpt] = useState([""]);
