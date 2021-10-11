@@ -35,6 +35,7 @@ function App() {
             "/update/:id",
             "/historial",
             "/contacto"
+
           ]}
           component={Nav}
         />
@@ -52,7 +53,7 @@ function App() {
         <Route path="/users/:id" component={UserDetail} />
         <Route path="/checkout" />
         <Route path="/contacto" component={Contact} />
-
+          
       </React.Fragment>
     </BrowserRouter>
   );
