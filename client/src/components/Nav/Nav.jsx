@@ -21,7 +21,7 @@ export function Nav() {
 
   useEffect(() => {
     dispatch(userData())
-  },[isAuth]);
+  },[]);
 
   return (
     <nav className={style.navContainer}>

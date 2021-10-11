@@ -30,7 +30,7 @@ const Menuuser = () => {
   useEffect(() => {
     dispatch(userData())  
     
-  }, [activeUser]);
+  }, []);
 
 
 
