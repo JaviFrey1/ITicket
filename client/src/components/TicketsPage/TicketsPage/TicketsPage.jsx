@@ -18,6 +18,8 @@ const Ticketspage = () => {
 
   const componentRef = useRef();
 
+  const userId = useSelector((state) => state.activeUser);
+
   const tickets = useSelector((state) => state.tickets);
 
   const handlePrint = useReactToPrint({
@@ -25,7 +27,6 @@ const Ticketspage = () => {
   });
 
   const [eventSel, setEventSel] = useState([cartas[1], cartas[1]]);
-  const [ticketsBuy, setTicketsBuy] = useState();
 
   let artistas = [];
 
@@ -40,8 +41,8 @@ const Ticketspage = () => {
   }
 
   useEffect(() => {
-    dispatch(getTickets(idUser));
-    // setTicketsBuy(tickets);
+    dispatch(getTickets(userId));
+    dispatch(userData())
   }, [eventSel]);
 
   return (
