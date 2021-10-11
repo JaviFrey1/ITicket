@@ -25,4 +25,8 @@ export const GET_TICKETS = "GET_TICKETS";
 export const UPDATE_TICKET = "UPDATE_TICKET";
 export const  USER_DATA = 'USER_DATA';
 export const  USER_LOGOUT = 'USER_LOGOUT';
+<<<<<<< HEAD
+export const MERCADO_PAGO = 'MERCADO_PAGO';
+=======
 export const DELETE_USER = 'DELETE_USER'
+>>>>>>> 5378b1ae353a8ee97ebd236a29ec0fa3cae33f9e

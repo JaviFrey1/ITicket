@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +15,7 @@ import "leaflet/dist/leaflet.css";
 import postTickets from "../../actions/postTickets";
 import updateAvailable from "../../actions/updateAvailable";
 import userData from "../../actions/userData";
+import mercadoPago from "../../actions/mercadoPago";
 
 export default function EventDetail(props) {
   const [lat, setLat] = useState("");
@@ -29,6 +30,18 @@ export default function EventDetail(props) {
 
   const eventDetail = useSelector((state) => state.eventDetail);
   const activeUser = useSelector((state) => state.activeUser);
+
+  const [state, setState] = useState({
+    totalPrice: '',
+    title: eventDetail.name,
+    quantity: '',
+  });
+
+  const [body, setBody] = useState({
+    userId: '',
+    cantidad: '',
+    idEvento: eventDetail.id
+  })
 
   function handleDelete(eventDetail) {
     Swal.fire({
@@ -97,17 +110,36 @@ export default function EventDetail(props) {
     if (e.target.value === "1") {
       setPrecio(eventDetail.price);
       setCantidad(1);
+      console.log('soy el state', state)
     } else {
       setPrecio(eventDetail.price * 2);
       setCantidad(2);
+      console.log('soy el state', state)
     }
   }
+  const cambios = () => {
+    setState({
+      totalPrice: precio,
+      title: eventDetail.name,
+      quantity: cantidad,
+    })
+  }
 
-  function handleClick(userId, cantidad, idEvento) {
-    let body = { userId, cantidad, idEvento };
+  function handler(e) {
+    handleChange(e);
+    cambios();
+  }
+
+  function handleClick(e) {
+    e.preventDefault();
+    setBody({
+      userId: activeUser.id,
+      cantidad: cantidad,
+      idEvento: eventDetail.id
+    })
     dispatch(postTickets(body));
-
-    dispatch(updateAvailable(idEvento, cantidad))
+    dispatch(updateAvailable(eventDetail.id, cantidad));
+    dispatch(mercadoPago(state));
   }
 
   const colorCirculoMarcador = {
@@ -130,7 +162,7 @@ export default function EventDetail(props) {
         </div>
         <div className={s.title}>
           <div className={s.name}>{eventDetail.name}</div>
-          {activeUser.isAdmin?  <div className={s.contBtn}>
+          {activeUser.isAdmin ? <div className={s.contBtn}>
             <div className={s.contlapiz}>
               <NavLink to={`/update/${eventDetail.id}`}>
                 <div className={s.lapiz}>
@@ -147,8 +179,8 @@ export default function EventDetail(props) {
               </div>
             </div>
           </div>
-           :null}
-         
+            : null}
+
         </div>
         <div className={s.contboth}>
           <div className={s.contmid}>
@@ -191,24 +223,22 @@ export default function EventDetail(props) {
                 <div className={s.selectCont}>
                   <select
                     className={s.select}
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => handler(e)}
                   >
-                    <option value="1">1 entrada</option>
-                    <option value="2">2 entradas</option>
+                    <option value={1}>1 entrada</option>
+                    <option value={2}>2 entradas</option>
                   </select>
                 </div>
                 <div className={s.price}>
                   <span>Total: ar$ {precio ? precio : eventDetail.price}.</span>
                 </div>
-                <Link
-                  to="/checkout"
+                <button
                   className={s.buy}
-                  onClick={() =>
-                    handleClick(activeUser.id, cantidad, eventDetail.id)
+                  onClick={(e) => handleClick(e)
                   }
                 >
                   <p>COMPRAR</p>
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -244,4 +274,4 @@ export default function EventDetail(props) {
       </div>
     </div>
   );
-        }
+}

@@ -21,8 +21,12 @@ import {
   GET_TICKETS,
   UPDATE_TICKET,
   USER_LOGOUT,
+<<<<<<< HEAD
+  MERCADO_PAGO
+=======
   DELETE_USER
 
+>>>>>>> 5378b1ae353a8ee97ebd236a29ec0fa3cae33f9e
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -36,9 +40,9 @@ const initialState = {
   subCategories: [],
   categories: [],
 
-  userDetail:"",
+  userDetail: "",
   persistedState,
-  activeUser:'',
+  activeUser: '',
   tickets: [],
 };
 
@@ -126,13 +130,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
 
       }
-      case  USER_DATA:
-        return{
-          ...state,
-          activeUser: action.payload
-        }
-        case GET_TICKETS:
-          return {
+    case USER_DATA:
+      return {
+        ...state,
+        activeUser: action.payload
+      }
+    case GET_TICKETS:
+      return {
         ...state,
         tickets: [...action.payload],
       };
@@ -140,11 +144,18 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-      case USER_LOGOUT:
+    case USER_LOGOUT:
       return {
         ...state,
         activeUser: ''
       };
+<<<<<<< HEAD
+    case MERCADO_PAGO:
+      return {
+        ...state
+      }
+
+=======
       case DELETE_USER:
         return{
           ...state,
@@ -152,8 +163,9 @@ export default function rootReducer(state = initialState, action) {
           userDetail:''
         }
     
+>>>>>>> 5378b1ae353a8ee97ebd236a29ec0fa3cae33f9e
     default:
       return state;
-    }
+  }
 }
 
