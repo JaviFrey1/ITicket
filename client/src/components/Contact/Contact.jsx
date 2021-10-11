@@ -8,7 +8,7 @@ const Result =() => {
         <p>Tu mensaje ha sido enviado satisfactoriamente. Te contactaremos pronto!</p>
     )
 }
-export default function Contact(Props) {
+export default function Contact() {
     const [result, showresult] = useState(false);
     const sendEmail = (e) => {
         e.preventDefault();

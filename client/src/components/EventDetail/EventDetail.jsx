@@ -130,8 +130,7 @@ export default function EventDetail(props) {
         </div>
         <div className={s.title}>
           <div className={s.name}>{eventDetail.name}</div>
-
-          <div className={s.contBtn}>
+          {activeUser.isAdmin?  <div className={s.contBtn}>
             <div className={s.contlapiz}>
               <NavLink to={`/update/${eventDetail.id}`}>
                 <div className={s.lapiz}>
@@ -148,6 +147,8 @@ export default function EventDetail(props) {
               </div>
             </div>
           </div>
+           :null}
+         
         </div>
         <div className={s.contboth}>
           <div className={s.contmid}>

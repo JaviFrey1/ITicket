@@ -15,7 +15,7 @@ import { FiShoppingBag } from "react-icons/fi";
 
 import { FaRegUserCircle } from "react-icons/fa";
 
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Menuuser = () => {
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const Menuuser = () => {
           <h4>Tus Tickets</h4>
         </Link>
 
-        <Link
+        <Link to={`/users/${activeUser.id}`}
           style={{ margin: "5px 0 0 0" }}
           className={s.itemMenu}
           onClick={(e) => {

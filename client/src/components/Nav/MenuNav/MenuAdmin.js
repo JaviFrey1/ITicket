@@ -1,19 +1,22 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import s from "./menuUser.module.css";
 import Swal from "sweetalert2";
+import logout from "../../../actions/logout";
+import logoutGoogle from "../../../actions/logoutGoogle";
 
 import {
-  AiOutlineClose,
-  AiOutlineSetting,
+
   AiOutlineCloseCircle,
 } from "react-icons/ai";
-import { FiShoppingBag } from "react-icons/fi";
 import { RiAdminLine } from "react-icons/ri";
 import { FaRegUserCircle } from "react-icons/fa";
-import { GoSettings } from "react-icons/go";
-import { NavLink, Link } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+    
 const MenuAdmin = () => {
+  const dispatch = useDispatch();
+  const activeUser = useSelector(state => state.activeUser)
+
   const [menuClass, setMenuClass] = useState(false);
 
   const showMenu = () => setMenuClass(!menuClass);
@@ -22,11 +25,11 @@ const MenuAdmin = () => {
       <FaRegUserCircle onClick={showMenu} style={{ color: "black" }} />
 
       <nav className={menuClass ? s.active : s.desactive}>
-        
 
-        
+
+
         <Link
-        to='/'
+          to='/panelAdmin'
           style={{ margin: "5px 0 0 0" }}
           className={s.itemMenu}
           onClick={(e) => {
@@ -52,7 +55,9 @@ const MenuAdmin = () => {
               confirmButtonText: "Confirmar",
             }).then((result) => {
               if (result.isConfirmed) {
-                Swal.fire("Deleted!", "Your file has been deleted.", "success");
+
+                if (!activeUser.googleId) dispatch(logout())
+                else dispatch(logoutGoogle())
               }
             });
           }}
