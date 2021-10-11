@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import s from "./menuUser.module.css";
 import Swal from "sweetalert2";
 import logout from "../../../actions/logout";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5378b1ae353a8ee97ebd236a29ec0fa3cae33f9e
 
 import {
 
@@ -15,7 +18,6 @@ import { Link } from "react-router-dom";
     
 const MenuAdmin = () => {
   const dispatch = useDispatch();
-  const activeUser = useSelector(state => state.activeUser)
 
   const [menuClass, setMenuClass] = useState(false);
 

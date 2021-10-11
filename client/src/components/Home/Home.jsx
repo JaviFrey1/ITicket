@@ -30,10 +30,11 @@ export default function Home() {
   const actualUnImportantEvents = []
 
   unImportantEvents.map((el)=>{
-      if(new Date(el.date).toLocaleDateString() >= new Date().toLocaleDateString()) actualUnImportantEvents.push(el);
+      if( el.date >=  new Date().toISOString().split('T')[0]) actualUnImportantEvents.push(el);
     
-      // console.log('Wadaaa => ', new Date(el.date).toLocaleDateString(), ' feecha actua ', new Date().toLocaleDateString())
-      // console.log(new Date(el.date).toLocaleDateString() >= new Date().toLocaleDateString())
+      // console.log('Wadaaa event date => ', el.date )
+      // console.log(' feecha actual ', new Date().toISOString().split('T')[0])
+      // console.log(el.artist, el.date >=  new Date().toISOString().split('T')[0])
     })
   // );
   const currentUnimportantEvents = actualUnImportantEvents.slice(

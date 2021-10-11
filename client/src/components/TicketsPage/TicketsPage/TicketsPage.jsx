@@ -12,7 +12,6 @@ import { BiHistory } from "react-icons/bi";
 import getTickets from "../../../actions/getTickets";
 import userData from "../../../actions/userData";
 
-import { cartas } from "../../../cartas";
 
 const Ticketspage = () => {
   const dispatch = useDispatch();

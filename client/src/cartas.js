@@ -120,5 +120,106 @@ export const cartas= [{
    isImportant: false,
    category: 1,
    subCategories: ["Cumbia", "Trap"],
-   date: "2021-12-13"
-}]
+   date: "2010-12-13"
+},
+{
+   name: "Buena vida",
+   artist:"Diego Torres",
+   place:"Teatro Vorterix",
+   address:"Federico Lacroze 3455",
+   location:"Colegiales",
+   province:"Capital Federal",
+   price: 1000,
+   availableTickets: 1440,
+   image:"https://www2.baccredomatic.com/sites/default/files/gt_banner_desktop_diego_torres_0819.jpg",
+   time:"22:00",
+   isImportant: false,
+   category: 1,
+   subCategories: ["Rock"],
+   date: "2022-09-21"
+
+},
+{
+   name: "PZK",
+   artist:"Tiago",
+   place:"Teatro Vorterix",
+   address:"Federico Lacroze 3455",
+   location:"Colegiales",
+   province:"Capital Federal",
+   price: 1000,
+   availableTickets: 1440,
+   image:"https://i2.wp.com/urbanroosters.news/wp-content/uploads/2019/07/tiago-banner.jpg",
+   time:"22:00",
+   isImportant: false,
+   category: 1,
+   subCategories: ["Trap"],
+   date: "2022-09-21"
+
+},
+{
+   name: "13",
+   artist:"Black Sabbath",
+   place:"Luna Park",
+   address:"Av. Eduardo Madero 470",
+   location:"San Nicolas",
+   province:"Capital Federal",
+   price: 1000,
+   availableTickets: 1440,
+   image:"https://maxmetal.net/40/wp-content/uploads/2020/03/ozzy-osbourne-ordinary-man-banner-ok-1078x516.jpg",
+   time:"22:00",
+   isImportant: true,
+   category: 1,
+   subCategories: ["Rock"],
+   date: "2022-03-25"
+
+},
+{
+   name: "Papi Lounge",
+   artist:"Maluma",
+   place:"Teatro Vorterix",
+   address:"Federico Lacroze 3455",
+   location:"Colegiales",
+   province:"Capital Federal",
+   price: 1000,
+   availableTickets: 1440,
+   image:"https://maluma.online/wp-content/uploads/2021/07/Papi-Lounge-VIP-sp.jpg",
+   time:"24:00",
+   isImportant: false,
+   category: 1,
+   subCategories: ["Cumbia", "Reggaeton"],
+   date: "2022-03-01"
+
+},
+{
+   name: "LOCOPLAYA",
+   artist:"Don Patricio",
+   place:"Teatro Vorterix",
+   address:"Federico Lacroze 3455",
+   location:"Colegiales",
+   province:"Capital Federal",
+   price: 1000,
+   availableTickets: 1440,
+   image:"https://cdn.boletius.com/images/1568665182110-1920-720-locoplaya-vtx_%281%29.jpg",
+   time:"22:00",
+   isImportant: true,
+   category: 1,
+   subCategories: ["Trap"],
+   date:"2022-02-27"
+},
+{
+   name: "Permiso",
+   artist:"Jose Larralde",
+   place:"Cosquin",
+   address:"Plaza Prospero Molina",
+   location:"Cosquin",
+   province:"Cordoba",
+   price: 1000,
+   availableTickets: 1440,
+   image:"http://3.bp.blogspot.com/-qeRVFqYQCC4/WdujDg1zJCI/AAAAAAAAXlU/gkov0O42kbkW1c2t6Ho8H4QGWoTep7PQgCK4BGAYYCw/s1600/TAPA.JPG",
+   time:"22:00",
+   isImportant: true,
+   category: 1,
+   subCategories: ["Rock"],
+   date: "2022-04-03"
+
+},]

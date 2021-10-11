@@ -32,7 +32,10 @@ router.use(passport.session());
 router.get("/deslog", (req, res) => res.send("te deslogeaste"));
 router.get("/failed", (req, res) => res.send("Fallo el log in con google"));
 router.get("/good", isLoggedIn, (req, res) => res.json(req.user));
-router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+router.get(
+  "/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
 
 router.get(
   "/google/callback",
