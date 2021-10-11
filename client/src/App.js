@@ -14,10 +14,10 @@ import Ticketspage from "./components/TicketsPage/TicketsPage/TicketsPage";
 import UpdateEvent from "./components/UpdateEvent/UpdateEvent";
 import GoogleButton from "react-google-button";
 import Contact from "./components/Contact/Contact";
+import PanelAdmin from "./components/PanelAdmin/PanelAdmin";
 import UserDetail from "./components/userComponents/UserDetail";
 import LoginSuccess from "./components/Nav/Login/Login";
 import Historialpage from "./components/TicketsPage/TicketsPage/HistorialPage/HistorialPage";
-import { Redirect } from "react-router-dom"
 
 function App() {
 
@@ -89,6 +89,8 @@ function App() {
         <Route path="/users/:id" component={UserDetail} />
         <Route path="/checkout" />
         <Route path="/contacto" component={Contact} />
+        <Route path="/panelAdmin" component={PanelAdmin} />
+
           
       </React.Fragment>
     </BrowserRouter>
