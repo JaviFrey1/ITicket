@@ -3,7 +3,7 @@ import {
   GET_CATEGORIES,
   GET_USER_DETAIL,
   GET_EVENT_DETAIL,
- 
+
   GET_SUBCATEGORIES,
   ADD_EVENT,
   BULK_EVENTS,
@@ -21,12 +21,8 @@ import {
   GET_TICKETS,
   UPDATE_TICKET,
   USER_LOGOUT,
-<<<<<<< HEAD
-  MERCADO_PAGO
-=======
+  MERCADO_PAGO,
   DELETE_USER
-
->>>>>>> 5378b1ae353a8ee97ebd236a29ec0fa3cae33f9e
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -149,21 +145,20 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         activeUser: ''
       };
-<<<<<<< HEAD
+
     case MERCADO_PAGO:
       return {
         ...state
       }
 
-=======
-      case DELETE_USER:
-        return{
-          ...state,
-          activeUser:'',
-          userDetail:''
-        }
-    
->>>>>>> 5378b1ae353a8ee97ebd236a29ec0fa3cae33f9e
+
+    case DELETE_USER:
+      return {
+        ...state,
+        activeUser: '',
+        userDetail: ''
+      }
+
     default:
       return state;
   }
