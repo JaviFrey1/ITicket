@@ -26,9 +26,16 @@ export default function Home() {
   const unImportantEvents = Array.isArray(allEvents)
     ? allEvents.filter((el) => el.isImportant === false)
     : console.log("Aun no hay eventos en el carrousel", allEvents);
-  const actualUnImportantEvents = unImportantEvents.filter(
-    (el) => el.date >= new Date()
-  );
+
+  const actualUnImportantEvents = []
+
+  unImportantEvents.map((el)=>{
+      if(new Date(el.date).toLocaleDateString() >= new Date().toLocaleDateString()) actualUnImportantEvents.push(el);
+    
+      // console.log('Wadaaa => ', new Date(el.date).toLocaleDateString(), ' feecha actua ', new Date().toLocaleDateString())
+      // console.log(new Date(el.date).toLocaleDateString() >= new Date().toLocaleDateString())
+    })
+  // );
   const currentUnimportantEvents = actualUnImportantEvents.slice(
     firstEvent,
     lastEvent

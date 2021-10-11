@@ -21,6 +21,8 @@ import {
   USER_DATA,
   GET_TICKETS,
   UPDATE_TICKET,
+  USER_LOGOUT_GOOGLE,
+  USER_LOGOUT
 
 } from "../actions";
 import { loadState } from "../localStorage";
@@ -138,6 +140,16 @@ export default function rootReducer(state = initialState, action) {
     case UPDATE_TICKET:
       return {
         ...state,
+      };
+      case USER_LOGOUT:
+      return {
+        ...state,
+        activeUser: ''
+      };
+      case USER_LOGOUT_GOOGLE:
+      return {
+        ...state,
+        activeUser: ''
       };
 
     default:

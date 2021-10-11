@@ -1,67 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import s from "./menuUser.module.css";
 import Swal from "sweetalert2";
-import { useDispatch,useSelector } from "react-redux";
-import userData from "../../../actions/userData";
-import logout from "../../../actions/logout";
-import logoutGoogle from "../../../actions/logoutGoogle";
 
 import {
-
+  AiOutlineClose,
   AiOutlineSetting,
   AiOutlineCloseCircle,
 } from "react-icons/ai";
 import { FiShoppingBag } from "react-icons/fi";
-
+import { RiAdminLine } from "react-icons/ri";
 import { FaRegUserCircle } from "react-icons/fa";
-
+import { GoSettings } from "react-icons/go";
 import { NavLink, Link } from "react-router-dom";
 
-const Menuuser = () => {
-  const dispatch = useDispatch();
-
-  const activeUser = useSelector((state) => state.activeUser)
+const MenuAdmin = () => {
   const [menuClass, setMenuClass] = useState(false);
 
   const showMenu = () => setMenuClass(!menuClass);
-
-
-
-  useEffect(() => {
-    dispatch(userData())  
-    
-  }, [activeUser]);
-
-
-
   return (
     <div>
       <FaRegUserCircle onClick={showMenu} style={{ color: "black" }} />
 
       <nav className={menuClass ? s.active : s.desactive}>
-        <Link
-          style={{ margin: "5px 0 0 0" }}
-          to="/misTickets"
-          className={s.itemMenu}
-          onClick={(e) => {
-            showMenu();
-          }}
-        >
-          <FiShoppingBag style={{ color: "black", marginRight: "5px" }} />{" "}
-          <h4>Tus Tickets</h4>
-        </Link>
-
-        <Link
-          style={{ margin: "5px 0 0 0" }}
-          className={s.itemMenu}
-          onClick={(e) => {
-            showMenu();
-          }}
-        >
-          <AiOutlineSetting style={{ color: "black", marginRight: "5px" }} />{" "}
-          <h4>Mis Datos</h4>
-        </Link>
         
+
+        
+        <Link
+        to='/'
+          style={{ margin: "5px 0 0 0" }}
+          className={s.itemMenu}
+          onClick={(e) => {
+            showMenu();
+          }}
+        >
+          <RiAdminLine style={{ color: "black", marginRight: "5px" }} />{" "}
+          <h4>Panel Admin</h4>
+        </Link>
         <div
           to=""
           style={{ margin: "5px 0 0 0" }}
@@ -78,9 +52,7 @@ const Menuuser = () => {
               confirmButtonText: "Confirmar",
             }).then((result) => {
               if (result.isConfirmed) {
-                
-                if(!activeUser.googleId) dispatch(logout())
-                else dispatch(logoutGoogle())
+                Swal.fire("Deleted!", "Your file has been deleted.", "success");
               }
             });
           }}
@@ -95,4 +67,4 @@ const Menuuser = () => {
   );
 };
 
-export default Menuuser;
+export default MenuAdmin;

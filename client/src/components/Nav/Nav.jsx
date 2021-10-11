@@ -1,18 +1,27 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import style from "./nav.module.css";
 import logo from "../../images/pngLetraNegraRedimensionado.png";
 import {
-  BsBookmarkFill,
-  BsFillPersonFill,
-  BsFillPersonBadgeFill,
+  BsBookmarkFill
 } from "react-icons/bs";
 import Menuuser from "./MenuNav/MenuUser";
 // import UserNavBar from "./UserNavBar";
+import userData from "../../actions/userData";
+import {useDispatch, useSelector} from 'react-redux'
+import MenuAdmin from "./MenuNav/MenuAdmin";
 
-export function Nav({ setInput, input }) {
+export function Nav() {
+  const dispatch = useDispatch();
+
+
+  const isAuth = useSelector((state) => state.activeUser);
   // SI ESTA AUTENFICADO
-  let isAuth = true;
+  // let isAuth = true;
+
+  useEffect(() => {
+    dispatch(userData())
+  },[isAuth]);
 
   return (
     <nav className={style.navContainer}>
@@ -47,7 +56,11 @@ export function Nav({ setInput, input }) {
               <BsBookmarkFill />
             </Link>
             <div to="null" className={style.hover_2}>
-              <Menuuser />
+              {
+                isAuth.isAdmin ? 
+                <MenuAdmin/>
+                : <Menuuser/>
+              }
             </div>
           </div>
         )}

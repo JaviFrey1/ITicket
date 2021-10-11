@@ -16,9 +16,10 @@ export default function CarouselComp() {
   const importantEvents = Array.isArray(events)
     ? events.filter((el) => el.isImportant === true)
     : console.log("Aun no hay eventos en el carrousel", events);
-  const actualImportantEvents = importantEvents.filter(
-    (el) => el.date >= new Date()
+  const actualImportantEvents = importantEvents.filter((el)=>
+    new Date(el.date).toLocaleDateString() >= new Date().toLocaleDateString()
   );
+ 
   useEffect(() => {
     dispatch(getEvents(""));
   }, [dispatch]);
