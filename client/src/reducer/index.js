@@ -21,7 +21,6 @@ import {
   USER_DATA,
   GET_TICKETS,
   UPDATE_TICKET,
-  USER_LOGOUT_GOOGLE,
   USER_LOGOUT
 
 } from "../actions";
@@ -146,12 +145,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         activeUser: ''
       };
-      case USER_LOGOUT_GOOGLE:
-      return {
-        ...state,
-        activeUser: ''
-      };
-
+    
     default:
       return state;
     }

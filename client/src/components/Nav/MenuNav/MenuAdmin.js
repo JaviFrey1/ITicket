@@ -55,9 +55,7 @@ const MenuAdmin = () => {
               confirmButtonText: "Confirmar",
             }).then((result) => {
               if (result.isConfirmed) {
-
-                if (!activeUser.googleId) dispatch(logout())
-                else dispatch(logoutGoogle())
+              dispatch(logout())
               }
             });
           }}
