@@ -12,7 +12,7 @@ import Menuuser from "./MenuNav/MenuUser";
 
 export function Nav({ setInput, input }) {
   // SI ESTA AUTENFICADO
-  let isAuth = false;
+  let isAuth = true;
 
   return (
     <nav className={style.navContainer}>

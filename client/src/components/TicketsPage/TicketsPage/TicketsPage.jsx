@@ -10,6 +10,7 @@ import DetalleCompra from "./DetalleCompra";
 import { ImPrinter } from "react-icons/im";
 import { BiHistory } from "react-icons/bi";
 import getTickets from "../../../actions/getTickets";
+import userData from "../../../actions/userData";
 
 import { cartas } from "../../../cartas";
 

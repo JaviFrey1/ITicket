@@ -37,7 +37,7 @@ const initialState = {
 
   userDetail:"",
   persistedState,
-  activeUser,
+  activeUser:'',
   tickets: [],
 };
 

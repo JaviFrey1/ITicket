@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Ticket from "../Ticket/Ticket";
 import s from "./ticketsPage.module.css";
 import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import updateTicket from "../../../actions/updateTickets";
 
 
 // const DetalleCompra = ({ event }) => {
@@ -33,6 +35,7 @@ import Swal from "sweetalert2";
 // export default DetalleCompra;
 
 const DetalleCompra = (artistaTickets) => {
+  const dispatch = useDispatch();
   const [propietario, setPropietario] = useState("");
 
 
