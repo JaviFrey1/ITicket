@@ -108,7 +108,7 @@ async function updateEvent(req, res, next) {
     await eventUpdated.setCategories(cat);
     // console.log('EVENTO CON NUEVA CAT ASOCIADA', eventUpdated)
     
-    console.log('ESTO LLEGA POR BODY', subCategories)
+    
     subCategories.map(async obj => {
       if (typeof obj === "string") { obj = JSON.parse(obj) }
       console.log('CADA SUBCAT', obj)

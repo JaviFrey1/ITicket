@@ -109,46 +109,46 @@ export default function EventDetail(props) {
     e.preventDefault();
     if (e.target.value === "1") {
       setPrecio(eventDetail.price);
-      setCantidad(1);
       console.log('soy el state', state)
     } else {
       setPrecio(eventDetail.price * 2);
-      setCantidad(2);
       console.log('soy el state', state)
     }
-    
+
   }
 
   function handler(e) {
     handleChange(e);
-
-      setState({
-        totalPrice: precio,
-        title: eventDetail.name,
-        quantity: cantidad,
-      })
+    setCantidad(e.target.value)
+    setState({
+      totalPrice: precio,
+      title: eventDetail.name,
+      quantity: cantidad,
+    })
 
   }
 
-  function handleClick(e) {
+  function handleClick() {
     setBody({
       userId: activeUser.id,
       cantidad: cantidad,
       idEvento: eventDetail.id
     });
-    console.log('BODY =>',body);
-      setState({
-        totalPrice: precio,
-        title: eventDetail.name,
-        quantity: cantidad,
-      })
-    
+    console.log('BODY =>', body);
+    setState({
+      totalPrice: precio,
+      title: eventDetail.name,
+      quantity: cantidad,
+    })
+
+    dispatch(mercadoPago(state));
+    // dispatch(postTickets(body));
+    console.log('ANTES=>',eventDetail)
+    dispatch(updateAvailable(eventDetail.id, cantidad));
     setTimeout(() => {
-      dispatch(mercadoPago(state));
-      dispatch(postTickets(body));
-    }, 1000)
+      console.log('DESPUES =>',eventDetail)
+    },5000)
     
-    // dispatch(updateAvailable(eventDetail.id, cantidad));
     // dispatch(mercadoPago(state));
   }
 
@@ -244,7 +244,7 @@ export default function EventDetail(props) {
                 </div>
                 <button
                   className={s.buy}
-                  onClick={(e) => handleClick(e)
+                  onClick={() => handleClick(body)
                   }
                 >
                   <p>COMPRAR</p>
