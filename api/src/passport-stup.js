@@ -67,16 +67,16 @@ passport.use(
 );
 
 passport.serializeUser((user, cb) => {
-  console.log("serializing user", user);
+  // console.log("serializing user", user);
   cb(null, user.id);
 });
 
 passport.deserializeUser(async (id, cb) => {
-  const user = await Users.findOne({ googleId: id /*where: { id }*/ }).catch((err) => {
+  const user = await Users.findOne({ googleId: id , where: { id } }).catch((err) => {
     console.log("Error xdnt", err);
     cb(err, null);
   });
 
-  console.log("Deserialized", user);
+  // console.log("Deserialized", user);
   if (user) cb(null, user);
 });

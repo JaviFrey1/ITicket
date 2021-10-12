@@ -21,7 +21,7 @@ export function Nav() {
 
   useEffect(() => {
     dispatch(userData())
-  },[isAuth]);
+  },[]);
 
   return (
     <nav className={style.navContainer}>
@@ -57,7 +57,7 @@ export function Nav() {
             </Link>
             <div to="null" className={style.hover_2}>
               {
-                isAuth.isAdmin ? 
+                isAuth.isAdmin === 'true' ? 
                 <MenuAdmin/>
                 : <Menuuser/>
               }

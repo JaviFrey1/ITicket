@@ -6,27 +6,31 @@ mercadopago.configure({
 });
 
 router.post("/checkout", async (req, res) => {
-  const { totalPrice, title, quantity } = req.body;
+  try {
+    const { totalPrice, title, quantity } = req.body;
     var unit_price = totalPrice / quantity;
 
-  var preference = {
-    items: [
-      {
-        title: title,
-        quantity: quantity,
-        unit_price: unit_price
+    var preference = {
+      items: [
+        {
+          title: title,
+          quantity: quantity,
+          unit_price: totalPrice
+        },
+      ],
+      back_urls: {
+        success: "http://localhost:3000/misTickets",
+        failure: "http://localhost:3000/rechazo",
+        pending: "http://localhost:3000/home",
       },
-    ], 
-    back_urls: {
-      success: "http://localhost:3000/misTickets", 
-      failure: "http://localhost:3000/rechazo",
-      pending: "http://localhost:3000/home",
-    },
-    auto_return: "approved",
-  };
+      auto_return: "approved",
+    };
 
-  const link = await mercadopago.preferences.create(preference);
-  res.json({ url: link.body.init_point });
+    const link = await mercadopago.preferences.create(preference);
+    res.json(link.body.init_point)
+  } catch (error) {
+    console.log('MERCADO',error)
+  }
 });
 
 module.exports = router;

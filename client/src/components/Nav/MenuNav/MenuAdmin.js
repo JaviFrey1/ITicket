@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import s from "./menuUser.module.css";
 import Swal from "sweetalert2";
 import logout from "../../../actions/logout";
-import logoutGoogle from "../../../actions/logoutGoogle";
-
 import {
 
   AiOutlineCloseCircle,
@@ -15,7 +13,6 @@ import { Link } from "react-router-dom";
     
 const MenuAdmin = () => {
   const dispatch = useDispatch();
-  const activeUser = useSelector(state => state.activeUser)
 
   const [menuClass, setMenuClass] = useState(false);
 
@@ -40,7 +37,7 @@ const MenuAdmin = () => {
           <h4>Panel Admin</h4>
         </Link>
         <div
-          to=""
+          
           style={{ margin: "5px 0 0 0" }}
           className={s.itemMenu}
           onClick={(e) => {

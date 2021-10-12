@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,13 +15,14 @@ import "leaflet/dist/leaflet.css";
 import postTickets from "../../actions/postTickets";
 import updateAvailable from "../../actions/updateAvailable";
 import userData from "../../actions/userData";
+import mercadoPago from "../../actions/mercadoPago";
 
 export default function EventDetail(props) {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const [loading, setLoading] = useState(true);
   const [precio, setPrecio] = useState("");
-  const [cantidad, setCantidad] = useState("");
+  const [cantidad, setCantidad] = useState(1);
 
   const provider = new OpenStreetMapProvider();
   const history = useHistory();
@@ -29,6 +30,18 @@ export default function EventDetail(props) {
 
   const eventDetail = useSelector((state) => state.eventDetail);
   const activeUser = useSelector((state) => state.activeUser);
+
+  const [state, setState] = useState({
+    totalPrice: '',
+    title: eventDetail.name,
+    quantity: ''
+  });
+
+  const [body, setBody] = useState({
+    userId: '',
+    cantidad: '',
+    idEvento: eventDetail.id
+  })
 
   function handleDelete(eventDetail) {
     Swal.fire({
@@ -83,7 +96,7 @@ export default function EventDetail(props) {
         results.payload.location +
         "," +
         results.payload.province;
-      // console.log(results.payload.address);
+
       buscar(fullAdress);
     });
 
@@ -97,17 +110,47 @@ export default function EventDetail(props) {
     if (e.target.value === "1") {
       setPrecio(eventDetail.price);
       setCantidad(1);
+      console.log('soy el state', state)
     } else {
       setPrecio(eventDetail.price * 2);
       setCantidad(2);
+      console.log('soy el state', state)
     }
+    
   }
 
-  function handleClick(userId, cantidad, idEvento) {
-    let body = { userId, cantidad, idEvento };
-    dispatch(postTickets(body));
+  function handler(e) {
+    handleChange(e);
 
-    dispatch(updateAvailable(idEvento, cantidad))
+      setState({
+        totalPrice: precio,
+        title: eventDetail.name,
+        quantity: cantidad,
+      })
+
+  }
+
+  function handleClick(body) {
+    console.log('BODY =>',body);
+    setTimeout(() => {
+      setBody({
+        userId: activeUser.id,
+        cantidad: cantidad,
+        idEvento: eventDetail.id
+      });
+      setState({
+        totalPrice: precio,
+        title: eventDetail.name,
+        quantity: cantidad,
+      })
+    },1000)
+    setTimeout(() => {
+      dispatch(mercadoPago(state));
+      dispatch(postTickets(body));
+    }, 2500)
+    
+    // dispatch(updateAvailable(eventDetail.id, cantidad));
+    // dispatch(mercadoPago(state));
   }
 
   const colorCirculoMarcador = {
@@ -130,7 +173,7 @@ export default function EventDetail(props) {
         </div>
         <div className={s.title}>
           <div className={s.name}>{eventDetail.name}</div>
-          {activeUser.isAdmin?  <div className={s.contBtn}>
+          {activeUser.isAdmin ? <div className={s.contBtn}>
             <div className={s.contlapiz}>
               <NavLink to={`/update/${eventDetail.id}`}>
                 <div className={s.lapiz}>
@@ -147,8 +190,8 @@ export default function EventDetail(props) {
               </div>
             </div>
           </div>
-           :null}
-         
+            : null}
+
         </div>
         <div className={s.contboth}>
           <div className={s.contmid}>
@@ -191,24 +234,22 @@ export default function EventDetail(props) {
                 <div className={s.selectCont}>
                   <select
                     className={s.select}
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => handler(e)}
                   >
-                    <option value="1">1 entrada</option>
-                    <option value="2">2 entradas</option>
+                    <option value={1}>1 entrada</option>
+                    <option value={2}>2 entradas</option>
                   </select>
                 </div>
                 <div className={s.price}>
                   <span>Total: ar$ {precio ? precio : eventDetail.price}.</span>
                 </div>
-                <Link
-                  to="/checkout"
+                <button
                   className={s.buy}
-                  onClick={() =>
-                    handleClick(activeUser.id, cantidad, eventDetail.id)
+                  onClick={() => handleClick(body)
                   }
                 >
                   <p>COMPRAR</p>
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -244,4 +285,4 @@ export default function EventDetail(props) {
       </div>
     </div>
   );
-        }
+}

@@ -8,7 +8,7 @@ const router = Router();
 
 require("../passport-stup.js");
 
-const succesLoginUrl = 'http://localhost:3000/home';
+const succesLoginUrl = 'http://localhost:3000/login/success';
 
 
 router.use(

@@ -31,8 +31,6 @@ function App() {
         if(newWindow.closed){
           console.log('Ahora estas autenticado');
           persigueUser();
-
-
           window.location.replace("http://localhost:3000/home")
           if(timer){
             clearInterval(timer); 
