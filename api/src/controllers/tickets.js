@@ -57,8 +57,8 @@ async function updateTicket(req, res, next) {
 
 async function postTickets(req, res, next) { // User.addTickets(ticket)  Events.addTickets(ticket)
 
-    let { cantidad, userId, eventId } = req.body;
-
+    let { cantidad, userId, idEvento } = req.body;
+    console.log('estoy en back', req.body.idEvento)
     try {
 
         const user = await Users.findOne({
@@ -70,32 +70,21 @@ async function postTickets(req, res, next) { // User.addTickets(ticket)  Events.
 
         const event = await Events.findOne({
             where: {
-                id: eventId
+                id: idEvento
             }
         });
 
-        // await Events.update({
-        //     {
-        //         availableTickets: availableTickets - cantidad
-        //     },
-        //     where: {
-        //         id: eventId
-        //     }
-        // })
-
         while (cantidad > 0) {
-
-
+            console.log('sere una cantidad',cantidad)
             const createdTicket = await Tickets.create({
                 propietario: user.fullName
             });
+            console.log('SOY EL TICKET',createdTicket, 'aun no se QUIEN ES MI USUARIO')
             await user.addTickets(createdTicket);
 
-
             await event.addTickets(createdTicket);
-
+            console.log('soy COMPLETO',createdTicket)
             cantidad--;
-
         }
 
         res.send('ticket creado correctamente');

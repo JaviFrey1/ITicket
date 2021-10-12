@@ -21,24 +21,24 @@ async function AddEvent(req, res, next) {
       isImportant: data.isImportant,
     });
     const cat = await Categories.findOne({
-      where: { id:  parseInt(data.category) },
+      where: { id: parseInt(data.category) },
     });
     await createdEvent.addCategories(cat);
-    
-    data.subCategories.map(async e=>{
-     if (typeof e === "string"){ e =  JSON.parse(e)}
+
+    data.subCategories.map(async e => {
+      if (typeof e === "string") { e = JSON.parse(e) }
 
       const [subCat, created] = await SubCategories.findOrCreate({
         where: {
           genre: e.genre,
           catId: e.catId
         }
-     
+
       });
-      
+
       await createdEvent.addSubCategories(subCat);
       if (created) {
-        
+
         const category = await Categories.findOne({
           where: {
             id: subCat.catId
@@ -46,7 +46,7 @@ async function AddEvent(req, res, next) {
         })
         await category.addSubCategories(subCat)
       }
-     
+
     })
     return res.send("Evento Creado Satisfactoriamente");
   } catch (error) {
@@ -55,11 +55,11 @@ async function AddEvent(req, res, next) {
   }
 }
 
-   
+
 
 async function updateEvent(req, res, next) {
   const id = req.params.id;
-  console.log('BODY EN BAK',req.body)
+  console.log('BODY EN BAK', req.body)
 
   const {
     name,
@@ -98,20 +98,20 @@ async function updateEvent(req, res, next) {
         },
       }
     );
-    
+
     let eventUpdated = await Events.findByPk(id);
 
     const cat = await Categories.findOne({
-      where: { id:  parseInt(category) },
+      where: { id: parseInt(category) },
     });
 
     await eventUpdated.setCategories(cat);
     // console.log('EVENTO CON NUEVA CAT ASOCIADA', eventUpdated)
-    
-    console.log('ESTO LLEGA POR BODY', subCategories)
+
+
     subCategories.map(async obj => {
       if (typeof obj === "string") { obj = JSON.parse(obj) }
-      console.log('CADA SUBCAT', obj)
+
 
       const [subCat, created] = await SubCategories.findOrCreate({
         where: {
@@ -120,7 +120,7 @@ async function updateEvent(req, res, next) {
         }
 
       });
-       await eventUpdated.setSubCategories(subCat);
+      await eventUpdated.setSubCategories(subCat);
       if (created) {
         const category = await Categories.findOne({
           where: {
@@ -144,7 +144,7 @@ async function deleteEvent(req, res, next) {
   let id = req.params.id
 
   try {
-   await Events.destroy({
+    await Events.destroy({
       where: {
         id: id
       }
@@ -156,28 +156,29 @@ async function deleteEvent(req, res, next) {
 
 }
 async function updateAvailable(req, res, next) {
-  let { eventId } = req.query;
-
-  const {
-      cantidad
-  } = req.body;
+  let { eventId, cantidad } = req.query;
+  // console.log('SOY ID BACK =>', eventId)
+  // console.log('SOY CANT BACK =>', cantidad)
 
   try {
-      await Events.update(
-          {
-              availableTickets: availableTickets - cantidad
-
-          },
-          {
-              where: {
-                  id: eventId,
-              },
-          }
-      );
-      res.json('available Tickets updated')
+    const before = await Events.findByPk(
+      eventId
+    )
+    console.log('before?',before);
+    const evento = await Events.update(
+      {
+        availableTickets: before.availableTickets - cantidad
+      },
+      {
+        where: {
+          id: eventId,
+        },
+      }
+    );
+    res.json(evento)
 
   } catch (error) {
-      next(error)
+    next(error)
   }
 }
 
