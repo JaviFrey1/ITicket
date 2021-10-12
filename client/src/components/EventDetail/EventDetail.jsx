@@ -130,24 +130,23 @@ export default function EventDetail(props) {
 
   }
 
-  function handleClick(body) {
+  function handleClick(e) {
+    setBody({
+      userId: activeUser.id,
+      cantidad: cantidad,
+      idEvento: eventDetail.id
+    });
     console.log('BODY =>',body);
-    setTimeout(() => {
-      setBody({
-        userId: activeUser.id,
-        cantidad: cantidad,
-        idEvento: eventDetail.id
-      });
       setState({
         totalPrice: precio,
         title: eventDetail.name,
         quantity: cantidad,
       })
-    },1000)
+    
     setTimeout(() => {
       dispatch(mercadoPago(state));
       dispatch(postTickets(body));
-    }, 2500)
+    }, 1000)
     
     // dispatch(updateAvailable(eventDetail.id, cantidad));
     // dispatch(mercadoPago(state));
@@ -245,7 +244,7 @@ export default function EventDetail(props) {
                 </div>
                 <button
                   className={s.buy}
-                  onClick={() => handleClick(body)
+                  onClick={(e) => handleClick(e)
                   }
                 >
                   <p>COMPRAR</p>
