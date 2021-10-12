@@ -26,7 +26,7 @@ const MenuAdmin = () => {
 
 
         <Link
-          to='/panelAdmin'
+          to='/addEvent'
           style={{ margin: "5px 0 0 0" }}
           className={s.itemMenu}
           onClick={(e) => {

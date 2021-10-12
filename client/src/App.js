@@ -12,7 +12,6 @@ import Frequent from "./components/Frequent/Frequent";
 import Privacy from "./components/Privacy/Privacy";
 import Ticketspage from "./components/TicketsPage/TicketsPage/TicketsPage";
 import UpdateEvent from "./components/UpdateEvent/UpdateEvent";
-import GoogleButton from "react-google-button";
 import Contact from "./components/Contact/Contact";
 import PanelAdmin from "./components/PanelAdmin/PanelAdmin";
 import UserDetail from "./components/userComponents/UserDetail";
@@ -22,11 +21,6 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register"
 
 function App() {
-
-
-
-  
-
 
   return (
     <BrowserRouter>
