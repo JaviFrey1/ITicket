@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import './register.css';
+import s from './register.module.css';
 import userRegister from "../../actions/register";
 import { useState } from 'react';
 
@@ -35,36 +35,38 @@ function Register() {
 
 
     return (
-        <form class="formulario" onSubmit={(e) => handleInputSubmit(e)}>
+        <div className={s.cont}>
+        <form className={s.formulario} onSubmit={(e) => handleInputSubmit(e)}>
         <h1>Registrate</h1>
-         <div class="contenedor">
+         <div className={s.contenedor}>
          
-         <div class="input-contenedor">
+         <div className={s.inputContenedor}>
              <i class="fas fa-user icon"></i>
-             <input type="text" value={state.fullName} name= 'fullName' placeholder="Nombre Completo" onChange={(e) => handleInputChange(e)}/>
+             <input className={s.input} type="text" value={state.fullName} name= 'fullName' placeholder="Nombre Completo" onChange={(e) => handleInputChange(e)}/>
              
              </div>
              
-             <div class="input-contenedor">
+             <div className={s.inputContenedor}>
              <i class="fas fa-envelope icon"></i>
-             <input type="text" value={state.email} name= 'email' placeholder="Correo Electronico" onChange={(e) => handleInputChange(e)}/>
+             <input  className={s.input}type="text" value={state.email} name= 'email' placeholder="Correo Electronico" onChange={(e) => handleInputChange(e)}/>
              
              </div>
              
-             <div class="input-contenedor">
+             <div className={s.inputContenedor}>
             <i class="fas fa-key icon"></i>
-             <input type="password" value={state.password} name= 'password' placeholder="Contraseña" onChange={(e) => handleInputChange(e)}/>
+             <input className={s.input} type="password" value={state.password} name= 'password' placeholder="Contraseña" onChange={(e) => handleInputChange(e)}/>
              
              </div>
-             <input type="submit" value="Registrate" class="button" />
+             <input className={s.button}  type="submit" value="Registrate"  />
             <a href="localhost:3001/google">
-             <button> Google </button>
+             <button className={s.button}> Google </button>
               </a>
              <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
              <p>¿Ya tienes una cuenta?<a class="link" href="/login">Iniciar Sesion</a></p>
             
          </div>
         </form>
+        </div>
     )}
 
     export default Register;

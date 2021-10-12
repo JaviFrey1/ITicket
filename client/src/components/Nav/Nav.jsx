@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./nav.module.css";
 import logo from "../../images/pngLetraNegraRedimensionado.png";
@@ -8,7 +8,7 @@ import {
 import Menuuser from "./MenuNav/MenuUser";
 // import UserNavBar from "./UserNavBar";
 import userData from "../../actions/userData";
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import MenuAdmin from "./MenuNav/MenuAdmin";
 
 export function Nav() {
@@ -18,7 +18,7 @@ export function Nav() {
 
 
   const isAuth = useSelector((state) => state.activeUser);
-  console.log('isAuth =>',isAuth.isAdmin);
+  console.log('isAuth =>', isAuth.isAdmin);
   // SI ESTA AUTENFICADO
   // let isAuth = true;
 
@@ -27,10 +27,13 @@ export function Nav() {
     // setDataDeUser(isAuth);
     // console.log(isAuth);
     // console.log('==>> ',dataDeUser);
-  },[]);
+  }, []);
 
+  console.log(isAuth.isAdmin)
   return (
-    <nav className={style.navContainer}>
+     
+      <nav className={style.navContainer}>
+        
       <div className={style.linkContainer}>
         <Link to="/home" className={style.Link}>
           <div className={style.contLogo}>
@@ -62,17 +65,17 @@ export function Nav() {
               <BsBookmarkFill />
             </Link>
             <div to="null" className={style.hover_2}>
-              {
-                isAuth.isAdmin === 'false' ? 
-                <Menuuser/>
-                : <MenuAdmin/>
+              {isAuth.isAdmin === false?
+                <Menuuser />
+                : <MenuAdmin />
               }
             </div>
           </div>
         )}
       </div>
     </nav>
-  );
+    );
 }
+
 
 export default Nav;

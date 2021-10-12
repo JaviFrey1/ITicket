@@ -1,12 +1,13 @@
-body {
+  body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background-size: cover;
     background-attachment: fixed;
 }
+
 * {
     box-sizing: border-box;
-}
+} 
 .contenedor{
     width: 100%;
     padding: 15px;
@@ -21,14 +22,14 @@ h1{
     color: #1a2537;
     font-size: 40px;
 }
-input[type="text"],
-input[type="password"]{
+
+.input{
     font-size: 20px;
     width: 82%;
     padding: 10px;
     border: none;
 }
-.input-contenedor{
+.inputcontenedor{
     margin-bottom: 15px;
     border: 1px solid #aaa;
 }
@@ -69,4 +70,4 @@ p{
         margin-top: 150px;
         border-radius: 2%;
     }
-}
+} 
