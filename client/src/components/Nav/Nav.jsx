@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import style from "./nav.module.css";
 import logo from "../../images/pngLetraNegraRedimensionado.png";
@@ -14,13 +14,19 @@ import MenuAdmin from "./MenuNav/MenuAdmin";
 export function Nav() {
   const dispatch = useDispatch();
 
+  // const [dataDeUser, setDataDeUser] = useState();
+
 
   const isAuth = useSelector((state) => state.activeUser);
+  console.log('isAuth =>',isAuth.isAdmin);
   // SI ESTA AUTENFICADO
   // let isAuth = true;
 
   useEffect(() => {
-    dispatch(userData())
+    dispatch(userData());
+    // setDataDeUser(isAuth);
+    // console.log(isAuth);
+    // console.log('==>> ',dataDeUser);
   },[]);
 
   return (
@@ -57,9 +63,9 @@ export function Nav() {
             </Link>
             <div to="null" className={style.hover_2}>
               {
-                isAuth.isAdmin === 'true' ? 
-                <MenuAdmin/>
-                : <Menuuser/>
+                isAuth.isAdmin === 'false' ? 
+                <Menuuser/>
+                : <MenuAdmin/>
               }
             </div>
           </div>
