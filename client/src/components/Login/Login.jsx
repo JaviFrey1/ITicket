@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 import userLogin from '../../actions/login';
-import './login.css';
+import s from './login.module.css';
 import axios from 'axios';
 import GoogleButton from 'react-google-button';
 
@@ -57,24 +57,24 @@ function Login() {
 
 
     return (
-        <body>
-        <form className="formulario" onSubmit={(e) => handleInputSubmit(e)}>
-        <h1>Login</h1>
-         <div className="contenedor">
-             <div className="input-contenedor">
+        <body className={s.body}>
+        <form className={s.formulario} onSubmit={(e) => handleInputSubmit(e)}>
+        <h1 className={s.h1}>Login</h1>
+         <div className={s.contenedor}>
+             <div className={s.inputcontenedor}>
              <i className="fas fa-envelope icon"></i>
-             <input type="text" name="email" value={state.email} placeholder="Correo Electronico" onChange={(e) => handleInputChange(e)}/>
+             <input className={s.input} type="text" name="email" value={state.email} placeholder="Correo Electronico" onChange={(e) => handleInputChange(e)}/>
              </div>
-             <div className="input-contenedor">
+             <div className={s.inputcontenedor}>
             <i className="fas fa-key icon"></i>
-             <input type="password" name="password" value={state.password} placeholder="Contraseña" onChange={(e) => handleInputChange(e)}/>
+             <input className={s.input} type="password" name="password" value={state.password} placeholder="Contraseña" onChange={(e) => handleInputChange(e)}/>
              </div>
-             <input type="submit" value="Login" class="button"/>
+             <input type="submit" value="Login" className={s.button}/>
                 <div>
-                    <GoogleButton onClick={()=>{redirectGoogle()}}/>
+                    <GoogleButton className={s.goog} onClick={()=>{redirectGoogle()}}/>
                 </div>
              <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-             <p>¿No tienes una cuenta? <a class="link" href="/Register">Registrate </a></p>
+             <p>¿No tienes una cuenta? <a className={s.link} href="/Register">Registrate </a></p>
          </div>
         </form>
     </body>
