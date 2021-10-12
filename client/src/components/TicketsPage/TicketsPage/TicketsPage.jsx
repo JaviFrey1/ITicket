@@ -22,6 +22,8 @@ const Ticketspage = () => {
 
   const tickets = useSelector((state) => state.tickets);
 
+  // if(activeUser) dispatch(getTickets(activeUser.id));
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
@@ -41,26 +43,36 @@ const Ticketspage = () => {
   }
 
   useEffect(() => {
-    dispatch(getTickets(activeUser.id));
     dispatch(userData())
-  }, [eventSel]);
+    console.log('user ID >>> ',activeUser.id)
+    dispatch(getTickets(activeUser.id))
+    console.log('Tickets >>> ',tickets)
+    // if(activeUser) dispatch(getTickets(activeUser.id));
+    
+  }, [dispatch]);
+
+  // if(activeUser) dispatch(getTickets(activeUser.id));
+
+  
 
   return (
+    
     <div className={s.divRey}>
+    
       <div className={s.contListaCompra}>
         <div className={s.pestanias}>
           <div className={s.pestania}>
             <h4>Eventos Activos</h4>
           </div>
         </div>
-        {artistas.map((artista) => {
+        {artistas.length ? artistas.map((artista, i) => {
           const artistaTickets = [];
-          tickets.map((ticket) => {
+          tickets.map((ticket, i) => {
             if (ticket.event.artist === artista) artistaTickets.push(ticket);
           });
           return (
             <div
-              key={artista}
+              key={i}
               className={s.itemListaCompra}
               onClick={() => {
                 console.log("==>> hola");
@@ -72,7 +84,7 @@ const Ticketspage = () => {
               </div>
             </div>
           );
-        })}
+        }) : <div  style={{margin: '20px'}}>No tienes entradas</div>}
         {/*---------------------------------------------------------------------*/}
 
         {/*<div
@@ -122,7 +134,7 @@ const Ticketspage = () => {
             <p>Imprimir!</p>
             <ImPrinter />
           </div>
-          <Link to="/historial" className={s.linkBoton}>
+          <Link to="/historial" className={s.linkBoton} historialTTickkets={'avion'}>
             <div className={s.botonImpr2}>
               <p>Historial!</p>
               <BiHistory />

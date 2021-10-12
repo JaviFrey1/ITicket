@@ -6,7 +6,7 @@ async function getTickets(req, res, next) {
     let { idUser } = req.query
 
     try {
-        console.log('IDDDDDDDDDDDDDDDDDDDDDDDD', idUser)
+        console.log('ID => ', idUser)
         const dataBase = await Tickets.findAll({
             where: {
                 userId: idUser

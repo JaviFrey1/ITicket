@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import s from "./historialPage.module.css";
-
+import { useSelector, useDispatch } from "react-redux";
 import { cartas } from "../../../../cartas";
 
-const Historialpage = () => {
+const Historialpage = ({historialTTickkets}) => {
+  console.log(historialTTickkets)
+
+  const dispatch = useDispatch();
+
+  const history = useSelector((state) => state.tickets)
+
   const [listaDeEventosFake, setListaDeEventosFake] = useState([
     cartas[0],
     cartas[5],
@@ -11,13 +17,17 @@ const Historialpage = () => {
     cartas[4],
   ]);
 
+  useEffect(() => {
+    // dispatch(geettTicket)
+  },[])
+
   return (
     <div className={s.divRey}>
       <div className={s.contenedor}>
         <div className={s.titulo}>Historial de compra:</div>
-        {listaDeEventosFake.map((el) => {
+        {listaDeEventosFake.map((el, i) => {
           return (
-            <div className={s.contItem}>
+            <div className={s.contItem} key={i}>
               <div className={s.nameArtist}>
                 <div>{el.name}</div>
                 <div>{el.artist}</div>

@@ -18,7 +18,7 @@ export function Nav() {
 
 
   const isAuth = useSelector((state) => state.activeUser);
- 
+
   // SI ESTA AUTENFICADO
   // let isAuth = true;
 
