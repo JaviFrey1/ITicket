@@ -7,7 +7,7 @@ var LocalStrategy = require('passport-local').Strategy;
 module.exports = function(passport){
   passport.use(
     new LocalStrategy({usernameField: 'email'}, (email, password, done)=>{
-        Users.findOne({email: email})
+        Users.findOne({where: {email: email}})
         .then(user => {
           if(!user){
             return done(null, false, {message:'El email no esta registrado'});
