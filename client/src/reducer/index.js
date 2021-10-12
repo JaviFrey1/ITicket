@@ -129,7 +129,7 @@ export default function rootReducer(state = initialState, action) {
 
       }
     case USER_DATA:
-      console.log('Reducer papa ==> ', action.payload)
+      // console.log('Reducer papa ==> ', action.payload)
       return {
         ...state,
         activeUser: action.payload
