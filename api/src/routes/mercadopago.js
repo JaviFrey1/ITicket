@@ -15,7 +15,7 @@ router.post("/checkout", async (req, res) => {
         {
           title: title,
           quantity: quantity,
-          unit_price: unit_price
+          unit_price: totalPrice
         },
       ],
       back_urls: {
@@ -27,8 +27,7 @@ router.post("/checkout", async (req, res) => {
     };
 
     const link = await mercadopago.preferences.create(preference);
-
-    res.redirect(link.body.init_point)
+    res.json(link.body.init_point)
   } catch (error) {
     console.log('MERCADO',error)
   }
