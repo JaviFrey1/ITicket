@@ -1,4 +1,4 @@
-import { USER_REGISTER } from ".";
+import { USER_REGISTER } from "./index";
 import axios from "axios";
 
 export default function userRegister(body){

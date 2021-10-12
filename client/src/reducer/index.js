@@ -22,7 +22,9 @@ import {
   UPDATE_TICKET,
   USER_LOGOUT,
   MERCADO_PAGO,
-  DELETE_USER
+  DELETE_USER,
+  USER_REGISTER,
+  USER_LOGIN
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -157,6 +159,14 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         activeUser: '',
         userDetail: ''
+      }
+      case USER_REGISTER:
+      return {
+        ...state,
+      };
+    case USER_LOGIN:
+      return {
+        ...state,
       }
 
     default:

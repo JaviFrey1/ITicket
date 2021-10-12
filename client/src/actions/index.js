@@ -27,3 +27,5 @@ export const  USER_DATA = 'USER_DATA';
 export const  USER_LOGOUT = 'USER_LOGOUT';
 export const MERCADO_PAGO = 'MERCADO_PAGO';
 export const DELETE_USER = 'DELETE_USER'
+export const USER_LOGIN = 'USER_LOGIN'
+export const USER_REGISTER = 'USER_REGISTER'
