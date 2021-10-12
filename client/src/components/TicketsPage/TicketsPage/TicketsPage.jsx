@@ -21,7 +21,7 @@ const Ticketspage = () => {
   const activeUser = useSelector((state) => state.activeUser);
 
   const tickets = useSelector((state) => state.tickets);
-  console.log('Tickets >>> ', tickets)
+  // console.log('Tickets >>> ', tickets)
 
 
   const handlePrint = useReactToPrint({
@@ -33,7 +33,7 @@ const Ticketspage = () => {
   let artistas = [];
 
   tickets.map((ticket) => {
-    if (!artistas.includes(ticket.event.artist)) {
+    if (!artistas.includes(ticket.event.artist) && ticket.event.date >= new Date().toISOString().split('T')[0]) {
       artistas.push(ticket.event.artist);
     }
   });
@@ -44,7 +44,7 @@ const Ticketspage = () => {
 
   useEffect(() => {
     dispatch(userData())
-    console.log('user ID >>> ', activeUser.id)
+    
     // dispatch(getTickets(activeUser.id))
     if (activeUser) dispatch(getTickets(activeUser.id));
 
@@ -65,10 +65,10 @@ const Ticketspage = () => {
           </div>
         </div>
         {artistas.length ? artistas.map((artista, i) => {
-          console.log('lonely', artista)
+         
           const artistaTickets = [];
           tickets.map((ticket, i) => {
-            if (ticket.event.artist === artista && ticket.event.date >= new Date().toISOString().split('T')[0]) artistaTickets.push(ticket);
+            if (ticket.event.artist === artista) artistaTickets.push(ticket);
           });
           console.log('tengo alos artickets', artistaTickets)
           return (
