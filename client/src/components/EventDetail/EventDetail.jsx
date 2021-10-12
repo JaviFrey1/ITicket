@@ -34,7 +34,7 @@ export default function EventDetail(props) {
   const [state, setState] = useState({
     totalPrice: '',
     title: eventDetail.name,
-    quantity: ''
+    quantity: 1
   });
 
   const [body, setBody] = useState({
@@ -45,19 +45,19 @@ export default function EventDetail(props) {
 
   function handleDelete(eventDetail) {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "Estas seguro?",
+      text: "No podras revertir esto..",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Si, borralo!",
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(deleteEvent(eventDetail.id));
         Swal.fire({
-          title: "Deleted!",
-          text: `${eventDetail.artist}'s event has been deleted.`,
+          title: "Borrado!",
+          text: `El evento de ${eventDetail.artist} ha sido borrado.`,
           imageUrl: "https://i.gifer.com/7efs.gif",
           imageWidth: 250,
           imageHeight: 200,
@@ -109,47 +109,75 @@ export default function EventDetail(props) {
     e.preventDefault();
     if (e.target.value === "1") {
       setPrecio(eventDetail.price);
-      setCantidad(1);
       console.log('soy el state', state)
     } else {
       setPrecio(eventDetail.price * 2);
-      setCantidad(2);
       console.log('soy el state', state)
     }
-    
   }
 
   function handler(e) {
     handleChange(e);
-
-      setState({
-        totalPrice: precio,
-        title: eventDetail.name,
-        quantity: cantidad,
-      })
-
-  }
-
-  function handleClick(e) {
+    setCantidad(e.target.value)
     setBody({
       userId: activeUser.id,
       cantidad: cantidad,
       idEvento: eventDetail.id
     });
-    console.log('BODY =>',body);
-      setState({
-        totalPrice: precio,
-        title: eventDetail.name,
-        quantity: cantidad,
-      })
-    
-    setTimeout(() => {
-      dispatch(mercadoPago(state));
-      dispatch(postTickets(body));
-    }, 1000)
-    
-    // dispatch(updateAvailable(eventDetail.id, cantidad));
-    // dispatch(mercadoPago(state));
+    setState({
+      totalPrice: precio,
+      title: eventDetail.name,
+      quantity: cantidad,
+    })
+    console.log('estoy en HANDLER', state)
+  }
+  function handleUnloged() {
+    Swal.fire({
+      title: "UPS...",
+      text: "Tienes que iniciar sesion para comprar",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Iniciar sesion.",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        history.push("/login");
+      }
+    });
+  }
+  function soldOut() {
+    Swal.fire({
+      title: "Evento Agotado",
+      text: "Lo lamento, no quedan entradas disponibles. Vamos a ver otros eventos?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ok",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        history.push("/home");
+      }
+    });
+  }
+  function handleClick() {
+    if (!activeUser) {
+      handleUnloged()
+    } else {
+      setBody({
+        userId: activeUser.id,
+        cantidad: cantidad,
+        idEvento: eventDetail.id
+      });
+      if (eventDetail.availableTickets < cantidad) {
+        soldOut();
+      } else {
+        dispatch(mercadoPago(state));
+        dispatch(postTickets(body));
+        dispatch(updateAvailable(eventDetail.id, cantidad));
+      }
+    }
   }
 
   const colorCirculoMarcador = {
@@ -244,7 +272,7 @@ export default function EventDetail(props) {
                 </div>
                 <button
                   className={s.buy}
-                  onClick={(e) => handleClick(e)
+                  onClick={() => handleClick(body)
                   }
                 >
                   <p>COMPRAR</p>
