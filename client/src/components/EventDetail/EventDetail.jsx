@@ -22,7 +22,7 @@ export default function EventDetail(props) {
   const [long, setLong] = useState("");
   const [loading, setLoading] = useState(true);
   const [precio, setPrecio] = useState("");
-  const [cantidad, setCantidad] = useState("");
+  const [cantidad, setCantidad] = useState(1);
 
   const provider = new OpenStreetMapProvider();
   const history = useHistory();
@@ -34,7 +34,7 @@ export default function EventDetail(props) {
   const [state, setState] = useState({
     totalPrice: '',
     title: eventDetail.name,
-    quantity: '',
+    quantity: ''
   });
 
   const [body, setBody] = useState({
@@ -96,7 +96,7 @@ export default function EventDetail(props) {
         results.payload.location +
         "," +
         results.payload.province;
-      // console.log(results.payload.address);
+
       buscar(fullAdress);
     });
 
@@ -116,30 +116,41 @@ export default function EventDetail(props) {
       setCantidad(2);
       console.log('soy el state', state)
     }
-  }
-  const cambios = () => {
-    setState({
-      totalPrice: precio,
-      title: eventDetail.name,
-      quantity: cantidad,
-    })
+    
   }
 
   function handler(e) {
     handleChange(e);
-    cambios();
+
+      setState({
+        totalPrice: precio,
+        title: eventDetail.name,
+        quantity: cantidad,
+      })
+
   }
 
-  function handleClick(e) {
-    e.preventDefault();
-    setBody({
-      userId: activeUser.id,
-      cantidad: cantidad,
-      idEvento: eventDetail.id
-    })
-    dispatch(postTickets(body));
-    dispatch(updateAvailable(eventDetail.id, cantidad));
-    dispatch(mercadoPago(state));
+  function handleClick(body) {
+    console.log('BODY =>',body);
+    setTimeout(() => {
+      setBody({
+        userId: activeUser.id,
+        cantidad: cantidad,
+        idEvento: eventDetail.id
+      });
+      setState({
+        totalPrice: precio,
+        title: eventDetail.name,
+        quantity: cantidad,
+      })
+    },1000)
+    setTimeout(() => {
+      dispatch(mercadoPago(state));
+      dispatch(postTickets(body));
+    }, 2500)
+    
+    // dispatch(updateAvailable(eventDetail.id, cantidad));
+    // dispatch(mercadoPago(state));
   }
 
   const colorCirculoMarcador = {
@@ -234,7 +245,7 @@ export default function EventDetail(props) {
                 </div>
                 <button
                   className={s.buy}
-                  onClick={(e) => handleClick(e)
+                  onClick={() => handleClick(body)
                   }
                 >
                   <p>COMPRAR</p>
