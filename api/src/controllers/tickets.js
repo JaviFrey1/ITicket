@@ -32,9 +32,9 @@ async function getTickets(req, res, next) {
 
 async function updateTicket(req, res, next) {
     let id = req.params.id;
-
-    const { propietario } = req.body;
-
+console.log('ID=>',id)
+    const {propietario}  = req.query;
+    console.log('PROP=>',propietario)
     try {
         await Tickets.update(
             {
@@ -48,6 +48,7 @@ async function updateTicket(req, res, next) {
         );
 
         let ticketUpdated = await Tickets.findByPk(id);
+        console.log('UPDATEADO=>',ticketUpdated)
         res.json(ticketUpdated)
 
     } catch (error) {

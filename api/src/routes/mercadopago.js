@@ -19,7 +19,7 @@ router.post("/checkout", async (req, res) => {
         },
       ],
       back_urls: {
-        success: "http://localhost:3000/misTickets",
+        success: "http://localhost:3000/home",
         failure: "http://localhost:3000/rechazo",
         pending: "http://localhost:3000/home",
       },

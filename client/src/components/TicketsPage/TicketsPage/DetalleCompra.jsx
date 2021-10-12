@@ -34,12 +34,13 @@ import updateTicket from "../../../actions/updateTickets";
 
 // export default DetalleCompra;
 
-const DetalleCompra = (artistaTickets) => {
+const DetalleCompra = ({ artistaTickets }) => {
   const dispatch = useDispatch();
   const [propietario, setPropietario] = useState("");
 
 
   function handleClick(id) {
+    console.log('soy id de ticket', id)
     Swal.fire({
       title: "Ingresa nombre completo del nuevo propietario",
       input: "text",
@@ -49,27 +50,25 @@ const DetalleCompra = (artistaTickets) => {
       if (resultado.value) {
         //  console.log('nuevo prop')
         setPropietario(resultado.value);
-        console.log("Nuevo Prop, " + propietario);
+        dispatch(updateTicket(id, resultado.value));
+        console.log("Nuevo Prop, ", resultado.value);
       }
     });
-
-    dispatch(updateTicket(id, propietario));
   }
 
   useEffect(() => {
-
-    // console.log("cambio en detalles=> ", event.name);
-  }, []);
+    console.log('Actualizacion')
+  }, [dispatch]);
 
   return (
     <div>
       <div className={s.detalleCompra} id="listaTickets">
         <div className={s.tituloTickets}>
           <h3>Tus Tickets para {artistaTickets[0]?.event.artist}:</h3>
-          
+
         </div>
         <div className={s.listaDeTickets}>
-          {/*artistaTickets.map((e) => {
+          {Array.isArray(artistaTickets) ? artistaTickets.map((e) => {
             return (
               <div className={s.contTicket} key={e.id}>
                 <Ticket ticket={e} />
@@ -78,7 +77,7 @@ const DetalleCompra = (artistaTickets) => {
                 </div>
               </div>
             );
-          })*/}
+          }) : <div>Selecciona un artista de la lista!</div>}
         </div>
       </div>
     </div>
