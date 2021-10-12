@@ -167,11 +167,17 @@ export default function EventDetail(props) {
     if (!activeUser) {
       handleUnloged()
     } else {
+
       setBody({
         userId: activeUser.id,
         cantidad: cantidad,
         idEvento: eventDetail.id
       });
+      setState({
+        totalPrice: precio,
+        title: eventDetail.name,
+        quantity: cantidad,
+      })
       if (eventDetail.availableTickets < cantidad) {
         soldOut();
       } else {
