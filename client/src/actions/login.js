@@ -1,4 +1,4 @@
-import { USER_LOGIN } from ".";
+import { USER_LOGIN } from "./index";
 import axios from "axios";
 
 export default function userLogin(body) {
