@@ -38,7 +38,7 @@ const MenuAdmin = () => {
           <h4>Panel Admin</h4>
         </Link>
         <div
-          to=""
+          
           style={{ margin: "5px 0 0 0" }}
           className={s.itemMenu}
           onClick={(e) => {
