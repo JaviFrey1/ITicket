@@ -21,8 +21,8 @@ const Ticketspage = () => {
   const activeUser = useSelector((state) => state.activeUser);
 
   const tickets = useSelector((state) => state.tickets);
+  console.log('Tickets >>> ', tickets)
 
-  // if(activeUser) dispatch(getTickets(activeUser.id));
 
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -44,21 +44,20 @@ const Ticketspage = () => {
 
   useEffect(() => {
     dispatch(userData())
-    console.log('user ID >>> ',activeUser.id)
-    dispatch(getTickets(activeUser.id))
-    console.log('Tickets >>> ',tickets)
-    // if(activeUser) dispatch(getTickets(activeUser.id));
-    
-  }, [dispatch]);
+    console.log('user ID >>> ', activeUser.id)
+    // dispatch(getTickets(activeUser.id))
+    if (activeUser) dispatch(getTickets(activeUser.id));
+
+  }, []);
 
   // if(activeUser) dispatch(getTickets(activeUser.id));
 
-  
+
 
   return (
-    
+
     <div className={s.divRey}>
-    
+
       <div className={s.contListaCompra}>
         <div className={s.pestanias}>
           <div className={s.pestania}>
@@ -66,10 +65,12 @@ const Ticketspage = () => {
           </div>
         </div>
         {artistas.length ? artistas.map((artista, i) => {
+          console.log('lonely', artista)
           const artistaTickets = [];
           tickets.map((ticket, i) => {
-            if (ticket.event.artist === artista) artistaTickets.push(ticket);
+            if (ticket.event.artist === artista && ticket.event.date >= new Date().toISOString().split('T')[0]) artistaTickets.push(ticket);
           });
+          console.log('tengo alos artickets', artistaTickets)
           return (
             <div
               key={i}
@@ -84,43 +85,7 @@ const Ticketspage = () => {
               </div>
             </div>
           );
-        }) : <div  style={{margin: '20px'}}>No tienes entradas</div>}
-        {/*---------------------------------------------------------------------*/}
-
-        {/*<div
-          className={s.itemListaCompra}
-          onClick={() => {
-            cambiar([cartas[1], cartas[1]]);
-          }}
-        >
-          <div className={s.artistDate}>
-            <div>{cartas[1].artist}</div>
-            <div>{cartas[1].date}</div>
-          </div>
-          <div className={s.placeLocation}>
-            <div>{cartas[1].place}</div>
-            <div>{cartas[1].location}</div>
-          </div>
-        </div>
-
-        <div
-          className={s.itemListaCompra}
-          onClick={() => {
-            // console.log([cartas[2], cartas[2], cartas[2]]);
-            cambiar([cartas[2], cartas[2], cartas[2]]);
-          }}
-        >
-          <div className={s.artistDate}>
-            <div>{cartas[2].artist}</div>
-            <div>{cartas[2].date}</div>
-          </div>
-          <div className={s.placeLocation}>
-            <div>{cartas[2].place}</div>
-            <div>{cartas[2].location}</div>
-          </div>
-        </div>
-        {}*/}
-        {/*---------------------------------------------------------------------*/}
+        }) : <div style={{ margin: '20px' }}>No tienes entradas</div>}
       </div>
       <div>
         <div className={s.contBotones}>
@@ -134,15 +99,16 @@ const Ticketspage = () => {
             <p>Imprimir!</p>
             <ImPrinter />
           </div>
-          <Link to="/historial" className={s.linkBoton} historialTTickkets={'avion'}>
+          <Link to="/historial" className={s.linkBoton} >
             <div className={s.botonImpr2}>
               <p>Historial!</p>
               <BiHistory />
             </div>
           </Link>
         </div>
+        {console.log('deberian ser artista tickets', eventSel)}
         <div ref={componentRef}>
-          <DetalleCompra event={eventSel} />
+          <DetalleCompra artistaTickets={eventSel} />
         </div>
       </div>
     </div>

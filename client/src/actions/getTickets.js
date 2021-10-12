@@ -1,7 +1,7 @@
 import { GET_TICKETS } from ".";
 import axios from "axios";
 
-export default function getEvents(id) {
+export default function getTickets(id) {
   return async function (dispatch) {
     try {
       const response = await axios(

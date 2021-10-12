@@ -95,8 +95,8 @@ import s from "./ticket.module.css";
 import QRCode from "react-qr-code";
 import img from "../../../images/pngLetraNegraRedimensionado.png";
 
-const Ticket = (ticket) => {
-
+const Ticket = ({ticket}) => {
+  console.log('ESTOY EN TICKETJSX => ',ticket)
   return (
     <div className={s.divRey}>
       <div className={s.contTicket}>
@@ -120,8 +120,8 @@ const Ticket = (ticket) => {
         <div className={s.partInf}>
           <div className={s.barraAmarillaSup_2}></div>
 
-          <div className={s.ticket.evento}>
-            <div className={s.ticket.eventoSpan}>
+          <div className={s.evento}>
+            <div className={s.eventoSpan}>
               <span>{ticket.event.name}</span>
             </div>
           </div>

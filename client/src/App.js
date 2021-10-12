@@ -37,8 +37,8 @@ function App() {
             "/privacidad",
             "/update/:id",
             "/historial",
-            "/contacto"
-
+            "/contacto",
+            "/users/:id"
           ]}
           component={Nav}
         />

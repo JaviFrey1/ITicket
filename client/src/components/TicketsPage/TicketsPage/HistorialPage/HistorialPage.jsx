@@ -2,53 +2,50 @@ import React, { useState, useEffect } from "react";
 import s from "./historialPage.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { cartas } from "../../../../cartas";
+import userData from "../../../../actions/userData";
+import getTickets from "../../../../actions/getTickets";
 
-const Historialpage = ({historialTTickkets}) => {
-  console.log(historialTTickkets)
+const Historialpage = () => {
+
 
   const dispatch = useDispatch();
-
-  const history = useSelector((state) => state.tickets)
-
-  const [listaDeEventosFake, setListaDeEventosFake] = useState([
-    cartas[0],
-    cartas[5],
-    cartas[2],
-    cartas[4],
-  ]);
+  const tickets = useSelector((state) => state.tickets)
+  const activeUser = useSelector((state) => state.activeUser)
+  const history = tickets.filter((ticket) => ticket.event.date < new Date().toISOString().split('T')[0])
 
   useEffect(() => {
-    // dispatch(geettTicket)
+    dispatch(userData());
+    dispatch(getTickets(activeUser.id))
   },[])
-
+  
   return (
     <div className={s.divRey}>
       <div className={s.contenedor}>
         <div className={s.titulo}>Historial de compra:</div>
-        {listaDeEventosFake.map((el, i) => {
+        {history.length > 0? history.map((el, i) => {
           return (
             <div className={s.contItem} key={i}>
               <div className={s.nameArtist}>
-                <div>{el.name}</div>
-                <div>{el.artist}</div>
+                <div>{el.event.name}</div>
+                <div>{el.event.artist}</div>
               </div>
               <div className={s.placeDate}>
-                <div>{el.place}</div>
-                <div>{el.date}</div>
+                <div>{el.event.place}</div>
+                <div>{el.event.date}</div>
               </div>
 
               <div className={s.locationAddress}>
-                <div>{el.location}</div>
-                <div>{el.address}</div>
+                <div>{el.event.location}</div>
+                <div>{el.event.address}</div>
               </div>
 
               <div className={s.timePrice}>
-                <div>{el.time}hs</div>
-                <div>ar$-{el.price}</div>
+                <div>{el.event.time}hs</div>
+                <div>ar$-{el.event.price}</div>
               </div>
             </div>
           );
-        })}
+        }) : <div>Tu historial esta vacio.</div>}
       </div>
     </div>
   );

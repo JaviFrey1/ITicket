@@ -110,15 +110,17 @@ export default function EventDetail(props) {
     if (e.target.value === "1") {
       setPrecio(eventDetail.price);
       console.log('soy el state', state)
+      setCantidad(1)
     } else {
       setPrecio(eventDetail.price * 2);
+      setCantidad(2)
       console.log('soy el state', state)
     }
   }
 
   function handler(e) {
     handleChange(e);
-    setCantidad(e.target.value)
+    // setCantidad(e.target.value)
     setBody({
       userId: activeUser.id,
       cantidad: cantidad,
