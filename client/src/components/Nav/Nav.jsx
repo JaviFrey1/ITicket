@@ -18,7 +18,7 @@ export function Nav() {
 
 
   const isAuth = useSelector((state) => state.activeUser);
-  console.log('isAuth =>', isAuth.isAdmin);
+  // console.log('isAuth =>', isAuth.isAdmin);
   // SI ESTA AUTENFICADO
   // let isAuth = true;
 
@@ -29,7 +29,7 @@ export function Nav() {
     // console.log('==>> ',dataDeUser);
   }, []);
 
-  console.log(isAuth.isAdmin)
+  // console.log(isAuth.isAdmin)
   return (
      
       <nav className={style.navContainer}>

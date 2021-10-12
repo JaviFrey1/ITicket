@@ -66,10 +66,10 @@ const DetalleCompra = (artistaTickets) => {
       <div className={s.detalleCompra} id="listaTickets">
         <div className={s.tituloTickets}>
           <h3>Tus Tickets para {artistaTickets[0]?.event.artist}:</h3>
-          {/*<div className={s.botonDescargar}>Descargar Tickets</div>*/}
+          
         </div>
         <div className={s.listaDeTickets}>
-          {artistaTickets.map((e) => {
+          {/*artistaTickets.map((e) => {
             return (
               <div className={s.contTicket} key={e.id}>
                 <Ticket ticket={e} />
@@ -78,7 +78,7 @@ const DetalleCompra = (artistaTickets) => {
                 </div>
               </div>
             );
-          })}
+          })*/}
         </div>
       </div>
     </div>
