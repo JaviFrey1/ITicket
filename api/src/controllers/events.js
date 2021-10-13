@@ -1,7 +1,6 @@
 
 const { Events, Categories, SubCategories } = require("../db");
 
-
 async function finder() {
   const dataBase = await Events.findAll({
     include: [
@@ -42,12 +41,12 @@ async function finder() {
       };
     });
     return eventDb
-  }else return []
+  } else return []
 }
 
 async function getAllEvents(req, res) {
   let name = req.query.name;
- 
+
   try {
     if (name) {
       const searcheado = name.toLowerCase();
@@ -135,6 +134,41 @@ async function getEventById(req, res) {
 }
 
 
+async function getRecommended(req, res) {
+  const { userId } = req.query
+  try {
+    const allEvents = await finder()
+
+    const userTickets = await Tickets.findAll({
+      where: {
+        userId: userId
+      },
+      include: [
+        {
+          model: Events
+        },
+        {
+          model: Users
+        }
+      ]
+    });
+    if (userTickets.length > 0) {
+      const userSubcats = []
+      userTickets.map(t => t.event.subCategories.map(subCat => userSubcats.push(subCat.genre)))
+      const recommended = []
+      allEvents.map(e => userSubcats.map(subcat => {
+        if (e.subCategories.includes(subcat)) recommended.push(e)
+      }))
+      if (recommended.length > 0) return res.send(recommended)
+      else return res.send([])
+
+    }
+    else {
+      res.send([])
+    }
+  } catch (err) { console.log(err) }
+}
+
 
 
 
@@ -146,6 +180,7 @@ async function getEventById(req, res) {
 
 
 module.exports = {
+  getRecommended,
   getAllEvents,
   getEventById,
   finder

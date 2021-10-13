@@ -29,3 +29,4 @@ export const MERCADO_PAGO = 'MERCADO_PAGO';
 export const DELETE_USER = 'DELETE_USER'
 export const USER_LOGIN = 'USER_LOGIN'
 export const USER_REGISTER = 'USER_REGISTER'
+export const GET_RECOMMENDED = 'GET_RECOMMENDED '
