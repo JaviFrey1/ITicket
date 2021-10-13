@@ -12,6 +12,8 @@ paypal.configure({
 
 
 router.get("/paypal", (req, res) => {
+    let data = {...req.body};
+
     var create_payment_json = {
         intent: "sale",
         payer: {
@@ -26,17 +28,17 @@ router.get("/paypal", (req, res) => {
                 item_list: {
                     items: [
                         {
-                            name: "item",
+                            name: data.name,
                             sku: "item",
-                            price: "1.00",
+                            price: data.price,
                             currency: "USD",
-                            quantity: 1
+                            quantity: data.quantity
                         }
                     ]
                 },
                 amount: {
                     currency: "USD",
-                    total: "1.00"
+                    total: (data.quantity * data.price)
                 },
                 description: "This is the payment description."
             }
@@ -65,7 +67,7 @@ router.get("/success", (req, res) => {
             {
                 amount: {
                     currency: "USD",
-                    total: "1.00"
+                    total: ""
                 }
             }
         ]
