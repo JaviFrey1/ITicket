@@ -19,7 +19,12 @@ initializePassport(passport,
     
 );
 
-
+router.use(
+    cookieSession({
+      name: "tuto-session",
+      keys: ["key1", "key2"],
+    })
+  );
 
 const succesLoginUrl = 'http://localhost:3000/home';
 
@@ -35,7 +40,7 @@ router.use(passport.session());
 
 router.get('/login', (req, res) => res.send('Usuario Creado Satisfactoriamente'));
 router.get('/fail',(req, res) => res.send("No se pudo loggear"));
-router.get('/func',(req, res) => res.send("FUNCIONA"));
+router.get('/func',(req, res) => res.json(succesLoginUrl));
 
 
 // router.get('/register', (req, res) => res.send('Register'));
