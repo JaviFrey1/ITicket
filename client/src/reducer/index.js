@@ -3,7 +3,7 @@ import {
   GET_CATEGORIES,
   GET_USER_DETAIL,
   GET_EVENT_DETAIL,
-
+  GET_RECOMMENDED,
   GET_SUBCATEGORIES,
   ADD_EVENT,
   BULK_EVENTS,
@@ -37,7 +37,7 @@ const initialState = {
   eventDetail: "",
   subCategories: [],
   categories: [],
-
+ recommended:[],
   userDetail: "",
   persistedState,
   activeUser: '',
@@ -169,6 +169,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       }
+      case GET_RECOMMENDED :
+        return{
+          ...state,
+          recommended:action.payload
+        }
 
     default:
       return state;

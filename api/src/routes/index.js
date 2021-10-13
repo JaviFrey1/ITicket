@@ -12,6 +12,7 @@ const login = require('./login.js');
 const users = require('./users.js');
 const mercadopago = require('./mercadopago.js');
 const tickets = require('./tickets.js')
+const recommended = require('./recommended')
 
 
 const router = Router();
@@ -29,6 +30,7 @@ router.use('/event', event);
 router.use('/filter', filter);
 router.use('/users', users);
 router.use('/tickets', tickets);
+router.use('/recommended', recommended);
 
 router.use('/', google);
 
