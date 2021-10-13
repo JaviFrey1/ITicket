@@ -58,7 +58,7 @@
     align-items: center;
     /* margin-bottom: 1em; */
     width: 40vw;
-    min-width: 300px;
+    min-width: 400px;
     height: fit-content;
     border-radius: 15px;
     /* text-align: center; */
@@ -274,11 +274,12 @@ img {
     margin: 0;
     border: 1px solid rgba(255, 204, 0);
     font-size: 20px;
-} 
+}
 
-.price > *{
-    font-size: .8em;
-    margin-right: 5px;
+.price span {
+    width: max-content;
+    font-size: .6em;
+    margin: 0px;
 }
 
 .buy {
@@ -426,10 +427,11 @@ h5 {
     }
 }
 
-.select{
+.select {
     background-color: transparent;
 }
-.select > * {
+
+.select>* {
     font-size: 15px;
     font-weight: bold;
 }
