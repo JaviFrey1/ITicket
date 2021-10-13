@@ -6,7 +6,7 @@ async function getTickets(req, res, next) {
     let { idUser } = req.query
 
     try {
-        console.log('ID => ', idUser)
+       
         const dataBase = await Tickets.findAll({
             where: {
                 userId: idUser
@@ -32,9 +32,9 @@ async function getTickets(req, res, next) {
 
 async function updateTicket(req, res, next) {
     let id = req.params.id;
-console.log('ID=>',id)
+
     const {propietario}  = req.query;
-    console.log('PROP=>',propietario)
+    
     try {
         await Tickets.update(
             {
@@ -48,7 +48,7 @@ console.log('ID=>',id)
         );
 
         let ticketUpdated = await Tickets.findByPk(id);
-        console.log('UPDATEADO=>',ticketUpdated)
+      
         res.json(ticketUpdated)
 
     } catch (error) {
@@ -59,7 +59,7 @@ console.log('ID=>',id)
 async function postTickets(req, res, next) { // User.addTickets(ticket)  Events.addTickets(ticket)
 
     let { cantidad, userId, idEvento } = req.body;
-    console.log('estoy en back', req.body.idEvento)
+    
     try {
 
         const user = await Users.findOne({
@@ -76,15 +76,15 @@ async function postTickets(req, res, next) { // User.addTickets(ticket)  Events.
         });
 
         while (cantidad > 0) {
-            console.log('sere una cantidad',cantidad)
+            
             const createdTicket = await Tickets.create({
                 propietario: user.fullName
             });
-            console.log('SOY EL TICKET',createdTicket, 'aun no se QUIEN ES MI USUARIO')
+            
             await user.addTickets(createdTicket);
 
             await event.addTickets(createdTicket);
-            console.log('soy COMPLETO',createdTicket)
+            
             cantidad--;
         }
 

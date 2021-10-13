@@ -15,7 +15,7 @@ import deleteUser from "../../actions/deleteUser";
 export default function UserDetail(props) {
   const dispatch = useDispatch();
   const history = useHistory()
-  const id = props.match.params.id
+  // const id = props.match.params.id
   const userDetail = useSelector((state) => state.userDetail);
   const activeUser = useSelector((state) => state.activeUser);
 
