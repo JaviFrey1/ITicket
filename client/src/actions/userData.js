@@ -9,7 +9,7 @@ export default function userData(){
             return dispatch({type: USER_DATA, payload: res.data})
 
         }catch(error){
-            console.log(error)
+            console.log('No hay usuarios aun => Ruta /good')
         }
     }
 }

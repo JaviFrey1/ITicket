@@ -59,7 +59,7 @@ async function AddEvent(req, res, next) {
 
 async function updateEvent(req, res, next) {
   const id = req.params.id;
-  console.log('BODY EN BAK', req.body)
+  
 
   const {
     name,
@@ -106,7 +106,7 @@ async function updateEvent(req, res, next) {
     });
 
     await eventUpdated.setCategories(cat);
-    // console.log('EVENTO CON NUEVA CAT ASOCIADA', eventUpdated)
+    
 
 
     subCategories.map(async obj => {
@@ -157,14 +157,13 @@ async function deleteEvent(req, res, next) {
 }
 async function updateAvailable(req, res, next) {
   let { eventId, cantidad } = req.query;
-  // console.log('SOY ID BACK =>', eventId)
-  // console.log('SOY CANT BACK =>', cantidad)
+
 
   try {
     const before = await Events.findByPk(
       eventId
     )
-    console.log('before?',before);
+   
     const evento = await Events.update(
       {
         availableTickets: before.availableTickets - cantidad
