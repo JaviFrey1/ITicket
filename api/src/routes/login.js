@@ -6,32 +6,41 @@ const { Users } = require('../db.js');
 const router = Router();
 const { v4: uuidv4 } = require("uuid");
 const session = require('express-session');
+const bcrypt = require('bcrypt');
+const transporter = require('../controllers/emailLogin.js');
 
-const passport1 = require("../passportLogin.js")(passport);
 
-// const passport1 = 
-// require("../passportLogin.js");
 
-const  transporter  = require('../controllers/emailLogin.js');
-router.use(session({secret: "secure" ,resave: false, saveUninitialized: true}))
 
-// router.use(
-//     cookieSession({
-//       name: "tuto-session",
-//       keys: ["key1", "key2"],
-//     })
-//   );
+const initializePassport = require('../passportLogin.js');
+initializePassport(passport, 
+    email => Users.findOne({where:{email: email}}),
+    id => Users.findByPk({where:{id: id}})
+    
+);
+
+router.use(
+    cookieSession({
+      name: "tuto-session",
+      keys: ["key1", "key2"],
+    })
+  );
 
 const succesLoginUrl = 'http://localhost:3000/home';
 
 
+router.use(session({
+    secret:'secret',
+    resave: false,
+    saveUninitialized: false
+}))
+
 router.use(passport.initialize());
 router.use(passport.session());
 
-
 router.get('/login', (req, res) => res.send('Usuario Creado Satisfactoriamente'));
 router.get('/fail',(req, res) => res.send("No se pudo loggear"));
-router.get('/func',(req, res) => res.send("FUNCIONA"));
+router.get('/func',(req, res) => res.json(succesLoginUrl));
 
 
 // router.get('/register', (req, res) => res.send('Register'));
@@ -41,6 +50,7 @@ router.post('/register', async function  (req, res) {
 
     let data = {...req.body, id};
     let errors = []
+    const passHash = await bcrypt.hash(data.password, 10) ;
     if(!data.fullName || !data.email || !data.password){
         errors.push({message: "Por favor llene todos los campos"});
     }
@@ -55,7 +65,7 @@ router.post('/register', async function  (req, res) {
                 const createdUser = await Users.create({
                     fullName: data.fullName,
                     email: data.email,
-                    password:data.password,
+                    password: passHash,
                     isAdmin: true
                 });
                 
@@ -63,7 +73,7 @@ router.post('/register', async function  (req, res) {
                 const createdUser = await Users.create({
                     fullName: data.fullName,
                     email: data.email,
-                    password:data.password,
+                    password: passHash,
                     isAdmin: data.isAdmin
             });
         }
@@ -87,14 +97,19 @@ router.post('/register', async function  (req, res) {
     }
 })
 
-router.post('/login',(req, res) =>{
-    passport.authenticate('local',{
-        failureRedirect: '/fail',
-        successRedirect: succesLoginUrl,
-    })
-    res.json(succesLoginUrl)
+// router.post('/login',(req, res) =>{
+//     passport.authenticate('local',{
+//         failureRedirect: '/fail',
+//         successRedirect: succesLoginUrl,
+//     })
+//     res.json(succesLoginUrl)
    
-})
+// })
+
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/func',
+    failureRedirect:'/fail'
+}))
  
 router.get("/logout", (req, res) => {
     req.session = null;

@@ -1,4 +1,3 @@
-
 const paypal = require("paypal-rest-sdk");
 
 const router = require("express").Router();
@@ -11,7 +10,14 @@ paypal.configure({
 
 
 
-router.get("/paypal", (req, res) => {
+router.post("/paypal", (req, res) => {
+  
+    let data = {...req.body}
+    console.log('ESTOY EN BACK',req.body)
+    
+    data.price = Math.round(data.price / 170)
+
+
     var create_payment_json = {
         intent: "sale",
         payer: {
@@ -26,17 +32,17 @@ router.get("/paypal", (req, res) => {
                 item_list: {
                     items: [
                         {
-                            name: "item",
+                            name: data.name,
                             sku: "item",
-                            price: "1.00",
+                            price: data.price,
                             currency: "USD",
-                            quantity: 1
+                            quantity: data.quantity
                         }
                     ]
                 },
                 amount: {
                     currency: "USD",
-                    total: "1.00"
+                    total: (data.quantity * data.price),
                 },
                 description: "This is the payment description."
             }
@@ -49,7 +55,7 @@ router.get("/paypal", (req, res) => {
         } else {
             console.log("Create Payment Response");
             console.log(payment);
-            res.redirect(payment.links[1].href);
+            res.json(payment.links[1].href);
         }
     });
 });
@@ -65,7 +71,7 @@ router.get("/success", (req, res) => {
             {
                 amount: {
                     currency: "USD",
-                    total: "1.00"
+                    total: ''
                 }
             }
         ]

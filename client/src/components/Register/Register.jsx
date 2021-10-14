@@ -26,9 +26,9 @@ function Register() {
 
     function handleInputSubmit(e){
         e.preventDefault();
-        console.log('JAJNTJNTJNTJNT')
         dispatch(userRegister(state));
-        alert('Te has registrado satisfactoriamente')
+        alert('Te has registrado satisfactoriamente');
+        window.location.replace("http://localhost:3000/login")
     }
 
 
