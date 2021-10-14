@@ -11,9 +11,9 @@ const google = require('./google.js');
 const login = require('./login.js');
 const users = require('./users.js');
 const mercadopago = require('./mercadopago.js');
-const tickets = require('./tickets.js')
-const recommended = require('./recommended')
-
+const tickets = require('./tickets.js');
+const recommended = require('./recommended');
+const paypal = require('./paypal')
 
 const router = Router();
 
@@ -34,12 +34,10 @@ router.use('/recommended', recommended);
 
 router.use('/', google);
 
-
 router.use('/', login);
-
 
 router.use('/', mercadopago);
 
-
+router.use('/', paypal);
 
 module.exports = router;
