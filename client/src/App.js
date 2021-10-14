@@ -1,7 +1,7 @@
 import "./App.css";
 import axios from "axios";
 import React from "react";
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Event from "./components/Event/Event";
 import WishList from "./components/WishList/WishList";
 import EventDetail from "./components/EventDetail/EventDetail";
@@ -19,50 +19,40 @@ import LoginSuccess from "./components/Nav/Login/Login";
 import Historialpage from "./components/TicketsPage/TicketsPage/HistorialPage/HistorialPage";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register"
+import { AuthProvider } from "./context/AuthContext";
+
 
 function App() {
 
   return (
     <BrowserRouter>
       <React.Fragment>
-        <Route
-          path={[
-            "/home",
-            "/event",
-            "/events/:id",
-            "/wishList",
-            "/misTickets",
-            "/addEvent",
-            "/respuestas",
-            "/privacidad",
-            "/update/:id",
-            "/historial",
-            "/contacto",
-            "/users/:id"
-          ]}
-          component={Nav}
-        />
+        <AuthProvider>
+          <Switch>
+            <Route>
+              <Route path='/' component={Nav} />
+              <Route exact path="/home" component={Home} />
+              <Route path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login/success" component={LoginSuccess} />
+              <Route path="/misTickets" component={Ticketspage} />
+              <Route path="/historial" component={Historialpage} />
+              <Route path="/event" component={Event} />
+              <Route path="/events/:id" component={EventDetail} />
+              <Route path="/wishList" component={WishList} />
+              <Route path="/addEvent" component={AddEvent} />
+              <Route path="/respuestas" component={Frequent} />
+              <Route path="/privacidad" component={Privacy} />
+              <Route path="/update/:id" component={UpdateEvent} />
+              <Route path="/users/:id" component={UserDetail} />
+              <Route path="/checkout" />
+              <Route path="/contacto" component={Contact} />
+              <Route path="/panelAdmin" component={PanelAdmin} />
 
-        <Route path="/home" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        
-        <Route exact path="/login/success" component={LoginSuccess}/>
-        <Route path="/misTickets" component={Ticketspage} />
-        <Route path="/historial" component={Historialpage} />
-        <Route path="/event" component={Event} />
-        <Route path="/events/:id" component={EventDetail} />
-        <Route path="/wishList" component={WishList} />
-        <Route path="/addEvent" component={AddEvent} />
-        <Route path="/respuestas" component={Frequent} />
-        <Route path="/privacidad" component={Privacy} />
-        <Route path="/update/:id" component={UpdateEvent} />
-        <Route path="/users/:id" component={UserDetail} />
-        <Route path="/checkout" />
-        <Route path="/contacto" component={Contact} />
-        <Route path="/panelAdmin" component={PanelAdmin} />
+            </Route>
 
-          
+          </Switch>
+        </AuthProvider>
       </React.Fragment>
     </BrowserRouter>
   );

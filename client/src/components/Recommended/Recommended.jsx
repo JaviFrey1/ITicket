@@ -4,7 +4,7 @@ import s from "./Carousel.module.css";
 import Carousel from "react-elastic-carousel";
 import { useDispatch, useSelector } from "react-redux";
 import getRecommended from "../../actions/getRecommended";
-import userData from "../../actions/userData"
+import { useAuth } from '../../context/AuthContext'
 import { Link } from "react-router-dom";
 export default function CarouselComp() {
   const breakPoints = [
@@ -13,15 +13,13 @@ export default function CarouselComp() {
   ];
   const dispatch = useDispatch();
   const recommended = useSelector((state) => state.recommended);
-  const activeUser = useSelector((state) => state.activeUser);
-
+const {activeUser}= useAuth()
  
   const actualRecommended = recommended.filter((el)=>
   el.date >= new Date().toISOString().split('T')[0]
   );
  
   useEffect(() => {
-    dispatch(userData())
     dispatch(getRecommended(activeUser.id));
   }, [dispatch]);
 

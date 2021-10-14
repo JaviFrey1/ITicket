@@ -13,8 +13,9 @@ import getEventDetail from "../../actions/getEventDetail";
 import "leaflet/dist/leaflet.css";
 import postTickets from "../../actions/postTickets";
 import updateAvailable from "../../actions/updateAvailable";
-import userData from "../../actions/userData";
 import mercadoPago from "../../actions/mercadoPago";
+import { useAuth } from '../../context/AuthContext'
+
 
 export default function EventDetail(props) {
   const [lat, setLat] = useState("");
@@ -27,8 +28,8 @@ export default function EventDetail(props) {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const {activeUser} = useAuth()  
   const eventDetail = useSelector((state) => state.eventDetail);
-  const activeUser = useSelector((state) => state.activeUser);
 
   
 
@@ -105,7 +106,6 @@ export default function EventDetail(props) {
   }
 
   useEffect(() => {
-    dispatch(userData())
     dispatch(getEventDetail(props.match.params.id)).then((results) => {
       const fullAdress =
         results.payload.address +

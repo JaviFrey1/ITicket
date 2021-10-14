@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 // import "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css";
 import updateUserPass from "../../actions/updateUserPass";
 import s from "./userDetail.module.css"
-import userData from "../../actions/userData";
+import { useAuth } from '../../context/AuthContext'
 import deleteUser from "../../actions/deleteUser";
 
 
@@ -17,7 +17,7 @@ export default function UserDetail(props) {
   const history = useHistory()
   // const id = props.match.params.id
   const userDetail = useSelector((state) => state.userDetail);
-  const activeUser = useSelector((state) => state.activeUser);
+  const {activeUser} = useAuth()
 
   const [password, setPassword] = useState('');
   
@@ -47,18 +47,17 @@ export default function UserDetail(props) {
   
  }
   useEffect(() => {
-    dispatch(getUserDetail(activeUser.id));
-    dispatch(userData())
+   if(activeUser) dispatch(getUserDetail(activeUser.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, [dispatch, activeUser]);
 
   return (
     <div className={`${s.container}`}>
       {userDetail ? (
         <div className={`${s.user}`}>
-            <h2>{userDetail.fullName}</h2>
+            <h2>Hola {userDetail.fullName.split(' ')[0]}!</h2>
            
-            {!userDetail.googleId && <div onClick={handleClick(activeUser.id)} className={s.update}>
+            {!userDetail.googleId && <div onClick={()=>handleClick(activeUser.id)} className={s.update}>
             Cambiar contraseña
            </div>}
            <div

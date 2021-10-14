@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import s from "./menuUser.module.css";
 import Swal from "sweetalert2";
 import { useDispatch,useSelector } from "react-redux";
-import userData from "../../../actions/userData";
 import logout from "../../../actions/logout";
 import {
 
@@ -14,21 +13,19 @@ import { FiShoppingBag } from "react-icons/fi";
 import { FaRegUserCircle } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
+import { useAuth } from '../../../context/AuthContext'
+
 
 const Menuuser = () => {
   const dispatch = useDispatch();
 
-  const activeUser = useSelector((state) => state.activeUser)
+  const {activeUser} = useAuth()
   const [menuClass, setMenuClass] = useState(false);
 
   const showMenu = () => setMenuClass(!menuClass);
 
 
 
-  useEffect(() => {
-    dispatch(userData())  
-    
-  }, []);
 
 
 
