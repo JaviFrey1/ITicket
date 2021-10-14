@@ -15,22 +15,6 @@ export const cartas= [{
    date: "2021-12-31"
 
 }, {
-   name: "Symphony and Destruction",
-   artist:"Megadeath",
-   place:"Teatro Vorterix",
-   address:"Federico Lacroze 3455",
-   location:"Colegiales",
-   province:"Capital Federal",
-   price: 1000,
-   availableTickets: 1440,
-   image:"https://megadeth.com/wp-content/uploads/2019/05/BuenosAires2019.jpg",
-   time:"22:00",
-   isImportant: true,
-   category: 1,
-   subCategories: ["Rock"],
-   date: "2022-03-05"
-
-}, {
    name: "Meteora",
    artist:"Linkin Park",
    place:"Teatro Mercedes Sosa",
@@ -62,7 +46,7 @@ export const cartas= [{
    date: "2022-09-07"
 }, {
    name: "Hamlet",
-   artist:"Shakespeare",
+   artist:"Pamplemoose",
    place:"Teatro La Kanoa De Papel",
    address:"Dr. Juan Olsacher 2680",
    location:"La Rioja",
@@ -206,20 +190,4 @@ export const cartas= [{
    subCategories: ["Trap"],
    date:"2022-02-27"
 },
-{
-   name: "Permiso",
-   artist:"Jose Larralde",
-   place:"Cosquin",
-   address:"Plaza Prospero Molina",
-   location:"Cosquin",
-   province:"Cordoba",
-   price: 1000,
-   availableTickets: 1440,
-   image:"http://3.bp.blogspot.com/-qeRVFqYQCC4/WdujDg1zJCI/AAAAAAAAXlU/gkov0O42kbkW1c2t6Ho8H4QGWoTep7PQgCK4BGAYYCw/s1600/TAPA.JPG",
-   time:"22:00",
-   isImportant: true,
-   category: 1,
-   subCategories: ["Rock"],
-   date: "2022-04-03"
-
-},]
+]
