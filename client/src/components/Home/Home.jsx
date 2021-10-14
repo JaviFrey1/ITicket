@@ -55,6 +55,7 @@ export default function Home() {
         <CarouselComp />
       </div>
       <div className={s.contCarousel}>
+        {/* <Recommended />*/}
         <Recommended />
       </div>
 

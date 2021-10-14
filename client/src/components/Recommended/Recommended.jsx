@@ -30,13 +30,13 @@ const {activeUser}= useAuth()
           <div className={s.destacados}>Recomendados para ti</div>
           <Carousel
             enableAutoPlay
-            autoPlaySpeed={3500}
+            autoPlaySpeed={4500}
             className={s.carousel}
             breakPoints={breakPoints}
           >
             {actualRecommended.length > 0 
-              ? actualRecommended.map((el) => (
-                  <Link className={s.link} to={`/events/${el.id}`} key={el.id}>
+              ? actualRecommended.map((el,i) => (
+                  <Link className={s.link} to={`/events/${el.id}`} key={i}>
                     <div className={s.itemCarousel}>
                       <div className={s.todo}>
                         <div className={s.nombres}>

@@ -19,8 +19,8 @@ import { useAuth } from '../../context/AuthContext'
 import paypal from "../../actions/paypal";
 
 export default function EventDetail(props) {
-  const [lat, setLat] = useState("");
-  const [long, setLong] = useState("");
+  const [lat, setLat] = useState("-38.416097");
+  const [long, setLong] = useState("-63.616672");
   const [loading, setLoading] = useState(true);
   const [precio, setPrecio] = useState('');
   const [cantidad, setCantidad] = useState(1);
