@@ -8,7 +8,6 @@ mercadopago.configure({
 router.post("/checkout", async (req, res) => {
   try {
     const { totalPrice, title, quantity } = req.body;
-    console.log('SOY BODY EN MP', req.body)
     var unit_price = totalPrice / quantity;
 
     var preference = {

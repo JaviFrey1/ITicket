@@ -24,7 +24,8 @@ import {
   MERCADO_PAGO,
   DELETE_USER,
   USER_REGISTER,
-  USER_LOGIN
+  USER_LOGIN,
+  PAYPAL
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -37,7 +38,7 @@ const initialState = {
   eventDetail: "",
   subCategories: [],
   categories: [],
- recommended:[],
+  recommended: [],
   userDetail: "",
   persistedState,
   activeUser: '',
@@ -153,15 +154,17 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state
       }
-
-
+    case PAYPAL:
+      return {
+        ...state
+      }
     case DELETE_USER:
       return {
         ...state,
         activeUser: '',
         userDetail: ''
       }
-      case USER_REGISTER:
+    case USER_REGISTER:
       return {
         ...state,
       };
@@ -169,11 +172,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       }
-      case GET_RECOMMENDED :
-        return{
-          ...state,
-          recommended:action.payload
-        }
+    case GET_RECOMMENDED:
+      return {
+        ...state,
+        recommended: action.payload
+      }
 
     default:
       return state;

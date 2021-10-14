@@ -6,25 +6,22 @@ const routes = require('./routes/index.js');
 const session = require('express-session');
 const passport = require('passport');
 const cors = require('cors')
-// const passport = require('passport');
+
 
 require('./db.js');
-// require("./passportLogin.js")(passport);
+
 const server = express();
 
 
 server.name = 'API';
 
-server.use(cors())
 server.use(express.urlencoded({ extended: true, limit: '50mb' }));
 server.use(express.json({ limit: '50mb' }));
+server.use(cors({ origin: "http://localhost:3000", credentials: true }))
 server.use(cookieParser());
 server.use(morgan('dev'));
-// server.use(session({secret: "secure" ,resave: false, saveUninitialized: true}))
-// server.use(passport.initialize());
-// server.use(passport.session());
 server.use((req, res, next) => { // update to match the domain you will make the request from
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');// update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin', "http://localhost:3000");// update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');

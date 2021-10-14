@@ -11,8 +11,7 @@ async function getSubCategories(req, res, next) {
         if (subCatBD.length > 0) return res.send(subCatBD)
         else {
             const subCatCreated = await SubCategories.bulkCreate(subCategories)
-            // console.log('SUBCATEGRIAS BD', subCatCreated)
-
+          
             subCatCreated.map(async subCat => {
                 const category = await Categories.findOne({
                     where: {

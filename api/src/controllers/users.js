@@ -1,4 +1,5 @@
 const { Users } = require('../db.js');
+const bcrypt = require('bcrypt');
 
 
 
@@ -56,14 +57,14 @@ async function updateUser(req, res, next){
 
     let id = req.params.id;
 
-    const{
-       newPass
-    } = req.body;
+    let data = {...req.body}; 
+
+    const passHash = await bcrypt.hash(data.password, 10) ;
 
     try {
         await Users.update(
             {
-             password:newPass
+             password: passHash
               
             },
             {
