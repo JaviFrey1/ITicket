@@ -15,6 +15,7 @@ import postTickets from "../../actions/postTickets";
 import updateAvailable from "../../actions/updateAvailable";
 import userData from "../../actions/userData";
 import mercadoPago from "../../actions/mercadoPago";
+import paypal from "../../actions/paypal";
 
 export default function EventDetail(props) {
   const [lat, setLat] = useState("");
@@ -30,35 +31,41 @@ export default function EventDetail(props) {
   const eventDetail = useSelector((state) => state.eventDetail);
   const activeUser = useSelector((state) => state.activeUser);
 
-  
 
 
 
-    const [state, setState] = useState({
-      totalPrice: '',
-      title: '',
+
+  const [state, setState] = useState({
+    totalPrice: '',
+    title: '',
+    quantity: 1
+  });
+  const [pay, setPay] = useState({
+    price: 100,
+    name: "Elegante",
+    quantity: 1
+  })
+  const [body, setBody] = useState({
+    userId: '',
+    cantidad: 1,
+    idEvento: ''
+  })
+  useEffect(() => {
+    setState({
+      totalPrice: eventDetail.price,
+      title: eventDetail.name,
       quantity: 1
     });
 
-    const [body, setBody] = useState({
-      userId: '',
+    setBody({
+      userId: activeUser.id,
       cantidad: 1,
-      idEvento: ''
+      idEvento: eventDetail.id
     })
-    useEffect(() => {
-      setState({
-        totalPrice: eventDetail.price,
-        title: eventDetail.name,
-        quantity: 1
-      });
-    
-      setBody({
-        userId: activeUser.id,
-        cantidad: 1,
-        idEvento: eventDetail.id
-      })
-    },[eventDetail, activeUser])
-  
+  }, [eventDetail, activeUser])
+
+
+
 
   function handleDelete(eventDetail) {
     Swal.fire({
@@ -84,7 +91,6 @@ export default function EventDetail(props) {
       }
     });
   }
-
   async function buscar(e) {
     try {
       const results = await provider
@@ -103,7 +109,6 @@ export default function EventDetail(props) {
       setLong("-63.616672");
     }
   }
-
   useEffect(() => {
     dispatch(userData())
     dispatch(getEventDetail(props.match.params.id)).then((results) => {
@@ -121,10 +126,6 @@ export default function EventDetail(props) {
       setLoading(false);
     }, 1000);
   }, []);
-
-
-
-
   function handleChange(e) {
     e.preventDefault();
     if (e.target.value == 1) {
@@ -135,10 +136,8 @@ export default function EventDetail(props) {
       setCantidad(2)
     }
   }
-
   function handler(e) {
     handleChange(e);
-    console.log('HANDLER',state, body)
     setBody({
       userId: activeUser.id,
       cantidad: parseInt(e.target.value),
@@ -149,7 +148,7 @@ export default function EventDetail(props) {
       title: eventDetail.name,
       quantity: parseInt(e.target.value),
     })
-    console.log('estoy en HANDLER', state)
+
   }
   function handleUnloged() {
     Swal.fire({
@@ -189,18 +188,49 @@ export default function EventDetail(props) {
       if (eventDetail.availableTickets < cantidad) {
         soldOut();
       } else {
-        console.log('ANTES DE PAGAR',state)
         dispatch(mercadoPago(state));
         dispatch(postTickets(body));
         dispatch(updateAvailable(eventDetail.id, cantidad));
       }
     }
   }
-
+  function handlePaypal() {
+    if (!activeUser) {
+      handleUnloged()
+    } else {
+      if (eventDetail.availableTickets < cantidad) {
+        soldOut();
+      } else {
+        console.log(state.totalPrice,state.title,state.quantity)
+        dispatch(paypal(pay));
+        dispatch(postTickets(body));
+        dispatch(updateAvailable(eventDetail.id, cantidad));
+      }
+    }
+  }
   const colorCirculoMarcador = {
     color: "rgb(255, 204, 0)",
     fillColor: "rgb(255, 204, 0)",
   };
+  function metdosDePago() {
+
+    Swal.fire({
+      title: 'Elije tu metodo de pago',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Paypal',
+      confirmButtonColor: 'rgb(50, 200, 255)',
+      denyButtonText: `Mercado Pago`,
+      denyButtonColor: 'rgb(50, 179, 255)'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handlePaypal(body)
+      } else if (result.isDenied) {
+        handleClick(body)
+      };
+
+    });
+  }
 
   return (
     <div className={s.container}>
@@ -280,21 +310,19 @@ export default function EventDetail(props) {
                     className={s.select}
                     onChange={(e) => handler(e)}
                   >
-                    
                     <option value={1}>1 entrada</option>
                     <option value={2}>2 entradas</option>
                   </select>
                 </div>
                 <div className={s.price}>
-                  <span>Total: ar$ {precio ? precio : eventDetail.price}.</span>
+                  <div>Total: </div>
+                  <div>$ {precio ? precio : eventDetail.price}</div>
                 </div>
-                <button
-                  className={s.buy}
-                  onClick={() => handleClick(body)
-                  }
-                >
-                  <p>COMPRAR</p>
-                </button>
+                <div className={s.contBotones}>
+                  <button className={s.buy} onClick={() => metdosDePago(body)}>
+                    <p>COMPRAR</p>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
