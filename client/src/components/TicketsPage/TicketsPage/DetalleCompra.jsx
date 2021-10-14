@@ -18,7 +18,9 @@ const DetalleCompra = ({ artistaTickets }) => {
     Swal.fire({
       title: "Ingresa nombre completo del nuevo propietario",
       input: "text",
+      
       confirmButtonText: "Guardar",
+      confirmButtonColor: 'rgb(255,204,0)',
       cancelButtonText: "Cancelar",
     }).then((resultado) => {
       if (resultado.value) {
@@ -46,7 +48,7 @@ const DetalleCompra = ({ artistaTickets }) => {
               <div className={s.contTicket} key={e.id}>
                 <Ticket ticket={e} />
                 <div className={s.botonTransferir} onClick={() => handleClick(e.id)}>
-                  <p>Transferir entrada</p>
+                  <p>Transferir tickets</p>
                 </div>
               </div>
             );
