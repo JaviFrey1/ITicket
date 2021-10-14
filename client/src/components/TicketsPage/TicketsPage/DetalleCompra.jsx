@@ -45,7 +45,7 @@ const DetalleCompra = ({ artistaTickets }) => {
             return (
               <div className={s.contTicket} key={e.id}>
                 <Ticket ticket={e} />
-                <div onClick={() => handleClick(e.id)}>
+                <div className={s.botonTransferir} onClick={() => handleClick(e.id)}>
                   <p>Transferir entrada</p>
                 </div>
               </div>
