@@ -2,32 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./nav.module.css";
 import logo from "../../images/pngLetraNegraRedimensionado.png";
+import { useAuth } from '../../context/AuthContext'
+
 import {
   BsBookmarkFill
 } from "react-icons/bs";
 import Menuuser from "./MenuNav/MenuUser";
-// import UserNavBar from "./UserNavBar";
-import userData from "../../actions/userData";
-import { useDispatch, useSelector } from 'react-redux'
 import MenuAdmin from "./MenuNav/MenuAdmin";
 
 export function Nav() {
-  const dispatch = useDispatch();
-
-  // const [dataDeUser, setDataDeUser] = useState();
-
-
-  const isAuth = useSelector((state) => state.activeUser);
-
-  // SI ESTA AUTENFICADO
-  // let isAuth = true;
-
-  useEffect(() => {
-    dispatch(userData());
-    // setDataDeUser(isAuth);
-    // console.log(isAuth);
-    // console.log('==>> ',dataDeUser);
-  }, []);
+  const {activeUser} = useAuth()
 
 
   return (
@@ -47,7 +31,7 @@ export function Nav() {
           </div>
         </Link>
 
-        {!isAuth ? (
+        {!activeUser ? (
           <div className={style.contBtn2}>
             <Link to="/wishList" className={style.hover}>
               <BsBookmarkFill />
@@ -65,7 +49,7 @@ export function Nav() {
               <BsBookmarkFill />
             </Link>
             <div to="null" className={style.hover_2}>
-              {isAuth.isAdmin === false?
+              {activeUser.isAdmin === false?
                 <Menuuser />
                 : <MenuAdmin />
               }

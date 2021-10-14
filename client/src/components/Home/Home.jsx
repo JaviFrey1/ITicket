@@ -18,7 +18,7 @@ export default function Home() {
   const allEvents = useSelector((state) => state.eventsLoaded);
   // const { page } = useSelector((state) => state);
   const [currentPage, setCurrentPage] = useState(1);
-  const [eventsPerPage] = useState(4);
+  const [eventsPerPage] = useState(6);
 
   const lastEvent = currentPage * eventsPerPage;
   const firstEvent = lastEvent - eventsPerPage;

@@ -155,10 +155,12 @@ async function getRecommended(req, res) {
     if (userTickets.length > 0) {
       const userSubcats = []
       userTickets.map(t => t.event.subCategories.map(subCat => userSubcats.push(subCat.genre)))
+      console.log('userSubcats ',userSubcats)
       const recommended = []
       allEvents.map(e => userSubcats.map(subcat => {
         if (e.subCategories.includes(subcat)) recommended.push(e)
       }))
+      console.log('recommended', recommended)
       if (recommended.length > 0) return res.send(recommended)
       else return res.send([])
 

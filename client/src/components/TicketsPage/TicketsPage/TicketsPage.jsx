@@ -10,15 +10,14 @@ import DetalleCompra from "./DetalleCompra";
 import { ImPrinter } from "react-icons/im";
 import { BiHistory } from "react-icons/bi";
 import getTickets from "../../../actions/getTickets";
-import userData from "../../../actions/userData";
-
+import { useAuth } from '../../../context/AuthContext'
 
 const Ticketspage = () => {
   const dispatch = useDispatch();
 
   const componentRef = useRef();
 
-  const activeUser = useSelector((state) => state.activeUser);
+  const {activeUser} = useAuth()
 
   const tickets = useSelector((state) => state.tickets);
   // console.log('Tickets >>> ', tickets)
@@ -43,15 +42,10 @@ const Ticketspage = () => {
   }
 
   useEffect(() => {
-    dispatch(userData())
     
-    // dispatch(getTickets(activeUser.id))
     if (activeUser) dispatch(getTickets(activeUser.id));
 
   }, []);
-
-  // if(activeUser) dispatch(getTickets(activeUser.id));
-
 
 
   return (
