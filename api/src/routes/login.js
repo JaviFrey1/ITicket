@@ -21,8 +21,8 @@ initializePassport(passport,
 
 router.use(
     cookieSession({
-      name: "tuto-session",
-      keys: ["key1", "key2"],
+      name: "login-session",
+      keys: ["key3", "key4"],
     })
   );
 

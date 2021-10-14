@@ -60,6 +60,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    resetPassword: {
+      type: DataTypes.BOOLEAN,
+      
+    },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
