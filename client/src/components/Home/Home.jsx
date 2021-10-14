@@ -11,12 +11,10 @@ import Events from "../Events/Events";
 import Footer from "../Footer/Footer";
 import CarouselComp from "../Carousel/Carousel";
 import bulkEvents from "../../actions/bulkEvents";
-// import { setPage } from "../../actions";
-
+import Recommended from '../Recommended/Recommended'
 export default function Home() {
   const dispatch = useDispatch();
   const allEvents = useSelector((state) => state.eventsLoaded);
-  // const { page } = useSelector((state) => state);
   const [currentPage, setCurrentPage] = useState(1);
   const [eventsPerPage] = useState(6);
 
@@ -31,12 +29,8 @@ export default function Home() {
 
   unImportantEvents.map((el)=>{
       if( el.date >=  new Date().toISOString().split('T')[0]) actualUnImportantEvents.push(el);
-    
-      // console.log('Wadaaa event date => ', el.date )
-      // console.log(' feecha actual ', new Date().toISOString().split('T')[0])
-      // console.log(el.artist, el.date >=  new Date().toISOString().split('T')[0])
     })
-  // );
+  
   const currentUnimportantEvents = actualUnImportantEvents.slice(
     firstEvent,
     lastEvent
@@ -51,11 +45,7 @@ export default function Home() {
     dispatch(bulkEvents(cartas));
   }, [dispatch]);
 
-  // const changePage = (page) => {
-  //   dispatch(getEvents({ title, page }));
-  //   dispatch(setPage(page));
-  // };
-
+ 
   return (
     <div className={`${s.container}`}>
       <div className={`${s.searchBar}`}>
@@ -64,22 +54,13 @@ export default function Home() {
       <div className={s.contCarousel}>
         <CarouselComp />
       </div>
+      <div className={s.contCarousel}>
+        <Recommended />
+      </div>
 
       <div className={s.card}>
         <Events events={currentUnimportantEvents} />
 
-        {/* <div className={s.btnPaginate}>
-          <button disabled={page - 1 === 0} onClick={() => changePage(page -1)}>
-            Prev
-          </button>
-          <div className={s.numPAge}>{page}</div>
-          <button
-            disabled={allEvents.length < 2}
-            // onClick={() => changePage(page + 1)}
-          >
-            Next
-          </button>
-        </div> */}
       </div>
       <div>
         <div>

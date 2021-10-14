@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import s from "./Carousel.module.css";
+import s from "./recommended.module.css";
 import Carousel from "react-elastic-carousel";
 import { useDispatch, useSelector } from "react-redux";
 import getRecommended from "../../actions/getRecommended";
@@ -20,14 +20,14 @@ const {activeUser}= useAuth()
   );
  
   useEffect(() => {
-    dispatch(getRecommended(activeUser.id));
-  }, [dispatch]);
+    if(activeUser)dispatch(getRecommended(activeUser.id));
+  }, [dispatch, activeUser]);
 
   return (
     <div className={s.divRey}>
       {actualRecommended.length !== 0 ? (
         <div>
-          <div className={s.destacados}>Destacados</div>
+          <div className={s.destacados}>Recomendados para ti</div>
           <Carousel
             enableAutoPlay
             autoPlaySpeed={3500}
