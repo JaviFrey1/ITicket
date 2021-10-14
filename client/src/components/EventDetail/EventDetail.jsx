@@ -42,8 +42,8 @@ export default function EventDetail(props) {
     quantity: 1
   });
   const [pay, setPay] = useState({
-    price: 100,
-    name: "Elegante",
+    price: 0,
+    name: '',
     quantity: 1
   })
   const [body, setBody] = useState({
@@ -55,6 +55,12 @@ export default function EventDetail(props) {
     setState({
       totalPrice: eventDetail.price,
       title: eventDetail.name,
+      quantity: 1
+    });
+
+    setPay({
+      price: eventDetail.price,
+      name: eventDetail.name,
       quantity: 1
     });
 
@@ -126,6 +132,8 @@ export default function EventDetail(props) {
       setLoading(false);
     }, 1000);
   }, []);
+
+
   function handleChange(e) {
     e.preventDefault();
     if (e.target.value == 1) {
@@ -136,6 +144,8 @@ export default function EventDetail(props) {
       setCantidad(2)
     }
   }
+
+
   function handler(e) {
     handleChange(e);
     setBody({
@@ -143,13 +153,19 @@ export default function EventDetail(props) {
       cantidad: parseInt(e.target.value),
       idEvento: eventDetail.id
     });
+    setPay({
+      price: eventDetail.price * e.target.value,
+      name: eventDetail.name,
+      quantity: parseInt(e.target.value)
+    });
     setState({
       totalPrice: eventDetail.price * e.target.value,
       title: eventDetail.name,
       quantity: parseInt(e.target.value),
     })
-
   }
+
+
   function handleUnloged() {
     Swal.fire({
       title: "UPS...",
@@ -165,6 +181,8 @@ export default function EventDetail(props) {
       }
     });
   }
+
+
   function soldOut() {
     Swal.fire({
       title: "Evento Agotado",
@@ -180,6 +198,8 @@ export default function EventDetail(props) {
       }
     });
   }
+
+
   function handleClick() {
     if (!activeUser) {
       handleUnloged()
@@ -194,6 +214,8 @@ export default function EventDetail(props) {
       }
     }
   }
+
+
   function handlePaypal() {
     if (!activeUser) {
       handleUnloged()
@@ -202,6 +224,7 @@ export default function EventDetail(props) {
         soldOut();
       } else {
         console.log(state.totalPrice,state.title,state.quantity)
+        console.log('sobre dispatch => ', pay);
         dispatch(paypal(pay));
         dispatch(postTickets(body));
         dispatch(updateAvailable(eventDetail.id, cantidad));
