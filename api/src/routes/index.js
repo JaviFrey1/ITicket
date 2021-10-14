@@ -12,8 +12,9 @@ const login = require('./login.js');
 const users = require('./users.js');
 const mercadopago = require('./mercadopago.js');
 const tickets = require('./tickets.js');
-const recommended = require('./recommended');
-const paypal = require('./paypal')
+const recommended = require('./recommended.js');
+const paypal = require('./paypal.js');
+const resetPass = require('./resetPassword.js');
 
 const router = Router();
 
@@ -31,6 +32,8 @@ router.use('/filter', filter);
 router.use('/users', users);
 router.use('/tickets', tickets);
 router.use('/recommended', recommended);
+router.use('/password', resetPass);
+
 
 router.use('/', google);
 

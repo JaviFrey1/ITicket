@@ -42,7 +42,7 @@ function Login() {
           }
         }
       }, 500)
-    }
+    }       
   }
 
   const persigueUser = async () => {
