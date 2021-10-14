@@ -58,9 +58,9 @@ function Register() {
              
              </div>
              <input className={s.button}  type="submit" value="Registrate"  />
-            <a href="localhost:3001/google">
+            {/* <a href="localhost:3001/google">
              <button className={s.button}> Google </button>
-              </a>
+              </a> */}
              <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
              <p>¿Ya tienes una cuenta?<a class="link" href="/login">Iniciar Sesion</a></p>
             
