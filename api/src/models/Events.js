@@ -10,7 +10,6 @@ module.exports = (sequelize) => {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
-        //allowNull: false,
         primaryKey: true,
       },
       name: {
@@ -52,9 +51,6 @@ module.exports = (sequelize) => {
       date: {
         type: DataTypes.DATEONLY,
         allowNull: false,
-      //   get: function() {
-      //     return new Date(this.getDataValue('date')).toLocaleDateString()
-      //  }
 
       },
       time: {

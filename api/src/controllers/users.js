@@ -57,7 +57,7 @@ async function updateUser(req, res, next){
 
     let id = req.params.id;
 
-    let data = {...req.body}; //---> escribe tu nueva contraseña
+    let data = {...req.body}; 
 
     const passHash = await bcrypt.hash(data.password, 10) ;
 

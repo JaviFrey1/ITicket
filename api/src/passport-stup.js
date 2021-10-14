@@ -67,7 +67,7 @@ passport.use(
 );
 
 passport.serializeUser((user, cb) => {
-  // console.log("serializing user", user);
+ 
   cb(null, user.id);
 });
 
@@ -77,6 +77,6 @@ passport.deserializeUser(async (id, cb) => {
     cb(err, null);
   });
 
-  // console.log("Deserialized", user);
+ 
   if (user) cb(null, user);
 });
