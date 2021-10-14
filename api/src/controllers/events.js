@@ -1,5 +1,5 @@
 
-const { Events, Categories, SubCategories } = require("../db");
+const { Events, Categories, SubCategories, Tickets, Users } = require("../db");
 
 async function finder() {
   const dataBase = await Events.findAll({
@@ -145,22 +145,26 @@ async function getRecommended(req, res) {
       },
       include: [
         {
-          model: Events
+          model: Events,
         },
         {
-          model: Users
+          model: Users,
         }
       ]
     });
+
     if (userTickets.length > 0) {
       const userSubcats = []
-      userTickets.map(t => t.event.subCategories.map(subCat => userSubcats.push(subCat.genre)))
-      console.log('userSubcats ',userSubcats)
+    
+      userTickets?.map(async t =>{
+        const event = allEvents.filter(e=>e.id===t.eventId)
+     
+        event[0].subCategories?.map(subcat=>{if(!userSubcats.includes(subcat))userSubcats.push(subcat)})
+      })
       const recommended = []
-      allEvents.map(e => userSubcats.map(subcat => {
-        if (e.subCategories.includes(subcat)) recommended.push(e)
+      allEvents.map(e => userSubcats?.map(subcat => {
+        if (e.subCategories.includes(subcat) && recommended.length<10 && !e.isImportant) recommended.push(e)
       }))
-      console.log('recommended', recommended)
       if (recommended.length > 0) return res.send(recommended)
       else return res.send([])
 
