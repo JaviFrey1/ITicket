@@ -42,14 +42,7 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/failed" }),
   async function (req, res) {
     // Successful authentication, redirect home.
-    await transporter.sendMail({
-      from: "matiascostilla96@gmail.com",
-      to: req.user.email,
-      subject: "Inicio Sesion",
-      html: `
-      <b> Muchas gracias por loggearte en Tukiteck!!
-      `
-  });
+  
     res.redirect(succesLoginUrl);
   }
 );
