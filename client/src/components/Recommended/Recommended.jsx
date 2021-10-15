@@ -40,7 +40,7 @@ const {activeUser}= useAuth()
                     <div className={s.itemCarousel}>
                       <div className={s.todo}>
                         <div className={s.nombres}>
-                          <div>
+                          <div className={s.info}>
                             <span>{el.name}</span> -
                             {el.subCategories?.map((subcat, i) =>  (
                               <span key={i}>{subcat} - </span>
