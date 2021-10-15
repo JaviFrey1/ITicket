@@ -1,44 +1,50 @@
   body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    background-size: cover;
-    background-attachment: fixed;
-}
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background-size: cover;
+      background-attachment: fixed;
+  }
 
-* {
-    box-sizing: border-box;
-} 
-.contenedor{
-    width: 100%;
-    padding: 15px;
-}
-.formulario{
-    background: #fff;
-    margin-top: 150px;
-    padding: 3px;
-}
-h1{
-    text-align: center;
-    color: #1a2537;
-    font-size: 40px;
-}
+  * {
+      box-sizing: border-box;
+  }
 
-.input{
-    font-size: 20px;
-    width: 82%;
-    padding: 10px;
-    border: none;
-}
-.inputcontenedor{
-    margin-bottom: 15px;
-    border: 1px solid #aaa;
-}
-.icon{
-    min-width: 50px;
-    text-align: center;
-    color: #999;
-}
-/* .button{
+  .contenedor {
+      width: 100%;
+      padding: 15px;
+  }
+
+  .formulario {
+      background: #fff;
+      margin-top: 150px;
+      padding: 3px;
+  }
+
+  h1 {
+      text-align: center;
+      color: #1a2537;
+      font-size: 40px;
+  }
+
+  .input {
+      font-size: 20px;
+      width: 82%;
+      padding: 10px;
+      border: none;
+  }
+
+  .inputcontenedor {
+      margin-bottom: 15px;
+      border: 1px solid #aaa;
+  }
+
+  .icon {
+      min-width: 50px;
+      text-align: center;
+      color: #999;
+  }
+
+  /* .button{
     border: none;
     width: 100%;
     color: white;
@@ -48,40 +54,72 @@ h1{
     border-radius: 5px;
     cursor: pointer;
 } */
-.button{
-    border: none;
-    width: 100%;
-    color: black;
-    font-size: 20px;
-    background:  rgb(255,204,0);
-    padding: 15px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 3px;
-    border: 1px solid #aaa;
-    transition: .4s;
-}
-.button:hover{
-    background: rgb(240,155,0);
-    opacity: .8;
-}
-p{
-    text-align: center;
-}
-.link{
-    text-decoration: none;
+  .button {
+      border: none;
+      width: 100%;
+      color: black;
+      font-size: 20px;
+      background: rgb(255, 204, 0);
+      padding: 15px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 3px;
+      border: 1px solid #aaa;
+      transition: .4s;
+  }
+
+  .button:hover {
+      background: rgb(240, 155, 0);
+      opacity: .8;
+  }
+
+  p {
+      text-align: center;
+  }
+
+  .link {
+      text-decoration: none;
       color: #1a2537;
-    font-weight: 600;
-}
-.link:hover{
-     color: cadetblue;
-}
-@media(min-width:768px)
-{
-    .formulario{
-        margin: auto;
-        width: 500px;
-        margin-top: 150px;
-        border-radius: 2%;
-    }
-} 
+      font-weight: 600;
+  }
+
+  .link:hover {
+      color: cadetblue;
+  }
+
+
+  .or {
+      display: flex;
+      justify-content: center;
+      margin: 10px;
+
+  }
+
+  .button_google {
+      border: none;
+      width: 100%;
+      color: white;
+      font-size: 20px;
+      background: rgb(66, 133, 244);
+      padding: 15px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 3px;
+      border: 1px solid #aaa;
+      transition: .4s;
+  }
+
+  .button_google:hover {
+      background: rgb(240, 155, 0);
+      opacity: .8;
+  }
+
+
+  @media(min-width:768px) {
+      .formulario {
+          margin: auto;
+          width: 500px;
+          margin-top: 150px;
+          border-radius: 2%;
+      }
+  }
