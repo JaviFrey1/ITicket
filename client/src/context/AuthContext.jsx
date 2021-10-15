@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import userData from '../actions/userData'
 
@@ -13,8 +13,8 @@ export function AuthProvider({ children }) {
     const activeUser = useSelector(state => state.activeUser)
 
     useEffect(() => {
-        dispatch(userData())
-    }, [])
+        dispatch(userData()).then(el => console.log('context: ',el))
+    }, [dispatch])
 
     const value = {
         activeUser

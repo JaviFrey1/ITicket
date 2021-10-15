@@ -27,7 +27,7 @@ export default function Home() {
 
   const actualUnImportantEvents = []
 
-  unImportantEvents.map((el)=>{
+  unImportantEvents.forEach((el)=>{
       if( el.date >=  new Date().toISOString().split('T')[0]) actualUnImportantEvents.push(el);
     })
   

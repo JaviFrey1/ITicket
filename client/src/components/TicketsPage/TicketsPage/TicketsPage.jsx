@@ -31,7 +31,7 @@ const Ticketspage = () => {
 
   let artistas = [];
 
-  tickets.map((ticket) => {
+  tickets.forEach((ticket) => {
     if (!artistas.includes(ticket.event.artist) && ticket.event.date >= new Date().toISOString().split('T')[0]) {
       artistas.push(ticket.event.artist);
     }
@@ -45,7 +45,7 @@ const Ticketspage = () => {
     
     if (activeUser) dispatch(getTickets(activeUser.id));
 
-  }, []);
+  }, [dispatch]);
 
 
   return (
