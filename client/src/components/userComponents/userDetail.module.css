@@ -74,10 +74,13 @@
     color: #000000CC;
     text-align: end;
     padding-right: 4px;
+    cursor: pointer;
 }
 
 .eliminar{
-    background-color: rgb(255, 255, 255, .4);
+    /* background-color: rgb(255, 255, 255, .4); */
+    background-color: #eeeeee;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-self: center;
