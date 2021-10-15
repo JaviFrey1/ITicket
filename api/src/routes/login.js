@@ -53,6 +53,8 @@ router.get("/loguser", isLoggedIn, (req, res) => res.json(req.user));
 
 // router.get('/register', (req, res) => res.send('Register'));
 
+
+
 router.post("/register", async function (req, res) {
   const id = uuidv4();
 

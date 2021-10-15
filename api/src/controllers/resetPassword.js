@@ -12,7 +12,7 @@ const iden = await Users.findOne({where: {id :usuario.id}})
 if(!usuario) return res.status(401).json([]);
 
 await usuario.update({resetPassword:true });
-
+                                                                    
 
 let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
