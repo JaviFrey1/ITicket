@@ -56,7 +56,7 @@ function Login() {
 
 
   return (
-    <body className={s.body}>
+    <div className={s.body}>
       <form className={s.formulario} onSubmit={(e) => handleInputSubmit(e)}>
         <h1 className={s.h1}>Login</h1>
         <div className={s.contenedor}>
@@ -69,14 +69,15 @@ function Login() {
             <input className={s.input} type="password" name="password" value={state.password} placeholder="Contraseña" onChange={(e) => handleInputChange(e)} />
           </div>
           <input type="submit" value="Login" className={s.button} />
+          <div className={s.or}>o con</div>
           <div>
-            <button className={s.button} onClick={() => redirectGoogle()}> Google </button>
+            <button className={s.button_google} onClick={() => redirectGoogle()}> Google </button>
           </div>
           <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
           <p>¿No tienes una cuenta? <a className={s.link} href="/Register">Registrate </a></p>
         </div>
       </form>
-    </body>
+    </div>
   )
 }
 
