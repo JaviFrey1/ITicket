@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import userLogin from '../../actions/login';
 import s from './login.module.css';
 import axios from 'axios';
-import GoogleButton from 'react-google-button';
+import LoginSuccess from '../Nav/Login/Login';
 
 
 function Login() {
@@ -25,9 +25,8 @@ function Login() {
   function handleInputSubmit(e) {
     e.preventDefault();
     dispatch(userLogin(state));
-
   }
-
+  
   const redirectGoogle = async (req, res) => {
     const googleLoginURL = "http://localhost:3001/google"
     const newWindow = window.open(googleLoginURL, "_blank", "width=500,height=600")
@@ -71,7 +70,7 @@ function Login() {
           </div>
           <input type="submit" value="Login" className={s.button} />
           <div>
-            <button className={s.button} onClick={() => { redirectGoogle() }}> Google </button>
+            <button className={s.button} onClick={() => redirectGoogle()}> Google </button>
           </div>
           <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
           <p>¿No tienes una cuenta? <a className={s.link} href="/Register">Registrate </a></p>

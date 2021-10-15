@@ -40,8 +40,10 @@ export default function CarouselComp() {
                   <Link className={s.link} to={`/events/${el.id}`} key={el.id}>
                     <div className={s.itemCarousel}>
                       <div className={s.todo}>
+                        
+                        <img alt="" src={el.image} />
                         <div className={s.nombres}>
-                          <div>
+                          <div className={s.info}>
                             <span>{el.name}</span> -
                             {el.subCategories?.map((subcat, i) => (
                               <span key={i}>{el.subCategories} - </span>
@@ -49,7 +51,6 @@ export default function CarouselComp() {
                             <span>{el.date}</span>
                           </div>
                         </div>
-                        <img alt="" src={el.image} />
                       </div>
                     </div>
                   </Link>

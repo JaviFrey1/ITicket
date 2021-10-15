@@ -60,16 +60,11 @@ export default function Footer() {
               </Box>
             </Grid>
             <Grid item xs={12} sm={3}>
-              <Box borderBottom={1}>Nosotros</Box>
-              <Box>
-                <Link href="/wishList" color="inherit">
-                  Favoritos.
-                </Link>
-              </Box>
-              <br />
+              <Box borderBottom={1}>Emprende con nosotros</Box>
+              
               <Box>
                 <Link href="/contacto" color="inherit">
-                  Vende con nosotros!
+                  Vende con nosotros
                 </Link>
               </Box>
             </Grid>

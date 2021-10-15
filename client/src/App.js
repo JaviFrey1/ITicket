@@ -33,8 +33,8 @@ function App() {
               <Route path='/' component={Nav} />
               <Route exact path="/home" component={Home} />
               <Route path="/login" component={Login} />
-              <Route exact path="/register" component={Register} />
               <Route exact path="/login/success" component={LoginSuccess} />
+              <Route exact path="/register" component={Register} />
               <Route path="/misTickets" component={Ticketspage} />
               <Route path="/historial" component={Historialpage} />
               <Route path="/event" component={Event} />
