@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,500,600,700|Poppins:300,400,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Aladin&display=swap");
 
-/* body {
+.body {
     padding: 0;
     margin: 0;
     -webkit-box-sizing: border-box;
@@ -9,25 +9,26 @@
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
     font-family: "Josefin Sans", sans-serif;
-  } */
-/* body a,
+
+  } 
+ /* body a,
 body button {
   text-decoration: none;
   font-family: "Josefin Sans", sans-serif;
-} */
+}  */
 
-/* body a:hover {
+ /* body a:hover {
   text-decoration: none;
   color: unset;
-} */
+}  */
 
-/* input:focus,
+ /* input:focus,
 select:focus,
 button:focus,
 textarea:focus {
   outline: none;
-}
-
+} */
+/* 
 h1,
 h2,
 h3,
@@ -40,9 +41,9 @@ a {
   margin: 0;
   padding: 0;
   font-family: "Josefin Sans", sans-serif;
-} */
+}  */
 
-/* .container {
+ .container {
   width: 100%;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
@@ -57,9 +58,9 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-} */
+} 
 
-/* .rows {
+ .rows {
   width: 100%;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -73,7 +74,7 @@ a {
   -ms-flex-pack: center;
   justify-content: center;
   align-items: center;
-} */
+} 
 
 /*---------------------------------------------------------*/
 /* CONTACT ME                               */
@@ -90,10 +91,12 @@ a {
 }
 
 .form {
+  /* background-color: greenyellow; */
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  /* display: -webkit-box;
+  display: -ms-flexbox; */
   display: flex;
+  flex-direction: row;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -103,7 +106,7 @@ a {
 }
 
 /* 
-form {
+.form {
   width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -114,9 +117,9 @@ form {
   background-color: rgb(255, 255, 255);
   overflow: hidden;
   border-radius: 20px;
-} */
+}  */
 
-/* form button {
+.form button {
   width: 190px;
   height: 55px;
   border: 0;
@@ -129,9 +132,9 @@ form {
   font-weight: bold;
   margin-top: 20%;
   cursor: pointer;
-} */
-/* 
-form button:hover {
+} 
+
+.form button:hover {
   background-color: unset;
   border: 2px solid #e49504;
   -webkit-transition: 0.5s linear;
@@ -140,9 +143,37 @@ form button:hover {
   color: black;
 
 
-} */
-
+} 
+.contForm{
+  /* background-color: violet;
+  display: flex;
+  justify-content: space-around; */
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+  border-radius: 20px;
+}
 .formWord {
+  /* background-color: red; */
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+  width: 40%;
+  padding: 4%;
+}
+.formWords {
+  /* background-color: blue; */
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
   width: 40%;
   padding: 4%;
 }
@@ -168,6 +199,7 @@ form button:hover {
 }
 
 .formWord textarea {
+  display: flex;
   width: 100%;
   margin-bottom: 10%;
   border: 0;
