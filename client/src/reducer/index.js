@@ -25,7 +25,8 @@ import {
   DELETE_USER,
   USER_REGISTER,
   USER_LOGIN,
-  PAYPAL
+  PAYPAL,
+  GET_BEST
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -43,6 +44,7 @@ const initialState = {
   persistedState,
   activeUser: '',
   tickets: [],
+  best:[]
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -177,6 +179,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         recommended: action.payload
       }
+      case GET_BEST:
+        return{
+          ...state,
+          best:action.payload
+        }
 
     default:
       return state;
