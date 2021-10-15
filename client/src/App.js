@@ -1,5 +1,5 @@
 import "./App.css";
-import axios from "axios";
+// import axios from "axios";
 import React from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Event from "./components/Event/Event";

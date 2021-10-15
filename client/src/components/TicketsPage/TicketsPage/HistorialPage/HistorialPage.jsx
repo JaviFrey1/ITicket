@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import s from "./historialPage.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { cartas } from "../../../../cartas";
+// import { cartas } from "../../../../cartas";
 import userData from "../../../../actions/userData";
 import getTickets from "../../../../actions/getTickets";
 
@@ -16,7 +16,7 @@ const Historialpage = () => {
   useEffect(() => {
     dispatch(userData());
     dispatch(getTickets(activeUser.id))
-  },[])
+  })
   
   return (
     <div className={s.divRey}>
