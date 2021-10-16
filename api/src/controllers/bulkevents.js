@@ -33,7 +33,7 @@ async function bulkEvents(req, res) {
                   });
                 await createdEvent.addCategories(cat);
 
-                e.subCategories?.map(async (genre) => {
+                e.subCategories.map(async (genre) => {
                     const [subCat, created] = await SubCategories.findOrCreate({
                         where: {
                           genre: genre,
