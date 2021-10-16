@@ -50,7 +50,7 @@ function Register() {
         e.preventDefault();
         if(!errors.fullName && !errors.email && !errors.password){
             dispatch(userRegister(state));
-            alert('puto el que lee')
+            alert('registrado correctamente')
             window.location.replace("http://localhost:3000/login")
         }
     }
