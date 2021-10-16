@@ -57,9 +57,11 @@ function Login() {
 
   return (
     <div className={s.body}>
-      <form className={s.formulario} onSubmit={(e) => handleInputSubmit(e)}>
+      <div className={s.formulario} >
+     
         <h1 className={s.h1}>Login</h1>
         <div className={s.contenedor}>
+        <form onSubmit={(e) => handleInputSubmit(e)}>
           <div className={s.inputcontenedor}>
             <i className="fas fa-envelope icon"></i>
             <input className={s.input} type="text" name="email" value={state.email} placeholder="Correo Electronico" onChange={(e) => handleInputChange(e)} />
@@ -69,14 +71,16 @@ function Login() {
             <input className={s.input} type="password" name="password" value={state.password} placeholder="Contraseña" onChange={(e) => handleInputChange(e)} />
           </div>
           <input type="submit" value="Login" className={s.button} />
-          <div className={s.or}>o con</div>
+          </form>
+          
+          <hr/>
           <div>
-            <button className={s.button_google} onClick={() => {redirectGoogle()}}> Google </button>
+            <button type="none"  className={s.button_google} onClick={() => {redirectGoogle()}}> Google </button>
           </div>
           <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
           <p>¿No tienes una cuenta? <a className={s.link} href="/Register">Registrate </a></p>
         </div>
-      </form>
+      </div>
     </div>
   )
 }
