@@ -452,7 +452,7 @@ export const cartas = [
      isImportant: false,
      category: 1,
      subCategories: [
-       "Reagee"
+       "Reggae"
      ],
      date: "2022-02-01"
    },
