@@ -24,7 +24,7 @@ export default function Event({ event }) {
                 setFavs("eliminado de favs");
                 Swal.fire({
                   position: "center",
-                  icon: "success",
+                  imageUrl: "https://i.gifer.com/7efs.gif",
                   title: "Eliminado de lista de deseos",
                   showConfirmButton: false,
                   timer: 1500,
@@ -38,14 +38,6 @@ export default function Event({ event }) {
               onClick={() => {
                 saveState(event);
                 favorites = loadState();
-
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "Guardado en Lista de deseos",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
                 setFavs("agregado a favs");
                 console.log(favs);
               }}
