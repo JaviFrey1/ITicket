@@ -173,9 +173,9 @@ export const cartas = [
      image: "https://static6.ticketek.com.ar/cms_static/sites/default/files/images/show-header/show-1-la-rural-virtual-440x600_0.png",
      time: "22:00",
      isImportant: true,
-     category: 1,
+     category: 3,
      subCategories: [
-       "Rock"
+       "Ciencia", "Cultura"
      ],
      date: "2021-12-05"
    },
@@ -293,7 +293,7 @@ export const cartas = [
    },
    {
      name: "Hamlet",
-     artist: "Shakespeare",
+     artist: "Compañia Los Peluks ",
      place: "Teatro La Kanoa De Papel",
      address: "Dr. Juan Olsacher 2680",
      location: "La Rioja",
