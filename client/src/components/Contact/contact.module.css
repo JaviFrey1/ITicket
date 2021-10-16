@@ -2,27 +2,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Aladin&display=swap");
 
 .body {
-    padding: 0;
-    margin: 0;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    scroll-behavior: smooth;
-    font-family: "Josefin Sans", sans-serif;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  font-family: "Josefin Sans", sans-serif;
 
-  } 
- /* body a,
+}
+
+/* body a,
 body button {
   text-decoration: none;
   font-family: "Josefin Sans", sans-serif;
 }  */
 
- /* body a:hover {
+/* body a:hover {
   text-decoration: none;
   color: unset;
 }  */
 
- /* input:focus,
+/* input:focus,
 select:focus,
 button:focus,
 textarea:focus {
@@ -43,7 +44,7 @@ a {
   font-family: "Josefin Sans", sans-serif;
 }  */
 
- .container {
+.container {
   width: 100%;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
@@ -58,9 +59,9 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-} 
+}
 
- .rows {
+.rows {
   width: 100%;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -74,7 +75,7 @@ a {
   -ms-flex-pack: center;
   justify-content: center;
   align-items: center;
-} 
+}
 
 /*---------------------------------------------------------*/
 /* CONTACT ME                               */
@@ -85,7 +86,7 @@ a {
 
 .contactOverlay {
   width: 100%;
-  padding-top: 10%;
+  padding-top: 5vh;
   padding-bottom: 10%;
   background-color: rgba(230, 230, 230, 0.921);
 }
@@ -104,6 +105,7 @@ a {
   -ms-flex-align: center;
   align-items: center;
 }
+
 
 /* 
 .form {
@@ -132,7 +134,8 @@ a {
   font-weight: bold;
   margin-top: 20%;
   cursor: pointer;
-} 
+  font-size: calc(1em + .4vw);
+}
 
 .form button:hover {
   background-color: unset;
@@ -143,8 +146,9 @@ a {
   color: black;
 
 
-} 
-.contForm{
+}
+
+.contForm {
   /* background-color: violet;
   display: flex;
   justify-content: space-around; */
@@ -159,36 +163,59 @@ a {
   overflow: hidden;
   border-radius: 20px;
 }
+
+
 .formWord {
   /* background-color: red; */
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
   padding: 4%;
 }
+
 .formWords {
   /* background-color: blue; */
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
   padding: 4%;
+  font-size: calc(1em + .4vw);
+}
+
+@media (max-width: 1000px) {
+  .contForm {
+    flex-direction: column;
+  }
+
+  .formWord,
+  .formWords {
+    width: 80%;
+    margin: auto;
+    /* background-color: rgb(255, 204, 0) */
+  }
 }
 
 .formWord h2 {
   font-size: 35px;
   font-weight: bold;
   font-family: "Josefin Sans", sans-serif;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
+}
+
+.formWord span {
+  font-size: calc(1em + 0.3vw);
 }
 
 .formWord input {
   width: 100%;
-  height: 50px;
-  margin-bottom: 10%;
+  min-height: 55px;
+  font-size: 20px;
+  /* height: 50px; */
+  margin-bottom: 5%;
   border: 0;
   margin-top: 2%;
   padding-left: 3%;
@@ -198,21 +225,26 @@ a {
   border: 2px solid #cccccc;
 }
 
-.formWord textarea {
-  display: flex;
+.formWord .textarea {
+  /* display: flex; */
+  min-height: 55px;
+  font-size: 20px;
   width: 100%;
+  height: 150px;
   margin-bottom: 10%;
   border: 0;
-  margin-top: 21%;
-  height: 80px;
+  margin-top: 5%;
+  /* height: 80px; */
   color: black;
   -webkit-box-shadow: 0px 0px 48px 0px rgb(218, 218, 218);
   box-shadow: 0px 0px 48px 0px rgb(218, 218, 218);
   padding-left: 3%;
+  border: 2px solid #cccccc;
+  overflow: clip;
 }
 
 .parrafito {
-  margin-top: 25%;
+  margin-top: 5%;
 }
 
 /*---------------------------------------------------------*/

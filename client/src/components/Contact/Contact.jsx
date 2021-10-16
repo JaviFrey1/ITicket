@@ -11,10 +11,12 @@ const Result = () => {
 export default function Contact() {
   const [result, showresult] = useState(false);
   const sendEmail = (e) => {
+    console.log()
     e.preventDefault();
 
     emailjs.sendForm('gmail', 'template_egfpbsu', e.target, 'user_GdBu7T9DTHFnIo5cvAyNk')
       .then((result) => {
+        console.log(result)
         console.log(result.text);
       }, (error) => {
         console.log(error.text);
@@ -23,7 +25,7 @@ export default function Contact() {
     showresult(true)
   };
   return (
-    <body className={s.body}>
+    <div className={s.body}>
       <div className={s.contactme} id="contact">
         <div className={s.contactOverlay}>
           <div className={s.container}>
@@ -33,15 +35,19 @@ export default function Contact() {
                   <h2>Vende con Tukiteck!</h2>
                   <span>Nombre Completo</span>
                   <br />
-                  <input className={s.input100} type="text" name="fullName" required />
+                  <input  type="text" name="fullName" required />
                   <br />
                   <span>Numero de telefono</span>
                   <br />
-                  <input className={s.input100} type="text" name="phone" required />
+                  <input type="text" name="phone" required />
                   <br />
                   <span>Ingresa tu Email</span>
                   <br />
-                  <input className={s.input100} type="text" name="email" required />
+                  <input  type="text" name="email" required />
+                  <br />
+                  <span>Dejanos un mensaje</span>
+                  <br />
+                  <textarea className={s.textarea} type="text" name="message" required />
                   <br />
                 </div>
                 <div className={s.formWords}>
@@ -60,6 +66,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </body>
+    </div>
   )
 }
