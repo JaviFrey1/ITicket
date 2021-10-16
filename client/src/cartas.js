@@ -167,7 +167,7 @@ export const cartas = [
      place: "La Rural",
      address: "Av. Sarmiento 2704",
      location: "Capital Federal",
-     province: "Bueano Aires",
+     province: "Buenos Aires",
      price: 2000,
      availableTickets: 1440,
      image: "https://static6.ticketek.com.ar/cms_static/sites/default/files/images/show-header/show-1-la-rural-virtual-440x600_0.png",
@@ -177,7 +177,7 @@ export const cartas = [
      subCategories: [
        "Ciencia", "Cultura"
      ],
-     date: "2021-12-05"
+     date: "2022-10-16"
    },
    {
      name: "Intimo",
