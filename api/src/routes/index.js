@@ -15,7 +15,8 @@ const tickets = require('./tickets.js');
 const recommended = require('./recommended.js');
 const paypal = require('./paypal.js');
 const resetPass = require('./resetPassword.js');
-const stats = require('./stats.js')
+const stats = require('./stats.js');
+const confirmPass = require('./confirmPassword.js');
 
 const router = Router();
 
@@ -35,7 +36,7 @@ router.use('/tickets', tickets);
 router.use('/recommended', recommended);
 router.use('/password', resetPass);
 router.use('/stats', stats);
-
+router.use('/confirm', confirmPass);
 
 
 router.use('/', google);
