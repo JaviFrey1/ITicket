@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import s from './confirmreset.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BsFillEyeFill, BsFillEyeSlashFill} from 'react-icons/bs'
+import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs'
 
 export default function ConfirmReset() {
 
@@ -11,11 +11,11 @@ export default function ConfirmReset() {
 
     const [errors, setErrors] = useState('')
 
+    const input = document.querySelector('#password');
     function toggle() {
-        const input = document.querySelector('#password');
         const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
         input.setAttribute('type', type);
-        this.classList.toggle('bi-eye');
+
     }
     const validate = () => {
         if (pass.length > 0) {
@@ -50,14 +50,14 @@ export default function ConfirmReset() {
                         type="password" className={s.input}
                         placeholder="Nueva contraseña"
                         onChange={(e) => handleInput1Change(e)}
-                    /><BsFillEyeFill onClick={() => toggle()}/>
-                    <BsFillEyeSlashFill/>
+                    /> {input.type === 'password' ? <BsFillEyeFill onClick={() => toggle()} />
+                        : <BsFillEyeSlashFill onClick={() => toggle()} />}
                     <input name='pass2' value={confirm}
                         type="password" className={s.input}
                         autoComplete="off" id='password'
                         placeholder="Reingresa la contraseña"
                         onChange={(e) => handleInput2Change(e)}
-                    /><BsFillEyeFill onClick={() => toggle()}/><BsFillEyeSlashFill/>
+                    />
                     <div>
                         {errors.length > 0 ? <h5 className={s.error}>{errors}</h5> : <div>HOLA</div>}
                     </div>
