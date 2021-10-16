@@ -11,7 +11,7 @@ export default function BestGraph() {
     const data = []
 
     best.map(obj => { tags.push(obj.event); data.push(obj.cant) })
-    
+
     const datosBest = {
         label: "eventos mas vendidos",
         data: data, 
@@ -22,27 +22,32 @@ export default function BestGraph() {
 
     const $grafica = document.querySelector("#grafica");
 
-    new Chart($grafica, {
-        type: 'bar',
-        data: {
-            labels: tags,
-            datasets: [
-                datosBest,
-            ]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }],
-            },
-        }
-    });
+
     useEffect(() => {
         dispatch(getBest());
     }, []);
+
+    useEffect(() => {
+     let bar= new Chart($grafica, {
+            type: 'bar',
+            data: {
+                labels: tags,
+                datasets: [
+                    datosBest,
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                },
+            }
+        });
+        return()=>{bar.destroy()}
+    }, [best]);
     return (
 
         <>
