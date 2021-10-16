@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import s from "./menuUser.module.css";
 import Swal from "sweetalert2";
 import logout from "../../../actions/logout";
-import {
-
-  AiOutlineCloseCircle,
-} from "react-icons/ai";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import { RiAdminLine } from "react-icons/ri";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
     
 const MenuAdmin = () => {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const [menuClass, setMenuClass] = useState(false);
 
   const showMenu = () => setMenuClass(!menuClass);
@@ -52,7 +50,8 @@ const MenuAdmin = () => {
               confirmButtonText: "Confirmar",
             }).then((result) => {
               if (result.isConfirmed) {
-              dispatch(logout())
+                dispatch(logout());
+                history.push('/home')
               }
             });
           }}

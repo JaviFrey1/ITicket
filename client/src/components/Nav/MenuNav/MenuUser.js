@@ -4,21 +4,20 @@ import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import logout from "../../../actions/logout";
 import {
-
   AiOutlineSetting,
   AiOutlineCloseCircle,
 } from "react-icons/ai";
 import { FiShoppingBag } from "react-icons/fi";
-
 import { FaRegUserCircle } from "react-icons/fa";
 
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useAuth } from '../../../context/AuthContext'
 
 
 const Menuuser = () => {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const {activeUser} = useAuth()
   const [menuClass, setMenuClass] = useState(false);
 
@@ -73,8 +72,8 @@ const Menuuser = () => {
               confirmButtonText: "Confirmar",
             }).then((result) => {
               if (result.isConfirmed) {
-                
-               dispatch(logout())
+               dispatch(logout());
+               history.push('/home')
               }
             });
           }}

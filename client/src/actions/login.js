@@ -6,8 +6,7 @@ export default function userLogin(body) {
     try {
       const response = await axios.post(`http://localhost:3001/login`, body, { withCredentials: true });
       const userData = await axios.get(`http://localhost:3001/loguser`,{ withCredentials: true });
-      console.log('ACTION LOGIN =>', response.data)
-      console.log('SOY LA DATA',userData.data)
+      
       if (userData.data.googleId) {
         return dispatch({ type: USER_LOGIN, payload: response.data });
       }
