@@ -28,7 +28,7 @@
 
   .input {
       font-size: 20px;
-      width: 82%;
+      width: 100%;
       padding: 10px;
       border: none;
   }
@@ -115,6 +115,9 @@
       opacity: .8;
   }
 
+  .errors {
+      color: red;
+  } /*EL BACK ESTUVO AQUI*/
 
   @media(min-width:768px) {
       .formulario {

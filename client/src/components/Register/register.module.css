@@ -104,6 +104,10 @@ p {
 
 }
 
+.errors {
+    color: red;
+} /*EL BACK ESTUVO AQUI*/
+
 @media(min-width:768px) {
     .formulario {
         margin: auto;

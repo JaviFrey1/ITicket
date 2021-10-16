@@ -5,6 +5,17 @@ import s from './login.module.css';
 import axios from 'axios';
 // import LoginSuccess from '../Nav/Login/Login';
 
+function validate(state){
+  let errors = {};
+  if(!state.email){
+    errors.email = "Ingresa un email"
+  }
+  else if(!state.password){
+    errors.password = "Ingresa una constraseña"
+  }
+  return errors
+}
+
 
 function Login() {
 
@@ -14,17 +25,27 @@ function Login() {
     email: "",
     password: ""
   })
+  
+  const [errors, setErrors] = useState({});
 
   function handleInputChange(e) {
     setState({
       ...state,
       [e.target.name]: e.target.value
     })
+    setErrors(
+      validate({
+        ...state,
+        [e.target.name]: e.target.value
+      })
+    )
   }
 
   function handleInputSubmit(e) {
     e.preventDefault();
-    dispatch(userLogin(state));
+    if(!errors.email && !errors.password){
+      dispatch(userLogin(state));
+    }
   }
   
   const redirectGoogle = async (req, res) => {
@@ -66,10 +87,12 @@ function Login() {
             <i className="fas fa-envelope icon"></i>
             <input className={s.input} type="text" name="email" value={state.email} placeholder="Correo Electronico" onChange={(e) => handleInputChange(e)} />
           </div>
+            {errors.email && (<p className={s.errors}>{errors.email}</p>)}
           <div className={s.inputcontenedor}>
             <i className="fas fa-key icon"></i>
             <input className={s.input} type="password" name="password" value={state.password} placeholder="Contraseña" onChange={(e) => handleInputChange(e)} />
           </div>
+            {errors.password && (<p className={s.errors}>{errors.password}</p>)}
           <input type="submit" value="Login" className={s.button} />
           </form>
           
