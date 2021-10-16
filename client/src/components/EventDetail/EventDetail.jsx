@@ -136,9 +136,8 @@ export default function EventDetail(props) {
 
   function handleChange(e) {
     e.preventDefault();
-    if (e.target.value === 1) {
+    if (e.target.value == 1) {
       setPrecio(eventDetail.price);
-
     } else {
       setPrecio(eventDetail.price * 2);
       setCantidad(2)
