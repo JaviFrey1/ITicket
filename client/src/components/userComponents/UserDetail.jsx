@@ -89,9 +89,9 @@ export default function UserDetail(props) {
                   <div>*******************</div>
                 </div>
                 <div className={s.changeContainer}>
-                <div onClick={() => handleClick(activeUser.id)} className={s.update}>Cambiar contraseña</div>
+                {!userDetail.googleId && <div onClick={() => handleClick(activeUser.id)} className={s.update}>Cambiar contraseña</div>}
+                {/* <div onClick={() => handleClick(activeUser.id)} className={s.update}>Cambiar contraseña</div> */}
                 </div>
-                {/* {!userDetail.googleId && <div onClick={() => handleClick(activeUser.id)} className={s.update}>Cambiar contraseña</div>} */}
                 <div className={s.eliminar} onClick={(e) => eliminate(e)}>
                   <h4>Eliminar cuenta</h4>
                 </div>

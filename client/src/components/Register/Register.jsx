@@ -41,28 +41,29 @@ function Register() {
          <div className={s.contenedor}>
          
          <div className={s.inputContenedor}>
-             <i class="fas fa-user icon"></i>
+             {/*<i class="fas fa-user icon"></i>*/}
              <input className={s.input} type="text" value={state.fullName} name= 'fullName' placeholder="Nombre Completo" onChange={(e) => handleInputChange(e)}/>
              
              </div>
              
              <div className={s.inputContenedor}>
-             <i class="fas fa-envelope icon"></i>
+             {/*<i class="fas fa-envelope icon"></i>*/}
              <input  className={s.input}type="text" value={state.email} name= 'email' placeholder="Correo Electronico" onChange={(e) => handleInputChange(e)}/>
              
              </div>
              
              <div className={s.inputContenedor}>
-            <i class="fas fa-key icon"></i>
+            {/*<i class="fas fa-key icon"></i>*/}
              <input className={s.input} type="password" value={state.password} name= 'password' placeholder="Contraseña" onChange={(e) => handleInputChange(e)}/>
              
              </div>
              <input className={s.button}  type="submit" value="Registrate"  />
+             <div className={s.or}>o con</div>
             <a href="localhost:3001/google">
-             <button className={s.button}> Google </button>
+             <button className={s.button_google}> Google </button>
               </a>
              <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-             <p>¿Ya tienes una cuenta?<a class="link" href="/login">Iniciar Sesion</a></p>
+             <p>¿Ya tienes una cuenta?<a className="link" href="/login">Iniciar Sesion</a></p>
             
          </div>
         </form>

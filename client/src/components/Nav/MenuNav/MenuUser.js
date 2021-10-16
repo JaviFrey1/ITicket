@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import s from "./menuUser.module.css";
 import Swal from "sweetalert2";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import logout from "../../../actions/logout";
 import {
 

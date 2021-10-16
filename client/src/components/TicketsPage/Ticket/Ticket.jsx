@@ -43,7 +43,7 @@ const Ticket = ({ticket}) => {
           <div className={s.inferiorAbajo}>
             <div className={s.contQR} id="qr">
               <QRCode
-                value={ticket.id}
+                value={ticket.id.toString()}
                 size={80}
                 bgColor="white"
                 fgColor="black"

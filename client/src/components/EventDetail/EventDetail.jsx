@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link, NavLink } from "react-router-dom";
+import { useHistory,  NavLink } from "react-router-dom";
 import { OpenStreetMapProvider } from "leaflet-geosearch";
 import { MapContainer, TileLayer, Popup, Circle } from "react-leaflet";
 import { GoPencil } from "react-icons/go";
@@ -131,12 +131,12 @@ export default function EventDetail(props) {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-  }, []);
+  }, [dispatch]);
 
 
   function handleChange(e) {
     e.preventDefault();
-    if (e.target.value == 1) {
+    if (e.target.value === 1) {
       setPrecio(eventDetail.price);
 
     } else {

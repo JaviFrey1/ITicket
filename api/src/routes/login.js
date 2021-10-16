@@ -53,6 +53,8 @@ router.get("/loguser", isLoggedIn, (req, res) => res.json(req.user));
 
 // router.get('/register', (req, res) => res.send('Register'));
 
+
+
 router.post("/register", async function (req, res) {
   const id = uuidv4();
 
@@ -117,7 +119,7 @@ router.post(
   })
 );
 
-router.get("/logout", (req, res) => {
+router.get("/out", (req, res) => {
   req.session = null;
   req.logout();
   res.redirect("/deslog");
