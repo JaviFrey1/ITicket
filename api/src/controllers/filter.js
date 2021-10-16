@@ -91,7 +91,7 @@ async function filtroLocalidad(req, res, next) {
     const eventDb = await dataParseada();
     const filtrados = [];
 
-    eventDb?.map((e) => {
+    eventDb.map((e) => {
       console.log(" LOCATION, PROVINCE", e.location, e.province);
       if (localidad && provincia) {
         e.location.toLowerCase().includes(localidad.toLowerCase())

@@ -156,13 +156,13 @@ async function getRecommended(req, res) {
     if (userTickets.length > 0) {
       const userSubcats = []
     
-      userTickets?.map(async t =>{
+      userTickets.map(async t =>{
         const event = allEvents.filter(e=>e.id===t.eventId)
      
-        event[0].subCategories?.map(subcat=>{if(!userSubcats.includes(subcat))userSubcats.push(subcat)})
+        event[0].subCategories.map(subcat=>{if(!userSubcats.includes(subcat))userSubcats.push(subcat)})
       })
       const recommended = []
-      allEvents.map(e => userSubcats?.map(subcat => {
+      allEvents.map(e => userSubcats.map(subcat => {
         if (e.subCategories.includes(subcat) && recommended.length<10 && !e.isImportant) recommended.push(e)
       }))
       if (recommended.length > 0) return res.send(recommended)
