@@ -44,7 +44,7 @@ export default function CarouselComp() {
                         <img alt="" src={el.image} />
                         <div className={s.nombres}>
                           <div className={s.info}>
-                            <span>{el.name}</span> -
+                            <span>{el.artist}</span> -
                             {el.subCategories?.map((subcat, i) => (
                               <span key={i}>{el.subCategories} - </span>
                             ))}

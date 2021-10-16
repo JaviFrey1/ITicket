@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
     const activeUser = useSelector(state => state.activeUser)
 
     useEffect(() => {
-        dispatch(userData()).then(el => console.log('context: ',el))
+        dispatch(userData())
     }, [dispatch])
 
     const value = {
