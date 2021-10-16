@@ -13,7 +13,6 @@ import {
   FILTER_SUBCAT,
   FILTER_ADDRESS,
   UPDATE_EVENTS,
-  UPDATE_USER_PASS,
   DELETE_EVENT,
   POST_TICKETS,
   UPDATE_AVAILABLE,
@@ -26,7 +25,9 @@ import {
   USER_REGISTER,
   USER_LOGIN,
   PAYPAL,
-  GET_BEST
+  GET_BEST,
+  RESET_PASSWORD,
+
 } from "../actions";
 import { loadState } from "../localStorage";
 
@@ -117,10 +118,10 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-    case UPDATE_USER_PASS:
+    case RESET_PASSWORD:
       return {
         ...state,
-        userDetail: action.payload,
+        // userDetail: action.payload,
       };
     case POST_TICKETS:
       return {

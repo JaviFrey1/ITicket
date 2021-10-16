@@ -57,7 +57,7 @@ let htmlCreator = `
     <body>
     <div class="containergral">
     <h1>Hola ${usuario.fullName}, hemos generado un link para que reestablescas tu contraseña</h1>
-    <a href="http://localhost:3000/users/${iden}" target="_blank" rel="noopener noreferrer">haga click aqui</a>
+    <a href="http://localhost:3000/users/${iden}" target="_blank" rel="noopener noreferrer">click aqui</a>
     </hr>
     <b>Este enlace dura 24 horas.</b>
   
@@ -71,7 +71,7 @@ let htmlCreator = `
     let mailOptions = {
       from: "Tukiteck <matiascostilla96@gmail.com>",
       to: usuario.email,
-      subject: `cambio de contraseña, usuario: ${usuario.fullName}`,
+      subject: `Cambio de contraseña, usuario: ${usuario.fullName}`,
       html: htmlCreator,
     };
 

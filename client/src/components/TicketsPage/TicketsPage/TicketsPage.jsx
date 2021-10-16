@@ -17,7 +17,7 @@ const Ticketspage = () => {
 
   const componentRef = useRef();
 
-  const {activeUser} = useAuth()
+  const { activeUser } = useAuth()
 
   const tickets = useSelector((state) => state.tickets);
   // console.log('Tickets >>> ', tickets)
@@ -42,7 +42,7 @@ const Ticketspage = () => {
   }
 
   useEffect(() => {
-    
+
     if (activeUser) dispatch(getTickets(activeUser.id));
 
   }, [dispatch]);
@@ -59,7 +59,7 @@ const Ticketspage = () => {
           </div>
         </div>
         {artistas.length ? artistas.map((artista, i) => {
-         
+
           const artistaTickets = [];
           tickets.map((ticket, i) => {
             if (ticket.event.artist === artista) artistaTickets.push(ticket);
@@ -100,7 +100,6 @@ const Ticketspage = () => {
             </div>
           </Link>
         </div>
-        {console.log('deberian ser artista tickets', eventSel)}
         <div ref={componentRef}>
           <DetalleCompra artistaTickets={eventSel} />
         </div>

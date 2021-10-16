@@ -26,7 +26,7 @@ const succesLoginUrl = "http://localhost:3000/home";
 
 const isLoggedIn = (req, res, next) => {
   if (req.user) {
-    console.log(req.user);
+    console.log('LOGIN BACK',req.user);
     next();
   } else {
     res.sendStatus(401);
