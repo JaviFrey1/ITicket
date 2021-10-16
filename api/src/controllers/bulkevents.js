@@ -29,20 +29,28 @@ async function bulkEvents(req, res) {
                     isImportant: e.isImportant
                 });
                 const cat = await Categories.findOne({
-                    where: { id: e.category },
-                });
+                    where: { id: parseInt(e.category) },
+                  });
                 await createdEvent.addCategories(cat);
 
                 e.subCategories?.map(async (genre) => {
-                    const subCat = await SubCategories.findOne({
+                    const [subCat, created] = await SubCategories.findOrCreate({
                         where: {
-                            genre: genre,
-                        },
-                    });
-
+                          genre: genre,
+                          catId:parseInt(e.category)
+                        }
+                
+                      });
                     await createdEvent.addSubCategories(subCat);
+                    if (created) {
+                        const category = await Categories.findOne({
+                            where: {
+                                id: e.category
+                            }
+                        })
+                        await category.addSubCategories(subCat)
+                    }
                 });
-            
             })
 
             return res.send('Eventos precargados con exito')
@@ -58,4 +66,3 @@ async function bulkEvents(req, res) {
 module.exports = {
     bulkEvents,
 };
-
