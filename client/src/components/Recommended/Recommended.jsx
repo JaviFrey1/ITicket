@@ -41,7 +41,7 @@ const {activeUser}= useAuth()
                       <div className={s.todo}>
                         <div className={s.nombres}>
                           <div className={s.info}>
-                            <span>{el.name}</span> -
+                            <span>{el.artist}</span> -
                             {el.subCategories?.map((subcat, i) =>  (
                               <span key={i}>{subcat} - </span>
                             ))}
