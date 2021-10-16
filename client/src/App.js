@@ -20,6 +20,7 @@ import Historialpage from "./components/TicketsPage/TicketsPage/HistorialPage/Hi
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register"
 import { AuthProvider } from "./context/AuthContext";
+import ConfirmReset from "./components/ConfirmReset/ConfirmReset";
 
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
               <Route path="/checkout" />
               <Route path="/contacto" component={Contact} />
               <Route path="/panelAdmin" component={PanelAdmin} />
-
+              <Route exact path="/confirm/:id" component={ConfirmReset}/>
             </Route>
 
           </Switch>

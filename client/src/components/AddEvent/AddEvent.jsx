@@ -115,7 +115,6 @@ export default function AddEvent() {
       category: e.target.value,
     });
   }
-
   function handleCheckSub(e) {
     if (e.target.checked) {
       setState({
@@ -143,7 +142,6 @@ export default function AddEvent() {
       subCategories: [...state.subCategories, { genre: capGenre, catId: 1 }],
     })
   }
-
   function handleNewSubTeatro(e) {
     const capGenre = e.target.value[0].toUpperCase() + e.target.value.slice(1).toLowerCase()
     setState({
@@ -151,8 +149,6 @@ export default function AddEvent() {
       subCategories: [...state.subCategories, { genre: capGenre, catId: 2 }],
     })
   }
-
-
   function handleSubmit(e) {
     e.preventDefault();
     

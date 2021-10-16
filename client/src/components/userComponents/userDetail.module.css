@@ -43,7 +43,6 @@
     display: flex;
     flex-direction: column;
     align-self: center;
-    justify-self: centers;
     margin-top: 2em;
     padding: .5em;
     width: 90%;
