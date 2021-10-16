@@ -8,7 +8,7 @@ import resetPassword from "../../actions/resetPassword";
 import s from "./userDetail.module.css"
 import { useAuth } from '../../context/AuthContext'
 import deleteUser from "../../actions/deleteUser";
-
+import { useParams } from "react-router";
 
 
 
@@ -63,6 +63,8 @@ export default function UserDetail(props) {
     if (activeUser) dispatch(getUserDetail(activeUser.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, activeUser]);
+  console.log('ACTIVE =>',activeUser)
+  const {id} = useParams()
   async function handleClick() {
     try {
       await Swal.fire({
@@ -73,13 +75,15 @@ export default function UserDetail(props) {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
+          console.log('USERDETAIL=>',activeUser.id, activeUser.email)
           Swal.fire('Te enviamos un email');
-          dispatch(resetPassword(activeUser.id, activeUser.email))
         } else if (result.isDenied) {
           Swal.fire('No cambiaste tu contraseña')
         }
-      })
-    } catch (e) {
+        dispatch(resetPassword(id, activeUser.email))
+      });
+    }
+     catch (e) {
       console.log(e)
     }
   }

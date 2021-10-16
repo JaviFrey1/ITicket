@@ -5,13 +5,15 @@ const nodemailer = require('nodemailer');
 
 async function ReseteoPassword (req, res) {
 
-const email = req.body.email;
-const usuario = await Users.findOne({where: { email: email}});
-const iden = await Users.findOne({where: {id :usuario.id}})
+const { id } = req.params;
+// console.log('ESTOY EN BACK',email)
+// const usuario = await Users.findOne({where: { email: email}});
+const iden = await Users.findOne({where: {id: id}})
+console.log('IDEN BACK=>>>>>>>>',iden)
 
-if(!usuario) return res.status(401).json([]);
+if(!id) return res.status(401).json([]);
 
-await usuario.update({resetPassword:true });
+await iden.update({ resetPassword: true });
                                                                     
 
 let transporter = nodemailer.createTransport({
@@ -56,8 +58,8 @@ let htmlCreator = `
     </head>
     <body>
     <div class="containergral">
-    <h1>Hola ${usuario.fullName}, hemos generado un link para que reestablescas tu contraseña</h1>
-    <a href="http://localhost:3000/users/${iden}" target="_blank" rel="noopener noreferrer">click aqui</a>
+    <h1>Hola ${iden.fullName}, hemos generado un link para que reestablescas tu contraseña</h1>
+    <a href="http://localhost:3000/users/${iden}" target="_blank" rel="noopener noreferrer">Click aqui</a>
     </hr>
     <b>Este enlace dura 24 horas.</b>
   
@@ -70,8 +72,8 @@ let htmlCreator = `
   
     let mailOptions = {
       from: "Tukiteck <matiascostilla96@gmail.com>",
-      to: usuario.email,
-      subject: `Cambio de contraseña, usuario: ${usuario.fullName}`,
+      to: iden.email,
+      subject: `Cambio de contraseña, usuario: ${iden.fullName}`,
       html: htmlCreator,
     };
 
