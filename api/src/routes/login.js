@@ -119,7 +119,7 @@ router.post(
   })
 );
 
-router.get("/logout", (req, res) => {
+router.get("/out", (req, res) => {
   req.session = null;
   req.logout();
   res.redirect("/deslog");
