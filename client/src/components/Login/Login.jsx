@@ -45,7 +45,7 @@ function Login() {
   }
 
   const persigueUser = async () => {
-    const res = await axios.get(`http://localhost:3001/users`, { withCredentials: true }).catch((error) => {
+    const res = await axios.get(`http://localhost:3001/loguser`, { withCredentials: true }).catch((error) => {
       console.log("No estuvo bien autenticado");
     });
     if (res && res.data) {
@@ -71,7 +71,7 @@ function Login() {
           <input type="submit" value="Login" className={s.button} />
           <div className={s.or}>o con</div>
           <div>
-            <button className={s.button_google} onClick={() => redirectGoogle()}> Google </button>
+            <button className={s.button_google} onClick={() => {redirectGoogle()}}> Google </button>
           </div>
           <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
           <p>¿No tienes una cuenta? <a className={s.link} href="/Register">Registrate </a></p>
