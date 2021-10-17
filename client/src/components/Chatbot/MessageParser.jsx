@@ -1,3 +1,4 @@
+import './main.css'
 class MessageParser {
     constructor(actionProvider) {
       this.actionProvider = actionProvider;
@@ -28,6 +29,12 @@ class MessageParser {
         this.actionProvider.ayudaPublicarNecesidad();
       }
       if (lowercase.includes("ticket")) {
+        this.actionProvider.ayudaPublicarNecesidad();
+      }
+      if (lowercase.includes("entrada")) {
+        this.actionProvider.ayudaPublicarNecesidad();
+      }
+      if (lowercase.includes("comprar")) {
         this.actionProvider.ayudaPublicarNecesidad();
       }
       if (lowercase.includes("public")) {

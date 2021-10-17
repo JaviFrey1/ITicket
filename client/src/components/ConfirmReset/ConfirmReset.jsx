@@ -1,15 +1,23 @@
 import React, { useState } from "react"
+import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
+import { useDispatch} from "react-redux";
+import confirmPassword from "../../actions/confirmPassword";
+
 import s from './confirmreset.module.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs'
+
 
 export default function ConfirmReset() {
 
 
     const [pass, setPass] = useState('');
     const [confirm, setConfirm] = useState('');
-
     const [errors, setErrors] = useState('')
+
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const { id } = useParams();
 
     const input = document.querySelector('#password');
     function toggle() {
@@ -34,10 +42,12 @@ export default function ConfirmReset() {
         setConfirm(e.target.value);
     }
     const submit = () => {
-        validate();
-        setPass('');
-        setConfirm('');
-        console.log(pass, ' y', confirm)
+        console.log(input.getAttribute("type"))
+        // validate();
+        // setPass('');
+        // setConfirm('');
+        dispatch(confirmPassword(id,confirm));
+        history.push('/home')
     }
 
 
@@ -54,7 +64,7 @@ export default function ConfirmReset() {
                         : <BsFillEyeSlashFill onClick={() => toggle()} />}
                     <input name='pass2' value={confirm}
                         type="password" className={s.input}
-                        autoComplete="off" id='password'
+                        autoComplete="off"
                         placeholder="Reingresa la contraseña"
                         onChange={(e) => handleInput2Change(e)}
                     />

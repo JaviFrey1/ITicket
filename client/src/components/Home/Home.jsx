@@ -12,12 +12,21 @@ import Footer from "../Footer/Footer";
 import CarouselComp from "../Carousel/Carousel";
 import bulkEvents from "../../actions/bulkEvents";
 import Recommended from '../Recommended/Recommended'
+import Chatbot from 'react-chatbot-kit';
+import {FaRobot} from 'react-icons/fa';
+import config from '../Chatbot/config'
+import ActionProvider from '../Chatbot/ActionProvider'
+import MessageParser from '../Chatbot/MessageParser'
 export default function Home() {
   const dispatch = useDispatch();
   const allEvents = useSelector((state) => state.eventsLoaded);
   const [currentPage, setCurrentPage] = useState(1);
   const [eventsPerPage] = useState(6);
-
+  let [click, setClick] = useState(false)
+  let handleClick = (e) => {
+    setClick(!click)
+  }
+  
   const lastEvent = currentPage * eventsPerPage;
   const firstEvent = lastEvent - eventsPerPage;
 
@@ -27,10 +36,10 @@ export default function Home() {
 
   const actualUnImportantEvents = []
 
-  unImportantEvents.forEach((el)=>{
-      if( el.date >=  new Date().toISOString().split('T')[0]) actualUnImportantEvents.push(el);
-    })
-  
+  unImportantEvents.forEach((el) => {
+    if (el.date >= new Date().toISOString().split('T')[0]) actualUnImportantEvents.push(el);
+  })
+
   const currentUnimportantEvents = actualUnImportantEvents.slice(
     firstEvent,
     lastEvent
@@ -39,13 +48,24 @@ export default function Home() {
   function paginate(pageNumber) {
     setCurrentPage(pageNumber);
   }
-
+  function Button() {
+    return (
+      <div>
+        <Chatbot
+          config={config}
+          actionProvider={ActionProvider}
+          messageParser={MessageParser}
+          placeholderText="Escribe tu consulta aqui"
+        />
+      </div>
+    )
+  }
   useEffect(() => {
     dispatch(getEvents(""));
     dispatch(bulkEvents(cartas));
   }, [dispatch]);
 
- 
+
   return (
     <div className={`${s.container}`}>
       <div className={`${s.searchBar}`}>
@@ -71,6 +91,13 @@ export default function Home() {
             paginate={paginate}
           />
         </div>
+      </div>
+      <div className={s.contChat}>
+        <button id='tukiteck' onClick={handleClick} className={s.home}>
+          Chatea con Nosotros <FaRobot/>
+        </button>
+        
+        {click ? <Button /> : null}
       </div>
       <div className={s.fot}>
         <Footer />

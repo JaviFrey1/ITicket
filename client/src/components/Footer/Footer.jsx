@@ -1,48 +1,23 @@
 import React from "react";
-import {useState} from "react";
+import { useState } from "react";
 import Container from "@material-ui/core/container";
 import Grid from "@material-ui/core/grid";
 import Box from "@material-ui/core/box";
 import Link from "@material-ui/core/Link";
 import "./footer.css";
 import img from "./../../images/pngLetraNegraBorde.png";
-import Chatbot from 'react-chatbot-kit';
-import config from '../Chatbot/config'
-import ActionProvider from '../Chatbot/ActionProvider'
-import MessageParser from '../Chatbot/MessageParser'
 import {
   AiFillFacebook,
   AiFillInstagram,
   AiFillTwitterSquare,
 } from "react-icons/ai";
 
-function Button() {
-  return (
-    <div className="bot">
-      <Chatbot
-        config={config}
-        actionProvider={ActionProvider}
-        messageParser={MessageParser}
-      />
-    </div>
-  )
-}
+
 
 export default function Footer() {
-  let [click, setClick] = useState(false)
-  let handleClick = (e) => {
-    setClick(!click)
 
-  }
   return (
     <footer>
-      
-      <div>
-        <button id='tukiteck'onClick={handleClick}>
-        </button>
-        {click ? <Button /> : null}
-      </div>
-      
       <Box
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
@@ -90,7 +65,7 @@ export default function Footer() {
             </Grid>
             <Grid item xs={12} sm={3}>
               <Box borderBottom={1}>Emprende con nosotros</Box>
-              
+
               <Box>
                 <Link href="/contacto" color="inherit">
                   Vende con nosotros
