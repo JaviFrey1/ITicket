@@ -6,7 +6,6 @@ async function ConfirmPass(req, res, next) {
 
 
     let {id} = req.params;
-
     let data = {...req.body}; 
 
     const passHash = await bcrypt.hash(data.newPass, 10) ;

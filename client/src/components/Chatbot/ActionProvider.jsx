@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './main.css'
 class ActionProvider {
     constructor(createChatBotMessage, setStateFunc) {
       this.createChatBotMessage = createChatBotMessage
@@ -15,7 +15,7 @@ class ActionProvider {
   
     hacerChangas = () => {
       const message = this.createChatBotMessage(
-        'Somos una empresa dedicada a la venta de entradas para eventos de Musica, Teatro y otros'
+        'Somos una empresa dedicada a la venta de entradas para eventos de Musica, Teatro y mucho mas!'
       )
       this.addMessageToState(message)
     }
@@ -29,7 +29,7 @@ class ActionProvider {
   
     ayudaPublicarNecesidad = () => {
       const message = this.createChatBotMessage(
-       'Para adquirir una entrada, primero debe iniciar sesion y entrar a los detalles del evento que ud elija',
+       'Para adquirir una entrada, primero debe iniciar sesion y entrar a los detalles del evento que usted elija.',
       )
       this.addMessageToState(message)
     }
@@ -37,7 +37,7 @@ class ActionProvider {
   
     registro = () => {
       const message = this.createChatBotMessage(
-        'Para registrarte encontraras un boton arriba a la derecha donde podras ingresar con tu cuenta de Google o crearte una cuenta de usuario en nuestra pagina',
+        'Para registrarte encontraras un boton arriba a la derecha donde podras ingresar con tu cuenta de Google o crearte una cuenta de usuario en nuestra pagina.',
       )
       this.addMessageToState(message)
     }
@@ -51,7 +51,7 @@ class ActionProvider {
   
     palabrasGracias2 = () => {
       const message = this.createChatBotMessage(
-        'Gracias, 😊 que tengas un excelente dia',
+        'Gracias, 😊 que tengas un excelente dia.',
       )
       this.addMessageToState(message)
     }
@@ -79,7 +79,7 @@ class ActionProvider {
   
     ayudaOfrecer = () => {
       const message = this.createChatBotMessage(
-        'Hace click en una opción',
+        'Hace click en una opción.',
       )
       this.addMessageToState(message)
     }

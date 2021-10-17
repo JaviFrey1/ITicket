@@ -27,6 +27,7 @@ import {
   PAYPAL,
   GET_BEST,
   RESET_PASSWORD,
+  CONFIRM_PASSWORD
 
 } from "../actions";
 import { loadState } from "../localStorage";
@@ -123,6 +124,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         // userDetail: action.payload,
       };
+    case CONFIRM_PASSWORD:
+      return {
+        ...state,
+        //I don't really know what to put here yet
+      }
     case POST_TICKETS:
       return {
         ...state,

@@ -119,3 +119,22 @@
   border-radius: 3px;
   color: #515153;
 }
+.contChat{
+  display: flex;
+  justify-content: flex-end;
+  justify-content: flex-end;
+}
+.home{
+  background-color: #f7f7f7;
+  width: 500px;
+  height: 50px;
+  border-top-left-radius: 10px;
+  border-bottom: 2px solid #000000CC;
+  font-size: large;
+  text-align: flex-end;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+}
+

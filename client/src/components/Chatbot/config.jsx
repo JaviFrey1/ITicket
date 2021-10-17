@@ -1,28 +1,17 @@
 import { createChatBotMessage } from 'react-chatbot-kit'
 import React from 'react';
+import './main.css'
 const config = {
   botName: 'Tukiteck',
   
   customComponents: {
     header: () => (
-      <div
-        style={{ color: 'white', backgroundColor: 'blue', padding: '5px', borderRadius: '3px' }}
-      >
+      <div className="header">
         Chat de ayuda
       </div>
     ),
   },
   
-  customStyles: {
-    // Overrides the chatbot message styles
-    botMessageBox: {
-      backgroundColor: "red",
-    },
-    // Overrides the chat button styles
-    chatButton: {
-      backgroundColor: "yellow",
-    },
-  },
 
   initialMessages: [
     createChatBotMessage(
