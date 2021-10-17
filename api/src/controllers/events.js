@@ -155,15 +155,21 @@ async function getRecommended(req, res) {
 
     if (userTickets.length > 0) {
       const userSubcats = []
-    
+      const alreadyEvents = [] 
+
       userTickets.map(async t =>{
         const event = allEvents.filter(e=>e.id===t.eventId)
      
         event[0].subCategories.map(subcat=>{if(!userSubcats.includes(subcat))userSubcats.push(subcat)})
+        alreadyEvents.push(event[0].name)        
       })
+      console.log('EVENTOS COMPRDOS', alreadyEvents)
+      const restEvents = []
+      allEvents.map(e=>!alreadyEvents.includes(e.name)? restEvents.push(e):null)
       const recommended = []
-      allEvents.map(e => userSubcats.map(subcat => {
-        if (e.subCategories.includes(subcat) && recommended.length<10 && !e.isImportant) recommended.push(e)
+      console.log('EVENTOS SIN COMPRADOS', restEvents)
+      restEvents.map(e => userSubcats.map(subcat => {
+        if (e.subCategories.includes(subcat) && recommended.length<10 && !e.isImportant && !alreadyEvents.includes(e) && !recommended.includes(e)) recommended.push(e)
       }))
       if (recommended.length > 0) return res.send(recommended)
       else return res.send([])
