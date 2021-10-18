@@ -13,7 +13,7 @@ import CarouselComp from "../Carousel/Carousel";
 import bulkEvents from "../../actions/bulkEvents";
 import Recommended from '../Recommended/Recommended'
 import Chatbot from 'react-chatbot-kit';
-import {FaRobot} from 'react-icons/fa';
+import { FaRobot } from 'react-icons/fa';
 import config from '../Chatbot/config'
 import ActionProvider from '../Chatbot/ActionProvider'
 import MessageParser from '../Chatbot/MessageParser'
@@ -26,7 +26,7 @@ export default function Home() {
   let handleClick = (e) => {
     setClick(!click)
   }
-  
+
   const lastEvent = currentPage * eventsPerPage;
   const firstEvent = lastEvent - eventsPerPage;
 
@@ -50,12 +50,13 @@ export default function Home() {
   }
   function Button() {
     return (
-      <div>
+      <div className={s.fix}>
         <Chatbot
           config={config}
           actionProvider={ActionProvider}
           messageParser={MessageParser}
           placeholderText="Escribe tu consulta aqui"
+          disableScrollToBottom={true}
         />
       </div>
     )
@@ -78,11 +79,17 @@ export default function Home() {
         {/* <Recommended />*/}
         <Recommended />
       </div>
-
       <div className={s.card}>
         <Events events={currentUnimportantEvents} />
-
       </div>
+
+      <div className={s.contChat}>
+        <button id='tukiteck' onClick={handleClick} className={s.home}>
+          Chatea con Nosotros <FaRobot />
+        </button>
+        {click ? <Button /> : null}
+      </div>
+
       <div>
         <div>
           <Paginate
@@ -91,13 +98,6 @@ export default function Home() {
             paginate={paginate}
           />
         </div>
-      </div>
-      <div className={s.contChat}>
-        <button id='tukiteck' onClick={handleClick} className={s.home}>
-          Chatea con Nosotros <FaRobot/>
-        </button>
-        
-        {click ? <Button /> : null}
       </div>
       <div className={s.fot}>
         <Footer />
