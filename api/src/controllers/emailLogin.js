@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-//const { mapFinderOptions } = require('sequelize/types/lib/utils');
 
 let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -10,9 +9,5 @@ let transporter = nodemailer.createTransport({
         pass: 'yfiozgwacpywsjuo'
     }
 })
-
-// transporter.verify().then(() => {
-//     console.log('Ready for send emails')
-// })
 
 module.exports = transporter

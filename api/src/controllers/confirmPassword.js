@@ -24,7 +24,7 @@ async function ConfirmPass(req, res, next) {
           );
         
          
-          res.send("Me actualice de PANITA").json(passUpd)
+          res.send("Me actualice de PANITA")
 
     } catch (error) {
         next(error)
@@ -32,6 +32,8 @@ async function ConfirmPass(req, res, next) {
   
 
 }
+
+
 
 module.exports = {
     ConfirmPass

@@ -26,7 +26,6 @@ const succesLoginUrl = "http://localhost:3000/home";
 
 const isLoggedIn = (req, res, next) => {
   if (req.user) {
-    console.log('LOGIN BACK',req.user);
     next();
   } else {
     res.sendStatus(401);
@@ -50,8 +49,6 @@ router.get("/login", (req, res) =>
 router.get("/fail", (req, res) => res.send("No se pudo loggear"));
 router.get("/func", (req, res) => res.json(succesLoginUrl));
 router.get("/loguser", isLoggedIn, (req, res) => res.json(req.user));
-
-// router.get('/register', (req, res) => res.send('Register'));
 
 
 
@@ -90,10 +87,9 @@ router.post("/register", async function (req, res) {
         to: data.email,
         subject: "Inicio Sesion",
         html: `
-                <b> Muchas gracias por loggearte en Tukiteck!!
+                <b> Muchas gracias por registrarte en Tukiteck!!
                 `,
       });
-      //return res.json({message: 'Usuario CREADO'})
       return res.redirect("/login");
     }
   } catch (error) {
@@ -102,14 +98,6 @@ router.post("/register", async function (req, res) {
   }
 });
 
-// router.post('/login',(req, res) =>{
-//     passport.authenticate('local',{
-//         failureRedirect: '/fail',
-//         successRedirect: succesLoginUrl,
-//     })
-//     res.json(succesLoginUrl)
-
-// })
 
 router.post(
   "/login",
@@ -125,10 +113,5 @@ router.get("/out", (req, res) => {
   res.redirect("/deslog");
 });
 
-// router.get("/logout", (req, res) => {
-//     req.session = null;
-//     req.logout();
-//     res.redirect("/deslog");
-//   });
 
 module.exports = router;
