@@ -72,14 +72,14 @@ class ActionProvider {
   
     plusHenry = () => {
       const message = this.createChatBotMessage(
-        <a href='https://www.soyhenry.com/'>Si quieres conocer donde estudiaron mis creadores hace click aquí 💛!!</a>
+        <a href='https://www.soyhenry.com/' style={{textDecoration:"none"},{color:"black"}}>Si quieres conocer donde estudiaron mis creadores hace click aquí 💛!!</a>
       )
       this.addMessageToState(message)
     }
   
     ayudaOfrecer = () => {
       const message = this.createChatBotMessage(
-        'Hace click en una opción.',
+        'Si tienes problemas con alguna compra de tickets, o al iniciar sesion, ve hasta abajo en la pagina. Luego da click en "Soporte" y llena los datos. \n\ Nos estaremos comunicando a la brevedad.',
       )
       this.addMessageToState(message)
     }

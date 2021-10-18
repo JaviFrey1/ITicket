@@ -4,9 +4,7 @@ const nodemailer = require('nodemailer');
 
 
 async function ForgotPassword(req, res) {
-
     const { email } = req.body;
-    
     const usuario = await Users.findOne({where: { email: email}});
     
     if (!usuario) return res.status(401).json([]);

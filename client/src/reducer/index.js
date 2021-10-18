@@ -27,7 +27,8 @@ import {
   PAYPAL,
   GET_BEST,
   RESET_PASSWORD,
-  CONFIRM_PASSWORD
+  CONFIRM_PASSWORD,
+  FORGOT_PASSWORD
 
 } from "../actions";
 import { loadState } from "../localStorage";
@@ -46,7 +47,7 @@ const initialState = {
   persistedState,
   activeUser: '',
   tickets: [],
-  best:[]
+  best: []
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -186,11 +187,15 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         recommended: action.payload
       }
-      case GET_BEST:
-        return{
-          ...state,
-          best:action.payload
-        }
+    case GET_BEST:
+      return {
+        ...state,
+        best: action.payload
+      }
+    case FORGOT_PASSWORD:
+      return {
+        ...state
+      }
 
     default:
       return state;
