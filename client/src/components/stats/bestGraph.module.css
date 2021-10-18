@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    /* background-image: url("../../images/TEXTURA\ MARMOL.jfif"); */
+    padding: 20px;
+    width: 300px;
+    height: 100vh;
+    margin-left: 30%;
+}

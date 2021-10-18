@@ -15,6 +15,7 @@ async function AddEvent(req, res, next) {
       province: data.province,
       price: data.price,
       image: data.image,
+      totalTickets:data.availableTickets,
       availableTickets: data.availableTickets,
       date: data.date,
       time: data.time,
