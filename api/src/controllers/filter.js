@@ -32,6 +32,7 @@ async function dataParseada() {
         province: result.province,
         image: result.image,
         price: result.price,
+        totalTickets:result.totalTickets,
         availableTickets: result.availableTickets,
         date: result.date,
         time: result.time,
@@ -62,7 +63,6 @@ async function filtroCategories(req, res, next) {
 
 async function filtroSubCategories(req, res, next) {
   let { genre } = req.query;
-  console.log("genre", genre);
 
   try {
     const eventDb = await dataParseada();
