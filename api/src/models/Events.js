@@ -39,6 +39,9 @@ module.exports = (sequelize) => {
       price: {
         type: DataTypes.FLOAT,
         allowNull: false,
+      }, totalTickets: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
       availableTickets: {
         type: DataTypes.INTEGER,
@@ -64,9 +67,7 @@ module.exports = (sequelize) => {
       }
       
     },
-    { timestamps: true },
-    { updatedAt: false },
-    { createdAt: false }
+   
   );
 };
 

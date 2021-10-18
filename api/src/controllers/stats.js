@@ -2,6 +2,19 @@ const { Tickets, Users, Events } = require("../db.js");
 const { finder } = require('./events')
 
 
+function removeDuplicates(originalArray, prop) {
+    var newArray = [];
+    var lookupObject  = {};
+
+    for(var i in originalArray) {
+       lookupObject[originalArray[i][prop]] = originalArray[i];
+    }
+
+    for(i in lookupObject) {
+        newArray.push(lookupObject[i]);
+    }
+     return newArray;
+}
 async function getBest(req, res) {
     function getTicketsPerEvent(array, evento) {
         var indices = [];
@@ -26,21 +39,68 @@ async function getBest(req, res) {
         if (tickets.length > 0) {
             tickets.map(t => {
                 const event = allEvents.filter(e => e.id === t.eventId)
-                selledEvents.push(event)
+                selledEvents.push(event[0].artist)
             })
             const data = []
             selledEvents.map(e => {
                 const cantTickets = getTicketsPerEvent(selledEvents, e)
                 data.push({ event: e, cant: cantTickets })
             })
+            var stats = removeDuplicates(data, "event");
 
-            let hash = {};
-            const stats = data.filter(o => hash[o.e] ? false : hash[o.e] = true);
             return res.send(stats)
         }
         return res.send([])
     } catch (err) { console.log(err) }
 
+
+}
+
+async function timeVStickets(req, res){
+    const {artist} = req.query
+    function getTicketsSameDate(array, date) {
+        var indices = [];
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] === date) indices.push(i);
+        }
+        return indices.length;
+    }
+    try{
+        const event = await Events.findOne({
+            where:{artist:artist}
+        })
+        const tickets = await Tickets.findAll({
+            include: [
+                {
+                    model: Events
+                },
+                {
+                    model: Users
+                }
+            ]
+        });
+        const data = []
+        data.push({availableTickets: event.totalTickets, date:event.createdAt.split(' ')[0]})
+
+        const eventTickets= tickets?.filter(t=>t.eventId===event.id)
+        const ticketsDates=[]
+        const ticketsSelled=[]
+        eventTickets? eventTickets.map(t=>ticketsDates.push(t.createdAt.split(' ')[0])) : res.send([])
+        ticketsDates.map(date=>{
+            const cant= getTicketsSameDate(ticketsDates, date)
+            ticketsSelled.push({date:date, cant: cant})
+        })
+        const ticketsSelledUnique= removeDuplicates(ticketsSelled, date)
+        while(totalTickets>0 && ticketsSelledUnique.length>0){
+            ticketsSelledUnique.map(obj=>{
+                totalTickets=totalTickets-obj.cant
+                data.push({availableTickets:totalTickets, date:obj.date})
+            })
+            ticketsSelledUnique.shift()
+        }
+        data.push({availableTickets:totalTickets, date:event.date})
+        res.send(data)
+    }catch(err){console.log(err)}
 
 }
 

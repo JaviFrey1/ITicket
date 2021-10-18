@@ -23,6 +23,7 @@ async function bulkEvents(req, res) {
                     province: e.province,
                     price: e.price,
                     image: e.image,
+                    totalTickets:e.availableTickets,
                     availableTickets: e.availableTickets,
                     date: e.date,
                     time: e.time,
