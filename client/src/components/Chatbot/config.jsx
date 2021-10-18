@@ -1,4 +1,5 @@
-import { createChatBotMessage } from 'react-chatbot-kit'
+import { createChatBotMessage } from 'react-chatbot-kit';
+// import ChatbotMessageAvatar from '../../../node_modules/react-chatbot-kit/src/components/ChatbotMessage/ChatBotMessageAvatar/ChatbotMessageAvatar.tsx'
 import React from 'react';
 import './main.css'
 const config = {
@@ -11,7 +12,6 @@ const config = {
       </div>
     ),
   },
-  
 
   initialMessages: [
     createChatBotMessage(

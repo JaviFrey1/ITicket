@@ -493,204 +493,153 @@ export const cartas = [
        "Opera"
      ],
      date: "2022-05-05"
-   }
+   },
+   {
+    name: "Quality Espacio",
+    artist: "TRUENO",
+    place: "Quality Espacio",
+    address: "Av. Cruz Roja 200",
+    location: "Cordoba",
+    province: "Cordoba",
+    price: 800,
+    availableTickets: 500,
+    image: "https://static6.ticketek.com.ar/cms_static/sites/default/files/images/show-header/truen960.png",
+    time: "20:00",
+    isImportant: false,
+    category: 1,
+    subCategories: [
+      "Hip Hop",
+      "Trap"
+    ],
+    date: "2021-11-26"
+  },
+  {
+    name: "Gran Rex",
+    artist: "Pat Metheny",
+    place: "Quality Espacio",
+    address: "Av. Corrientes 857",
+    location: "San Nicolas",
+    province: "Capital Federal",
+    price: 800,
+    availableTickets: 500,
+    image: "https://static6.ticketek.com.ar/cms_static/sites/default/files/images/show-header/pat-960x400-dic-2021.png",
+    time: "20:00",
+    isImportant: true,
+    category: 1,
+    subCategories: [
+      "Rock"
+    ],
+    date: "2021-12-11"
+  },
+  {
+    name: "Masters of Rock",
+    artist: "Nice Guys",
+    place: "Quality Espacio",
+    address: "Av. Cruz Roja 200",
+    location: "Cordoba",
+    province: "Cordoba",
+    price: 1400,
+    availableTickets: 500,
+    image: "https://static6.ticketek.com.ar/cms_static/sites/default/files/images/show-header/master.png",
+    time: "20:00",
+    isImportant: false,
+    category: 1,
+    subCategories: [
+      "Rock"
+    ],
+    date: "2021-11-22"
+  },
+  {
+    name: "La Muerte de Marguerite Duras",
+    artist: "Eduardo Pavlovsky",
+    place: "Quality Espacio",
+    address: "Maritimo Patricio Peralta Ramos 2544",
+    location: "Mar del Plata",
+    province: "Buenos Aires",
+    price: 1400,
+    availableTickets: 500,
+    image: "https://static6.ticketek.com.ar/cms_static/sites/default/files/images/show-header/marguerite.png",
+    time: "20:45",
+    isImportant: true,
+    category: 2,
+    subCategories: [
+      "Drama",
+      "Unipersonal"
+    ],
+    date: "2022-01-12"
+  },
+  {
+    name: "Extra virgen",
+    artist: "Juan Leyrado",
+    place: "Teatro Provincial",
+    address: "Maritimo Patricio Peralta Ramos 2544",
+    location: "Mar del Plata",
+    province: "Buenos Aires",
+    price: 1400,
+    availableTickets: 500,
+    image: "https://static6.ticketek.com.ar/cms_static/sites/default/files/images/show-header/extra-960x400.png",
+    time: "20:00",
+    isImportant: true,
+    category: 2,
+    subCategories: [
+      "Comedia"
+    ],
+    date: "2021-12-22"
+  },
+  {
+    name: "Casados con Hijos",
+    artist: "Guillermo Franchela",
+    place: "Gran Rex",
+    address: "Av. Corrientes 857",
+    location: "San Nicolas",
+    province: "Capital Federal",
+    price: 2000,
+    availableTickets: 500,
+    image: "https://static6.ticketek.com.ar/cms_static/sites/default/files/images/show-header/casado_con_hijos_960x400.jpg",
+    time: "16:00",
+    isImportant: true,
+    category: 2,
+    subCategories: [
+      "Comedia"
+    ],
+    date: "2022-01-15"
+  },
+  {
+    name: "Los Abuelos de la Nada",
+    artist: "Hilda Lizarazu",
+    place: "Teatro Coliseo",
+    address: "Marcelo T. de Alvear 1125",
+    location: "San Nicolas",
+    province: "Capital Federal",
+    price: 1600,
+    availableTickets: 500,
+    image: "https://static6.ticketek.com.ar/cms_static/sites/default/files/images/show-header/adln960.png",
+    time: "21:00",
+    isImportant: true,
+    category: 1,
+    subCategories: [
+      "Rock"
+    ],
+    date: "2021-11-12"
+  },
+  {
+    name: "Nafta",
+    artist: "Los Decxis",
+    place: "Gran Rex",
+    address: "Av. Corrientes 857",
+    location: "San Nicolas",
+    province: "Capital Federal",
+    price: 1600,
+    availableTickets: 500,
+    image: "https://static6.ticketek.com.ar/cms_static/sites/default/files/images/show-header/naf17960.png",
+    time: "21:00",
+    isImportant: true,
+    category: 1,
+    subCategories: [
+      "Hip Hop"
+    ],
+    date: "2021-12-17"
+  },
  ]
 
-
-
-
-
-
-// export const cartas= [{
-//   name: "Ariana Grande Tour",
-//    artist :"Ariana Grande",
-//    place :"Gran Rex",
-//    address:"Corrientes 857",
-//    location:"San Nicolas",
-//    province:"Capital Federal",
-//    price: 800,
-//    availableTickets: 140,
-//    image:"https://cdn.boletius.com/images/1497890220613-test-pos-arian-1920x720-min.jpg",
-//    time:"20:00",
-//    isImportant: false,
-//    category: 1,
-//    subCategories: ["Pop"],
-//    date: "2021-12-31"
-
-// }, {
-//    name: "Meteora",
-//    artist:"Linkin Park",
-//    place:"Teatro Mercedes Sosa",
-//    address:"San Martin 479",
-//    location:"San Miguel De Tucuman",
-//    province:"Tucuman",
-//    price: 900,
-//    availableTickets: 1100,
-//    image:"http://www.georgeamphitheatre.com/wp-content/uploads/2014/09/linkin-banner.png",
-//    time:"18:00",
-//    isImportant: true,
-//    category: 1,
-//    subCategories: ["Rock", "Pop"],
-//    date: "2022-10-16"
-// }, {
-//    name: "Con Eso SI Se Jode",
-//    artist:"Matias Bottero",
-//    place:"Teatro Real",
-//    address:"San Jeronimo 66",
-//    location:"Cordoba",
-//    province:"Cordoba",
-//    price: 800,
-//    availableTickets: 140,
-//    image:"https://www.mgdifusion.com.ar/wp-content/uploads/2021/05/Con-eso-si-se-jode.jpg",
-//    time:"19:00",
-//    isImportant: false,
-//    category: 2,
-//    subCategories: ["Comedia","'Unipersonal'","'Stand Up'","'Absurdo'"],
-//    date: "2022-09-07"
-// }, {
-//    name: "Hamlet",
-//    artist:"Pamplemoose",
-//    place:"Teatro La Kanoa De Papel",
-//    address:"Dr. Juan Olsacher 2680",
-//    location:"La Rioja",
-//    province:"La Rioja",
-//    price: 800,
-//    availableTickets: 140,
-//    image:"https://www.glenville.edu/sites/default/files/RM%20Hamlet%20Page%20Banner.jpg",
-//    time:"14:00",
-//    isImportant: false,
-//    category: 2,
-//    subCategories: ["Drama"],
-//    date: "2022-08-03"
-// },
-// {
-//    name: "The Pepo Show",
-//    artist:"El Pepo",
-//    place:"Sala 88 Coperativa De Teatro",
-//    address:"French 845",
-//    location:"Resistencia",
-//    province:"Chaco",
-//    price: 600,
-//    availableTickets: 400,
-//    image:"https://scontent.ftuc1-2.fna.fbcdn.net/v/t1.6435-9/37373467_1077054085782815_8150729415244906496_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=730e14&_nc_ohc=uV1cGtYKkuYAX_hzuEM&_nc_ht=scontent.ftuc1-2.fna&oh=551d1c4653190e1c69e31ab1f7e3c2e0&oe=618152D9",
-//    time:"16:00",
-//    isImportant: false,
-//    category: 1,
-//    subCategories: ["Cumbia"],
-//    date: "2022-08-16"
-// },{
-//    name: "L-Gante KLoKE Show",
-//    artist:"L-Gante",
-//    place:"El Arrimadero",
-//    address:"Misiones 234",
-//    location:"Neuquen",
-//    province:"Neuquen",
-//    price: 900,
-//    availableTickets: 700,
-//    image:"https://scontent.ftuc1-2.fna.fbcdn.net/v/t1.6435-9/210956194_2490923391051828_3258569032312035991_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=U1f3tEwJRqMAX-SPVC0&_nc_ht=scontent.ftuc1-2.fna&oh=89814411cd3cf2650461125dbe7cbe29&oe=617F8E4C",
-//    time:"23:00",
-//    isImportant: false,
-//    category: 1,
-//    subCategories: ["Cumbia", "Reggaeton"],
-//    date: "2022-11-19"
-// },{
-//    name: "The Skrillex Tour",
-//    artist:"Skrillex",
-//    place:"Teatro El Pasillo",
-//    address:"José de la Iglesia 1190",
-//    location:"San Salvador de Jujuy",
-//    province:"Jujuy",
-//    price: 1200,
-//    availableTickets: 500,
-//    image:"https://imgproxy.ra.co/_/quality:100/plain/https://static.ra.co/images/events/flyer/2016/3/us-0302-818324-front.jpg?dateUpdated=1458120621230",
-//    time:"00:00",
-//    isImportant: false,
-//    category: 1,
-//    subCategories: ["Cumbia", "Trap"],
-//    date: "2010-12-13"
-// },
-// {
-//    name: "Buena vida",
-//    artist:"Diego Torres",
-//    place:"Teatro Vorterix",
-//    address:"Federico Lacroze 3455",
-//    location:"Colegiales",
-//    province:"Capital Federal",
-//    price: 1000,
-//    availableTickets: 1440,
-//    image:"https://www2.baccredomatic.com/sites/default/files/gt_banner_desktop_diego_torres_0819.jpg",
-//    time:"22:00",
-//    isImportant: false,
-//    category: 1,
-//    subCategories: ["Rock"],
-//    date: "2022-09-21"
-
-// },
-// {
-//    name: "PZK",
-//    artist:"Tiago",
-//    place:"Teatro Vorterix",
-//    address:"Federico Lacroze 3455",
-//    location:"Colegiales",
-//    province:"Capital Federal",
-//    price: 1000,
-//    availableTickets: 1440,
-//    image:"https://i2.wp.com/urbanroosters.news/wp-content/uploads/2019/07/tiago-banner.jpg",
-//    time:"22:00",
-//    isImportant: false,
-//    category: 1,
-//    subCategories: ["Trap"],
-//    date: "2022-09-21"
-
-// },
-// {
-//    name: "13",
-//    artist:"Black Sabbath",
-//    place:"Luna Park",
-//    address:"Av. Eduardo Madero 470",
-//    location:"San Nicolas",
-//    province:"Capital Federal",
-//    price: 1000,
-//    availableTickets: 1440,
-//    image:"https://maxmetal.net/40/wp-content/uploads/2020/03/ozzy-osbourne-ordinary-man-banner-ok-1078x516.jpg",
-//    time:"22:00",
-//    isImportant: true,
-//    category: 1,
-//    subCategories: ["Rock"],
-//    date: "2022-03-25"
-
-// },
-// {
-//    name: "Papi Lounge",
-//    artist:"Maluma",
-//    place:"Teatro Vorterix",
-//    address:"Federico Lacroze 3455",
-//    location:"Colegiales",
-//    province:"Capital Federal",
-//    price: 1000,
-//    availableTickets: 1440,
-//    image:"https://maluma.online/wp-content/uploads/2021/07/Papi-Lounge-VIP-sp.jpg",
-//    time:"24:00",
-//    isImportant: false,
-//    category: 1,
-//    subCategories: ["Cumbia", "Reggaeton"],
-//    date: "2022-03-01"
-
-// },
-// {
-//    name: "LOCOPLAYA",
-//    artist:"Don Patricio",
-//    place:"Teatro Vorterix",
-//    address:"Federico Lacroze 3455",
-//    location:"Colegiales",
-//    province:"Capital Federal",
-//    price: 1000,
-//    availableTickets: 1440,
-//    image:"https://cdn.boletius.com/images/1568665182110-1920-720-locoplaya-vtx_%281%29.jpg",
-//    time:"22:00",
-//    isImportant: true,
-//    category: 1,
-//    subCategories: ["Trap"],
-//    date:"2022-02-27"
-// },
-// ]
+//  
