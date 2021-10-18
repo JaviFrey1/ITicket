@@ -67,20 +67,14 @@ class MessageParser {
       if (lowercase.includes("duda")) {
         this.actionProvider.guiaLinks();
       }
+      if (lowercase.includes("quien" || "creo")) {
+        this.actionProvider.plusHenry();
+      }
       if (lowercase.includes("henry")) {
         this.actionProvider.plusHenry();
       }
-      if (lowercase.includes("ayuda")) {
+      if (lowercase.includes("ayuda" || "help" || "no se")) {
         this.actionProvider.ayudaOfrecer();
-      }
-      if (lowercase.includes("ayuda")) {
-        this.actionProvider.ayudaOfrecer1();
-      }
-      if (lowercase.includes("ayuda")) {
-        this.actionProvider.ayudaOfrecer2();
-      }
-      if (lowercase.includes("ayuda")) {
-        this.actionProvider.ayudaOfrecer3();
       }
       if (lowercase.includes("vender")) {
         this.actionProvider.promocionar();

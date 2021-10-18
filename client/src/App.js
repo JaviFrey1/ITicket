@@ -47,7 +47,7 @@ function App() {
               <Route path="/update/:id" component={UpdateEvent} />
               <Route path="/users/:id" component={UserDetail} />
               <Route path="/checkout" />
-              <Route path="/contacto" component={Contact} />
+              <Route path="/contact" component={Contact} />
               <Route path="/panelAdmin" component={PanelAdmin} />
               <Route exact path="/confirm/:id" component={ConfirmReset}/>
             </Route>

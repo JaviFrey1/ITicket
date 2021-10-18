@@ -588,7 +588,7 @@ export const cartas = [
   },
   {
     name: "Casados con Hijos",
-    artist: "Guillermo Franchela",
+    artist: "Guillermo Francella",
     place: "Gran Rex",
     address: "Av. Corrientes 857",
     location: "San Nicolas",
