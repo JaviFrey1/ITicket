@@ -1,7 +1,10 @@
 @import url('http://fonts.cdnfonts.com/css/netflix-sans');
 
 .divRey {
-    background-color: rgba(1, 1, 2, 0.7);
+    border-top: 2px solid rgb(255, 204, 0);
+    border-bottom: 3px solid rgb(255, 204, 0);
+
+    background-color: rgba(130, 129, 131, 0.726);
     display: flex;
     justify-content: center;
     /* width: 100%; */
@@ -24,8 +27,6 @@
     width: 100%;
     padding-top: 5px;
     /* background-color: rgba(127, 122, 156, 0.8); */
-    border-top: 2px solid rgb(255, 204, 0);
-    border-bottom: 2px solid rgb(255, 204, 0);
     
 }
 .divRey .carousel button {
@@ -127,7 +128,7 @@
     display: inline-block;
     position: relative;
     /* color: rgb(97, 95, 95); */
-    color: white;
+    color: #fff;
     font-family: 'Netflix Sans', sans-serif;
     text-align: start;
     margin-left: 2.5em;
