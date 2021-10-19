@@ -44,7 +44,7 @@ const Ticket = ({ticket}) => {
             <div className={s.contQR} id="qr">
               <QRCode
                 value={ticket.id.toString()}
-                size={80}
+                size={100}
                 bgColor="white"
                 fgColor="black"
                 // level="H"
