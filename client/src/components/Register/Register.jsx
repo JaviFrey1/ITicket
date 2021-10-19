@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import s from "./register.module.css";
 import userRegister from "../../actions/register";
 import { useState } from "react";
+import Swal from 'sweetalert2';
 
 function validate(state) {
   let errors = {};
@@ -44,12 +45,16 @@ function Register() {
     );
   }
 
-  function handleInputSubmit(e) {
+ async function handleInputSubmit(e) {
     e.preventDefault();
     if (!errors.fullName && !errors.email && !errors.password && !errors.confirmPassword) {
-      dispatch(userRegister(state));
-      alert("registrado correctamente");
+     var users = await dispatch(userRegister(state));
+     if(users.payload.length <= 0){
+      Swal.fire("El mail escrito ya existe, por favor utilize uno nuevo");
+     } else {
+      Swal.fire("registrado correctamente");
       window.location.replace("http://localhost:3000/login");
+     }
     }
   }
 

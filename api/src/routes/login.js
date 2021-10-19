@@ -64,7 +64,7 @@ router.post("/register", async function (req, res) {
   try {
     const userDb = await Users.findOne({ where: { email: data.email } });
     if (userDb) {
-      res.json("Ya existe un usuario con ese email");
+      res.json([]);
     } else {
       if (data.email === "tukiteckpf@gmail.com") {
         const createdUser = await Users.create({
