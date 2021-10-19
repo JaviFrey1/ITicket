@@ -28,8 +28,7 @@ import {
   GET_BEST,
   TIME_VS_TICKETS,
   RESET_PASSWORD,
-  CONFIRM_PASSWORD,
-  FORGOT_PASSWORD
+  CONFIRM_PASSWORD
 
 } from "../actions";
 import { loadState } from "../localStorage";
@@ -48,10 +47,9 @@ const initialState = {
   persistedState,
   activeUser: '',
   tickets: [],
-
   best: [],
   stats: []
-
+};
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -143,7 +141,6 @@ export default function rootReducer(state = initialState, action) {
 
       }
     case USER_DATA:
-      // console.log('Reducer papa ==> ', action.payload)
       return {
         ...state,
         activeUser: action.payload
@@ -195,16 +192,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         best: action.payload
       }
-
     case TIME_VS_TICKETS:
       return {
         ...state,
         stats: action.payload
-
-    case FORGOT_PASSWORD:
-      return {
-        ...state
-
       }
 
     default:
