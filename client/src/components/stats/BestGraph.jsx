@@ -19,9 +19,10 @@ export default function BestGraph() {
     const datosBest = {
         label: "eventos mas vendidos",
         data: data,
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
+        backgroundColor: 'rgba(107, 44, 167, 0.705)',
+        borderColor: 'rgb(255, 204, 0)',
+        hoverBackgroundColor: 'rgb(107, 42, 167)',
+        borderWidth: 3,
     };
 
     const $grafica = document.querySelector("#grafica");
