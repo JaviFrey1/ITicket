@@ -52,5 +52,5 @@ router.use('/', mercadopago);
 
 router.use('/', paypal);
 
-module.exports = {router}
+module.exports = router
     
