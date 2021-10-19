@@ -22,7 +22,7 @@
 }
 .contLow{
     /* background-color: red; */
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgb(255, 254, 254);
     border: 1px solid #eee;
     height: 80%;
     margin: 0 2em;
