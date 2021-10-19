@@ -1,4 +1,5 @@
 const { Tickets, Users, Events } = require("../db.js");
+const { v4: uuidv4 } = require("uuid");
 
 
 async function getTickets(req, res, next) {
@@ -59,6 +60,11 @@ async function updateTicket(req, res, next) {
 async function postTickets(req, res, next) { // User.addTickets(ticket)  Events.addTickets(ticket)
 
     let { cantidad, userId, idEvento } = req.body;
+    const id = uuidv4();
+
+    // let newId = id.split('-')
+    // newId = newId[newId.length-1] + ''
+    // console.log('newId => ',newId)
     
     try {
 
@@ -78,8 +84,14 @@ async function postTickets(req, res, next) { // User.addTickets(ticket)  Events.
         while (cantidad > 0) {
             
             const createdTicket = await Tickets.create({
+                id: id,
                 propietario: user.fullName
             });
+            console.log('Ticket creado: => ', createdTicket.dataValues)
+
+            // createdTicket.dataValues.id = createdTicket.dataValues.id + newId;
+
+            // console.log('id modf: => ', createdTicket.dataValues)
             
             await user.addTickets(createdTicket);
 
