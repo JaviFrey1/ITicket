@@ -4,11 +4,11 @@ import { useHistory } from "react-router-dom";
 import { useDispatch} from "react-redux";
 import confirmForgot from "../../actions/confirmForgot";
 
-import s from './confirmreset.module.css'
+import s from './ForgotPassword.module.css'
 import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs'
 
 
-export default function ConfirmReset() {
+export default function ForgotPassword() {
 
 
     const [pass, setPass] = useState('');
