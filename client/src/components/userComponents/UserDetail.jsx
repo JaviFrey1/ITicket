@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getUserDetail from "../../actions/getUserDetail";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import resetPassword from "../../actions/resetPassword";
 import s from "./userDetail.module.css"
 import { useAuth } from '../../context/AuthContext'
