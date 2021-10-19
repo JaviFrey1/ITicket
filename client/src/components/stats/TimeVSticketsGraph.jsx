@@ -20,9 +20,10 @@ export default function TimeVSticketsGraph({artist}) {
     const ticketsData = {
         label: artist + ' Tickets disp. en funcion del tiempo',
         data: data,
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
+        backgroundColor: 'rgba(107, 44, 167, 0.705)',
+        borderColor: 'rgb(255, 204, 0)',
+        hoverBackgroundColor: 'rgb(107, 42, 167)',
+        borderWidth: 3,
     };
 
     const $stats = document.querySelector("#stats");
