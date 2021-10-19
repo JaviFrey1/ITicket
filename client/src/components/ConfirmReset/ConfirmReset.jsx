@@ -10,7 +10,8 @@ import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs'
 
 export default function ConfirmReset() {
 
-
+    const [passwordShown, setPasswordShown] = useState(false);
+    const [confirmShown, setConfirmShown]=useState(false)
     const [pass, setPass] = useState('');
     const [confirm, setConfirm] = useState('');
     const [errors, setErrors] = useState('')
@@ -20,11 +21,12 @@ export default function ConfirmReset() {
     const { id } = useParams();
 
     const input = document.querySelector('#password');
-    function toggle() {
-        const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-        input.setAttribute('type', type);
-
-    }
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+      };
+      const toggleConfirmVisiblity = () => {
+        setConfirmShown(confirmShown ? false : true);
+      };
     const validate = () => {
         if (pass.length > 0) {
             if (pass !== confirm) {
@@ -42,10 +44,7 @@ export default function ConfirmReset() {
         setConfirm(e.target.value);
     }
     const submit = () => {
-        console.log(input.getAttribute("type"))
-        // validate();
-        // setPass('');
-        // setConfirm('');
+        validate()
         dispatch(confirmPassword(id,confirm));
         history.push('/home')
     }
@@ -55,21 +54,29 @@ export default function ConfirmReset() {
         <div className={s.container}>
             <div className={s.box}>
                 <div className={s.contInputs}>
+                    <div className={s.contInput}>
+
                     <input name='pass1' value={pass}
                         autoComplete="off" id='password'
-                        type="password" className={s.input}
+                        type={passwordShown ? "text" : "password"}
+                         className={s.input}
                         placeholder="Nueva contraseña"
                         onChange={(e) => handleInput1Change(e)}
-                    /> {input.type === 'password' ? <BsFillEyeFill onClick={() => toggle()} />
-                        : <BsFillEyeSlashFill onClick={() => toggle()} />}
+                    /> {passwordShown === false ? <BsFillEyeFill  className={s.icon} onClick={() => togglePasswordVisiblity()} />
+                        : <BsFillEyeSlashFill  className={s.icon} onClick={() => togglePasswordVisiblity()} />}
+                    </div>
+                    <div className={s.contInput}>
+
                     <input name='pass2' value={confirm}
-                        type="password" className={s.input}
+                         type={confirmShown ? "text" : "password"} className={s.input}
                         autoComplete="off"
                         placeholder="Reingresa la contraseña"
                         onChange={(e) => handleInput2Change(e)}
-                    />
+                    />{confirmShown === false ? <BsFillEyeFill  className={s.icon} onClick={() => toggleConfirmVisiblity()} />
+                    : <BsFillEyeSlashFill  className={s.icon} onClick={() => toggleConfirmVisiblity()} />}
+                    </div>
                     <div>
-                        {errors.length > 0 ? <h5 className={s.error}>{errors}</h5> : <div>HOLA</div>}
+                        {errors.length > 0 ? <h5 className={s.error}>{errors}</h5> : null}
                     </div>
                     <button className={s.btn} onClick={() => submit()}>GUARDAR</button>
                 </div>
