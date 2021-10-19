@@ -319,7 +319,7 @@ export default function EventDetail(props) {
             </div>
             <div className={s.foot}>
               <div className={s.availableTickets}>
-                {eventDetail.availableTickets <= 10 ? (
+                {eventDetail.availableTickets <= 10 && eventDetail.availableTickets>0? (
                   <h5>
                     Quedan solo {eventDetail.availableTickets} entradas
                     disponibles, no te quedes sin la tuya!!
@@ -340,11 +340,14 @@ export default function EventDetail(props) {
                   <div>Total: </div>
                   <div>$ {precio ? precio : eventDetail.price}</div>
                 </div>
-                <div className={s.contBotones}>
-                  <button className={s.buy} onClick={() => metdosDePago(body)}>
-                    <p>COMPRAR</p>
-                  </button>
-                </div>
+                {eventDetail.availableTickets > 0 ? 
+                 <div className={s.contBotones}>
+                 <button className={s.buy} onClick={() => metdosDePago(body)}>
+                   <p>COMPRAR</p>
+                 </button>
+               </div>
+                :<p>AGOTADO</p> }
+               
               </div>
             </div>
           </div>
