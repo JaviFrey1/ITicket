@@ -96,6 +96,34 @@ async function postTickets(req, res, next) { // User.addTickets(ticket)  Events.
 
 }
 
+async function getEventTickets(req, res){
+    let { eventId } = req.query
+
+    try {
+       
+        const eventTickets = await Tickets.findAll({
+            where: {
+                eventId: eventId
+            },
+            include: [
+                {
+                    model: Events
+                },
+                {
+                    model: Users
+                }
+            ]
+        });
+        if (eventTickets.length > 0) return res.send(eventTickets);
+        else {
+            res.send([])
+        }
+
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 
 
@@ -104,4 +132,5 @@ module.exports = {
     getTickets,
     updateTicket,
     postTickets,
+    getEventTickets
 };
