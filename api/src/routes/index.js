@@ -15,7 +15,7 @@ const tickets = require('./tickets');
 const recommended = require('./recommended');
 const paypal = require('./paypal');
 const resetPass = require('./resetPassword');
-const stats = require('./stats.js');
+const stats = require('./stats');
 const confirmPass = require('./confirmPassword');
 const forgotPass = require('./forgotPassword');
 const checkPass = require('./checkPassword')
@@ -52,6 +52,5 @@ router.use('/', mercadopago);
 
 router.use('/', paypal);
 
-module.exports = {
-    router}
+module.exports = {router}
     
