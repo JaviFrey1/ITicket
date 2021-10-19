@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { ConfirmPass } = require('../controllers/confirmPassword.js');
+const { ConfirmPass } = require('../controllers/confirmPassword');
 
 
 const router = Router();

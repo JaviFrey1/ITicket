@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { checkPassword } = require('../controllers/checkPassword.js');
+const { checkPassword } = require('../controllers/checkPassword');
 
 
 const router = Router();

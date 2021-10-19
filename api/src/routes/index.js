@@ -1,24 +1,24 @@
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const events = require('./events.js');
-const event = require('./event.js');
-const categories = require('./categories.js');
-const subcategories = require('./subCategories.js');
-const bulkevents = require ('./bulkevents.js');
-const filter = require('./filter.js');
-const google = require('./google.js');
-const login = require('./login.js');
-const users = require('./users.js');
-const mercadopago = require('./mercadopago.js');
-const tickets = require('./tickets.js');
-const recommended = require('./recommended.js');
-const paypal = require('./paypal.js');
-const resetPass = require('./resetPassword.js');
+const events = require('./events');
+const event = require('./event');
+const categories = require('./categories');
+const subcategories = require('./subCategories');
+const bulkevents = require ('./bulkevents');
+const filter = require('./filter');
+const google = require('./google');
+const login = require('./login');
+const users = require('./users');
+const mercadopago = require('./mercadopago');
+const tickets = require('./tickets');
+const recommended = require('./recommended');
+const paypal = require('./paypal');
+const resetPass = require('./resetPassword');
 const stats = require('./stats.js');
-const confirmPass = require('./confirmPassword.js');
-const forgotPass = require('./forgotPassword.js');
-const checkPass = require('./checkPassword.js')
+const confirmPass = require('./confirmPassword');
+const forgotPass = require('./forgotPassword');
+const checkPass = require('./checkPassword')
 
 const router = Router();
 

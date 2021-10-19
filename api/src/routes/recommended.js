@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getRecommended } = require('../controllers/events.js')
+const { getRecommended } = require('../controllers/events')
 
 
 const router = Router();

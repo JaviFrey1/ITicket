@@ -8,7 +8,7 @@ const passport = require('passport');
 const cors = require('cors')
 
 
-require('./db.js');
+require('./db');
 
 const server = express();
 

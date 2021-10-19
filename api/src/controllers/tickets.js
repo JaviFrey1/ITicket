@@ -1,4 +1,4 @@
-const { Tickets, Users, Events } = require("../db.js");
+const { Tickets, Users, Events } = require("../db");
 const { v4: uuidv4 } = require("uuid");
 
 

@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { bulkEvents } = require('../controllers/bulkevents.js')
+const { bulkEvents } = require('../controllers/bulkevents')
 
 
 const router = Router();

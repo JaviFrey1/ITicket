@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const {ReseteoPassword } = require('../controllers/resetPassword.js')
+const {ReseteoPassword } = require('../controllers/resetPassword')
 
 
 const router = Router();

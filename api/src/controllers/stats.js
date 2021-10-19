@@ -1,4 +1,4 @@
-const { Tickets, Users, Events } = require("../db.js");
+const { Tickets, Users, Events } = require("../db");
 const { finder } = require('./events')
 
 
