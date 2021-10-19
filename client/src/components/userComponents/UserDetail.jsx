@@ -19,30 +19,6 @@ export default function UserDetail(props) {
   const { activeUser } = useAuth()
 
 
-  // function handleClick(id) {
-  //   const input = document.querySelector('#password');
-  //   function toggle() {
-  //     const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-  //     input.setAttribute('type', type);
-  //     this.classList.toggle('bi-eye');
-  //   };
-  //   Swal
-  //     .fire({
-  //       title: "Ingresa la nueva contraseña",
-  //       input: <input type="password" name="password" id="password" />,
-  //       togglePasswordButton: <i class="bi bi-eye-slash" id="togglePassword" onClick={() => toggle()}></i>,
-  //       confirmButtonText: "Guardar",
-  //       cancelButtonText: "Cancelar",
-  //     })
-  //     .then(resultado => {
-  //       if (resultado.value) {
-  //         resetPassword(resultado.value)
-  //         console.log("nueva contraseña, " + password);
-  //       }
-  //     });
-  //   dispatch(resetPassword(id, email));
-  // }
-
   function eliminate() {
     Swal.fire({
       title: "Eliminar cuenta",

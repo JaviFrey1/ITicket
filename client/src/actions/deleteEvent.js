@@ -4,7 +4,7 @@ import axios from "axios";
 export default function deleteEvent(id) {
     return async function (dispatch) {
         try {
-            const res = await axios.delete(`http://localhost:3001/event/${id}`)
+            const res = await axios.delete(`/event/${id}`)
             return dispatch({
                 type: DELETE_EVENT,
                 payload: res.data

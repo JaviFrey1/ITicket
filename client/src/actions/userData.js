@@ -4,7 +4,7 @@ import axios from "axios";
 export default function userData() {
     return async function (dispatch) {
         try {
-            const userData = await axios.get('http://localhost:3001/loguser', { withCredentials: true });
+            const userData = await axios.get('/loguser', { withCredentials: true });
             return dispatch({ type: USER_DATA, payload: userData.data })
 
         } catch (error) {

@@ -5,7 +5,7 @@ export default function updateTicket(id, propietario) {
   return async function (dispatch) {
     try {
       const res = await axios.put(
-        `http://localhost:3001/tickets/${id}?propietario=${propietario}`
+        `/tickets/${id}?propietario=${propietario}`
       );
       return dispatch({
         type: UPDATE_TICKET,

@@ -4,7 +4,7 @@ import axios from "axios";
 export default function updateAvailable(id, cantidad) {
     return async function (dispatch) {
         try {
-            const res = await axios.put(`http://localhost:3001/event?eventId=${id}&cantidad=${cantidad}`)
+            const res = await axios.put(`/event?eventId=${id}&cantidad=${cantidad}`)
 
             return dispatch({
                 type: UPDATE_AVAILABLE,

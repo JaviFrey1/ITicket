@@ -5,7 +5,7 @@ export default function getRecommended(id){
     return( async function(dispatch){
         try{
  
-        const response= await axios(`http://localhost:3001/recommended?userId=${id}`) 
+        const response= await axios(`/recommended?userId=${id}`) 
         
         return dispatch({ type: GET_RECOMMENDED, payload: response.data });
         

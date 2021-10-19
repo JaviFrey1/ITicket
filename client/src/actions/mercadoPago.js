@@ -5,7 +5,7 @@ export default function mercadoPago(body) {
   return async function (dispatch) {
     try {
       
-      const response = await axios.post(`http://localhost:3001/checkout`, body);
+      const response = await axios.post(`/checkout`, body);
 
       window.location.replace(response.data);
       

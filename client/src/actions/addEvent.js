@@ -5,7 +5,7 @@ export default function addEvent(body) {
   return async function (dispatch) {
     try {
       
-      const response = await axios.post(`http://localhost:3001/event`, body);
+      const response = await axios.post(`/event`, body);
       
       return dispatch({ type: ADD_EVENT, payload: response.data });
     } catch (err) {

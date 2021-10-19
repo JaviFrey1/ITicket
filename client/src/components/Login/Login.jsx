@@ -83,7 +83,7 @@ function Login() {
     }
   }
   const persigueUser = async () => {
-    const res = await axios.get(`http://localhost:3001/loguser`, { withCredentials: true }).catch((error) => {
+    const res = await axios.get(`/loguser`, { withCredentials: true }).catch((error) => {
       console.log("No estuvo bien autenticado");
     });
     if (res && res.data) {

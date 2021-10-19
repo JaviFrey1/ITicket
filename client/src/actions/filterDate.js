@@ -6,7 +6,7 @@ export default function filterDate(startDate, endDate) {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/filter/date?startdate=${startDate}&enddate=${endDate}`
+        `/filter/date?startdate=${startDate}&enddate=${endDate}`
       );
       console.warn("ACCION=> ", response.data);
       return dispatch({ type: FILTER_DATE, payload: response.data });

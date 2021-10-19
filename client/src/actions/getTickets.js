@@ -5,7 +5,7 @@ export default function getTickets(id) {
   return async function (dispatch) {
     try {
       const response = await axios(
-        `http://localhost:3001/tickets?idUser=${id}`
+        `/tickets?idUser=${id}`
       );
 
       return dispatch({ type: GET_TICKETS, payload: response.data });
