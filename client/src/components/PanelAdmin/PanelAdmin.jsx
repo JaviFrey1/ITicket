@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import s from './panelAdmin.module.css'
 import AddEvent from "../AddEvent/AddEvent";
 import BestGraph from "../stats/BestGraph";
+import TimeVSticketsGraph from "../stats/TimeVSticketsGraph";
 export default function PanelAdmin() {
   const [div, setDiv] = useState('')
   function handleClickNew() {
@@ -20,11 +21,12 @@ export default function PanelAdmin() {
           
           </div>
         </div>
-        <div style={{ margin: '20px' }} onClick={() => handleClickNew()}>Agregar un nuevo evento</div>
-        <div style={{ margin: '20px' }} onClick={() => handleClickGraph()}>Eventos más vendidos</div>
+        <div style={{ margin: '20px' }} className={s.option} onClick={() => handleClickNew()}>Agregar un nuevo evento</div>
+        <div style={{ margin: '20px' }} className={s.option} onClick={() => handleClickGraph()}>Eventos más vendidos</div>
 
       </div>
       <div>
+
         <div className={div === "showAdd" ? s.showAdd : s.hideAdd}>
           <AddEvent />
         </div>
@@ -33,7 +35,9 @@ export default function PanelAdmin() {
         <div className={div === "showGraph" ? s.showGraph : s.hideGraph}>
           <BestGraph />
         </div>
+
       </div>
+      
     </div>
   );
 }

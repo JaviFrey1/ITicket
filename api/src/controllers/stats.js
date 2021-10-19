@@ -80,30 +80,32 @@ async function timeVStickets(req, res){
             ]
         });
         const data = []
-        data.push({availableTickets: event.totalTickets, date:event.createdAt.split(' ')[0]})
-
+        data.push({availableTickets: event.totalTickets, date:event.createdAt.toISOString().split('T')[0]})
         const eventTickets= tickets?.filter(t=>t.eventId===event.id)
         const ticketsDates=[]
         const ticketsSelled=[]
-        eventTickets? eventTickets.map(t=>ticketsDates.push(t.createdAt.split(' ')[0])) : res.send([])
-        ticketsDates.map(date=>{
-            const cant= getTicketsSameDate(ticketsDates, date)
-            ticketsSelled.push({date:date, cant: cant})
+        eventTickets? eventTickets.map(t=>ticketsDates.push(t.createdAt.toISOString().split('T')[0])) : res.send([])
+        ticketsDates.map(d=>{
+            const cant= getTicketsSameDate(ticketsDates, d)
+            ticketsSelled.push({date:d, cant: cant})
         })
-        const ticketsSelledUnique= removeDuplicates(ticketsSelled, date)
-        while(totalTickets>0 && ticketsSelledUnique.length>0){
+        const ticketsSelledUnique= removeDuplicates(ticketsSelled, 'date')
+        let available = event.totalTickets
+        while(available>0 && ticketsSelledUnique.length>0){
             ticketsSelledUnique.map(obj=>{
-                totalTickets=totalTickets-obj.cant
-                data.push({availableTickets:totalTickets, date:obj.date})
+                available=available-obj.cant
+                data.push({availableTickets:available, date:obj.date})
             })
             ticketsSelledUnique.shift()
         }
-        data.push({availableTickets:totalTickets, date:event.date})
-        res.send(data)
+        data.push({availableTickets:available, date:event.date})
+        console.log('data sin repetidos con inicio y fecha de expiracion del evento', data)
+        return res.send(data)
     }catch(err){console.log(err)}
 
 }
 
 module.exports={
-    getBest
+    getBest,
+    timeVStickets
 }

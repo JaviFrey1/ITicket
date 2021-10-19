@@ -26,6 +26,7 @@ import {
   USER_LOGIN,
   PAYPAL,
   GET_BEST,
+  TIME_VS_TICKETS,
   RESET_PASSWORD,
   CONFIRM_PASSWORD
 
@@ -46,7 +47,8 @@ const initialState = {
   persistedState,
   activeUser: '',
   tickets: [],
-  best:[]
+  best: [],
+  stats: []
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -186,11 +188,16 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         recommended: action.payload
       }
-      case GET_BEST:
-        return{
-          ...state,
-          best:action.payload
-        }
+    case GET_BEST:
+      return {
+        ...state,
+        best: action.payload
+      }
+    case TIME_VS_TICKETS:
+      return {
+        ...state,
+        stats: action.payload
+      }
 
     default:
       return state;
