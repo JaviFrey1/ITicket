@@ -60,7 +60,7 @@ async function updateTicket(req, res, next) {
 async function postTickets(req, res, next) { // User.addTickets(ticket)  Events.addTickets(ticket)
 
     let { cantidad, userId, idEvento } = req.body;
-    const id = uuidv4();
+    
 
     // let newId = id.split('-')
     // newId = newId[newId.length-1] + ''
@@ -82,7 +82,7 @@ async function postTickets(req, res, next) { // User.addTickets(ticket)  Events.
         });
 
         while (cantidad > 0) {
-            
+            const id = uuidv4();
             const createdTicket = await Tickets.create({
                 id: id,
                 propietario: user.fullName
