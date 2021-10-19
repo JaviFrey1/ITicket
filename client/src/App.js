@@ -19,8 +19,9 @@ import LoginSuccess from "./components/Nav/Login/Login";
 import Historialpage from "./components/TicketsPage/TicketsPage/HistorialPage/HistorialPage";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register"
-import { AuthProvider } from "./context/AuthContext";
 import ConfirmReset from "./components/ConfirmReset/ConfirmReset";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
+import { AuthProvider } from "./context/AuthContext";
 
 
 function App() {
@@ -47,9 +48,10 @@ function App() {
               <Route path="/update/:id" component={UpdateEvent} />
               <Route path="/users/:id" component={UserDetail} />
               <Route path="/checkout" />
-              <Route path="/contacto" component={Contact} />
+              <Route path="/contact" component={Contact} />
               <Route path="/panelAdmin" component={PanelAdmin} />
               <Route exact path="/confirm/:id" component={ConfirmReset}/>
+              <Route exact path='confirmForgot/:id' component={ForgotPassword}/>
             </Route>
 
           </Switch>

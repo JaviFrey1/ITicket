@@ -8,5 +8,3 @@ router.put('/:id', ConfirmPass);
 
 
 module.exports = router;
-
-
