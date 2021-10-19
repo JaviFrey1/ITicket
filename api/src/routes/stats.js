@@ -1,11 +1,11 @@
 const { Router } = require('express');
-const { getBest} = require('../controllers/stats.js')
+const { getBest, timeVStickets} = require('../controllers/stats.js')
 
 
 const router = Router();
 
 router.get('/', getBest);
-
+router.get('/time', timeVStickets)
 
 
 
