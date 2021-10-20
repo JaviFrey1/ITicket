@@ -1,4 +1,4 @@
-const { Events, SubCategories, Categories } = require(__dirname +"../db.js");
+const { Events, SubCategories, Categories } = require("../db.js");
 const { v4: uuidv4 } = require("uuid");
 const { finder } = require('./events.js')
 async function bulkEvents(req, res) {
