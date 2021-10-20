@@ -120,13 +120,9 @@ router.post("/register", async function (req, res) {
     </head>
     <body>
     <div class="containergral">
-    <b> Muchas gracias por registrarte en Tukiteck!!
-   
+    <b> Muchas gracias por registrarte en Tukiteck!!</b>
     </hr>
-    <b>Este enlace dura 24 horas.</b>
-  
     </hr>
-    <b>Gracias por confiar en nosotros!</b>
     </div>
     </body>
     </html>
