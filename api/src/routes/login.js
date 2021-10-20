@@ -85,9 +85,52 @@ router.post("/register", async function (req, res) {
       await transporter.sendMail({
         from: "tukiteckpf@gmail.com",
         to: data.email,
-        subject: "Inicio Sesion",
+        subject: "Registro Usuario",
         html: `
-                <b> Muchas gracias por registrarte en Tukiteck!!
+        <html>
+    <head>
+    <style type="text/css">
+    .containergral {
+        align-content: center;
+        justify-content: center;
+        padding: 30px;
+        position: relative;
+        background: #EFEFEF;
+        }
+    h1 {
+        color: #000000CC;
+    }
+    .unorderlist {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background: #F7F7F7;
+        color: #000000CC;
+      }
+    .img-card {
+        margin-left: 25%;
+        margin-top: 20px    
+    }
+    .ap{
+        text-decoration: none;
+    }
+    
+    </style>
+    </head>
+    <body>
+    <div class="containergral">
+    <b> Muchas gracias por registrarte en Tukiteck!!
+   
+    </hr>
+    <b>Este enlace dura 24 horas.</b>
+  
+    </hr>
+    <b>Gracias por confiar en nosotros!</b>
+    </div>
+    </body>
+    </html>
+               
                 `,
       });
       return res.redirect("/login");
