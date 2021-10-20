@@ -1,9 +1,8 @@
 import React from "react";
-import { useState } from "react";
-import Container from "@material-ui/core/container";
-import Grid from "@material-ui/core/grid";
-import Box from "@material-ui/core/box";
-import Link from "@material-ui/core/Link";
+import {Container, Grid, Box, Link} from "@material-ui/core";
+// import Grid from "@material-ui/core/grid";
+// import Box from "@material-ui/core/box";
+// import Link from "@material-ui/core/Link";
 import "./footer.css";
 import img from "./../../images/pngLetraNegraBorde.png";
 import {

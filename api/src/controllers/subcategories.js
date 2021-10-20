@@ -1,4 +1,4 @@
-const { Categories, SubCategories } = require('../db.js');
+const { Categories, SubCategories } = require('../db');
 
 //CARGA EN LA BASE DE DATOS LAS SUBACATEGORIAS
 
