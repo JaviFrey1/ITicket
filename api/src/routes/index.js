@@ -4,7 +4,6 @@ const { Router } = require('express');
 const events = require('./events');
 const event = require('./event');
 const categories = require('./categories');
-<<<<<<< HEAD
 const subcategories = require('./subcategories');
 const bulkevents = require ('./bulkevents');
 const filter = require('./filter');
@@ -20,15 +19,6 @@ const stats = require('./stats');
 const confirmPass = require('./confirmPassword');
 const forgotPass = require('./forgotPassword');
 const checkPass = require('./checkPassword')
-=======
-const subcategories =require('./subcategories');
-
-const bulkevents = require ('./bulkevents')
-const filter = require('./filter')
-
-
-
->>>>>>> main
 
 const router = Router();
 
