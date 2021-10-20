@@ -8,6 +8,7 @@ import Axios from "axios";
 
 import s from "./add.module.css";
 
+//Hola
 export function validate(state) {
   let errors = {};
   if (!state.name) {
