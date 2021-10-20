@@ -74,7 +74,7 @@ function Login() {
         if (newWindow.closed) {
           console.log('Ahora estas autenticado');
           persigueUser();
-          window.location.replace("http://localhost:3000/home")
+          window.location.replace("https://tukiteck-avmo59sxa-tukiteckpf-gmailcom.vercel.app/home")
           if (timer) {
             clearInterval(timer);
           }

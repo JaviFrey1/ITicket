@@ -19,9 +19,9 @@ router.post("/checkout", async (req, res) => {
         },
       ],
       back_urls: {
-        success: "http://localhost:3000/home",
-        failure: "http://localhost:3000/rechazo",
-        pending: "http://localhost:3000/home",
+        success: "https://tukiteck-avmo59sxa-tukiteckpf-gmailcom.vercel.app/home",
+        failure: "https://tukiteck-avmo59sxa-tukiteckpf-gmailcom.vercel.app/rechazo",
+        pending: "https://tukiteck-avmo59sxa-tukiteckpf-gmailcom.vercel.app/home",
       },
       auto_return: "approved",
     };
