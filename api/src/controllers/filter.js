@@ -1,4 +1,4 @@
-const { Events, Categories, SubCategories } = require("../db");
+const { Events, Categories, SubCategories } = require("../db.js");
 const {Op}=require('sequelize')
 async function dataParseada() {
   const dataBase = await Events.findAll({

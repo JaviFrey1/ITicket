@@ -1,4 +1,4 @@
-const { Users } = require('../db');
+const { Users } = require('../db.js');
 const nodemailer = require('nodemailer');
 
 
@@ -9,7 +9,7 @@ async function ReseteoPassword(req, res) {
     // console.log('ESTOY EN BACK',email)
     // const usuario = await Users.findOne({where: { email: email}});
     const iden = await Users.findOne({ where: { id: id } })
-    console.log('IDEN BACK=>>>>>>>>', iden)
+
 
     if (!id) return res.status(401).json([]);
 

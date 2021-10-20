@@ -1,4 +1,4 @@
-const { Events, SubCategories, Categories } = require("../db");
+const { Events, SubCategories, Categories } = require("../db.js");
 const { v4: uuidv4 } = require("uuid");
 
 async function AddEvent(req, res, next) {

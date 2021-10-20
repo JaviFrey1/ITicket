@@ -1,5 +1,5 @@
 
-const { Events, Categories, SubCategories, Tickets, Users } = require("../db");
+const { Events, Categories, SubCategories, Tickets, Users } = require("../db.js");
 
 async function finder() {
   const dataBase = await Events.findAll({
