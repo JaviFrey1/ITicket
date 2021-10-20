@@ -1,4 +1,4 @@
-const { Events, SubCategories, Categories } = require("../db.js");
+const { Events, subCategories, Categories } = require("../db.js");
 const { v4: uuidv4 } = require("uuid");
 
 async function AddEvent(req, res, next) {
@@ -29,7 +29,7 @@ async function AddEvent(req, res, next) {
     data.subCategories.map(async e => {
       if (typeof e === "string") { e = JSON.parse(e) }
 
-      const [subCat, created] = await SubCategories.findOrCreate({
+      const [subCat, created] = await subCategories.findOrCreate({
         where: {
           genre: e.genre,
           catId: e.catId

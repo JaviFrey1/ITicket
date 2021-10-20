@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
-const { Users } = require("../db");
+const { Users } = require(__dirname + "../db.js");
 const router = Router();
 const { v4: uuidv4 } = require("uuid");
 const session = require("express-session");

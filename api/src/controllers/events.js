@@ -1,5 +1,5 @@
 
-const { Events, Categories, SubCategories, Tickets, Users } = require("../db.js");
+const { Events, Categories, subCategories, Tickets, Users } = require("../db.js");
 
 async function finder() {
   const dataBase = await Events.findAll({
@@ -12,7 +12,7 @@ async function finder() {
       },
 
       {
-        model: SubCategories,
+        model: subCategories,
         through: {
           attributes: [],
         },
@@ -101,7 +101,7 @@ async function getEventById(req, res) {
         },
 
         {
-          model: SubCategories,
+          model: subCategories,
           through: {
             attributes: [],
           },
