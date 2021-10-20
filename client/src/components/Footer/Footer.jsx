@@ -67,7 +67,7 @@ export default function Footer() {
               <Box borderBottom={1}>Emprende con nosotros</Box>
 
               <Box>
-                <Link href="/contacto" color="inherit">
+                <Link href="/contact" color="inherit">
                   Vende con nosotros
                 </Link>
               </Box>

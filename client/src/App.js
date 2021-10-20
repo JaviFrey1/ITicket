@@ -57,7 +57,7 @@ function App() {
             <Route path="/privacidad" component={Privacy} />
             
             <Route path="/checkout" />
-            <Route path="/contacto" component={Contact} />
+            <Route path="/contact" component={Contact} />
            
 
         </AuthProvider>
