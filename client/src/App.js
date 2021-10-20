@@ -25,6 +25,7 @@ import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRouteUser from "./context/PivateRouteUser";
 import PrivateRouteAdmin from "./context/PrivateRouteAdmin";
+import Support from "./components/Support/Support";
 
 function App() {
 
@@ -58,6 +59,8 @@ function App() {
             
             <Route path="/checkout" />
             <Route path="/contact" component={Contact} />
+            <Route path="/support" component={Support} />
+
            
 
         </AuthProvider>
