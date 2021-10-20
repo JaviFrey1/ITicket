@@ -17,7 +17,6 @@ export default function Contact() {
     emailjs.sendForm('gmail', 'template_1hlpvpe', e.target, 'user_GdBu7T9DTHFnIo5cvAyNk')
       .then((result) => {
         console.log(result)
-        console.log(result.text);
       }, (error) => {
         console.log(error.text);
       });

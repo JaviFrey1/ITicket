@@ -8,14 +8,18 @@ import TimeVSticketsGraph from "./TimeVSticketsGraph";
 
 
 export default function BestGraph() {
-    const [timeGraphData, setTimeGraphData]=useState('')
+    const [timeGraphData, setTimeGraphData] = useState('')
     const dispatch = useDispatch();
-    const [div, setDiv]=useState('')
+    const [div, setDiv] = useState('')
     const best = useSelector(state => state.best)
     const tags = []
     const data = []
 
-    best.map(obj => { tags.push(obj.event); data.push(obj.cant) })
+    best.map(obj => {
+        tags.push(obj.event);
+        data.push(obj.cant)
+        return best
+    })
     const datosBest = {
         label: "eventos mas vendidos",
         data: data,
@@ -29,62 +33,52 @@ export default function BestGraph() {
 
     useEffect(() => {
         dispatch(getBest());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         const chart = new Chart($grafica, {
             type: 'bar',
             data: {
                 labels: tags,
-                datasets: [
-                    datosBest,
-                ]
+                datasets: [datosBest,]
             },
-
             options: {
                 responsive: true,
                 scales: {
                     yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-
-                        }
+                        ticks: { beginAtZero: true }
                     }],
                 },
                 onClick(e) {
                     const activePoints = chart.getElementsAtEventForMode(e, 'nearest', {
                         intersect: true
                     }, false)
-                    
-                   setTimeGraphData( tags[activePoints[0].index])
-                   console.log(timeGraphData)
-                   setDiv('redi')
-                 
+                    setTimeGraphData(tags[activePoints[0].index])
+                    setDiv('redi')
                 }
             }
         });
-
         return () => { chart.destroy() }
-    }, [best]);
-   
+    }, [best,$grafica,datosBest,tags,timeGraphData]);
+
     return (
-   <div>
+        <div>
 
-        <div className={s.container}>
+            <div className={s.container}>
 
-            <canvas id="grafica"></canvas>
- 
+                <canvas id="grafica" role="img"></canvas>
+
+            </div>
+            {div === 'redi' ?
+                <div className={s.container} >
+                    <TimeVSticketsGraph artist={timeGraphData} />
+                </div> : null
+            }
+
+
+
         </div>
-        {div==='redi'?
-      <div className={s.container} >
-      <TimeVSticketsGraph artist={timeGraphData} />
-</div>  :null
-    }
-      
 
-       
-   </div>
 
-        
     );
 }

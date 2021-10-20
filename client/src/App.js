@@ -1,8 +1,6 @@
-
-
 import "./App.css";
 import React from "react";
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { Route, BrowserRouter} from "react-router-dom";
 import Event from "./components/Event/Event";
 import WishList from "./components/WishList/WishList";
 import EventDetail from "./components/EventDetail/EventDetail";

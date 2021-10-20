@@ -2,10 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-// import Ticket from "./../Ticket/Ticket";
 import s from "./ticketsPage.module.css";
-// import Swal from "sweetalert2";
-// import BotonPrint from "./Button";
 import DetalleCompra from "./DetalleCompra";
 import { ImPrinter } from "react-icons/im";
 import { BiHistory } from "react-icons/bi";
@@ -44,7 +41,7 @@ const Ticketspage = () => {
 
     if (activeUser) dispatch(getTickets(activeUser.id));
 
-  }, [dispatch]);
+  }, [dispatch,activeUser]);
 
 
   return (
@@ -62,6 +59,7 @@ const Ticketspage = () => {
           const artistaTickets = [];
           tickets.map((ticket, i) => {
             if (ticket.event.artist === artista) artistaTickets.push(ticket);
+            return tickets
           });
           return (
             <div

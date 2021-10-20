@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,31 +17,6 @@ export default function UserDetail(props) {
   const history = useHistory()
   const userDetail = useSelector((state) => state.userDetail);
   const { activeUser } = useAuth()
-
-
-  // function handleClick(id) {
-  //   const input = document.querySelector('#password');
-  //   function toggle() {
-  //     const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-  //     input.setAttribute('type', type);
-  //     this.classList.toggle('bi-eye');
-  //   };
-  //   Swal
-  //     .fire({
-  //       title: "Ingresa la nueva contraseña",
-  //       input: <input type="password" name="password" id="password" />,
-  //       togglePasswordButton: <i class="bi bi-eye-slash" id="togglePassword" onClick={() => toggle()}></i>,
-  //       confirmButtonText: "Guardar",
-  //       cancelButtonText: "Cancelar",
-  //     })
-  //     .then(resultado => {
-  //       if (resultado.value) {
-  //         resetPassword(resultado.value)
-  //         console.log("nueva contraseña, " + password);
-  //       }
-  //     });
-  //   dispatch(resetPassword(id, email));
-  // }
 
   function eliminate() {
     Swal.fire({
@@ -63,7 +38,6 @@ export default function UserDetail(props) {
     if (activeUser) dispatch(getUserDetail(activeUser.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, activeUser]);
-  console.log('ACTIVE =>',activeUser)
   const {id} = useParams()
   async function handleClick() {
     try {
@@ -75,7 +49,7 @@ export default function UserDetail(props) {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          console.log('USERDETAIL=>',activeUser.id, activeUser.email)
+
           Swal.fire('Te enviamos un email');
         } else if (result.isDenied) {
           Swal.fire('No cambiaste tu contraseña')

@@ -11,12 +11,12 @@ const Result = () => {
 export default function Contact() {
   const [result, showresult] = useState(false);
   const sendEmail = (e) => {
-    console.log()
+    
     e.preventDefault();
 
     emailjs.sendForm('gmail', 'template_egfpbsu', e.target, 'user_GdBu7T9DTHFnIo5cvAyNk')
       .then((result) => {
-        console.log(result)
+
         console.log(result.text);
       }, (error) => {
         console.log(error.text);

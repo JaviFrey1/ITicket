@@ -3,10 +3,8 @@ import { useDispatch } from "react-redux";
 import userLogin from '../../actions/login';
 import s from './login.module.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import forgotPassword from '../../actions/forgotPassword';
-// import LoginSuccess from '../Nav/Login/Login';
 
 function validate(state) {
   let errors = {};
@@ -63,10 +61,10 @@ function Login() {
   async function handleInputSubmit(e) {
     e.preventDefault();
     if (!errors.email && !errors.password) {
+      
       let dis = await dispatch(userLogin(state));
-
       if(dis.payload.length <= 0){
-        Swal.fire(`Usuario/contraseña invalido.`)
+        Swal.fire(`Usuario/contraseña incorrecto`)
       } else {
         window.location.replace(dis.payload);
       }
@@ -78,7 +76,6 @@ function Login() {
     if (newWindow) {
       const timer = setInterval(() => {
         if (newWindow.closed) {
-          console.log('Ahora estas autenticado');
           persigueUser();
           window.location.replace("http://localhost:3000/home")
           if (timer) {
@@ -90,7 +87,6 @@ function Login() {
   }
   const persigueUser = async () => {
     const res = await axios.get(`http://localhost:3001/loguser`, { withCredentials: true }).catch((error) => {
-      console.log("No estuvo bien autenticado");
     });
     if (res && res.data) {
       console.log("User:", res.data)

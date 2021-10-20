@@ -111,32 +111,33 @@ export default function EventDetail(props) {
 
       return results;
     } catch (error) {
-      console.log("rompio mapa");
       setLat("-38.416097");
       setLong("-63.616672");
     }
   }
+
   useEffect(() => {
     dispatch(getEventDetail(props.match.params.id)).then((results) => {
       const fullAdress =
-        results.payload.address +
-        "," +
-        results.payload.location +
-        "," +
-        results.payload.province;
+      results.payload.address +
+      "," +
+      results.payload.location +
+      "," +
+      results.payload.province;
+      buscar(fullAdress)
 
-      buscar(fullAdress);
     });
-
+  
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-  }, [dispatch]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch,props.match.params.id]);
 
 
   function handleChange(e) {
     e.preventDefault();
-    if (e.target.value == 1) {
+    if (e.target.value === '1') {
       setPrecio(eventDetail.price);
     } else {
       setPrecio(eventDetail.price * 2);
@@ -222,8 +223,6 @@ export default function EventDetail(props) {
       if (eventDetail.availableTickets < cantidad) {
         soldOut();
       } else {
-        console.log(state.totalPrice,state.title,state.quantity)
-        console.log('sobre dispatch => ', pay);
         dispatch(paypal(pay));
         dispatch(postTickets(body));
         dispatch(updateAvailable(eventDetail.id, cantidad));

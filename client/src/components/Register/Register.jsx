@@ -48,7 +48,7 @@ function Register() {
  async function handleInputSubmit(e) {
     e.preventDefault();
     if (!errors.fullName && !errors.email && !errors.password && !errors.confirmPassword) {
-     var users = await dispatch(userRegister(state));
+     let users = await dispatch(userRegister(state));
      if(users.payload.length <= 0){
       Swal.fire("El mail escrito ya existe, por favor utilize uno nuevo");
      } else {

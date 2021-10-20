@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-content: flex-start;
-  /* background-image: url("../../images/TEXTURA\ MARMOL.jfif"); */
+
   padding: 20px;
   width: 170%;
   height: 170vh;
@@ -98,23 +98,10 @@ select {
 }
 
 .mostrarDiv {
-  /* background-color: rgb(238, 151, 151); */
-  /* display: flex;
-  flex-direction: row;
-  width: 500px;
-  height: max-content;
-  margin-top: 15px; */
-
-
-  /* display: flex; */
-  /* flex-direction: row; */
   margin: 20px 0px 0 0;
   width: 400px;
   display: grid;
-  /* background-color: pink; */
   grid-template-columns: repeat(auto-fill, minmax(min-content, 90px));
-  /* background-color: red; */
-  /* margin-left: 10px; */
   gap: 5px;
   align-items: center;
   height: fit-content;
@@ -124,7 +111,6 @@ select {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* background-color: rgb(167, 167, 240); */
   margin: 5px 10px;
   width: min-content;
 }
