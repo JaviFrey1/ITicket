@@ -21,7 +21,7 @@ export default function SearchBar() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getEvents( title ));
+    dispatch(getEvents(title));
     // dispatch(setPage(1));
     setTitle("");
   }
@@ -45,8 +45,8 @@ export default function SearchBar() {
               value={title}
             />
           </div>
-          <button className={`${style.btn}`} onClick={(e) => getEvents("")}>
-           VER TODOS
+          <button className={style.btn} onClick={(e) => getEvents("")}>
+            VER TODOS
           </button>
         </form>
       </div>

@@ -12,7 +12,7 @@ export default function Paginate({ eventsPerPage, allEvents, paginate }) {
         {pageNumbers.length > 0? pageNumbers.map((number) => {
           return (
             <div key={number} className={`${s.number}`} onClick={() => paginate(number)}>
-              <div className={s.ref}>{number}</div>
+              <div>{number}</div>
             </div>
           );
         }): null}

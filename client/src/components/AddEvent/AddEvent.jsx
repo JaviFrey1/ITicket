@@ -105,6 +105,7 @@ export default function AddEvent() {
       [e.target.name]: e.target.value,
 
     });
+
     setErrors(validate(state));
   }
 
@@ -114,7 +115,6 @@ export default function AddEvent() {
       category: e.target.value,
     });
   }
-
   function handleCheckSub(e) {
     if (e.target.checked) {
       setState({
@@ -142,7 +142,6 @@ export default function AddEvent() {
       subCategories: [...state.subCategories, { genre: capGenre, catId: 1 }],
     })
   }
-
   function handleNewSubTeatro(e) {
     const capGenre = e.target.value[0].toUpperCase() + e.target.value.slice(1).toLowerCase()
     setState({
@@ -150,13 +149,9 @@ export default function AddEvent() {
       subCategories: [...state.subCategories, { genre: capGenre, catId: 2 }],
     })
   }
-
-
   function handleSubmit(e) {
     e.preventDefault();
-    let newFecha = state.date.split("-");
-    newFecha = newFecha.reverse().join("/");
-    state.date = newFecha;
+    
 
     dispatch(addEvent(state));
     alert("Has agregado un nuevo evento!");
@@ -289,15 +284,8 @@ export default function AddEvent() {
           {errors.location && <h5 className="error">{errors.location}</h5>}
           <div className={`${s.caja}`}>
             <label>Provincia:</label>
-            {/* <input
-              autoComplete="off"
-              type="text"
-              name="province"
-              value={state.province}
-              placeholder="Ej: Buenos Aires"
-              onChange={(e) => handleInputChange(e)}
-            /> */}
             <select
+            style={{width:'60%'}}
               name='province'
               onChange={e => handleInputChange(e)}
             >
@@ -327,6 +315,7 @@ export default function AddEvent() {
           <div className={`${s.caja}`}>
             <label>Destacado:</label>
             <select
+              style={{width:'60%'}}
               name='isImportant'
               onChange={(e) => {
                 handleInputChange(e);
@@ -360,7 +349,6 @@ export default function AddEvent() {
               onChange={(e) => {
                 handleSelect(e);
                 show(e.target.value);
-                // alert(e.target.value);
               }}
             >
               <option>Category</option>
@@ -445,20 +433,20 @@ export default function AddEvent() {
           </div>
           <div className={`${s.btnCont}`}>
             {/* {state.name &&
-            state.date &&
-            state.time &&
-            state.artist &&
-            state.availableTickets &&
-            state.price &&
-            state.place &&
-            state.address &&
-            state.location &&
-            state.province &&
-            state.category &&
-            state.subCategories.length > 0 ? ( */}
-            <button className={s.btnSubmit} type="submit">
-              CREAR EVENTO
-            </button>
+              state.date &&
+              state.time &&
+              state.artist &&
+              state.availableTickets &&
+              state.price &&
+              state.place &&
+              state.address &&
+              state.location &&
+              state.province &&
+              state.category &&
+              state.subCategories.length > 0 ? ( */}
+              <button className={s.btnSubmit} type="submit">
+                CREAR EVENTO
+              </button>
             {/* ) : null} */}
           </div>
         </form>

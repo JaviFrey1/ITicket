@@ -4,15 +4,13 @@
   align-content: flex-start;
   /* background-image: url("../../images/TEXTURA\ MARMOL.jfif"); */
   padding: 20px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 150vh;
+  width: 170%;
+  height: 170vh;
+  margin-left: 30%;
 }
 
 .container {
-  width: 50%;
+  width: 100%;
 }
 
 h1 {

@@ -1,5 +1,5 @@
-const { Events, Categories, SubCategories } = require("../db");
-
+const { Events, Categories, SubCategories } = require("../db.js");
+const {Op}=require('sequelize')
 async function dataParseada() {
   const dataBase = await Events.findAll({
     include: [
@@ -24,7 +24,7 @@ async function dataParseada() {
         name: result.name,
         id: result.id,
         category: result.categories.map((cat) => cat.id),
-        subCategories: result.subCategories,
+        subCategories: result.subCategories.map((subCat)=>subCat.genre),
         artist: result.artist,
         place: result.place,
         address: result.address,
@@ -32,6 +32,7 @@ async function dataParseada() {
         province: result.province,
         image: result.image,
         price: result.price,
+        totalTickets:result.totalTickets,
         availableTickets: result.availableTickets,
         date: result.date,
         time: result.time,
@@ -62,7 +63,6 @@ async function filtroCategories(req, res, next) {
 
 async function filtroSubCategories(req, res, next) {
   let { genre } = req.query;
-  console.log("genre", genre);
 
   try {
     const eventDb = await dataParseada();
@@ -71,7 +71,7 @@ async function filtroSubCategories(req, res, next) {
 
     eventDb.map((e) =>
       e.subCategories.map((s) =>
-        s.genre.toLowerCase() === genre.toLowerCase() ? filtrados.push(e) : null
+        s.toLowerCase() === genre.toLowerCase() ? filtrados.push(e) : null
       )
     );
 
@@ -91,7 +91,7 @@ async function filtroLocalidad(req, res, next) {
     const eventDb = await dataParseada();
     const filtrados = [];
 
-    eventDb?.map((e) => {
+    eventDb.map((e) => {
       console.log(" LOCATION, PROVINCE", e.location, e.province);
       if (localidad && provincia) {
         e.location.toLowerCase().includes(localidad.toLowerCase())
@@ -123,33 +123,37 @@ async function filtroLocalidad(req, res, next) {
 }
 
 async function filtroFecha(req, res, next) {
-  let { date } = req.query;
-  let splited = date.split("/");
-  // const eventDb = await dataParseada();
-  // res.send(eventDb);
+  let { startdate, enddate } = req.query;
+  // let splitedStartDate = startdate.split("/");
+  // let splitedEndDate = enddate.split("/");
+ console.log(startdate, enddate)
   try {
-    const eventDb = await dataParseada();
-    let filtrados = [];
+    const eventDb= await Events.findAll({
+      where : {
+        date : {[Op.between] : [startdate , enddate ]}}})
+        console.log(eventDb)
+     if (eventDb.length > 0) return  res.status(200).send(eventDb)
+    // let filtrados = [];
 
-    eventDb.map((e) => (e.date === date ? filtrados.push(e) : null));
+    // eventDb.map((e) => (e.date === date ? filtrados.push(e) : null));
 
-    // filtrados = eventDb.filter((e) => e.date === date);
-    console.log("FILTRADDOS :", filtrados);
+    // // filtrados = eventDb.filter((e) => e.date === date);
+    // console.log("FILTRADDOS :", filtrados);
 
-    if (filtrados.length > 0) return res.send(filtrados);
-    else {
-      eventDb.map((m) =>
-        m.date.split("/")[1] === splited[1] &&
-        m.date.split("/")[2] === splited[2]
-          ? filtrados.push(m)
-          : null
-      );
+    // if (filtrados.length > 0) return res.send(filtrados);
+    // else {
+    //   eventDb.map((m) =>
+    //     m.date.split("/")[1] === splited[1] &&
+    //     m.date.split("/")[2] === splited[2]
+    //       ? filtrados.push(m)
+    //       : null
+    //   );
 
-      if (filtrados.length > 0) return res.send(filtrados);
-      else {
-        res.send([]);
-      }
-    }
+    //   if (filtrados.length > 0) return res.send(filtrados);
+    //   else {
+    //     res.send([]);
+    //   }
+    // }
   } catch (error) {
     next(error);
   }

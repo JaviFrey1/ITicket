@@ -1,6 +1,6 @@
-const { Events, SubCategories, Categories } = require("../db");
+const { Events, SubCategories, Categories } = require("../db.js");
 const { v4: uuidv4 } = require("uuid");
-const { finder } = require('./events')
+const { finder } = require('./events.js')
 async function bulkEvents(req, res) {
 
     let data = { ...req.body };
@@ -23,26 +23,35 @@ async function bulkEvents(req, res) {
                     province: e.province,
                     price: e.price,
                     image: e.image,
+                    totalTickets:e.availableTickets,
                     availableTickets: e.availableTickets,
                     date: e.date,
                     time: e.time,
                     isImportant: e.isImportant
                 });
                 const cat = await Categories.findOne({
-                    where: { id: e.category },
-                });
+                    where: { id: parseInt(e.category) },
+                  });
                 await createdEvent.addCategories(cat);
 
-                e.subCategories?.map(async (genre) => {
-                    const subCat = await SubCategories.findOne({
+                e.subCategories.map(async (genre) => {
+                    const [subCat, created] = await SubCategories.findOrCreate({
                         where: {
-                            genre: genre,
-                        },
-                    });
-
+                          genre: genre,
+                          catId:parseInt(e.category)
+                        }
+                
+                      });
                     await createdEvent.addSubCategories(subCat);
+                    if (created) {
+                        const category = await Categories.findOne({
+                            where: {
+                                id: e.category
+                            }
+                        })
+                        await category.addSubCategories(subCat)
+                    }
                 });
-            
             })
 
             return res.send('Eventos precargados con exito')
@@ -58,42 +67,3 @@ async function bulkEvents(req, res) {
 module.exports = {
     bulkEvents,
 };
-
-
-
-
-
-
-
-
-
-
-
-  // const fs = require('fs');
-// const path = require('path');
-
-// var FileReader = require('filereader')
-
-  // try{
-  //   const eventsLoaded = await finder()
-  //   eventsLoaded? null : await Events.bulkCreate(array)
-  //    }catch(err){console.log('error en bulkCreate', err)}
-// function urlGetter(){
-//   const reader = new FileReader();
-//   const urls = fs.readdirSync(path.join(__dirname, '../images'))
-//     .map(async (file) => {
-//       reader.readAsDataURL(file);
-//       const formData = new FormData();
-//       formData.append("file", file);
-//       formData.append("upload_preset", "di4u9mje");
-//       const response = await Axios.post(
-//         "https://api.cloudinary.com/v1_1/tukiteck/image/upload",
-//         formData
-//       )
-//       return response.data.secure_url })
-
-//   return urls
-
-// }
-
-// console.log(urlGetter())

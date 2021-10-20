@@ -1,39 +1,39 @@
-export const GET_EVENTS = "GET_EVENTS"
-export const ADD_EVENT_WISHLIST = "ADD_EVENT_WISHLIST "
-export const REMOVE_EVENT_WISHLIST = "REMOVE_EVENT_WISHLIST"
-export const GET_EVENT_DETAIL = "GET_EVENT_DETAIL"
-export const FILTER_DATE = 'FILTER_DATE'
-export const FILTER_CAT = "FILTER_CAT" //Javi
-export const FILTER_SUBCAT = "FILTER_SUBCAT" 
-export const FILTER_ADDRESS = 'FILTER_ADDRESS'
-export const GET_CATEGORIES = "GET_CATEGORIES"
-export const GET_SUBCATEGORIES = "GET_SUBCATEGORIES"
-export const SET_PAGE ="SET_PAGE"//Javi
-export const BULK_EVENTS = "BULK_EVENTS"
 
 
-export const  ADD_EVENT = " ADD_EVENT"
-export const REMOVE_EVENT='REMOVE_EVENT'
-
-export function removeEvent(payload){
-    return{
-        type: REMOVE_EVENT,
-        payload
-    }
-}
-
-export  function addEventWish(recipe){
-    return {
-        type: ADD_EVENT_WISHLIST,
-        payload: recipe
-    }
-}
-
-export  function removeEventWish(id){
-    return {
-        type: REMOVE_EVENT_WISHLIST,
-        payload:id
-    }
-}
-
-
+export const GET_EVENTS = "GET_EVENTS";
+export const GET_CATEGORIES = "GET_CATEGORIES";
+export const GET_USER_DETAIL = "GET_USER_DETAIL";
+export const GET_EVENT_DETAIL = "GET_EVENT_DETAIL";
+export const GET_SUBCATEGORIES = "GET_SUBCATEGORIES";
+export const ADD_EVENT_WISHLIST = "ADD_EVENT_WISHLIST ";
+export const FILTER_CAT = "FILTER_CAT"; //Javi
+export const FILTER_DATE = "FILTER_DATE";
+export const FILTER_SUBCAT = "FILTER_SUBCAT";
+export const FILTER_ADDRESS = "FILTER_ADDRESS";
+export const ADD_EVENT = " ADD_EVENT";
+export const UPDATE_EVENTS = "UPDATE_EVENTS";
+export const UPDATE_USER_PASS = "UPDATE_USER_PASS";
+export const SET_PAGE = "SET_PAGE"; //Javi
+export const BULK_EVENTS = "BULK_EVENTS";
+export const REMOVE_EVENT = "REMOVE_EVENT";
+export const REMOVE_EVENT_WISHLIST = "REMOVE_EVENT_WISHLIST";
+export const DELETE_EVENT = "DELETE_EVENT";
+export const POST_USER = "POST_USER";
+export const POST_TICKETS = "POST_TICKETS";
+export const UPDATE_AVAILABLE = "UPDATE_AVAILABLE";
+export const GET_TICKETS = "GET_TICKETS";
+export const UPDATE_TICKET = "UPDATE_TICKET";
+export const  USER_DATA = 'USER_DATA';
+export const  USER_LOGOUT = 'USER_LOGOUT';
+export const MERCADO_PAGO = 'MERCADO_PAGO';
+export const DELETE_USER = 'DELETE_USER'
+export const USER_LOGIN = 'USER_LOGIN'
+export const USER_REGISTER = 'USER_REGISTER'
+export const GET_RECOMMENDED = 'GET_RECOMMENDED '
+export const PAYPAL = 'PAYPAL'
+export const GET_BEST = 'GET_BEST'
+export const TIME_VS_TICKETS = 'TIME_VS_TICKETS'
+export const RESET_PASSWORD = 'RESET_PASSWORD'
+export const CONFIRM_PASSWORD = 'CONFIRM_PASSWORD'
+export const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
+export const CONFIRM_FORGOT = 'CONFIRM_FORGOT'

@@ -1,16 +1,11 @@
-const { Events, SubCategories, Categories } = require("../db");
+const { Events, subCategories, Categories } = require("../db.js");
 const { v4: uuidv4 } = require("uuid");
 
 async function AddEvent(req, res, next) {
   const id = uuidv4();
   let data = { ...req.body, id };
 
-
   try {
-    
-    console.log('DATA EN BAK',data)
-    console.log('SUBCATEGORIES EN BACK', data.subCategories)
-    console.log('CATEGORY iD PARSEADO', parseInt(data.category))
     const createdEvent = await Events.create({
       name: data.name,
       artist: data.artist,
@@ -20,40 +15,39 @@ async function AddEvent(req, res, next) {
       province: data.province,
       price: data.price,
       image: data.image,
+      totalTickets:data.availableTickets,
       availableTickets: data.availableTickets,
       date: data.date,
       time: data.time,
       isImportant: data.isImportant,
     });
     const cat = await Categories.findOne({
-      where: { id:  parseInt(data.category) },
+      where: { id: parseInt(data.category) },
     });
     await createdEvent.addCategories(cat);
-    console.log('NUEVO EVENTO CON CATEGORIA ASOCIADA', createdEvent)
-    
-    data.subCategories.map(async e=>{
-     if (typeof e === "string"){ e =  JSON.parse(e)}
 
-      const [subCat, created] = await SubCategories.findOrCreate({
+    data.subCategories.map(async e => {
+      if (typeof e === "string") { e = JSON.parse(e) }
+
+      const [subCat, created] = await subCategories.findOrCreate({
         where: {
           genre: e.genre,
           catId: e.catId
         }
-     
+
       });
-      console.log('SubCat en database',subCat)
+
       await createdEvent.addSubCategories(subCat);
       if (created) {
-        console.log('HOLA FUI CREADO, ME VAN A ASIGNAR LA CAT')
+
         const category = await Categories.findOne({
           where: {
             id: subCat.catId
           }
         })
         await category.addSubCategories(subCat)
-        console.log('hola ya me asiganor la categoria y asi quede;', subCat)
       }
-     
+
     })
     return res.send("Evento Creado Satisfactoriamente");
   } catch (error) {
@@ -62,8 +56,11 @@ async function AddEvent(req, res, next) {
   }
 }
 
+
+
 async function updateEvent(req, res, next) {
   const id = req.params.id;
+  
 
   const {
     name,
@@ -77,8 +74,8 @@ async function updateEvent(req, res, next) {
     availableTickets,
     date,
     time,
-    category,
     subCategories,
+    category
   } = req.body;
   try {
     await Events.update(
@@ -94,8 +91,7 @@ async function updateEvent(req, res, next) {
         availableTickets,
         date,
         time,
-        category,
-        subCategories,
+
       },
       {
         where: {
@@ -105,6 +101,38 @@ async function updateEvent(req, res, next) {
     );
 
     let eventUpdated = await Events.findByPk(id);
+
+    const cat = await Categories.findOne({
+      where: { id: parseInt(category) },
+    });
+
+    await eventUpdated.setCategories(cat);
+    
+
+
+    subCategories.map(async obj => {
+      if (typeof obj === "string") { obj = JSON.parse(obj) }
+
+
+      const [subCat, created] = await SubCategories.findOrCreate({
+        where: {
+          genre: obj.genre,
+          catId: obj.catId
+        }
+
+      });
+      await eventUpdated.setSubCategories(subCat);
+      if (created) {
+        const category = await Categories.findOne({
+          where: {
+            id: subCat.catId
+          }
+        })
+        await category.addSubCategories(subCat)
+      }
+    }
+    )
+
     res.json(eventUpdated)
   } catch (error) {
     next(error)
@@ -117,24 +145,47 @@ async function deleteEvent(req, res, next) {
   let id = req.params.id
 
   try {
-
-    let deleted = await Events.destroy({
+    await Events.destroy({
       where: {
         id: id
       }
     })
-
     return res.send('borrado')
-
-
   } catch (error) {
     next(error)
   }
 
 }
+async function updateAvailable(req, res, next) {
+  let { eventId, cantidad } = req.query;
+
+
+  try {
+    const before = await Events.findByPk(
+      eventId
+    )
+   
+    const evento = await Events.update(
+      {
+        availableTickets: before.availableTickets - cantidad
+      },
+      {
+        where: {
+          id: eventId,
+        },
+      }
+    );
+    res.json(evento)
+
+  } catch (error) {
+    next(error)
+  }
+}
+
 
 module.exports = {
   AddEvent,
   updateEvent,
-  deleteEvent
+  deleteEvent,
+  updateAvailable
 };

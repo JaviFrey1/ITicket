@@ -1,6 +1,5 @@
 
-const { Events, Categories, SubCategories } = require("../db");
-
+const { Events, Categories, subCategories, Tickets, Users } = require("../db.js");
 
 async function finder() {
   const dataBase = await Events.findAll({
@@ -13,7 +12,7 @@ async function finder() {
       },
 
       {
-        model: SubCategories,
+        model: subCategories,
         through: {
           attributes: [],
         },
@@ -35,6 +34,7 @@ async function finder() {
         province: result.province,
         image: result.image,
         price: result.price,
+        totalTickets:result.totalTickets,
         availableTickets: result.availableTickets,
         date: result.date,
         time: result.time,
@@ -42,12 +42,12 @@ async function finder() {
       };
     });
     return eventDb
-  }else return []
+  } else return []
 }
 
 async function getAllEvents(req, res) {
   let name = req.query.name;
- 
+
   try {
     if (name) {
       const searcheado = name.toLowerCase();
@@ -101,7 +101,7 @@ async function getEventById(req, res) {
         },
 
         {
-          model: SubCategories,
+          model: subCategories,
           through: {
             attributes: [],
           },
@@ -122,6 +122,7 @@ async function getEventById(req, res) {
         province: dataBase.province,
         image: dataBase.image,
         price: dataBase.price,
+        totalTickets:dataBase.totalTickets,
         availableTickets: dataBase.availableTickets,
         date: dataBase.date,
         time: dataBase.time,
@@ -135,6 +136,51 @@ async function getEventById(req, res) {
 }
 
 
+async function getRecommended(req, res) {
+  const { userId } = req.query
+  try {
+    const allEvents = await finder()
+
+    const userTickets = await Tickets.findAll({
+      where: {
+        userId: userId
+      },
+      include: [
+        {
+          model: Events,
+        },
+        {
+          model: Users,
+        }
+      ]
+    });
+
+    if (userTickets.length > 0) {
+      const userSubcats = []
+      const alreadyEvents = [] 
+
+      userTickets.map(async t =>{
+        const event = allEvents.filter(e=>e.id===t.eventId)
+     
+        event[0].subCategories.map(subcat=>{if(!userSubcats.includes(subcat))userSubcats.push(subcat)})
+        alreadyEvents.push(event[0].name)        
+      })
+      const restEvents = []
+      allEvents.map(e=>!alreadyEvents.includes(e.name)? restEvents.push(e):null)
+      const recommended = []
+      restEvents.map(e => userSubcats.map(subcat => {
+        if (e.subCategories.includes(subcat) && recommended.length<10 && !e.isImportant && !alreadyEvents.includes(e) && !recommended.includes(e)) recommended.push(e)
+      }))
+      if (recommended.length > 0) return res.send(recommended)
+      else return res.send([])
+
+    }
+    else {
+      res.send([])
+    }
+  } catch (err) { console.log(err) }
+}
+
 
 
 
@@ -146,6 +192,7 @@ async function getEventById(req, res) {
 
 
 module.exports = {
+  getRecommended,
   getAllEvents,
   getEventById,
   finder

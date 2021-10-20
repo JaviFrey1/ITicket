@@ -4,23 +4,20 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('tickets', {
-                                                                                  
-    prize: {
-      type: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.UUID,
+      // defaultValue: DataTypes.UUIDV4,
+      // allowNull: false,
+      primaryKey: true,
+    },                                                                              
+    propietario: {
+      type: DataTypes.STRING,
       allowNull: false,
-     
     },
 
-    // id:{ 
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   primaryKey: true
-    // },
-    
 
   },
-   {timestamps: false},
-   {updatedAt: false},
-   {createdAt: false}
+  
   );
 };
+

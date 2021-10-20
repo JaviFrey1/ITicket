@@ -1,0 +1,12 @@
+.container{
+    border-top:2px solid #000;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    /* background-image: url("../../images/TEXTURA\ MARMOL.jfif"); */
+    padding: 20px;
+    width:600px;
+    height: 100vh;
+    margin-left: 30%;
+}

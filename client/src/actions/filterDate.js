@@ -1,11 +1,13 @@
 import { FILTER_DATE } from ".";
 import axios from "axios";
 
-export default function filterDate(date) {
+export default function filterDate(startDate, endDate) {
   //   console.warn(date);
   return async function (dispatch) {
     try {
-      const response = await axios.get( `/filter/date?date=${date}` );
+      const response = await axios.get(
+        `/filter/date?startdate=${startDate}&enddate=${endDate}`
+      );
       console.warn("ACCION=> ", response.data);
       return dispatch({ type: FILTER_DATE, payload: response.data });
     } catch (err) {

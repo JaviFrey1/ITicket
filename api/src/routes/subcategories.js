@@ -4,7 +4,6 @@ const { getSubCategories } = require('../controllers/subcategories.js')
 
 const router = Router();
 
-// router.get('/', getSubCategories);
 router.get('/', getSubCategories)
 
 

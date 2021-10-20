@@ -1,0 +1,100 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 91vh;
+}
+
+.caja{
+    display: flex;
+    border-radius: 5px;
+    border: solid 3px rgb(255, 204, 0);
+    width: 90%;
+    height: 80%;
+}
+.cajita{
+    width: 100%;
+}
+.titulo{
+    color: #000000CC;
+    margin: 0 2em;
+    font-size: 1.2em;
+}
+.contLow{
+    /* background-color: red; */
+    background-color: rgb(255, 254, 254);
+    border: 1px solid #eee;
+    height: 80%;
+    margin: 0 2em;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+.lowData{
+    /* background-color: grey; */
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.name{
+    /* background-color: blue; */
+    background-color: rgb(255, 255, 255, .4);
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-top: 2em;
+    padding: .5em;
+    width: 90%;
+    height: 15%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.name > * {
+    font-size: 16px;
+}
+.name > :first-child{    
+    color: #000000CC;
+}
+.name > :nth-child(2){
+    color: #00000073;
+}
+.changeContainer{
+    /* background-color: blue; */
+    align-self: center;
+    width: 90%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.update{
+    width: 80%;
+    /* background-color: red; */
+    color: #000000CC;
+    text-align: end;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+.eliminar{
+    /* background-color: rgb(255, 255, 255, .4); */
+    background-color: #eeeeee;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-top: 2em;
+    padding: .5em;
+    width: 90%;
+    height: 15%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 10px -6px rgba(0,0,0,0.68);
+    -webkit-box-shadow: 0px 0px 10px -6px rgba(0,0,0,0.68);
+    -moz-box-shadow: 0px 0px 10px -6px rgba(0,0,0,0.68);
+}
+
+.eliminar:hover{
+    border: 2px groove rgba(37,35,37,0.24);
+
+}

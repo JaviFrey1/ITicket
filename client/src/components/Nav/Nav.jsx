@@ -2,11 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./nav.module.css";
 import logo from "../../images/pngLetraNegraRedimensionado.png";
-import { BsBookmarkFill } from "react-icons/bs";
+import { useAuth } from '../../context/AuthContext'
 
-export function Nav({ setInput, input }) {
+import {
+  BsBookmarkFill
+} from "react-icons/bs";
+import Menuuser from "./MenuNav/MenuUser";
+import MenuAdmin from "./MenuNav/MenuAdmin";
+
+export function Nav() {
+  const {activeUser} = useAuth()
+
+
   return (
-    <nav className={style.navContainer}>
+     
+      <nav className={style.navContainer}>
+        
       <div className={style.linkContainer}>
         <Link to="/" className={style.Link}>
           <div className={style.contLogo}>
@@ -20,21 +31,35 @@ export function Nav({ setInput, input }) {
           </div>
         </Link>
 
-        {/*<div className={style.space}></div>*/}
-        <div className={style.contBtn2}>
-          <Link to="/wishList" className={style.hover}>
-            <BsBookmarkFill />
-          </Link>
-          <Link to="/login" className={style.hover}>
-            <div>Iniciar Sesion</div>
-          </Link>
-          <Link to="/register" className={style.hover}>
-            <div> Registrate</div>
-          </Link>
-        </div>
+        {!activeUser ? (
+          <div className={style.contBtn2}>
+            <Link to="/wishList" className={style.hover}>
+              <BsBookmarkFill />
+            </Link>
+            <Link to="/login" className={style.hover}>
+              <div style={{ color: "black" }}>Iniciar Sesion</div>
+            </Link>
+            <Link to="/register" className={style.hover}>
+              <div style={{ color: "black" }}> Registrate</div>
+            </Link>
+          </div>
+        ) : (
+          <div className={style.contBtn2}>
+            <Link to="/wishList" className={style.hover}>
+              <BsBookmarkFill />
+            </Link>
+            <div to="null" className={style.hover_2}>
+              {activeUser.isAdmin === false?
+                <Menuuser />
+                : <MenuAdmin />
+              }
+            </div>
+          </div>
+        )}
       </div>
     </nav>
-  );
+    );
 }
+
 
 export default Nav;

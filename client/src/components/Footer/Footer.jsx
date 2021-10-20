@@ -11,7 +11,10 @@ import {
   AiFillTwitterSquare,
 } from "react-icons/ai";
 
+
+
 export default function Footer() {
+
   return (
     <footer>
       <Box
@@ -60,16 +63,11 @@ export default function Footer() {
               </Box>
             </Grid>
             <Grid item xs={12} sm={3}>
-              <Box borderBottom={1}>Nosotros</Box>
+              <Box borderBottom={1}>Emprende con nosotros</Box>
+
               <Box>
-                <Link href="/wishList" color="inherit">
-                  Favoritos.
-                </Link>
-              </Box>
-              <br />
-              <Box>
-                <Link href="/addEvent" color="inherit">
-                  Vende con nosotros!
+                <Link href="/contacto" color="inherit">
+                  Vende con nosotros
                 </Link>
               </Box>
             </Grid>

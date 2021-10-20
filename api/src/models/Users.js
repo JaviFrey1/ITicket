@@ -1,41 +1,73 @@
+// const { DataTypes } = require('sequelize');
+
+// module.exports = (sequelize) => {
+
+//   sequelize.define('users', {
+//     email: {
+//       type: DataTypes.STRING,
+//       allowNull: true,
+//     },
+//     fullName: {
+//       type: DataTypes.STRING,
+//       allowNull: true,
+//     },
+//     password: {
+//       type: DataTypes.STRING,
+//       allowNull: true,
+
+//     },
+//     googleId: {
+//       type: DataTypes.STRING,
+//       allowNull: true
+//     },
+//     picture: {
+//       type: DataTypes.STRING,
+//       allowNull: true
+//     }
+//   });
+// };
+
 const { DataTypes } = require("sequelize");
+const crypto = require("crypto");
 
 module.exports = (sequelize) => {
-  // defino el modelo
-  sequelize.define(
-    "users",
-    {
-      id: { type: DataTypes.INTEGER, primaryKey: true, allowNull: false },
-
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      dni: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      birdthay: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      mail: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      isAdmind: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+  const User = sequelize.define("users", {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      //allowNull: false,
+      primaryKey: true,
     },
-    {
-      timestamps: false,
-      createdAt: false,
-      updatedAt: false,
-    }
-  );
+    email:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    fullName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    password: {
+      type: DataTypes.STRING(64),
+      allowNull: true,
+     
+    },
+ 
+    googleId: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    picture: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    resetPassword: {
+      type: DataTypes.BOOLEAN,
+      
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+  });
+
 };

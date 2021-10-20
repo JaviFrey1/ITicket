@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-items: flex-start;
-    
+
 }
 
 .btn {
@@ -14,14 +14,15 @@
     padding: 5px;
     background-color: transparent;
     color: black
-    
 }
-.contBtn{
-        padding: 5px;
 
-    
+.contBtn {
+    padding: 5px;
+
+
 }
-.contInput{
+
+.contInput {
     padding: 5px;
     justify-self: flex-start;
     margin-top: 2px;
@@ -37,7 +38,7 @@
     padding: 5px;
     border-radius: 6px;
     border: none;
-    color:black;
+    color: black;
 
 
 }

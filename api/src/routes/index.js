@@ -4,6 +4,23 @@ const { Router } = require('express');
 const events = require('./events');
 const event = require('./event');
 const categories = require('./categories');
+<<<<<<< HEAD
+const subcategories = require('./subcategories');
+const bulkevents = require ('./bulkevents');
+const filter = require('./filter');
+const google = require('./google');
+const login = require('./login');
+const users = require('./users');
+const mercadopago = require('./mercadopago');
+const tickets = require('./tickets');
+const recommended = require('./recommended');
+const paypal = require('./paypal');
+const resetPass = require('./resetPassword');
+const stats = require('./stats');
+const confirmPass = require('./confirmPassword');
+const forgotPass = require('./forgotPassword');
+const checkPass = require('./checkPassword')
+=======
 const subcategories =require('./subcategories');
 
 const bulkevents = require ('./bulkevents')
@@ -11,6 +28,7 @@ const filter = require('./filter')
 
 
 
+>>>>>>> main
 
 const router = Router();
 
@@ -21,13 +39,28 @@ router.use('/events', events );
 router.use('/bulkevents', bulkevents );
 
 
-
 router.use('/categories', categories);
 router.use('/subcategories', subcategories);
-router.use('/event',event );
-router.use('/filter', filter)
+router.use('/event', event);
+router.use('/filter', filter);
+router.use('/users', users);
+router.use('/tickets', tickets);
+router.use('/recommended', recommended);
+router.use('/password', resetPass);
+router.use('/stats', stats);
+router.use('/confirm', confirmPass);
+router.use('/forgot', forgotPass);
+router.use('/confirmForgot', confirmPass);
+router.use('/checkPass', checkPass);
 
 
+router.use('/', google);
 
+router.use('/', login);
 
-module.exports = router;
+router.use('/', mercadopago);
+
+router.use('/', paypal);
+
+module.exports = router
+    
