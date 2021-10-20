@@ -641,7 +641,7 @@ export const cartas = [
     date: "2021-12-17"
   },
   {
-    name: "Gracuas",
+    name: "Gracias",
     artist: "Abel Pintos",
     place: "Club Argentino",
     address: "Belgrano y Champagnat",
@@ -651,7 +651,7 @@ export const cartas = [
     availableTickets: 500,
     image: "https://alpogo-uploads.s3.us-east-2.amazonaws.com/eventos/abelpintosmjficha.jpg",
     time: "21:00",
-    isImportant: true,
+    isImportant: false,
     category: 1,
     subCategories: [
       "Folklore"
