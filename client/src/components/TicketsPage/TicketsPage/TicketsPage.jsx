@@ -20,7 +20,6 @@ const Ticketspage = () => {
   const { activeUser } = useAuth()
 
   const tickets = useSelector((state) => state.tickets);
-  // console.log('Tickets >>> ', tickets)
 
 
   const handlePrint = useReactToPrint({
@@ -64,13 +63,11 @@ const Ticketspage = () => {
           tickets.map((ticket, i) => {
             if (ticket.event.artist === artista) artistaTickets.push(ticket);
           });
-          console.log('tengo alos artickets', artistaTickets)
           return (
             <div
               key={i}
               className={s.itemListaCompra}
               onClick={() => {
-                console.log("==>> hola");
                 cambiar(artistaTickets);
               }}
             >
@@ -86,7 +83,6 @@ const Ticketspage = () => {
           <div
             className={s.botonImpr}
             onClick={() => {
-              console.log("click");
               handlePrint();
             }}
           >

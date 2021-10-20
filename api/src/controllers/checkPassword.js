@@ -6,8 +6,8 @@ async function checkPassword(req, res, next) {
 
     let id = req.params.id;
 
-    let password = req.body.password;
-
+    let {password} = req.query;
+    console.log('id ', id, 'pass a verificar', password)
     try{
 
       const user = await Users.findOne({
