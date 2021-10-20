@@ -60,10 +60,16 @@ function Login() {
       console.log(e)
     }
   }
-  function handleInputSubmit(e) {
+  async function handleInputSubmit(e) {
     e.preventDefault();
     if (!errors.email && !errors.password) {
-      dispatch(userLogin(state));
+      let dis = await dispatch(userLogin(state));
+
+      if(dis.payload.length <= 0){
+        Swal.fire(`Usuario/contraseña invalido.`)
+      } else {
+        window.location.replace(dis.payload);
+      }
     }
   }
   const redirectGoogle = async (req, res) => {
