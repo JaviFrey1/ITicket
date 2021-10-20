@@ -55,7 +55,7 @@ passport.use(
       // const user = await Users.findOrCreate({
       //   where: { googleId: profile.id },
       //   defaults: defaultUser,
-      // }).catch((err) => {
+      // }).catch((err) => {  
       //   console.log("Error al logearse xdnt", err);
       //   cb(err, null);
       // });
