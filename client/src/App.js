@@ -1,5 +1,6 @@
+
+
 import "./App.css";
-// import axios from "axios";
 import React from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Event from "./components/Event/Event";
@@ -22,7 +23,8 @@ import Register from "./components/Register/Register"
 import ConfirmReset from "./components/ConfirmReset/ConfirmReset";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import { AuthProvider } from "./context/AuthContext";
-
+import PrivateRouteUser from "./context/PivateRouteUser";
+import PrivateRouteAdmin from "./context/PrivateRouteAdmin";
 
 function App() {
 
@@ -30,31 +32,34 @@ function App() {
     <BrowserRouter>
       <React.Fragment>
         <AuthProvider>
-          <Switch>
-            <Route>
-              <Route path='/' component={Nav} />
-              <Route exact path="/home" component={Home} />
-              <Route path="/login" component={Login} />
-              <Route exact path="/login/success" component={LoginSuccess} />
-              <Route exact path="/register" component={Register} />
-              <Route path="/misTickets" component={Ticketspage} />
-              <Route path="/historial" component={Historialpage} />
-              <Route path="/event" component={Event} />
-              <Route path="/events/:id" component={EventDetail} />
-              <Route path="/wishList" component={WishList} />
-              <Route path="/addEvent" component={AddEvent} />
-              <Route path="/respuestas" component={Frequent} />
-              <Route path="/privacidad" component={Privacy} />
-              <Route path="/update/:id" component={UpdateEvent} />
-              <Route path="/users/:id" component={UserDetail} />
-              <Route path="/checkout" />
-              <Route path="/contact" component={Contact} />
-              <Route path="/panelAdmin" component={PanelAdmin} />
-              <Route exact path="/confirm/:id" component={ConfirmReset}/>
-              <Route exact path='confirmForgot/:id' component={ForgotPassword}/>
-            </Route>
+            <Route path='/' component={Nav} />
+            <Route exact path="/home" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
 
-          </Switch>
+            <PrivateRouteAdmin exact path="/addEvent" component={AddEvent} />
+            <PrivateRouteAdmin exact path="/update/:id" component={UpdateEvent} />
+            <PrivateRouteAdmin exact path="/panelAdmin" component={PanelAdmin} />
+            
+            <PrivateRouteUser exact path="/misTickets" component={Ticketspage} />
+            <PrivateRouteUser exact path="/historial" component={Historialpage} />
+            <PrivateRouteUser exact path="/users/:id" component={UserDetail} />
+            <PrivateRouteUser exact path="/confirm/:id" component={ConfirmReset}/>
+           
+           
+            <Route exact path='confirmForgot/:id' component={ForgotPassword}/>
+            <Route exact path="/login/success" component={LoginSuccess} />
+            <Route path="/event" component={Event} />
+            <Route path="/events/:id" component={EventDetail} />
+            <Route path="/wishList" component={WishList} />
+            
+            <Route path="/respuestas" component={Frequent} />
+            <Route path="/privacidad" component={Privacy} />
+            
+            <Route path="/checkout" />
+            <Route path="/contacto" component={Contact} />
+           
+
         </AuthProvider>
       </React.Fragment>
     </BrowserRouter>
