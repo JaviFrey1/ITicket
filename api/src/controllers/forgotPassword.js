@@ -17,8 +17,8 @@ async function ForgotPassword(req, res) {
         port: 465,
         secure: true,
         auth: {
-            user: 'matiascostilla96@gmail.com',
-            pass: 'yfiozgwacpywsjuo'
+            user: 'tukiteckpf@gmail.com',
+            pass: 'rlggmbgbkngqahnn'
         }
     })
 
@@ -71,7 +71,7 @@ async function ForgotPassword(req, res) {
     `;
 
     let mailOptions = {
-        from: "Tukiteck <matiascostilla96@gmail.com>",
+        from: "Tukiteck <tukiteckpf@gmail.com>",
         to: usuario.email,
         subject: `Cambio de contraseña, usuario: ${usuario.fullName}`,
         html: htmlCreator,

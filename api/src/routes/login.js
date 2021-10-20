@@ -28,7 +28,7 @@ const isLoggedIn = (req, res, next) => {
   if (req.user) {
     next();
   } else {
-    res.sendStatus(401);
+    res.json([]);
   }
 };
 
@@ -46,7 +46,7 @@ router.use(passport.session());
 router.get("/login", (req, res) =>
   res.send("Usuario Creado Satisfactoriamente")
 );
-router.get("/fail", (req, res) => res.send("No se pudo loggear"));
+router.get("/fail", (req, res) => res.json([]));
 router.get("/func", (req, res) => res.json(succesLoginUrl));
 router.get("/loguser", isLoggedIn, (req, res) => res.json(req.user));
 
@@ -83,7 +83,7 @@ router.post("/register", async function (req, res) {
       }
 
       await transporter.sendMail({
-        from: "matiascostilla96@gmail.com",
+        from: "tukiteckpf@gmail.com",
         to: data.email,
         subject: "Inicio Sesion",
         html: `
@@ -91,7 +91,7 @@ router.post("/register", async function (req, res) {
                 `,
       });
       return res.redirect("/login");
-    }
+    }     
   } catch (error) {
     console.log(error);
     res.status(500).send("Internal Server Error");
@@ -104,7 +104,7 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/func",
     failureRedirect: "/fail",
-  })
+  })    
 );
 
 router.get("/out", (req, res) => {

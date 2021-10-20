@@ -21,8 +21,8 @@ async function ReseteoPassword(req, res) {
         port: 465,
         secure: true,
         auth: {
-            user: 'matiascostilla96@gmail.com',
-            pass: 'yfiozgwacpywsjuo'
+            user: 'tukiteckpf@gmail.com',
+            pass: 'rlggmbgbkngqahnn'
         }
     })
 
@@ -75,7 +75,7 @@ async function ReseteoPassword(req, res) {
     `;
 
     let mailOptions = {
-        from: "Tukiteck <matiascostilla96@gmail.com>",
+        from: "Tukiteck <tukiteckpf@gmail.com>",
         to: iden.email,
         subject: `Cambio de contraseña, usuario: ${iden.fullName}`,
         html: htmlCreator,
