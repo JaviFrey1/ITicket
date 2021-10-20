@@ -9,61 +9,25 @@
     background-blend-mode: exclusion; 
      backdrop-filter: brightness(60%); 
     background-size:initial;
-    /* opacity: 0.7; */
-    /* flex-direction: column; */
 }
 
 
 
-/* .forma {
-
-    transform: translate(90%, 30%);
-    position: absolute;
-    width: 80vh;
-    /* max-width: 900px; 
-    min-width: none;
-    height: 80vh;
-    z-index: -100;
-    /* background-color: red; 
-    background-image: url('./yellow6.jpg');
-    background-repeat: no-repeat;
-    /* background-position: right; 
-    border-radius: 50%;
-}
-
-.forma2 {
-
-    transform: translate(-120%, -30%);
-    position: absolute;
-    width: 600px;
-    /* max-width: 900px; 
-    min-width: none;
-    height: 70vh;
-    z-index: -100;
-    /* background-color: red; 
-    background-image: url('./yellow11.jpg');
-    background-repeat: no-repeat;
-    /* background-position: right; 
-    border-radius: 50%;
-} */
 
 
 
 .data {
-    /* z-index: 50; */
-    /* opacity: 1; */
+
     margin: 2em;
     background-color: #faf3f3;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* margin-bottom: 1em; */
+
     width: 40vw;
     min-width: 400px;
     height: fit-content;
     border-radius: 15px;
-    /* text-align: center; */
-
     box-shadow: -1px 1px 19px -5px rgba(0, 0, 0, 0.81);
     -webkit-box-shadow: -1px 1px 19px -5px rgba(0, 0, 0, 0.81);
     -moz-box-shadow: -1px 1px 19px -5px rgba(0, 0, 0, 0.81);

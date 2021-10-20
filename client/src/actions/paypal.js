@@ -7,7 +7,6 @@ export default function paypal(body) {
         try {
     
             const response = await axios.post(`/paypal`, body);
-            
             window.location.replace(response.data);
             return dispatch({ type: PAYPAL, payload: response.data });
             

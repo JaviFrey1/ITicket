@@ -29,9 +29,6 @@ export default function Menu() {
           : null
       )
     );
-    console.log("TODAS LAS SUBCAT DE LA CATERGORIA" + id + subCats);
-    console.log("las q tienen eventos", subCatOpt);
-
     setSubCatOpt(subCatOpt);
     // dispatch(filterCat(id));
   }

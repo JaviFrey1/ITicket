@@ -11,7 +11,7 @@ export default function userLogin(body) {
         return dispatch({ type: USER_LOGIN, payload: response.data });
       }
       else {
-        window.location.replace(response.data);
+        // window.location.replace(response.data);
         return dispatch({ type: USER_LOGIN, payload: response.data });
       }
     } catch (err) {

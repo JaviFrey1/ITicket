@@ -28,7 +28,8 @@ import {
   GET_BEST,
   TIME_VS_TICKETS,
   RESET_PASSWORD,
-  CONFIRM_PASSWORD
+  CONFIRM_PASSWORD,
+  CHECK_PASS
 
 } from "../actions";
 import { loadState } from "../localStorage";
@@ -48,7 +49,8 @@ const initialState = {
   activeUser: '',
   tickets: [],
   best: [],
-  stats: []
+  stats: [],
+  check:''
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -196,6 +198,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         stats: action.payload
+      }
+    case CHECK_PASS:
+      return {
+        ...state,
+        check:action.payload
       }
 
     default:

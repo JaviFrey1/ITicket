@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import getEvents from "../../actions/getEvents";
 import { Link } from "react-router-dom";
 export default function CarouselComp() {
-  // console.log(document.querySelectorAll("Carousel , button"));
+
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 1200, itemsToShow: 2 },

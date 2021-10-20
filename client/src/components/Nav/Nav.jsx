@@ -12,8 +12,6 @@ import MenuAdmin from "./MenuNav/MenuAdmin";
 
 export function Nav() {
   const {activeUser} = useAuth()
-
-
   return (
      
       <nav className={style.navContainer}>
@@ -31,7 +29,7 @@ export function Nav() {
           </div>
         </Link>
 
-        {!activeUser ? (
+        {!activeUser ||activeUser.length <= 0 ? (
           <div className={style.contBtn2}>
             <Link to="/wishList" className={style.hover}>
               <BsBookmarkFill />
@@ -49,7 +47,8 @@ export function Nav() {
               <BsBookmarkFill />
             </Link>
             <div to="null" className={style.hover_2}>
-              {activeUser.isAdmin === false?
+              {
+              activeUser.isAdmin === false?
                 <Menuuser />
                 : <MenuAdmin />
               }

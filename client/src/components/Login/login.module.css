@@ -4,8 +4,10 @@
       background-size: cover;
       background-attachment: fixed;
       display: flex;
+      height: 91vh;
       align-items: center;
-      justify-content: center;
+      justify-content: center; 
+      /* background-color: red; */
   }
 
   * {
@@ -15,15 +17,19 @@
   .contenedor {
       width: 100%;
       padding: 15px;
+      /* background-color: greenyellow; */
   }
 
   .formulario {
+      height: 80%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: #fff;
+      background: rgb(224, 222, 222);
       padding: 3px;
+      border-radius: 2%;
+      /* background-color: blue; */
   }
 
   h1 {
@@ -127,11 +133,11 @@
       color: red;
   } /*EL BACK ESTUVO AQUI*/
 
-  @media(min-width:768px) {
+  @media(max-width:768px) {
       .formulario {
           margin: auto;
           width: 500px;
-          margin-top: 150px;
+          margin-top: 60px;
           border-radius: 2%;
       }
   }

@@ -6,17 +6,18 @@ import s from './timeVSticketsGraph.module.css'
 
 
 
-export default function TimeVSticketsGraph({artist}) {
+export default function TimeVSticketsGraph({ artist }) {
 
-    console.log('se renedrizaaaaaaa???????????', artist)
     const dispatch = useDispatch();
     const stats = useSelector(state => state.stats)
-    console.log('esta es la data a graficar en el componente', stats)
     const tags = []
     const data = []
 
-    stats.map(obj => { tags.push(obj.date); data.push(obj.availableTickets) })
-    console.log('TAGS, EJE DE LAS X',tags,'DATA, EJE DE LAS Y', data)
+    stats.map(obj => { 
+        tags.push(obj.date);
+        data.push(obj.availableTickets)
+        return stats
+    })
     const ticketsData = {
         label: artist + ' Tickets disp. en funcion del tiempo',
         data: data,
@@ -31,7 +32,7 @@ export default function TimeVSticketsGraph({artist}) {
 
     useEffect(() => {
         dispatch(timeVStickets(artist));
-    }, []);
+    }, [dispatch,artist]);
 
     useEffect(() => {
 
@@ -55,12 +56,12 @@ export default function TimeVSticketsGraph({artist}) {
                         }
                     }],
                 },
-            
+
             }
         });
         return () => { timeVStickets.destroy() }
-    }, [stats]);
-    
+    }, [stats,$stats,tags,ticketsData]);
+
     return (
 
         <div className={s.container}>

@@ -3,10 +3,8 @@ import { useDispatch } from "react-redux";
 import userLogin from '../../actions/login';
 import s from './login.module.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import forgotPassword from '../../actions/forgotPassword';
-// import LoginSuccess from '../Nav/Login/Login';
 
 function validate(state) {
   let errors = {};
@@ -60,10 +58,16 @@ function Login() {
       console.log(e)
     }
   }
-  function handleInputSubmit(e) {
+  async function handleInputSubmit(e) {
     e.preventDefault();
     if (!errors.email && !errors.password) {
-      dispatch(userLogin(state));
+      
+      let dis = await dispatch(userLogin(state));
+      if(dis.payload.length <= 0){
+        Swal.fire(`Usuario/contraseña incorrecto`)
+      } else {
+        window.location.replace(dis.payload);
+      }
     }
   }
   const redirectGoogle = async (req, res) => {
@@ -72,7 +76,6 @@ function Login() {
     if (newWindow) {
       const timer = setInterval(() => {
         if (newWindow.closed) {
-          console.log('Ahora estas autenticado');
           persigueUser();
           window.location.replace("https://tukiteck-avmo59sxa-tukiteckpf-gmailcom.vercel.app/home")
           if (timer) {
@@ -83,8 +86,12 @@ function Login() {
     }
   }
   const persigueUser = async () => {
+<<<<<<< HEAD
     const res = await axios.get(`/loguser`, { withCredentials: true }).catch((error) => {
       console.log("No estuvo bien autenticado");
+=======
+    const res = await axios.get(`http://localhost:3001/loguser`, { withCredentials: true }).catch((error) => {
+>>>>>>> 459345bfe3b48ec97a88b516c29173d6797e11d4
     });
     if (res && res.data) {
       console.log("User:", res.data)

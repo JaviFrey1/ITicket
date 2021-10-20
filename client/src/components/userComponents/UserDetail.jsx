@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +17,6 @@ export default function UserDetail(props) {
   const history = useHistory()
   const userDetail = useSelector((state) => state.userDetail);
   const { activeUser } = useAuth()
-
 
   function eliminate() {
     Swal.fire({
@@ -39,7 +38,6 @@ export default function UserDetail(props) {
     if (activeUser) dispatch(getUserDetail(activeUser.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, activeUser]);
-  console.log('ACTIVE =>',activeUser)
   const {id} = useParams()
   async function handleClick() {
     try {
@@ -51,7 +49,7 @@ export default function UserDetail(props) {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          console.log('USERDETAIL=>',activeUser.id, activeUser.email)
+
           Swal.fire('Te enviamos un email');
         } else if (result.isDenied) {
           Swal.fire('No cambiaste tu contraseña')
