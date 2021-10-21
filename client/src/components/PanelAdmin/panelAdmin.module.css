@@ -12,6 +12,7 @@
 }
 .option:hover{
     cursor: pointer;
+    color:rgba(76, 26, 95, 0.667);
 }
 .contListaCompra {
     width: 250px;
