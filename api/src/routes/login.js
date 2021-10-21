@@ -22,7 +22,7 @@ router.use(
   })
 );
 
-const succesLoginUrl = "http://localhost:3000/home";
+const succesLoginUrl = "https://tukiteck3.herokuapp.com/home";
 
 const isLoggedIn = (req, res, next) => {
   if (req.user) {
