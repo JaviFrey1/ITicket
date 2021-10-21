@@ -45,7 +45,7 @@ const Historialpage = () => {
               </div>
             </div>
           );
-        }) : <div>Tu historial esta vacio.</div>}
+        }) : <div>El historial está vacio.</div>}
       </div>
     </div>
   );
