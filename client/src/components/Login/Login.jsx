@@ -71,13 +71,13 @@ function Login() {
     }
   }
   const redirectGoogle = async (req, res) => {
-    const googleLoginURL = "https://tukiteck.herokuapp.com/google"
+    const googleLoginURL = "https://tukitek.herokuapp.com/google"
     const newWindow = window.open(googleLoginURL, "_blank", "width=500,height=600")
     if (newWindow) {
       const timer = setInterval(() => {
         if (newWindow.closed) {
           persigueUser();
-          window.location.replace("https://tukiteck-avmo59sxa-tukiteckpf-gmailcom.vercel.app/home")
+          window.location.replace("https://tukitukiteck.vercel.app/home")
           if (timer) {
             clearInterval(timer);
           }

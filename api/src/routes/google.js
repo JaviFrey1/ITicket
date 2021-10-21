@@ -8,7 +8,7 @@ const router = Router();
 
 require("../passport-stup.js");
 
-const succesLoginUrl = 'https://tukiteck.herokuapp.com/login/success';
+const succesLoginUrl = 'https://tukitukiteck.vercel.app/login/success';
 
 
 router.use(

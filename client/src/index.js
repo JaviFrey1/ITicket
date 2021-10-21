@@ -11,7 +11,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 
-axios.defaults.baseURL = process.env.REACT_APP_API || "https://tukiteck.herokuapp.com" ||"http://localhost:3001";
+axios.defaults.baseURL = process.env.REACT_APP_API || "https://tukitek.herokuapp.com/" ||"http://localhost:3001";
 
 ReactDOM.render(
   <Provider store={store}>

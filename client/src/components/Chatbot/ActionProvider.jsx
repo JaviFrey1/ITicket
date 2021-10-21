@@ -93,7 +93,7 @@ class ActionProvider {
   
     ayudaOfrecer2 = () => {
       const message = this.createChatBotMessage(
-         <a href='https://tukiteck-avmo59sxa-tukiteckpf-gmailcom.vercel.app/about'><span role="img" aria-label="rocket"> Nosotros 🚀</span> </a>
+         <a href='https://tukitukiteck.vercel.app/about'><span role="img" aria-label="rocket"> Nosotros 🚀</span> </a>
       )
       this.addMessageToState(message)
     }

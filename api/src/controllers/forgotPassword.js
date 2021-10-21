@@ -59,7 +59,7 @@ async function ForgotPassword(req, res) {
     <body>
     <div class="containergral">
     <h1>Hola ${usuario.fullName}, hemos generado un link para que cambies tu contraseña</h1>
-    <a href="https://tukiteck.herokuapp.com/${usuario.id}" target="_blank" rel="noopener noreferrer" class="ap">Click aqui</a>
+    <a href="https://tukitukiteck.vercel.app/${usuario.id}" target="_blank" rel="noopener noreferrer" class="ap">Click aqui</a>
     </hr>
     <b>Este enlace dura 24 horas.</b>
   

@@ -19,9 +19,9 @@ router.post("/checkout", async (req, res) => {
         },
       ],
       back_urls: {
-        success: "https://tukiteck-avmo59sxa-tukiteckpf-gmailcom.vercel.app/home",
-        failure: "https://tukiteck-avmo59sxa-tukiteckpf-gmailcom.vercel.app/rechazo",
-        pending: "https://tukiteck-avmo59sxa-tukiteckpf-gmailcom.vercel.app/home",
+        success: "https://tukitukiteck.vercel.app/home",
+        failure: "https://tukitukiteck.vercel.app/rechazo",
+        pending: "https://tukitukiteck.vercel.app/home",
       },
       auto_return: "approved",
     };
