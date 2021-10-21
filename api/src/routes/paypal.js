@@ -1,4 +1,4 @@
-const URL = require("../deployURL")
+const {URL} = require("../deployURL")
 const paypal = require("paypal-rest-sdk");
 const router = require("express").Router();
 
