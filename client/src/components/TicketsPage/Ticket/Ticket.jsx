@@ -65,7 +65,7 @@ const Ticket = ({ticket}) => {
                 <img
                   src={img}
                   alt=""
-                  style={{ width: "50px", height: "50px" }}
+                  // style={{ width: "30px", height: "30px" }}
                 />
               </div>
             </div>
