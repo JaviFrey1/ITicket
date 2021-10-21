@@ -82,7 +82,7 @@ const DetalleCompra = ({ artistaTickets }) => {
     <div>
       <div className={s.detalleCompra} id="listaTickets">
         <div className={s.tituloTickets}>
-          <h3>Tus Tickets para {artistaTickets[0]?.event.artist}:</h3>
+          <h3>Mis Tickets para {artistaTickets[0]?.event.artist}:</h3>
 
         </div>
         <div className={s.listaDeTickets}>

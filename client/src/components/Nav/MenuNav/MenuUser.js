@@ -42,7 +42,7 @@ const Menuuser = () => {
           }}
         >
           <FiShoppingBag style={{ color: "black", marginRight: "5px" }} />{" "}
-          <h4>Tus Tickets</h4>
+          <h4>Mis Tickets</h4>
         </Link>
 
         <Link to={`/users/${activeUser.id}`}
