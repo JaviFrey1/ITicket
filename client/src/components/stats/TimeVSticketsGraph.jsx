@@ -18,6 +18,11 @@ export default function TimeVSticketsGraph({ artist }) {
         data.push(obj.availableTickets)
         return stats
     })
+      tags.sort(function (a, b) {
+        if (a > b) return 1;
+        else if (a < b) return -1;
+        return 0;
+      })
     const ticketsData = {
         label: artist + ' Tickets disp. en funcion del tiempo',
         data: data,
