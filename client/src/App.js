@@ -44,9 +44,9 @@ function App() {
             <PrivateRouteUser exact path="/misTickets" component={Ticketspage} />
             <PrivateRouteUser exact path="/historial" component={Historialpage} />
             <PrivateRouteUser exact path="/users/:id" component={UserDetail} />
-            <PrivateRouteUser exact path="/confirm/:id" component={ConfirmReset}/>
            
            
+            <Route exact path="/confirm/:id" component={ConfirmReset}/>
             <Route exact path='confirmForgot/:id' component={ForgotPassword}/>
             <Route exact path="/login/success" component={LoginSuccess} />
             <Route path="/event" component={Event} />
