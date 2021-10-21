@@ -1,4 +1,4 @@
-const {URL} = require("../deployURL")
+// const {URL} = require("../deployURL")
 const paypal = require("paypal-rest-sdk");
 const router = require("express").Router();
 
@@ -24,8 +24,8 @@ router.post("/paypal", (req, res) => {
             payment_method: "paypal"
         },
         redirect_urls: {
-            return_url: `${URL}/success`,
-            cancel_url: `${URL}/cancel`
+            return_url: `https://tukiteck3.herokuapp.com/success`,
+            cancel_url: `https://tukiteck3.herokuapp.com/cancel`
         },
         transactions: [
             {
