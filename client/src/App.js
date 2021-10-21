@@ -46,7 +46,7 @@ function App() {
            
            
             <Route exact path="/confirm/:id" component={ConfirmReset}/>
-            <Route exact path='confirmForgot/:id' component={ForgotPassword}/>
+            <Route exact path='/confirmForgot/:id' component={ForgotPassword}/>
             <Route exact path="/login/success" component={LoginSuccess} />
             <Route path="/event" component={Event} />
             <Route path="/events/:id" component={EventDetail} />

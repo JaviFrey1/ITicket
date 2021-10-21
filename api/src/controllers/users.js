@@ -56,9 +56,9 @@ try {
 async function updateUser(req, res, next){
 
     let id = req.params.id;
-
+    console.log("SOY ID", id)
     let data = {...req.body}; 
-
+    console.log("SOY DATA",data)
     const passHash = await bcrypt.hash(data.password, 10) ;
 
     try {
