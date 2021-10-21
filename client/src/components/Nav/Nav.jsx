@@ -17,7 +17,7 @@ export function Nav() {
       <nav className={style.navContainer}>
         
       <div className={style.linkContainer}>
-        <Link to="/" className={style.Link}>
+        <Link to="/home" className={style.Link}>
           <div className={style.contLogo}>
             <img
               height="50"
