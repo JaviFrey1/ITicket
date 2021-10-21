@@ -85,7 +85,7 @@ export default function Home() {
 
       <div className={s.contChat}>
         <button id='tukiteck' onClick={handleClick} className={s.home}>
-          Chatea con Nosotros <FaRobot />
+          Chatea con TukiBot  <FaRobot />
         </button>
         {click ? <Button /> : null}
       </div>
