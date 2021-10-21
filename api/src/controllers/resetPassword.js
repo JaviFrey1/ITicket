@@ -21,8 +21,8 @@ async function ReseteoPassword(req, res) {
         port: 465,
         secure: true,
         auth: {
-            user: 'matiascostilla96@gmail.com',
-            pass: 'yfiozgwacpywsjuo'
+            user: 'tukiteckpf@gmail.com',
+            pass: 'rlggmbgbkngqahnn'
         }
     })
 
@@ -63,7 +63,7 @@ async function ReseteoPassword(req, res) {
     <body>
     <div class="containergral">
     <h1>Hola ${iden.fullName}, hemos generado un link para que reestablescas tu contraseña</h1>
-    <a href="http://localhost:3000/confirm/${iden.id}" target="_blank" rel="noopener noreferrer" class="ap">Click aqui</a>
+    <a href="https://tukiteck3.herokuapp.com/confirm/${iden.id}" target="_blank" rel="noopener noreferrer" class="ap">Click aqui</a>
     </hr>
     <b>Este enlace dura 24 horas.</b>
   
@@ -75,7 +75,7 @@ async function ReseteoPassword(req, res) {
     `;
 
     let mailOptions = {
-        from: "Tukiteck <matiascostilla96@gmail.com>",
+        from: "Tukiteck <tukiteckpf@gmail.com>",
         to: iden.email,
         subject: `Cambio de contraseña, usuario: ${iden.fullName}`,
         html: htmlCreator,

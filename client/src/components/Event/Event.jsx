@@ -29,7 +29,7 @@ export default function Event({ event }) {
                   showConfirmButton: false,
                   timer: 1500,
                 });
-                console.log(favs);
+                
               }}
             />
           ) : (
@@ -39,7 +39,7 @@ export default function Event({ event }) {
                 saveState(event);
                 favorites = loadState();
                 setFavs("agregado a favs");
-                console.log(favs);
+                
               }}
             />
           )}

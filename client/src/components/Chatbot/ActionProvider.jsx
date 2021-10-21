@@ -22,7 +22,7 @@ class ActionProvider {
   
     saludar = () => {
       const message = this.createChatBotMessage(
-        'Mucho gusto 😄! En que le puedo ayudar?',
+        <span role="img" aria-label="grinning face with smiling eyes">Mucho gusto 😄! En que le puedo ayudar?</span>
       )
       this.addMessageToState(message)
     }
@@ -44,42 +44,42 @@ class ActionProvider {
   
     palabrasGracias = () => {
       const message = this.createChatBotMessage(
-        'Gracias a vos 😊',
+        <span role="img" aria-label="smiling face">Gracias a vos 😊</span>
       )
       this.addMessageToState(message)
     }
   
     palabrasGracias2 = () => {
       const message = this.createChatBotMessage(
-        'Gracias, 😊 que tengas un excelente dia.',
+        <span role="img" aria-label="smiling face">Gracias, 😊 que tengas un excelente dia.</span>
       )
       this.addMessageToState(message)
     }
   
     palabrasInsultos = () => {
       const message = this.createChatBotMessage(
-        'Por favor, cuide su vocabulario 🤬🚫',
+        <span role="img" aria-label="face with symbols in mouth">Por favor, cuide su vocabulario 🤬🚫</span>
       )
       this.addMessageToState(message)
     }
   
     palabrasBroma = () => {
       const message = this.createChatBotMessage(
-        'Hackeadisimo Perrito malvado, nos vemos en Narnia!😈',
+        <span role="img" aria-label="smmiling face with horns">Hackeadisimo Perrito malvado, nos vemos en Narnia!😈</span>
       )
       this.addMessageToState(message)
     }
   
     plusHenry = () => {
       const message = this.createChatBotMessage(
-        <a href='https://www.soyhenry.com/' style={{textDecoration:"none"},{color:"black"}}>Si quieres conocer donde estudiaron mis creadores hace click aquí 💛!!</a>
+        <a href='https://www.soyhenry.com/' style={{color:"black"}}>Si quieres conocer donde estudiaron mis creadores hace click aquí !!</a>
       )
       this.addMessageToState(message)
     }
   
     ayudaOfrecer = () => {
       const message = this.createChatBotMessage(
-        'Si tienes problemas con alguna compra de tickets, o al iniciar sesion, ve hasta abajo en la pagina. Luego da click en "Soporte" y llena los datos. \n\ Nos estaremos comunicando a la brevedad.',
+        'Si tienes problemas con alguna compra de tickets, o al iniciar sesion, ve hasta abajo en la pagina. Luego da click en "Soporte" y llena los datos. \n Nos estaremos comunicando a la brevedad.',
       )
       this.addMessageToState(message)
     }
@@ -93,14 +93,14 @@ class ActionProvider {
   
     ayudaOfrecer2 = () => {
       const message = this.createChatBotMessage(
-        <a href='https://tukiteck.vercel.app/about'> Nosotros 🚀 </a>,
+         <a href='https://tukiteck.vercel.app/about'><span role="img" aria-label="rocket"> Nosotros 🚀</span> </a>
       )
       this.addMessageToState(message)
     }
   
     ayudaOfrecer3 = () => {
       const message = this.createChatBotMessage(
-        <a href='https://www.soyhenry.com/'> Henry 💛</a>,
+        <a href='https://www.soyhenry.com/'><span role="img" aria-label="yellow hearth">Henry 💛</span></a>,
       )
       this.addMessageToState(message)
     }

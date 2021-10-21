@@ -27,8 +27,6 @@ const router = Router();
 
 router.use('/events', events );
 router.use('/bulkevents', bulkevents );
-
-
 router.use('/categories', categories);
 router.use('/subcategories', subcategories);
 router.use('/event', event);

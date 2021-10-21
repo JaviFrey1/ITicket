@@ -1,5 +1,5 @@
+const URL = require("../deployURL")
 const paypal = require("paypal-rest-sdk");
-
 const router = require("express").Router();
 
 paypal.configure({
@@ -24,8 +24,8 @@ router.post("/paypal", (req, res) => {
             payment_method: "paypal"
         },
         redirect_urls: {
-            return_url: "http://localhost:3001/success",
-            cancel_url: "http://localhost:3001/cancel"
+            return_url: `${URL}/success`,
+            cancel_url: `${URL}/cancel`
         },
         transactions: [
             {

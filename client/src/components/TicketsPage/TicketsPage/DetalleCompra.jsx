@@ -1,39 +1,82 @@
-import React, {  useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Ticket from "../Ticket/Ticket";
 import s from "./ticketsPage.module.css";
 import Swal from "sweetalert2";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import updateTicket from "../../../actions/updateTickets";
+import { useHistory } from "react-router";
+import checkPass from "../../../actions/checkPass";
+import { useAuth } from '../../../context/AuthContext'
+
 
 
 
 
 const DetalleCompra = ({ artistaTickets }) => {
   const dispatch = useDispatch();
-  
-
+  const history = useHistory()
+  const { activeUser } = useAuth()
+  const check = useSelector(state => state.check)
+  const [checkDone, setCheckDone] = useState('')
 
   function handleClick(id) {
-    console.log('soy id de ticket', id)
     Swal.fire({
-      title: "Ingresa nombre completo del nuevo propietario",
-      input: "text",
-      
-      confirmButtonText: "Guardar",
+      title: "Ingresa tu contraseña",
+      input: "password",
+      showCancelButton: true,
+      confirmButtonText: "Confirmar",
       confirmButtonColor: 'rgb(255,204,0)',
       cancelButtonText: "Cancelar",
     }).then((resultado) => {
       if (resultado.value) {
-       
-        dispatch(updateTicket(id, resultado.value));
-        console.log("Nuevo Prop, ", resultado.value);
+        dispatch(checkPass(activeUser.id, resultado.value))
+        setTimeout(function () {
+        if (checkDone === 'success') {
+          Swal.fire({
+            title: "Ingresa el nombre completo del nuevo propietario",
+            input: "text",
+            showCancelButton: true,
+
+            confirmButtonText: "Guardar",
+            confirmButtonColor: 'rgb(255,204,0)',
+            cancelButtonText: "Cancelar",
+          }).then((resultado) => {
+            if (resultado.value) {
+              dispatch(updateTicket(id, resultado.value));
+              history.push('/home')
+            }
+          });
+        } else {
+          Swal.fire({
+            title: "Contraseña incorrecta",
+            text: "Lo lamento, no puedes transferir la entrada",
+            icon: "warning",
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Ok",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              history.push("/home");
+            }
+          });
+        }},3000)
       }
     });
+
   }
 
   useEffect(() => {
-    console.log('Actualizacion')
-  }, [dispatch]);
+    setTimeout(function () {
+
+      if (check === 'Las contraseñas coinciden') {
+        setCheckDone('success')
+      }
+      else {
+        setCheckDone('denied')
+
+      }
+
+    }, 1000);
+  }, [check]);
 
   return (
     <div>

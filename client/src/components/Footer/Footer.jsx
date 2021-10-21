@@ -1,8 +1,5 @@
 import React from "react";
 import {Container, Grid, Box, Link} from "@material-ui/core";
-// import Grid from "@material-ui/core/grid";
-// import Box from "@material-ui/core/box";
-// import Link from "@material-ui/core/Link";
 import "./footer.css";
 import img from "./../../images/pngLetraNegraBorde.png";
 import {
@@ -66,7 +63,7 @@ export default function Footer() {
               <Box borderBottom={1}>Emprende con nosotros</Box>
 
               <Box>
-                <Link href="/contacto" color="inherit">
+                <Link href="/contact" color="inherit">
                   Vende con nosotros
                 </Link>
               </Box>
@@ -74,7 +71,7 @@ export default function Footer() {
             <Grid item xs={12} sm={3}>
               <Box borderBottom={1}>Ayuda</Box>
               <Box>
-                <Link href="/contact" color="inherit">
+                <Link href="/support" color="inherit">
                   Soporte.
                 </Link>
               </Box>

@@ -1,7 +1,7 @@
 const { Users } = require("./db.js");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-
+const URL = require("./deployURL")
 
 passport.use(
   new GoogleStrategy(
@@ -9,7 +9,7 @@ passport.use(
       clientID:
         "606271626860-n6ttqfol40fnplghb6lr832bknsmp5u6.apps.googleusercontent.com",
       clientSecret: "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",
-      callbackURL: "http://localhost:3001/google/callback",
+      callbackURL: `${URL}/google/callback`,
       passReqToCallback: true,
     },
     async (req, accessToken, refreshToken, profile, cb) => {
@@ -55,7 +55,7 @@ passport.use(
       // const user = await Users.findOrCreate({
       //   where: { googleId: profile.id },
       //   defaults: defaultUser,
-      // }).catch((err) => {
+      // }).catch((err) => {  
       //   console.log("Error al logearse xdnt", err);
       //   cb(err, null);
       // });

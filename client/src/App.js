@@ -1,8 +1,6 @@
-
-
 import "./App.css";
 import React from "react";
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { Route, BrowserRouter} from "react-router-dom";
 import Event from "./components/Event/Event";
 import WishList from "./components/WishList/WishList";
 import EventDetail from "./components/EventDetail/EventDetail";
@@ -25,6 +23,7 @@ import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRouteUser from "./context/PivateRouteUser";
 import PrivateRouteAdmin from "./context/PrivateRouteAdmin";
+import Support from "./components/Support/Support";
 
 function App() {
 
@@ -57,7 +56,9 @@ function App() {
             <Route path="/privacidad" component={Privacy} />
             
             <Route path="/checkout" />
-            <Route path="/contacto" component={Contact} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/support" component={Support} />
+
            
 
         </AuthProvider>

@@ -2,10 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-// import Ticket from "./../Ticket/Ticket";
 import s from "./ticketsPage.module.css";
-// import Swal from "sweetalert2";
-// import BotonPrint from "./Button";
 import DetalleCompra from "./DetalleCompra";
 import { ImPrinter } from "react-icons/im";
 import { BiHistory } from "react-icons/bi";
@@ -20,7 +17,6 @@ const Ticketspage = () => {
   const { activeUser } = useAuth()
 
   const tickets = useSelector((state) => state.tickets);
-  // console.log('Tickets >>> ', tickets)
 
 
   const handlePrint = useReactToPrint({
@@ -45,7 +41,7 @@ const Ticketspage = () => {
 
     if (activeUser) dispatch(getTickets(activeUser.id));
 
-  }, [dispatch]);
+  }, [dispatch,activeUser]);
 
 
   return (
@@ -63,14 +59,13 @@ const Ticketspage = () => {
           const artistaTickets = [];
           tickets.map((ticket, i) => {
             if (ticket.event.artist === artista) artistaTickets.push(ticket);
+            return tickets
           });
-          console.log('tengo alos artickets', artistaTickets)
           return (
             <div
               key={i}
               className={s.itemListaCompra}
               onClick={() => {
-                console.log("==>> hola");
                 cambiar(artistaTickets);
               }}
             >
@@ -86,7 +81,6 @@ const Ticketspage = () => {
           <div
             className={s.botonImpr}
             onClick={() => {
-              console.log("click");
               handlePrint();
             }}
           >
