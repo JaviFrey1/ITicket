@@ -22,7 +22,7 @@ router.use(
   })
 );
 
-const succesLoginUrl = "https://tukiteck3.herokuapp.com/home";
+const succesLoginUrl = "https://tukiteck-avmo59sxa-tukiteckpf-gmailcom.vercel.app/home";
 
 const isLoggedIn = (req, res, next) => {
   if (req.user) {

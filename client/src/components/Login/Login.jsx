@@ -71,7 +71,7 @@ function Login() {
     }
   }
   const redirectGoogle = async (req, res) => {
-    const googleLoginURL = "https://tukiteck3.herokuapp.com/google"
+    const googleLoginURL = "https://tukiteck.herokuapp.com/google"
     const newWindow = window.open(googleLoginURL, "_blank", "width=500,height=600")
     if (newWindow) {
       const timer = setInterval(() => {

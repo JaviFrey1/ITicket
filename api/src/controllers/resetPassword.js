@@ -63,7 +63,7 @@ async function ReseteoPassword(req, res) {
     <body>
     <div class="containergral">
     <h1>Hola ${iden.fullName}, hemos generado un link para que reestablescas tu contraseña</h1>
-    <a href="https://tukiteck3.herokuapp.com/confirm/${iden.id}" target="_blank" rel="noopener noreferrer" class="ap">Click aqui</a>
+    <a href="https://tukiteck.herokuapp.com/confirm/${iden.id}" target="_blank" rel="noopener noreferrer" class="ap">Click aqui</a>
     </hr>
     <b>Este enlace dura 24 horas.</b>
   

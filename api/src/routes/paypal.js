@@ -24,8 +24,8 @@ router.post("/paypal", (req, res) => {
             payment_method: "paypal"
         },
         redirect_urls: {
-            return_url: `https://tukiteck3.herokuapp.com/success`,
-            cancel_url: `https://tukiteck3.herokuapp.com/cancel`
+            return_url: `https://tukiteck.herokuapp.com/success`,
+            cancel_url: `https://tukiteck.herokuapp.com/cancel`
         },
         transactions: [
             {
