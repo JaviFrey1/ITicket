@@ -29,7 +29,7 @@ class ActionProvider {
   
     ayudaPublicarNecesidad = () => {
       const message = this.createChatBotMessage(
-       'Para adquirir una entrada, primero debe iniciar sesion y entrar a los detalles del evento que usted elija.',
+       'Para adquirir una entrada, primero debe iniciar sesion y entrar a los detalles del evento que usted elija. \n Si ya adquiriste una y tienes un problema con ella ve hasta abajo en la pagina y consulta via soporte, en breve nos comunicaremos via mail.',
       )
       this.addMessageToState(message)
     }
