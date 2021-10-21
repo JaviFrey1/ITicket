@@ -71,7 +71,7 @@ function Login() {
     }
   }
   const redirectGoogle = async (req, res) => {
-    const googleLoginURL = "http://localhost:3001/google"
+    const googleLoginURL = "https://tukiteck3.herokuapp.com/google"
     const newWindow = window.open(googleLoginURL, "_blank", "width=500,height=600")
     if (newWindow) {
       const timer = setInterval(() => {
@@ -86,12 +86,8 @@ function Login() {
     }
   }
   const persigueUser = async () => {
-<<<<<<< HEAD
     const res = await axios.get(`/loguser`, { withCredentials: true }).catch((error) => {
       console.log("No estuvo bien autenticado");
-=======
-    const res = await axios.get(`http://localhost:3001/loguser`, { withCredentials: true }).catch((error) => {
->>>>>>> 459345bfe3b48ec97a88b516c29173d6797e11d4
     });
     if (res && res.data) {
       console.log("User:", res.data)

@@ -53,7 +53,7 @@ function Register() {
       Swal.fire("El mail escrito ya existe, por favor utilize uno nuevo");
      } else {
       Swal.fire("registrado correctamente");
-      window.location.replace("http://localhost:3000/login");
+      window.location.replace("https://tuckiteckk.vercel.app/login");
      }
     }
   }
