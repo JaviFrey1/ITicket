@@ -10,3 +10,10 @@
     height: 100vh;
     margin-left: 30%;
 }
+
+.not{
+    margin: auto;
+    padding: 5em;
+    width: 300%;
+    background-color: #e4e4e4;
+}

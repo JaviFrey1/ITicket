@@ -63,12 +63,16 @@ export default function BestGraph() {
 
     return (
         <div>
+           {
+               tags.length > 0 ?
+               <div className={s.container}>
 
-            <div className={s.container}>
+               <canvas id="grafica" role="img"></canvas>
 
-                <canvas id="grafica" role="img"></canvas>
-
-            </div>
+           </div> 
+           : <h3 className={s.not}>Lo siento mucho, aun no vendiste eventos! </h3> 
+           }
+           
             {div === 'redi' ?
                 <div className={s.container} >
                     <TimeVSticketsGraph artist={timeGraphData} />
