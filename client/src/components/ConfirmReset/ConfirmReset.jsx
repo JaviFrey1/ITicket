@@ -13,7 +13,7 @@ export default function ConfirmReset() {
     const [passwordShown, setPasswordShown] = useState(false);
     const [confirmShown, setConfirmShown] = useState(false)
     const [pass, setPass] = useState('');
-    const [confirm, setConfirm] = useState('');
+    const [password, setConfirm] = useState('');
     const [errors, setErrors] = useState('')
 
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ export default function ConfirmReset() {
     };
     const validate = () => {
         if (pass.length > 0) {
-            if (pass !== confirm) {
+            if (pass !== password) {
                 setErrors("Las contraseñas no coinciden");
             } else {
                 setErrors('');
@@ -44,7 +44,7 @@ export default function ConfirmReset() {
     }
     const submit = () => {
         validate()
-        dispatch(confirmPassword(id, confirm));
+        dispatch(confirmPassword(id, {password}));
         history.push('/home')
     }
 
@@ -66,7 +66,7 @@ export default function ConfirmReset() {
                     </div>
                     <div className={s.contInput}>
 
-                        <input name='pass2' value={confirm}
+                        <input name='pass2' value={password}
                             type={confirmShown ? "text" : "password"} className={s.input}
                             autoComplete="off"
                             placeholder="Reingresa la contraseña"

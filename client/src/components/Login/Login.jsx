@@ -114,7 +114,7 @@ function Login() {
           <form onSubmit={(e) => handleInputSubmit(e)}>
             <div className={s.inputcontenedor}>
               <i className="fas fa-envelope icon"></i>
-              <input className={s.input} type="text" name="email" value={state.email} placeholder="Correo Electronico" onChange={(e) => handleInputChange(e)} />
+              <input className={s.input} type="email" name="email" value={state.email} placeholder="Correo Electronico" onChange={(e) => handleInputChange(e)} />
             </div>
             {errors.email && (<p className={s.errors}>{errors.email}</p>)}
             <div className={s.inputcontenedor}>

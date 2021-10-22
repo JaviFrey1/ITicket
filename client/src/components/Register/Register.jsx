@@ -94,7 +94,7 @@ function Register() {
             {/*<i class="fas fa-envelope icon"></i>*/}
             <input
               className={s.input}
-              type="text"
+              type="email"
               value={state.email}
               name="email"
               placeholder="Correo Electronico"

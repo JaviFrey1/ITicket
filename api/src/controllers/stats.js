@@ -81,7 +81,7 @@ async function timeVStickets(req, res){
         });
         const data = []
         data.push({availableTickets: event.totalTickets, date:event.createdAt.toISOString().split('T')[0]})
-        const eventTickets= tickets?.filter(t=>t.eventId===event.id)
+        const eventTickets= tickets.filter(t=>t.eventId===event.id)
         const ticketsDates=[]
         const ticketsSelled=[]
         eventTickets? eventTickets.map(t=>ticketsDates.push(t.createdAt.toISOString().split('T')[0])) : res.send([])

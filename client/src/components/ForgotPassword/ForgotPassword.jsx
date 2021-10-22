@@ -14,7 +14,7 @@ export default function ForgotPassword() {
 
 
     const [pass, setPass] = useState('');
-    const [confirm, setConfirm] = useState('');
+    const [password, setConfirm] = useState('');
     const [errors, setErrors] = useState('')
 
     const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export default function ForgotPassword() {
     };
     const validate = () => {
         if (pass.length > 0) {
-            if (pass !== confirm) {
+            if (pass !== password) {
                 setErrors("Las contraseñas no coinciden");
             } else {
                 setErrors('');
@@ -47,7 +47,7 @@ export default function ForgotPassword() {
         validate();
         // setPass('');
         // setConfirm('');
-        dispatch(confirmForgot(id, confirm));
+        dispatch(confirmForgot(id, {password}));
         history.push('/home')
     }
 
@@ -63,7 +63,7 @@ export default function ForgotPassword() {
                         onChange={(e) => handleInput1Change(e)}
                     /> {passwordShown === false ? <BsFillEyeFill className={s.icon} onClick={() => togglePasswordVisiblity()} />
                         : <BsFillEyeSlashFill className={s.icon} onClick={() => togglePasswordVisiblity()} />}
-                    <input name='pass2' value={confirm}
+                    <input name='pass2' value={password}
                         type={confirmShown ? "text" : "password"} className={s.input}
                         autoComplete="off"
                         placeholder="Reingresa la contraseña"
