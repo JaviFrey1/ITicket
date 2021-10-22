@@ -24,7 +24,7 @@ router.post("/paypal", (req, res) => {
             payment_method: "paypal"
         },
         redirect_urls: {
-            return_url: "http://localhost:3001/success",
+            return_url: "http://localhost:3000/home",
             cancel_url: "http://localhost:3001/cancel"
         },
         transactions: [

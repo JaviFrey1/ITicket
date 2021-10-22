@@ -21,6 +21,7 @@ export default function PanelAdmin() {
         <div style={{ margin: '20px' }} className={s.option} onClick={() => handleClickNew()}>Agregar un nuevo evento</div>
         <div style={{ margin: '20px' }} className={s.option} onClick={() => handleClickGraph()}>Eventos más vendidos</div>
       </div>
+      <div className={s.aside}>
       <div>
         <div className={div === "showAdd" ? s.showAdd : s.hideAdd}>
           <AddEvent />
@@ -31,6 +32,8 @@ export default function PanelAdmin() {
           <BestGraph />
         </div>
       </div>
+      </div>
     </div>
+
   );
 }

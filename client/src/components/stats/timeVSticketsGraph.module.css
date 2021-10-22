@@ -3,9 +3,11 @@
     justify-content: center;
     align-content: flex-start;
     padding: 50px;
+    margin-left: 3em;
     width:1000px;
     height: 800vh;
     margin-top: -400px;
-    
-     border-top: 2px solid #000;    
+    border-top: 2px solid #000;    
+    background-color: white;
 }
+    
