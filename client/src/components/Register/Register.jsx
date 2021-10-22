@@ -4,13 +4,15 @@ import s from "./register.module.css";
 import userRegister from "../../actions/register";
 import { useState } from "react";
 import Swal from 'sweetalert2';
+import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs'
+
 
 function validate(state) {
   let errors = {};
   if (!state.fullName) {
     errors.fullName = "Ingresa tu nombre y apellido";
-  } else if (!state.email) {
-    errors.email = "Ingresa un email";
+  } else if (!state.email || !state.email.includes('@' && '.')) {
+    errors.email = "Ingresa un email valido";
   } else if (!state.password) {
     errors.password = "Ingresa una constraseña";
   } else if (!state.confirmPassword) {
@@ -31,6 +33,10 @@ function Register() {
   });
 
   const [errors, setErrors] = useState({});
+
+  const [passwordShown, setPasswordShown] = useState(false)
+  const [confirmShown, setConfirmShown] = useState(false)
+
 
   function handleInputChange(e) {
     setState({
@@ -57,6 +63,13 @@ function Register() {
      }
     }
   }
+
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
+  const toggleConfirmVisiblity = () => {
+    setConfirmShown(confirmShown ? false : true);
+};
 
   return (
     <div className={s.cont}>
@@ -92,29 +105,38 @@ function Register() {
           {errors.email && <p className={s.errors}>{errors.email}</p>}
 
           <div className={s.inputContenedor}>
+            <div className={s.contPass}>
             {/*<i class="fas fa-key icon"></i>*/}
             <input
               className={s.input}
-              type="password"
+              type={passwordShown ? "text" : "password"}
               value={state.password}
               name="password"
               placeholder="Contraseña"
               onChange={(e) => handleInputChange(e)}
             />
+             {passwordShown === false ? <BsFillEyeFill className={s.icon} onClick={() => togglePasswordVisiblity()} />
+                : <BsFillEyeSlashFill className={s.icon} onClick={() => togglePasswordVisiblity()} />}
+                </div>
           </div>
 
           {errors.password && <p className={s.errors}>{errors.password}</p>}
 
           <div className={s.inputContenedor}>
             {/*<i class="fas fa-key icon"></i>*/}
+            <div className={s.contPass}>
+
             <input
               className={s.input}
-              type="password"
+              type={confirmShown ? "text" : "password"}
               value={state.confirmPassword}
               name="confirmPassword"
               placeholder="Confirmar contraseña"
               onChange={(e) => handleInputChange(e)}
             />
+            {confirmShown === false ? <BsFillEyeFill className={s.icon} onClick={() => toggleConfirmVisiblity()} />
+                            : <BsFillEyeSlashFill className={s.icon} onClick={() => toggleConfirmVisiblity()} />}
+                </div>            
           </div>
 
           {errors.confirmPassword && (

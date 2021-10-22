@@ -21,13 +21,14 @@
   }
 
   .formulario {
-      height: 80%;
+
+      height: 90%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       background: rgb(224, 222, 222);
-      padding: 3px;
+      padding: 6em;
       border-radius: 2%;
       /* background-color: blue; */
   }
@@ -53,8 +54,15 @@
   .icon {
       min-width: 50px;
       text-align: center;
-      color: #999;
-  }
+      fill: black;
+    }
+  .contPass{
+    display: flex;
+    align-items: center;
+    background-color: white;
+
+}
+
 
   /* .button{
     border: none;

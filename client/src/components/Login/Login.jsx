@@ -5,11 +5,15 @@ import s from './login.module.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import forgotPassword from '../../actions/forgotPassword';
+import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs'
+
 
 function validate(state) {
+
+
   let errors = {};
-  if (!state.email) {
-    errors.email = "Ingresa un email"
+  if (!state.email || !state.email.includes('@' && '.')) {
+    errors.email = "Ingresa un email valido"
   }
   else if (!state.password) {
     errors.password = "Ingresa una constraseña"
@@ -27,6 +31,9 @@ function Login() {
     password: ""
   })
   const [errors, setErrors] = useState({});
+
+  const [passwordShown, setPasswordShown] = useState(false)
+
 
   function handleInputChange(e) {
     setState({
@@ -50,7 +57,7 @@ function Login() {
         confirmButtonColor: 'rgb(254,204,0)'
       })
       if (email) {
-        dispatch(forgotPassword({email}))
+        dispatch(forgotPassword({ email }))
         Swal.fire(`Mail enviado a: ${email}`)
       }
     }
@@ -61,9 +68,9 @@ function Login() {
   async function handleInputSubmit(e) {
     e.preventDefault();
     if (!errors.email && !errors.password) {
-      
+
       let dis = await dispatch(userLogin(state));
-      if(dis.payload.length <= 0){
+      if (dis.payload.length <= 0) {
         Swal.fire(`Usuario/contraseña incorrecto`)
       } else {
         window.location.replace(dis.payload);
@@ -93,6 +100,9 @@ function Login() {
     }
 
   }
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
 
 
   return (
@@ -109,7 +119,12 @@ function Login() {
             {errors.email && (<p className={s.errors}>{errors.email}</p>)}
             <div className={s.inputcontenedor}>
               <i className="fas fa-key icon"></i>
-              <input className={s.input} type="password" name="password" value={state.password} placeholder="Contraseña" onChange={(e) => handleInputChange(e)} />
+              <div className={s.contPass}>
+
+              <input className={s.input}  type={passwordShown ? "text" : "password"} name="password" value={state.password} placeholder="Contraseña" onChange={(e) => handleInputChange(e)} />
+              {passwordShown === false ? <BsFillEyeFill className={s.icon} onClick={() => togglePasswordVisiblity()} />
+                : <BsFillEyeSlashFill className={s.icon} onClick={() => togglePasswordVisiblity()} />}
+                </div>
             </div>
             {errors.password && (<p className={s.errors}>{errors.password}</p>)}
             <input type="submit" value="Login" className={s.button} />

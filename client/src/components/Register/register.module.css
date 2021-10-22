@@ -14,6 +14,8 @@
     padding: 15px;
 }
 
+
+
 .formulario {
     background: #fff;
     /* margin-top: 150px; */
@@ -37,6 +39,15 @@ h1 {
 .inputContenedor {
     margin-bottom: 15px;
     border: 1px solid #aaa;
+}
+
+.contPass{
+    display: flex;
+    align-items: center;
+
+}
+.icon{
+    fill: black;
 }
 
 .icon {
