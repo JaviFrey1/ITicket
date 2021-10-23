@@ -8,7 +8,7 @@ passport.use(
       clientID:
         "816676161138-u0hs8q6ba7kvg6vk7j7tsflnm44imdjg.apps.googleusercontent.com",
       clientSecret: "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",
-      callbackURL: `https://tukitukiteck.herokuapp.com/google/callback`,
+      callbackURL: 'https://tukitukiteck.herokuapp.com/home',
       passReqToCallback: true,
     },
     async (req, accessToken, refreshToken, profile, cb) => {
