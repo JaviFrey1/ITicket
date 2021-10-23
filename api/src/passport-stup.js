@@ -6,9 +6,9 @@ passport.use(
   new GoogleStrategy(
     {
       clientID:
-        "606271626860-n6ttqfol40fnplghb6lr832bknsmp5u6.apps.googleusercontent.com",
-      clientSecret: "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",
-      callbackURL: `https://tukiteck3.herokuapp.com/google/callback`,
+        "816676161138-u0hs8q6ba7kvg6vk7j7tsflnm44imdjg.apps.googleusercontent.com",
+      clientSecret: "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",
+      callbackURL: `https://tukitukiteck.herokuapp.com/google/callback`,
       passReqToCallback: true,
     },
     async (req, accessToken, refreshToken, profile, cb) => {
